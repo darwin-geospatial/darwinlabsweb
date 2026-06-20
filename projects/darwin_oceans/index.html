@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Darwin Oceans - Darwin Geospatial</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Darwin Oceans: interactive platform for ocean data visualization — sea surface temperature, chlorophyll, currents and marine environmental layers by Darwin Geospatial."/>
+  <link rel="canonical" href="https://darwingeospatial.com/projects/darwin_oceans/"/>
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Darwin Oceans — Darwin Geospatial"/>
+  <meta property="og:description" content="Interactive platform for ocean data visualization: sea surface temperature, chlorophyll, currents and more marine environmental layers."/>
+  <meta property="og:url" content="https://darwingeospatial.com/projects/darwin_oceans/"/>
+  <meta property="og:site_name" content="Darwin Geospatial"/>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    html, body { margin: 0; padding: 0; }
+    :root {
+      --darwin-green-dark: #395935;
+      --darwin-green-base: #46633A;
+      --darwin-green-medium: #576F50;
+      --darwin-green-accent: #5D713F;
+      --darwin-grey: #939494;
+      --darwin-green-light: #f0f3ef;
+      --ocean-blue: #0a2a4a;
+      --ocean-accent: #7EC8E3;
+    }
+    body { font-family: 'Inter', sans-serif; }
+    .prose { text-align: justify; }
+    .bg-primary { background-color: var(--darwin-green-base); }
+    .bg-primary-dark { background-color: var(--darwin-green-dark); }
+    .bg-primary-light { background-color: var(--darwin-green-light); }
+    .text-primary { color: var(--darwin-green-base); }
+    .text-accent { color: var(--darwin-green-accent); }
+    .border-primary { border-color: var(--darwin-green-base); }
+    .hover\:bg-primary-dark:hover { background-color: var(--darwin-green-dark); }
+    .hover\:text-primary:hover { color: var(--darwin-green-base); }
+
+    /* Animations */
+    .animate-on-scroll { opacity: 0; transform: translateY(30px); transition: opacity .6s ease-out, transform .6s ease-out; }
+    .animate-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
+
+    /* Lang switcher */
+    .lang-switcher button.active { color: var(--darwin-green-base); font-weight: 700; }
+
+    .title-section {
+      position: relative;
+      padding: 5rem 0;
+      overflow: hidden;
+      background-image:
+        linear-gradient(rgba(0,15,40,.6), rgba(0,15,40,.6)),
+        url('../../assets/hero/habitat.webp');
+      background-size: cover;
+      background-position: center;
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+    }
+    .title-section h1 { color:#fff; text-shadow:0 1px 3px rgba(0,0,0,.6); }
+
+    .bg-ocean-light { background-color: #e8f4f8; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+  <!-- Header -->
+  <header id="header" class="bg-white/90 backdrop-blur-md fixed top-0 left-0 right-0 z-50 shadow-md transition-all duration-300">
+    <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+      <a href="../../index.html#home" class="flex-shrink-0">
+        <img src="../../assets/brand/logo_darwin.png" alt="Logo de Darwin Geospatial" class="h-10 md:h-12 w-auto">
+      </a>
+
+      <nav class="hidden md:flex space-x-8 items-center">
+        <a href="../../index.html#about" class="text-slate-600 hover:text-primary transition duration-300" data-lang="es">Nosotros</a>
+        <a href="../../index.html#about" class="text-slate-600 hover:text-primary transition duration-300 hidden" data-lang="en">About</a>
+
+        <a href="../../index.html#sectors" class="text-slate-600 hover:text-primary transition duration-300" data-lang="es">Sectores</a>
+        <a href="../../index.html#sectors" class="text-slate-600 hover:text-primary transition duration-300 hidden" data-lang="en">Sectors</a>
+
+        <a href="../../index.html#values" class="text-slate-600 hover:text-primary transition duration-300" data-lang="es">Valores</a>
+        <a href="../../index.html#values" class="text-slate-600 hover:text-primary transition duration-300 hidden" data-lang="en">Values</a>
+
+        <a href="../../index.html#team" class="text-slate-600 hover:text-primary transition duration-300" data-lang="es">Equipo</a>
+        <a href="../../index.html#team" class="text-slate-600 hover:text-primary transition duration-300 hidden" data-lang="en">Team</a>
+
+        <a href="../../index.html#projects-hero" class="text-slate-600 hover:text-primary transition duration-300" data-lang="es">Proyectos</a>
+        <a href="../../index.html#projects-hero" class="text-slate-600 hover:text-primary transition duration-300 hidden" data-lang="en">Projects</a>
+
+        <a href="../../index.html#contact" class="text-slate-600 hover:text-primary transition duration-300" data-lang="es">Contacto</a>
+        <a href="../../index.html#contact" class="text-slate-600 hover:text-primary transition duration-300 hidden" data-lang="en">Contact</a>
+      </nav>
+
+      <div class="flex items-center">
+        <div class="lang-switcher text-sm text-slate-500 ml-4">
+          <button id="lang-es" class="active">ES</button>
+          <span>/</span>
+          <button id="lang-en">EN</button>
+        </div>
+        <button id="mobile-menu-button" class="md:hidden focus:outline-none ml-4">
+          <svg class="w-6 h-6 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4 6h16M4 12h16m-7 6h7"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+      <a href="../../index.html#about" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Nosotros</a>
+      <a href="../../index.html#about" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">About</a>
+
+      <a href="../../index.html#sectors" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Sectores</a>
+      <a href="../../index.html#sectors" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">Sectors</a>
+
+      <a href="../../index.html#values" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Valores</a>
+      <a href="../../index.html#values" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">Values</a>
+
+      <a href="../../index.html#team" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Equipo</a>
+      <a href="../../index.html#team" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">Team</a>
+
+      <a href="../../index.html#projects-hero" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Proyectos</a>
+      <a href="../../index.html#projects-hero" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">Projects</a>
+
+      <a href="../../index.html#contact" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Contacto</a>
+      <a href="../../index.html#contact" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">Contact</a>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="pt-16">
+
+    <!-- Hero / Title -->
+    <section class="animate-on-scroll title-section">
+      <div class="container mx-auto px-6 text-center relative z-10">
+        <h1 class="text-3xl md:text-4xl leading-tight font-bold mb-4" data-lang="es">
+          Darwin Oceans: visualización interactiva del océano
+        </h1>
+        <h1 class="text-3xl md:text-4xl font-bold mb-4 hidden" data-lang="en">
+          Darwin Oceans: interactive ocean visualization platform
+        </h1>
+
+        <p class="max-w-3xl mx-auto text-slate-200" data-lang="es">
+          Plataforma geoespacial para explorar datos marinos en tiempo real: <strong>temperatura superficial del mar</strong>, <strong>clorofila</strong>, <strong>corrientes oceánicas</strong> y otras variables ambientales clave, directamente desde el navegador.
+        </p>
+        <p class="max-w-3xl mx-auto text-slate-200 hidden" data-lang="en">
+          Geospatial platform to explore marine data in real time: <strong>sea surface temperature</strong>, <strong>chlorophyll</strong>, <strong>ocean currents</strong> and other key environmental variables, directly from the browser.
+        </p>
+      </div>
+    </section>
+
+    <!-- Intro -->
+    <section class="container mx-auto px-6 py-12 animate-on-scroll">
+      <div class="prose max-w-3xl mx-auto">
+        <p data-lang="es">
+          Darwin Oceans nace de la necesidad de hacer accesibles los datos oceanográficos a investigadores, gestores costeros y tomadores de decisiones. La plataforma integra fuentes satelitales y modeladas para ofrecer una visión actualizada del estado de los océanos, combinando <strong>visualización cartográfica</strong> con herramientas de análisis geoespacial.
+        </p>
+        <p class="hidden" data-lang="en">
+          Darwin Oceans was born from the need to make oceanographic data accessible to researchers, coastal managers and decision-makers. The platform integrates satellite and modeled sources to deliver an up-to-date picture of ocean health, combining <strong>cartographic visualization</strong> with geospatial analysis tools.
+        </p>
+      </div>
+    </section>
+
+    <!-- Key Points -->
+    <section class="container mx-auto px-6 pb-6 animate-on-scroll">
+      <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div class="bg-ocean-light rounded-lg p-6">
+          <h2 class="text-xl font-semibold mb-4 text-slate-900" data-lang="es">Qué ofrece</h2>
+          <h2 class="text-xl font-semibold mb-4 text-slate-900 hidden" data-lang="en">What it offers</h2>
+          <ul class="space-y-2 text-slate-700">
+            <li data-lang="es">• <strong>Temperatura superficial del mar</strong> con resolución diaria.</li>
+            <li class="hidden" data-lang="en">• <strong>Sea surface temperature</strong> at daily resolution.</li>
+            <li data-lang="es">• <strong>Concentración de clorofila</strong> para monitoreo de productividad marina.</li>
+            <li class="hidden" data-lang="en">• <strong>Chlorophyll concentration</strong> for marine productivity monitoring.</li>
+            <li data-lang="es">• <strong>Corrientes oceánicas</strong> y patrones de circulación.</li>
+            <li class="hidden" data-lang="en">• <strong>Ocean currents</strong> and circulation patterns.</li>
+            <li data-lang="es">• Interfaz cartográfica interactiva, <strong>sin necesidad de código</strong>.</li>
+            <li class="hidden" data-lang="en">• Interactive map interface, <strong>no coding required</strong>.</li>
+          </ul>
+        </div>
+
+        <div class="bg-ocean-light rounded-lg p-6">
+          <h2 class="text-xl font-semibold mb-4 text-slate-900" data-lang="es">Tecnología</h2>
+          <h2 class="text-xl font-semibold mb-4 text-slate-900 hidden" data-lang="en">Technology</h2>
+          <ul class="space-y-2 text-slate-700">
+            <li data-lang="es">• Google Earth Engine, datos MODIS, Copernicus y CMEMS.</li>
+            <li class="hidden" data-lang="en">• Google Earth Engine, MODIS, Copernicus and CMEMS data.</li>
+            <li data-lang="es">• Frontend web desplegado en <em>Firebase Hosting</em>.</li>
+            <li class="hidden" data-lang="en">• Web frontend deployed on <em>Firebase Hosting</em>.</li>
+            <li data-lang="es">• Pipelines de datos geoespaciales reproducibles y escalables.</li>
+            <li class="hidden" data-lang="en">• Reproducible and scalable geospatial data pipelines.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Outcomes -->
+    <section class="container mx-auto px-6 py-8 animate-on-scroll">
+      <div class="prose max-w-3xl mx-auto">
+        <h2 class="text-2xl font-bold text-slate-900 mb-4" data-lang="es">Resultados e impacto</h2>
+        <h2 class="text-2xl font-bold text-slate-900 mb-4 hidden" data-lang="en">Outcomes &amp; impact</h2>
+        <p data-lang="es">
+          Darwin Oceans democratiza el acceso a datos oceanográficos complejos, permitiendo a cualquier usuario explorar el estado actual de los mares sin barreras técnicas. La plataforma sirve como herramienta de referencia para el monitoreo costero, la investigación marina y la toma de decisiones basada en datos.
+        </p>
+        <p class="hidden" data-lang="en">
+          Darwin Oceans democratizes access to complex oceanographic data, allowing any user to explore the current state of the seas without technical barriers. The platform serves as a reference tool for coastal monitoring, marine research and data-driven decision-making.
+        </p>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="container mx-auto px-6 py-8 animate-on-scroll">
+      <div class="max-w-3xl mx-auto text-center">
+        <a href="https://darwin-oceans-visor.web.app" target="_blank" rel="noopener noreferrer"
+           class="inline-block bg-primary hover:bg-primary-dark text-white font-semibold py-3 px-6 rounded-lg">
+          <span data-lang="es">Abrir plataforma</span>
+          <span class="hidden" data-lang="en">Open platform</span>
+        </a>
+        <a href="../../index.html#projects-hero"
+           class="inline-block ml-4 text-primary font-semibold hover:underline">
+          <span data-lang="es">Volver a proyectos</span>
+          <span class="hidden" data-lang="en">Back to projects</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-12">
+    <div class="container mx-auto px-6 text-center">
+      <img src="../../assets/brand/logo_darwin.png" alt="Logo de Darwin Geospatial" class="h-16 w-auto mx-auto mb-4">
+      <p data-lang="es">© 2026 Darwin Geospatial. Todos los derechos reservados.</p>
+      <p class="hidden" data-lang="en">© 2026 Darwin Geospatial. All rights reserved.</p>
+      <p class="text-sm mt-2" data-lang="es">Haciendo la naturaleza más comprensible a través de los datos.</p>
+      <p class="text-sm mt-2 hidden" data-lang="en">Making nature more understandable through data.</p>
+    </div>
+  </footer>
+
+  <script src="../../lang.js"></script>
+</body>
+</html>
