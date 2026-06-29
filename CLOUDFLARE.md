@@ -1,46 +1,56 @@
-# Cloudflare Deployment Guide
+# Deployment Guide
 
 ## Overview
 
 **Website:** https://darwingeospatial.com
-**Repository:** https://github.com/gabrielireland/darwinlabsweb
-**Hosting:** Cloudflare Pages
-**DNS:** Cloudflare
+**Repository:** https://github.com/darwin-geospatial/darwinlabsweb
+**DNS:** Cloudflare (registrar + nameservers)
+
+> ⚠️ **Known issue (as of June 2026):** the live site is NOT auto-deploying from
+> this repo. See [Deployment Status](#deployment-status) below before troubleshooting.
 
 ---
 
-## Architecture
+## Deployment Status
 
-```
-GitHub Repo (gabrielireland/darwinlabsweb)
-         │
-         ▼ (auto-deploy on push to main)
-Cloudflare Pages (darwinweb.pages.dev)
-         │
-         ▼ (CNAME record)
-darwingeospatial.com (via Cloudflare DNS)
-```
+There are currently **two** hosting paths configured, and DNS points at the broken one.
 
----
+### 1. Cloudflare Pages — `darwinweb` (BROKEN / disconnected)
+- Pages project `darwinweb` (`darwinweb.pages.dev`) was connected to the **old
+  personal repo** `gabrielireland/darwinlabsweb`.
+- The repo was moved into the `darwin-geospatial` org (~June 2026), which **broke
+  the Pages → GitHub connection**, so pushes to `main` no longer trigger deploys.
+- `darwinweb.pages.dev` no longer resolves.
+- Cloudflare still proxies `darwingeospatial.com` and serves the **last cached
+  build**, so the live site is stale (homepage + missing `/blog`).
 
-## Cloudflare Pages Configuration
+### 2. GitHub Pages (WORKING, but not served)
+- GitHub Pages is enabled on `darwin-geospatial/darwinlabsweb`, building from
+  `main` / root, with custom domain `darwingeospatial.com` (`CNAME` + `.nojekyll`
+  present in repo).
+- It rebuilds correctly on every merge and already has the current site
+  (including `/blog`), but it is **not served** because DNS points at Cloudflare.
 
-**Project name:** `darwinweb`
-**Pages URL:** `darwinweb.pages.dev`
+### How to make the site live again
+Pick **one** host and point DNS at it:
 
-### Build Settings
-| Setting | Value |
-|---------|-------|
-| Framework preset | None |
-| Build command | *(empty)* |
-| Build output directory | `/` |
-| Root directory | *(empty)* |
-| Production branch | `main` |
+**Option A — switch DNS to GitHub Pages (fastest; build already current):**
+1. Cloudflare dashboard → DNS for `darwingeospatial.com`.
+2. Replace the apex/`www` records that point to `darwinweb.pages.dev` with the
+   GitHub Pages targets:
+   - Apex `darwingeospatial.com`: A records →
+     `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153`
+     (or a flattened CNAME → `darwin-geospatial.github.io`).
+   - `www` → CNAME `darwin-geospatial.github.io`.
+3. In the GitHub repo → Settings → Pages, confirm the custom domain
+   `darwingeospatial.com` is verified and enable "Enforce HTTPS".
+4. Cloudflare proxy can stay on; allow a few minutes for SSL.
 
-### How Deploys Work
-- Push to `main` branch triggers automatic deployment
-- No build step needed (static HTML/CSS/JS)
-- Deployments typically complete in under a minute
+**Option B — reconnect Cloudflare Pages to the org repo:**
+1. Cloudflare dashboard → Workers & Pages → `darwinweb` → Settings →
+   reconnect the Git source to `darwin-geospatial/darwinlabsweb`, branch `main`.
+2. Trigger a redeploy; confirm `darwinweb.pages.dev` resolves with the new build.
+3. Disable GitHub Pages to avoid the duplicate custom-domain claim.
 
 ---
 
@@ -49,15 +59,8 @@ darwingeospatial.com (via Cloudflare DNS)
 **Domain:** `darwingeospatial.com`
 **Registrar:** Cloudflare (expires July 23, 2026)
 
-### Key DNS Records
-
-| Type | Name | Content | Proxy |
-|------|------|---------|-------|
-| CNAME | `darwingeospatial.com` | `darwinweb.pages.dev` | Proxied |
-| CNAME | `www` | `darwingeospatial.com` | Proxied |
-
 ### Email (Google Workspace)
-MX records point to Google:
+MX records point to Google (leave these untouched during any DNS change):
 - `aspmx.l.google.com` (priority 1)
 - `alt1.aspmx.l.google.com` (priority 5)
 - `alt2.aspmx.l.google.com` (priority 5)
@@ -68,20 +71,24 @@ MX records point to Google:
 
 ## How to Deploy Changes
 
-### Standard Workflow
 ```bash
-# Make changes locally
 git add .
 git commit -m "Your commit message"
 git push origin main
 ```
 
-Cloudflare Pages will automatically detect the push and deploy.
+Once a host is correctly connected (see [Deployment Status](#deployment-status)),
+pushing to `main` will deploy automatically. No build step (static HTML/CSS/JS).
 
 ### Verify Deployment
-1. Go to Cloudflare dashboard → Workers & Pages → `darwinweb`
-2. Check "Deployments" tab for status
-3. Visit https://darwingeospatial.com (may need hard refresh: Cmd+Shift+R)
+```bash
+# Live homepage size should match repo index.html after deploy
+curl -s -o /dev/null -w "%{http_code} %{size_download}\n" https://darwingeospatial.com/
+# Blog should be the real file (~11 KB), not a copy of the homepage
+curl -s -o /dev/null -w "%{http_code} %{size_download}\n" https://darwingeospatial.com/blog/
+# Sitemap should list blog entries
+curl -s https://darwingeospatial.com/sitemap.xml | grep -c blog
+```
 
 ---
 
@@ -90,60 +97,42 @@ Cloudflare Pages will automatically detect the push and deploy.
 **Account:** `Cloudflare.factoid955@passmail.net`
 **Dashboard:** https://dash.cloudflare.com
 
-### Navigation
 - **DNS Settings:** Domains → darwingeospatial.com → DNS
 - **Pages Project:** Workers & Pages → darwinweb
 - **Domain Registration:** Domain Registration → darwingeospatial.com
 
 ---
 
-## Troubleshooting
-
-### Site not updating after push
-1. Check Cloudflare Pages deployment status
-2. Hard refresh browser (Cmd+Shift+R / Ctrl+Shift+R)
-3. Try incognito/private window
-4. Check if deployment failed in Pages dashboard
-
-### Deployment failed
-1. Check build logs in Cloudflare Pages
-2. Ensure no syntax errors in HTML/CSS/JS
-3. Verify the repo is accessible
-
-### Custom domain not working
-1. Verify CNAME record points to `darwinweb.pages.dev`
-2. Check custom domain is added in Pages project settings
-3. SSL certificate may take a few minutes to provision
-
----
-
 ## Related Files
 
-- `CNAME` - Contains custom domain for GitHub Pages fallback
-- `PENDING.md` - Website restructure proposal
-- `index.html` - Main website file
-- `services.html` - Comprehensive services page with all technical capabilities
+- `CNAME` — custom domain for GitHub Pages (`darwingeospatial.com`)
+- `.nojekyll` — disables Jekyll processing on GitHub Pages
+- `PENDING.md` — website restructure proposal
+- `index.html` — main website file
+- `services.html` — comprehensive services page
+- `blog/` — blog index + articles
 
 ---
 
 ## Claude Code Rules
 
-**NO COMMITS unless explicitly requested by the user.** Make changes but wait for user approval before committing.
+**NO COMMITS unless explicitly requested by the user.** Make changes but wait for
+user approval before committing.
 
 ---
 
 ## Development Guidelines
 
 ### Team Section
-- **Descriptions MUST be aligned** - All team member cards should have similar description lengths
-- **Abilities bullet points** - Keep label lengths consistent (e.g., "Backend Systems:" not just "Backend:")
+- **Descriptions MUST be aligned** — all team member cards similar description lengths
+- **Abilities bullet points** — keep label lengths consistent (e.g., "Backend Systems:")
 - Use `mt-auto` on the abilities div to push them to the bottom of cards
-- Use `h-full` and `flex-grow` to ensure cards stretch equally
+- Use `h-full` and `flex-grow` so cards stretch equally
 - Use `min-w-0` on cards to prevent text overflow
 - **Responsive grid:** `sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5`
 
 ### Values Section
-- Uses Darwin green with 10% opacity: `rgba(70, 99, 58, 0.1)`
+- Darwin green at 10% opacity: `rgba(70, 99, 58, 0.1)`
 - Cards have rounded corners and centered text
 
 ### General
@@ -157,6 +146,6 @@ Cloudflare Pages will automatically detect the push and deploy.
 
 - **Previous repo:** `irishdevops/darwinlabsweb` (no longer exists)
 - **Previous Pages project:** `darwinlabsweb` (deleted)
-- **Migrated:** February 3, 2026
-- **New repo:** `gabrielireland/darwinlabsweb`
-- **New Pages project:** `darwinweb`
+- **Migrated:** February 3, 2026 → `gabrielireland/darwinlabsweb` + Pages `darwinweb`
+- **Moved to org:** ~June 2026 → `darwin-geospatial/darwinlabsweb`
+  (this broke the Cloudflare Pages → GitHub connection; see Deployment Status)
