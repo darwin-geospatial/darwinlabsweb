@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Darwin Geospatial - Inteligencia Geoespacial para la Naturaleza</title>
 
+  <!-- Favicon -->
+  <link rel="icon" href="./favicon.ico?v=2" sizes="any"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/brand/favicon-32x32.png?v=2"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/brand/favicon-16x16.png?v=2"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/brand/apple-touch-icon.png?v=2"/>
+
   <!-- SEO Meta Tags -->
   <meta name="description" content="Darwin Geospatial: geospatial intelligence for nature. Remote sensing, satellite imagery analysis, erosion detection, land use mapping, and environmental monitoring solutions."/>
   <meta name="keywords" content="geospatial intelligence, remote sensing, satellite imagery, environmental monitoring, erosion detection, land use, Darwin Geospatial"/>
@@ -25,7 +31,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
   <link rel="preload" href="./assets/hero/hero_1.webp" as="image"/>
 
   <style>
@@ -541,13 +547,8 @@
     </section>
 
     <!-- Services -->
-    <section id="services" class="bg-white py-16 lg:py-20 overflow-hidden flex flex-col justify-center relative">
+    <section id="services" class="bg-white pt-8 lg:pt-10 pb-16 lg:pb-20 overflow-hidden flex flex-col justify-center relative">
       <div class="container mx-auto px-6 flex-grow flex flex-col justify-center">
-        <div class="text-center mb-10 animate-on-scroll">
-          <a href="#contact" class="text-sm tracking-[0.15em] uppercase font-light text-primary/70 underline underline-offset-4 hover:text-primary transition" data-lang="es">Contacta al Equipo</a>
-          <a href="#contact" class="text-sm tracking-[0.15em] uppercase font-light text-primary/70 underline underline-offset-4 hover:text-primary transition hidden" data-lang="en">Contact the Team</a>
-        </div>
-
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-0 max-w-7xl mx-auto" style="grid-template-rows: auto 1fr;">
 
           <!-- Data Foundation -->
@@ -657,7 +658,7 @@
         </div>
 
         <!-- Trusted By — scrolling partner logos -->
-        <div class="mt-8 mb-4 text-center animate-on-scroll">
+        <div class="mt-16 lg:mt-20 mb-4 text-center animate-on-scroll">
           <p class="text-sm font-semibold text-slate-400 uppercase tracking-widest mb-5" data-lang="es">Confían en nosotros</p>
           <p class="text-sm font-semibold text-slate-400 uppercase tracking-widest mb-5 hidden" data-lang="en">Trusted by</p>
           <div class="overflow-hidden" style="mask-image:linear-gradient(to right,transparent,black 10%,black 90%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,black 10%,black 90%,transparent);">
@@ -721,6 +722,23 @@
 
         <!-- Cards on top of background -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-center">
+          <!-- Habitat Hub Visor -->
+          <article class="animate-on-scroll lg:col-span-4 flex flex-col lg:flex-row rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10 cursor-pointer"
+            style="background:rgba(0,0,0,0.5); backdrop-filter:blur(12px);"
+            onclick="window.open('https://openpas-habitat.web.app','_blank')">
+            <div class="lg:w-2/5 flex-shrink-0" style="background-image:url('./projects/habitat_hub/assets/banner.png'); background-size:cover; background-position:center; min-height:12rem; background-color:#2b2240;"></div>
+            <div class="p-6 lg:p-8 flex flex-col flex-grow">
+              <h2 class="mb-3" style="font-family:'Inter',sans-serif; font-size:clamp(1.6rem,2.6vw,2.3rem); font-weight:700; text-transform:uppercase; letter-spacing:0.04em; line-height:1.05; color:#B7A6E3;" data-lang="es">Habitat Hub Visor</h2>
+              <h2 class="mb-3 hidden" style="font-family:'Inter',sans-serif; font-size:clamp(1.6rem,2.6vw,2.3rem); font-weight:700; text-transform:uppercase; letter-spacing:0.04em; line-height:1.05; color:#B7A6E3;" data-lang="en">Habitat Hub Visor</h2>
+              <p class="flex-grow text-sm leading-relaxed" style="color:rgba(255,255,255,0.65);" data-lang="es">Visor interactivo para el monitoreo de hábitats y pastos en áreas protegidas. Integra índices de vegetación, clasificación de hábitats, suelo, clima y detección de cambios para analizar el territorio capa a capa.</p>
+              <p class="flex-grow text-sm leading-relaxed hidden" style="color:rgba(255,255,255,0.65);" data-lang="en">Interactive viewer for habitat and pasture monitoring across protected areas. Combines vegetation indices, habitat classification, soil, climate and change detection to analyze the landscape layer by layer.</p>
+              <div class="mt-5">
+                <a href="https://openpas-habitat.web.app" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-bold text-sm group" style="color:#B7A6E3;" data-lang="es">Abrir plataforma <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span></a>
+                <a href="https://openpas-habitat.web.app" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-bold text-sm group hidden" style="color:#B7A6E3;" data-lang="en">Open platform <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span></a>
+              </div>
+            </div>
+          </article>
+
           <!-- ── Darwin Maps ──────────────────────────────── -->
           <article id="darwin-maps-card"
             class="animate-on-scroll lg:col-span-4 flex flex-col lg:flex-row rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10 cursor-pointer"
@@ -733,7 +751,7 @@
 
             <!-- Content -->
             <div class="p-6 lg:p-8 flex flex-col flex-grow">
-              <h2 class="mb-3" style="font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3vw,2.8rem); font-weight:900; line-height:1; color:#A5AA6B;">
+              <h2 class="mb-3" style="font-family:'Inter',sans-serif; font-size:clamp(1.6rem,2.6vw,2.3rem); font-weight:700; text-transform:uppercase; letter-spacing:0.04em; line-height:1.05; color:#A5AA6B;">
                 Darwin Maps
               </h2>
 
@@ -769,7 +787,7 @@
 
             <!-- Content -->
             <div class="p-6 lg:p-8 flex flex-col flex-grow">
-              <h2 class="mb-3" style="font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3vw,2.8rem); font-weight:900; line-height:1; color:#F0DEB8;">
+              <h2 class="mb-3" style="font-family:'Inter',sans-serif; font-size:clamp(1.6rem,2.6vw,2.3rem); font-weight:700; text-transform:uppercase; letter-spacing:0.04em; line-height:1.05; color:#F0DEB8;">
                 Soil SaveR
               </h2>
 
@@ -799,13 +817,30 @@
             onclick="window.open('https://darwin-oceans-visor.web.app','_blank')">
             <div class="lg:w-2/5 flex-shrink-0" style="background-image:url('./projects/darwin_oceans/assets/banner.png'); background-size:cover; background-position:center; min-height:12rem; background-color:#0a2a4a;"></div>
             <div class="p-6 lg:p-8 flex flex-col flex-grow">
-              <h2 class="mb-3" style="font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3vw,2.8rem); font-weight:900; line-height:1; color:#7EC8E3;" data-lang="es">Darwin Oceans</h2>
-              <h2 class="mb-3 hidden" style="font-family:'Playfair Display',serif; font-size:clamp(1.8rem,3vw,2.8rem); font-weight:900; line-height:1; color:#7EC8E3;" data-lang="en">Darwin Oceans</h2>
+              <h2 class="mb-3" style="font-family:'Inter',sans-serif; font-size:clamp(1.6rem,2.6vw,2.3rem); font-weight:700; text-transform:uppercase; letter-spacing:0.04em; line-height:1.05; color:#7EC8E3;" data-lang="es">Darwin Oceans</h2>
+              <h2 class="mb-3 hidden" style="font-family:'Inter',sans-serif; font-size:clamp(1.6rem,2.6vw,2.3rem); font-weight:700; text-transform:uppercase; letter-spacing:0.04em; line-height:1.05; color:#7EC8E3;" data-lang="en">Darwin Oceans</h2>
               <p class="flex-grow text-sm leading-relaxed" style="color:rgba(255,255,255,0.65);" data-lang="es">Plataforma interactiva para la visualización de datos oceánicos: temperatura superficial del mar, clorofila, corrientes y más capas ambientales marinas.</p>
               <p class="flex-grow text-sm leading-relaxed hidden" style="color:rgba(255,255,255,0.65);" data-lang="en">Interactive platform for ocean data visualization: sea surface temperature, chlorophyll, currents and more marine environmental layers.</p>
               <div class="mt-5">
                 <a href="https://darwin-oceans-visor.web.app" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-bold text-sm group" style="color:#7EC8E3;" data-lang="es">Abrir plataforma <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span></a>
                 <a href="https://darwin-oceans-visor.web.app" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-bold text-sm group hidden" style="color:#7EC8E3;" data-lang="en">Open platform <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span></a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Urban Nature Solutions -->
+          <article class="animate-on-scroll lg:col-span-4 flex flex-col lg:flex-row rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10 cursor-pointer"
+            style="background:rgba(0,0,0,0.5); backdrop-filter:blur(12px);"
+            onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+            <div class="lg:w-2/5 flex-shrink-0" style="background-image:url('./projects/urban_nature/assets/banner.png'); background-size:cover; background-position:center; min-height:12rem; background-color:#1e3a52;"></div>
+            <div class="p-6 lg:p-8 flex flex-col flex-grow">
+              <h2 class="mb-3" style="font-family:'Inter',sans-serif; font-size:clamp(1.6rem,2.6vw,2.3rem); font-weight:700; text-transform:uppercase; letter-spacing:0.04em; line-height:1.05; color:#E2A36B;" data-lang="es">Urban Nature Solutions</h2>
+              <h2 class="mb-3 hidden" style="font-family:'Inter',sans-serif; font-size:clamp(1.6rem,2.6vw,2.3rem); font-weight:700; text-transform:uppercase; letter-spacing:0.04em; line-height:1.05; color:#E2A36B;" data-lang="en">Urban Nature Solutions</h2>
+              <p class="flex-grow text-sm leading-relaxed" style="color:rgba(255,255,255,0.65);" data-lang="es">Soluciones basadas en la naturaleza para ciudades más resilientes: simulación CFD de riesgo de viento, mitigación de islas de calor, infraestructura verde, conectividad ecológica y bienestar urbano.</p>
+              <p class="flex-grow text-sm leading-relaxed hidden" style="color:rgba(255,255,255,0.65);" data-lang="en">Nature-based solutions for more resilient cities: CFD wind-risk simulation, urban heat island mitigation, green infrastructure, ecological connectivity and city wellbeing.</p>
+              <div class="mt-5">
+                <a href="#contact" class="inline-flex items-center gap-1 font-bold text-sm group" style="color:#E2A36B;" data-lang="es">Hablemos <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span></a>
+                <a href="#contact" class="inline-flex items-center gap-1 font-bold text-sm group hidden" style="color:#E2A36B;" data-lang="en">Let's talk <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span></a>
               </div>
             </div>
           </article>
@@ -817,8 +852,8 @@
             <div class="lg:w-2/5 flex-shrink-0" style="background-image:url('https://endworldhungerohio.com/assets/images/garden_winter.png'); background-size:cover; background-position:center; min-height:12rem;"></div>
             <div class="p-6 lg:p-8 flex flex-col flex-grow">
               <div class="flex items-center gap-3 mb-3 flex-wrap">
-                <h2 style="font-family:'Playfair Display',serif; font-size:clamp(1.4rem,2.5vw,2rem); font-weight:900; line-height:1; color:#A5AA6B;" data-lang="es">End World Hunger Ohio</h2>
-                <h2 style="font-family:'Playfair Display',serif; font-size:clamp(1.4rem,2.5vw,2rem); font-weight:900; line-height:1; color:#A5AA6B;" class="hidden" data-lang="en">End World Hunger Ohio</h2>
+                <h2 style="font-family:'Inter',sans-serif; font-size:clamp(1.6rem,2.6vw,2.3rem); font-weight:700; text-transform:uppercase; letter-spacing:0.04em; line-height:1.05; color:#A5AA6B;" data-lang="es">End World Hunger Ohio</h2>
+                <h2 style="font-family:'Inter',sans-serif; font-size:clamp(1.6rem,2.6vw,2.3rem); font-weight:700; text-transform:uppercase; letter-spacing:0.04em; line-height:1.05; color:#A5AA6B;" class="hidden" data-lang="en">End World Hunger Ohio</h2>
               </div>
               <p class="flex-grow text-sm leading-relaxed" style="color:rgba(255,255,255,0.65);" data-lang="es">Somos partners de la iniciativa End World Hunger Ohio, un jardín comunitario en Franklin Park, Columbus, que impulsa la soberanía alimentaria a través de la agricultura regenerativa.</p>
               <p class="flex-grow text-sm leading-relaxed hidden" style="color:rgba(255,255,255,0.65);" data-lang="en">We are partners with the End World Hunger Ohio initiative, a community garden in Franklin Park, Columbus, driving food sovereignty through regenerative agriculture.</p>
