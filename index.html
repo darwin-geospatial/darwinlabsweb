@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Darwin Geospatial - Inteligencia Geoespacial para la Naturaleza</title>
 
-  <!-- Favicon -->
-  <link rel="icon" href="./favicon.ico?v=2" sizes="any"/>
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/brand/favicon-32x32.png?v=2"/>
-  <link rel="icon" type="image/png" sizes="16x16" href="./assets/brand/favicon-16x16.png?v=2"/>
-  <link rel="apple-touch-icon" sizes="180x180" href="./assets/brand/apple-touch-icon.png?v=2"/>
+  <!-- Favicon (Google shows the homepage favicon in search; needs a square icon >= 48x48) -->
+  <link rel="icon" href="/favicon.ico" sizes="any"/>
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/brand/favicon-192x192.png"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-32x32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/brand/favicon-16x16.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/apple-touch-icon.png"/>
 
   <!-- SEO Meta Tags -->
   <meta name="description" content="Darwin Geospatial: geospatial intelligence for nature. AI agents, habitat assessment, sustainability (ESG) and software for nature. Remote sensing, satellite imagery analysis and environmental monitoring."/>
@@ -27,6 +28,18 @@
   <meta name="twitter:card" content="summary_large_image"/>
   <meta name="twitter:title" content="Darwin Geospatial: Geospatial Intelligence for Nature"/>
   <meta name="twitter:description" content="AI agents, habitat assessment, sustainability (ESG) and software for nature."/>
+
+  <!-- Organization structured data (brand logo for Google knowledge panel) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Darwin Geospatial",
+    "url": "https://darwingeospatial.com/",
+    "logo": "https://darwingeospatial.com/assets/brand/logo_circle.png",
+    "sameAs": ["https://www.linkedin.com/company/darwingeospatial"]
+  }
+  </script>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
