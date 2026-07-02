@@ -3,609 +3,1010 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Capabilities - Darwin Geospatial</title>
+  <title>Services - Darwin Geospatial</title>
 
   <!-- SEO Meta Tags -->
-  <meta name="description" content="Darwin Geospatial capabilities: geospatial data engineering, machine learning, environmental AI, software development, and business intelligence."/>
+  <meta name="description" content="Darwin Geospatial services: geospatial analysis, remote sensing consulting, satellite imagery processing, environmental monitoring, and custom GIS solutions."/>
   <link rel="canonical" href="https://darwingeospatial.com/services.html"/>
+
+  <!-- Open Graph / Social -->
   <meta property="og:type" content="website"/>
-  <meta property="og:title" content="Capabilities: Darwin Geospatial"/>
-  <meta property="og:description" content="Geospatial data engineering, machine learning, environmental AI, software and business intelligence."/>
+  <meta property="og:title" content="Services — Darwin Geospatial"/>
+  <meta property="og:description" content="Geospatial analysis, remote sensing consulting, satellite imagery processing, and environmental monitoring services."/>
   <meta property="og:url" content="https://darwingeospatial.com/services.html"/>
   <meta property="og:site_name" content="Darwin Geospatial"/>
-
-  <link rel="icon" href="./favicon.ico?v=2" sizes="any"/>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet"/>
 
   <style>
     :root {
-      --teal-deep:#0e1f24; --teal-base:#1b373f; --teal-elev:#213f47; --teal-line:#2e525b;
-      --green:#426331; --green-soft:#5a8045; --olive:#879753; --olive-light:#bcbe76;
-      --cream:#fcf5e3; --cream-dim:rgba(252,245,227,0.66); --cream-faint:rgba(252,245,227,0.42);
-    }
-    html, body { background-color: var(--teal-deep); }
-    body { font-family:'Inter',sans-serif; color:var(--cream); -webkit-font-smoothing:antialiased; }
-    .font-display{ font-family:'Bebas Neue',sans-serif; }
-    .font-mono{ font-family:'Space Mono',monospace; }
-
-    .eyebrow{ display:inline-flex; align-items:center; font-family:'Inter',sans-serif; font-weight:600; font-size:.8rem; letter-spacing:.2em; text-transform:uppercase; color:var(--olive-light); }
-
-    .text-cream{color:var(--cream);} .text-cream-dim{color:var(--cream-dim);} .text-cream-faint{color:var(--cream-faint);}
-    .text-olive{color:var(--olive-light);}
-    .bg-teal-base{background-color:var(--teal-base);} .bg-teal-deep{background-color:var(--teal-deep);}
-    .border-line{border-color:var(--teal-line);}
-    .section-rule{ border-top:1px solid var(--teal-line); }
-
-    .animate-on-scroll{ opacity:0; transform:translateY(30px); transition:opacity .7s cubic-bezier(0.22,1,0.36,1), transform .7s cubic-bezier(0.22,1,0.36,1); }
-    .animate-on-scroll.is-visible{ opacity:1; transform:translateY(0); }
-
-    .lang-switcher button{ color:var(--cream-faint); transition:color .2s; }
-    .lang-switcher button.active{ color:var(--olive-light); font-weight:700; }
-
-    /* Header (matches index) */
-    #header{ background-color:rgba(14,31,36,0.72); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid transparent; transition:background-color .3s ease, border-color .3s ease; }
-    #header.scrolled{ background-color:rgba(14,31,36,0.92); border-bottom-color:var(--teal-line); }
-    .header-row{ background:linear-gradient(90deg,#d7d3b9 0,#d7d3b9 190px,transparent 380px); }
-    .nav-link{ color:var(--cream-dim); font-weight:500; transition:color .25s; position:relative; }
-    .nav-link:hover{ color:var(--cream); }
-    .nav-link::after{ content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:var(--olive-light); transition:width .3s ease; }
-    .nav-link:hover::after{ width:100%; }
-    .btn-accent{ background-color:var(--green); color:var(--cream); border:1px solid transparent; transition:background-color .25s, transform .25s, box-shadow .25s; }
-    .btn-accent:hover{ background-color:var(--green-soft); transform:translateY(-1px); box-shadow:0 8px 24px rgba(90,128,69,0.3); }
-    .btn-ghost{ border:1px solid var(--teal-line); color:var(--cream); transition:border-color .25s, background-color .25s, transform .25s; }
-    .btn-ghost:hover{ border-color:var(--olive-light); background-color:rgba(188,190,118,0.08); transform:translateY(-1px); }
-
-    /* Capability card */
-    .svc-card{ background:var(--teal-elev); border:1px solid var(--teal-line); border-radius:.9rem; padding:1.25rem 1.35rem; transition:transform .35s cubic-bezier(0.22,1,0.36,1), border-color .35s, box-shadow .35s; }
-    .svc-card:hover{ transform:translateY(-4px); border-color:rgba(188,190,118,0.4); box-shadow:0 16px 34px rgba(0,0,0,0.38); }
-    .svc-tag{ display:inline-flex; align-items:center; font-family:'Space Mono',monospace; font-size:.62rem; letter-spacing:.04em; padding:.2rem .5rem; border-radius:.35rem; color:var(--olive-light); border:1px solid var(--teal-line); background:rgba(188,190,118,0.06); }
-    .svc-ico{ color:var(--olive-light); }
-    .cat-num{ font-family:'Space Mono',monospace; letter-spacing:.2em; color:var(--green-soft); }
-    .sub-ico{ color:var(--olive-light); flex:0 0 auto; }
-
-    /* Sticky scrollytelling category panel (desktop) */
-    @media (min-width:1024px){
-      .cat-grid{ display:grid; grid-template-columns:minmax(0,1fr) minmax(0,2.15fr); gap:3.5rem; align-items:start; }
-      .cat-sticky{ position:sticky; top:6.5rem; }
+      --darwin-green-dark: #395935;
+      --darwin-green-base: #46633A;
+      --darwin-green-medium: #576F50;
+      --darwin-green-accent: #5D713F;
+      --darwin-grey: #939494;
+      --darwin-green-light: #f0f3ef;
     }
 
-    /* Partner marquee */
-    .partner-logo{ filter:grayscale(100%); opacity:.75; transition:all .3s ease; object-fit:contain; }
-    .partner-logo:hover{ filter:grayscale(0%); opacity:1; }
-    .animate-marquee{ animation:marqueeScroll 38s linear infinite; }
-    .animate-marquee:hover{ animation-play-state:paused; }
-    @keyframes marqueeScroll{ 0%{transform:translateX(0);} 100%{transform:translateX(-50%);} }
+    body { font-family: 'Inter', sans-serif; }
 
-    #hero-capabilities{ scroll-margin-top:5rem; }
+    .bg-primary{background-color:var(--darwin-green-base);}
+    .bg-primary-dark{background-color:var(--darwin-green-dark);}
+    .bg-primary-light{background-color:var(--darwin-green-light);}
+    .text-primary{color:var(--darwin-green-base);}
+    .text-accent{color:var(--darwin-green-accent);}
+    .border-primary{border-color:var(--darwin-green-base);}
+    .hover\:bg-primary-dark:hover{background-color:var(--darwin-green-dark);}
+    .hover\:text-primary:hover{color:var(--darwin-green-base);}
+
+    .animate-on-scroll{
+      opacity:0; transform:translateY(30px);
+      transition:opacity .6s ease-out, transform .6s ease-out;
+    }
+    .animate-on-scroll.is-visible{opacity:1; transform:translateY(0);}
+
+    .lang-switcher button.active{color:var(--darwin-green-base); font-weight:700;}
+
+    .service-card {
+      background-color: rgba(70, 99, 58, 0.08);
+      border-left: 4px solid var(--darwin-green-base);
+    }
+    .service-card:hover {
+      background-color: rgba(70, 99, 58, 0.12);
+    }
+
+    .tech-tag {
+      background-color: rgba(70, 99, 58, 0.15);
+      color: var(--darwin-green-dark);
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+    }
+
+    .category-header {
+      background: linear-gradient(135deg, var(--darwin-green-base) 0%, var(--darwin-green-dark) 100%);
+    }
+
+    .partner-logo { filter: grayscale(100%); opacity: .7; transition: all .3s ease; }
+    .partner-logo:hover { filter: grayscale(0%); opacity: 1; }
+
+    .marquee-container {
+      width: 100%;
+      overflow: hidden;
+      mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    }
+    .marquee-track {
+      display: flex;
+      align-items: center;
+      gap: 3.5rem;
+      width: max-content;
+      animation: marquee-scroll 35s linear infinite;
+    }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes marquee-scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
   </style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-800">
 
   <!-- Header -->
-  <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-    <div class="header-row w-full px-5 md:px-8 py-3.5 flex justify-between items-center">
+  <header id="header" class="bg-white/90 backdrop-blur-md fixed top-0 left-0 right-0 z-50 shadow-md transition-all duration-300">
+    <div class="container mx-auto px-6 py-3 flex justify-between items-center">
       <a href="./index.html" class="flex-shrink-0">
-        <img src="./assets/brand/logo_darwin.png" alt="Logo de Darwin Geospatial" class="h-12 md:h-16 w-auto">
+        <img src="./assets/brand/logo_darwin.png" alt="Logo de Darwin Geospatial" class="h-10 md:h-12 w-auto">
       </a>
+
       <nav class="hidden md:flex space-x-8 items-center">
-        <a href="./index.html#about" class="nav-link text-[15px]" data-lang="es">Nosotros</a>
-        <a href="./index.html#about" class="nav-link text-[15px] hidden" data-lang="en">About</a>
-        <a href="./index.html#solutions" class="nav-link text-[15px]" data-lang="es">Soluciones</a>
-        <a href="./index.html#solutions" class="nav-link text-[15px] hidden" data-lang="en">Solutions</a>
-        <a href="./index.html#projects-hero" class="nav-link text-[15px]" data-lang="es">Proyectos</a>
-        <a href="./index.html#projects-hero" class="nav-link text-[15px] hidden" data-lang="en">Projects</a>
-        <a href="./index.html#team" class="nav-link text-[15px]" data-lang="es">Equipo</a>
-        <a href="./index.html#team" class="nav-link text-[15px] hidden" data-lang="en">Team</a>
-        <a href="./blog/" class="nav-link text-[15px]" data-lang="es">Blog</a>
-        <a href="./blog/" class="nav-link text-[15px] hidden" data-lang="en">Blog</a>
-        <a href="./index.html#contact" class="btn-accent px-5 py-2 rounded-full font-semibold text-sm" data-lang="es">Contacto</a>
-        <a href="./index.html#contact" class="btn-accent px-5 py-2 rounded-full font-semibold text-sm hidden" data-lang="en">Contact</a>
+        <a href="./index.html#about" class="text-slate-600 hover:text-primary transition" data-lang="es">Nosotros</a>
+        <a href="./index.html#about" class="text-slate-600 hover:text-primary transition hidden" data-lang="en">About</a>
+
+        <a href="#" class="text-primary font-semibold transition" data-lang="es">Servicios</a>
+        <a href="#" class="text-primary font-semibold transition hidden" data-lang="en">Services</a>
+
+        <a href="./index.html#projects-hero" class="text-slate-600 hover:text-primary transition" data-lang="es">Proyectos</a>
+        <a href="./index.html#projects-hero" class="text-slate-600 hover:text-primary transition hidden" data-lang="en">Projects</a>
+
+        <a href="./index.html#team" class="text-slate-600 hover:text-primary transition" data-lang="es">Equipo</a>
+        <a href="./index.html#team" class="text-slate-600 hover:text-primary transition hidden" data-lang="en">Team</a>
+
+        <a href="./index.html#contact" class="text-slate-600 hover:text-primary transition" data-lang="es">Contacto</a>
+        <a href="./index.html#contact" class="text-slate-600 hover:text-primary transition hidden" data-lang="en">Contact</a>
       </nav>
+
       <div class="flex items-center">
-        <div class="lang-switcher font-mono text-sm ml-4">
+        <div class="lang-switcher text-sm text-slate-500 ml-4">
           <button id="lang-es" class="active">ES</button>
-          <span class="text-cream-faint">/</span>
+          <span>/</span>
           <button id="lang-en">EN</button>
         </div>
         <button id="mobile-menu-button" class="md:hidden focus:outline-none ml-4">
-          <svg class="w-6 h-6 text-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+          <svg class="w-6 h-6 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+          </svg>
         </button>
       </div>
     </div>
-    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 pt-2 border-t border-line bg-teal-deep">
-      <a href="./index.html#about" class="block py-2 text-cream-dim hover:text-cream" data-lang="es">Nosotros</a>
-      <a href="./index.html#about" class="block py-2 text-cream-dim hover:text-cream hidden" data-lang="en">About</a>
-      <a href="./index.html#solutions" class="block py-2 text-cream-dim hover:text-cream" data-lang="es">Soluciones</a>
-      <a href="./index.html#solutions" class="block py-2 text-cream-dim hover:text-cream hidden" data-lang="en">Solutions</a>
-      <a href="./index.html#projects-hero" class="block py-2 text-cream-dim hover:text-cream" data-lang="es">Proyectos</a>
-      <a href="./index.html#projects-hero" class="block py-2 text-cream-dim hover:text-cream hidden" data-lang="en">Projects</a>
-      <a href="./index.html#team" class="block py-2 text-cream-dim hover:text-cream" data-lang="es">Equipo</a>
-      <a href="./index.html#team" class="block py-2 text-cream-dim hover:text-cream hidden" data-lang="en">Team</a>
-      <a href="./blog/" class="block py-2 text-cream-dim hover:text-cream" data-lang="es">Blog</a>
-      <a href="./blog/" class="block py-2 text-cream-dim hover:text-cream hidden" data-lang="en">Blog</a>
-      <a href="./index.html#contact" class="block py-2 mt-2 btn-accent text-center px-5 py-2.5 rounded-full font-semibold text-sm" data-lang="es">Contacto</a>
-      <a href="./index.html#contact" class="block py-2 mt-2 btn-accent text-center px-5 py-2.5 rounded-full font-semibold text-sm hidden" data-lang="en">Contact</a>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+      <a href="./index.html#about" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Nosotros</a>
+      <a href="./index.html#about" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">About</a>
+      <a href="#" class="block py-2 text-primary font-semibold" data-lang="es">Servicios</a>
+      <a href="#" class="block py-2 text-primary font-semibold hidden" data-lang="en">Services</a>
+      <a href="./index.html#projects-hero" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Proyectos</a>
+      <a href="./index.html#projects-hero" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">Projects</a>
+      <a href="./index.html#team" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Equipo</a>
+      <a href="./index.html#team" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">Team</a>
+      <a href="./index.html#contact" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Contacto</a>
+      <a href="./index.html#contact" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">Contact</a>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section id="hero-capabilities" class="relative pt-40 pb-20 lg:pt-48 lg:pb-24 overflow-hidden">
-    <div class="absolute inset-0" style="background:radial-gradient(ellipse at 30% 0%, rgba(66,99,49,0.22) 0%, transparent 55%), var(--teal-deep);"></div>
-    <div class="container mx-auto px-6 relative">
-      <div class="max-w-3xl animate-on-scroll">
-        <p class="eyebrow mb-5" data-lang="es">Nuestras capacidades</p>
-        <p class="eyebrow mb-5 hidden" data-lang="en">Our capabilities</p>
-        <h1 class="font-display uppercase leading-[0.95] mb-6 text-cream" style="font-size:clamp(2.6rem,7vw,5.5rem);" data-lang="es">Todo lo que podemos <span style="color:var(--olive-light);">construir</span></h1>
-        <h1 class="font-display uppercase leading-[0.95] mb-6 text-cream hidden" style="font-size:clamp(2.6rem,7vw,5.5rem);" data-lang="en">Everything we can <span style="color:var(--olive-light);">build</span></h1>
-        <p class="text-lg md:text-xl text-cream-dim max-w-2xl leading-relaxed" data-lang="es">Capacidades técnicas completas en ingeniería de datos geoespaciales, inteligencia artificial y desarrollo de software, desde el píxel hasta la decisión.</p>
-        <p class="text-lg md:text-xl text-cream-dim max-w-2xl leading-relaxed hidden" data-lang="en">Full technical capabilities across geospatial data engineering, artificial intelligence and software development, from pixel to decision.</p>
-      </div>
-      <div class="grid grid-cols-3 gap-px mt-14 max-w-2xl rounded-xl overflow-hidden border border-line animate-on-scroll" style="background:var(--teal-line);">
-        <div class="bg-teal-deep p-6 text-center"><div class="font-display text-4xl lg:text-5xl text-olive leading-none mb-1">3</div><p class="font-mono text-[0.65rem] tracking-wider uppercase text-cream-dim" data-lang="es">Áreas</p><p class="font-mono text-[0.65rem] tracking-wider uppercase text-cream-dim hidden" data-lang="en">Domains</p></div>
-        <div class="bg-teal-deep p-6 text-center"><div class="font-display text-4xl lg:text-5xl text-olive leading-none mb-1">15</div><p class="font-mono text-[0.65rem] tracking-wider uppercase text-cream-dim" data-lang="es">Disciplinas</p><p class="font-mono text-[0.65rem] tracking-wider uppercase text-cream-dim hidden" data-lang="en">Disciplines</p></div>
-        <div class="bg-teal-deep p-6 text-center"><div class="font-display text-4xl lg:text-5xl text-olive leading-none mb-1">50+</div><p class="font-mono text-[0.65rem] tracking-wider uppercase text-cream-dim" data-lang="es">Capacidades</p><p class="font-mono text-[0.65rem] tracking-wider uppercase text-cream-dim hidden" data-lang="en">Capabilities</p></div>
-      </div>
+  <!-- Hero Section -->
+  <section class="pt-32 pb-16 bg-primary text-white">
+    <div class="container mx-auto px-6 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4" data-lang="es">Nuestros Servicios</h1>
+      <h1 class="text-4xl md:text-5xl font-bold mb-4 hidden" data-lang="en">Our Services</h1>
+      <p class="text-lg text-white/90 max-w-3xl mx-auto" data-lang="es">
+        Capacidades técnicas completas en ingeniería de datos geoespaciales, inteligencia artificial y desarrollo de software.
+      </p>
+      <p class="text-lg text-white/90 max-w-3xl mx-auto hidden" data-lang="en">
+        Complete technical capabilities in geospatial data engineering, artificial intelligence, and software development.
+      </p>
     </div>
   </section>
 
-  <main>
+  <main class="py-16">
+    <div class="container mx-auto px-6">
 
-    <!-- ============ CATEGORY 1 — Geospatial ============ -->
-    <section class="bg-teal-base section-rule py-20 lg:py-28">
-      <div class="container mx-auto px-6">
-        <div class="cat-grid">
-          <!-- Sticky panel -->
-          <div class="cat-sticky mb-12 lg:mb-0 animate-on-scroll">
-            <span class="cat-num text-sm">01</span>
-            <svg class="svc-ico w-12 h-12 my-4" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>
-            <h2 class="font-bold text-cream leading-tight mb-4" style="font-size:clamp(1.7rem,3vw,2.4rem);" data-lang="es">Software Geoespacial, Datos e Ingeniería de IA</h2>
-            <h2 class="font-bold text-cream leading-tight mb-4 hidden" style="font-size:clamp(1.7rem,3vw,2.4rem);" data-lang="en">Geospatial Software, Data &amp; AI Engineering</h2>
-            <p class="text-cream-dim leading-relaxed" data-lang="es">Del dato crudo al modelo del territorio: ingeniería de datos, machine learning, LLMs, grafos, visores e IA ambiental.</p>
-            <p class="text-cream-dim leading-relaxed hidden" data-lang="en">From raw data to a model of the land: data engineering, machine learning, LLMs, graphs, viewers and environmental AI.</p>
-          </div>
-
-          <!-- Subsections -->
-          <div class="space-y-12">
-
-            <!-- Geospatial Data Engineering -->
-            <div class="animate-on-scroll">
-              <div class="flex items-center gap-3 mb-4">
-                <svg class="sub-ico w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg>
-                <h3 class="text-xl font-bold text-cream" data-lang="es">Ingeniería de Datos Geoespaciales</h3>
-                <h3 class="text-xl font-bold text-cream hidden" data-lang="en">Geospatial Data Engineering</h3>
-              </div>
-              <div class="grid sm:grid-cols-2 gap-4">
-                <div class="svc-card">
-                  <h4 class="font-semibold text-cream mb-1.5">ETL/ELT Pipelines</h4>
-                  <p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Pipelines de datos escalables en la nube, frameworks plug &amp; play, datos preparados para IA.</p>
-                  <p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Scalable cloud data pipelines, plug &amp; play frameworks, AI-ready data.</p>
-                  <div class="flex flex-wrap gap-1.5"><span class="svc-tag">Apache Airflow</span><span class="svc-tag">dbt</span><span class="svc-tag">Prefect</span></div>
-                </div>
-                <div class="svc-card">
-                  <h4 class="font-semibold text-cream mb-1.5" data-lang="es">Limpieza y Armonización</h4>
-                  <h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Data Cleaning &amp; Harmonization</h4>
-                  <p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Normalización de datos multi-fuente, control de calidad, estandarización de formatos.</p>
-                  <p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Multi-source data normalization, quality control, format standardization.</p>
-                  <div class="flex flex-wrap gap-1.5"><span class="svc-tag">GDAL</span><span class="svc-tag">Rasterio</span><span class="svc-tag">GeoPandas</span></div>
-                </div>
-                <div class="svc-card">
-                  <h4 class="font-semibold text-cream mb-1.5" data-lang="es">Almacenamiento Geoespacial</h4>
-                  <h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Geospatial Warehousing</h4>
-                  <p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Data warehouses espaciales optimizados para consultas a escala.</p>
-                  <p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Spatial data warehouses optimized for queries at scale.</p>
-                  <div class="flex flex-wrap gap-1.5"><span class="svc-tag">PostGIS</span><span class="svc-tag">BigQuery</span><span class="svc-tag">Snowflake</span></div>
-                </div>
-                <div class="svc-card">
-                  <h4 class="font-semibold text-cream mb-1.5" data-lang="es">Generación de Tiles</h4>
-                  <h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Tile Generation</h4>
-                  <p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Creación de tiles vectoriales y raster para visualización web.</p>
-                  <p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Vector and raster tile creation for web visualization.</p>
-                  <div class="flex flex-wrap gap-1.5"><span class="svc-tag">PMTiles</span><span class="svc-tag">Tippecanoe</span><span class="svc-tag">COG</span></div>
-                </div>
-                <div class="svc-card sm:col-span-2">
-                  <h4 class="font-semibold text-cream mb-1.5" data-lang="es">Feature Engineering Espacial</h4>
-                  <h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Spatial Feature Engineering</h4>
-                  <p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Extracción de características espaciales para modelos ML.</p>
-                  <p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Spatial feature extraction for ML models.</p>
-                  <div class="flex flex-wrap gap-1.5"><span class="svc-tag">H3</span><span class="svc-tag">S2</span><span class="svc-tag">Uber H3</span></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Geospatial ML -->
-            <div class="animate-on-scroll">
-              <div class="flex items-center gap-3 mb-4">
-                <svg class="sub-ico w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h6m-6 0v18m6-18h4a2 2 0 012 2v4m0 0v6m0-6h-6m6 6v4a2 2 0 01-2 2h-4m0 0H9m6 0v-6m-6 6H5a2 2 0 01-2-2v-4m0 0V9m0 6h6"/><circle cx="12" cy="12" r="2.2"/></svg>
-                <h3 class="text-xl font-bold text-cream" data-lang="es">Machine Learning Geoespacial</h3>
-                <h3 class="text-xl font-bold text-cream hidden" data-lang="en">Geospatial ML</h3>
-              </div>
-              <div class="grid sm:grid-cols-2 gap-4">
-                <div class="svc-card">
-                  <h4 class="font-semibold text-cream mb-1.5" data-lang="es">Entrenamiento de Modelos Supervisados</h4>
-                  <h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Supervised Model Training</h4>
-                  <p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">CNNs, Transformers y modelos fundacionales para imágenes satelitales.</p>
-                  <p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">CNNs, Transformers, and foundation models for satellite imagery.</p>
-                  <div class="flex flex-wrap gap-1.5"><span class="svc-tag">PyTorch</span><span class="svc-tag">TensorFlow</span><span class="svc-tag">Prithvi</span></div>
-                </div>
-                <div class="svc-card">
-                  <h4 class="font-semibold text-cream mb-1.5" data-lang="es">Modelado Temporal</h4>
-                  <h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Temporal Modeling</h4>
-                  <p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Series temporales, detección de cambios y forecasting.</p>
-                  <p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Time series, change detection, and forecasting.</p>
-                  <div class="flex flex-wrap gap-1.5"><span class="svc-tag">LSTM</span><span class="svc-tag">Prophet</span><span class="svc-tag">Temporal CNNs</span></div>
-                </div>
-                <div class="svc-card">
-                  <h4 class="font-semibold text-cream mb-1.5" data-lang="es">Validación y Drift</h4>
-                  <h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Model Validation &amp; Drift</h4>
-                  <p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Monitoreo de rendimiento y detección de drift en producción.</p>
-                  <p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Performance monitoring and drift detection in production.</p>
-                  <div class="flex flex-wrap gap-1.5"><span class="svc-tag">MLflow</span><span class="svc-tag">Evidently</span><span class="svc-tag">W&amp;B</span></div>
-                </div>
-                <div class="svc-card">
-                  <h4 class="font-semibold text-cream mb-1.5" data-lang="es">Despliegue de APIs de Inferencia</h4>
-                  <h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Inference API Deployment</h4>
-                  <p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">APIs de predicción en tiempo real para aplicaciones geoespaciales.</p>
-                  <p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Real-time prediction APIs for geospatial applications.</p>
-                  <div class="flex flex-wrap gap-1.5"><span class="svc-tag">FastAPI</span><span class="svc-tag">Cloud Run</span><span class="svc-tag">TorchServe</span></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Geospatial LLM -->
-            <div class="animate-on-scroll">
-              <div class="flex items-center gap-3 mb-4">
-                <svg class="sub-ico w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/><path d="M8 9h8M8 13h5"/></svg>
-                <h3 class="text-xl font-bold text-cream" data-lang="es">LLM Geoespacial</h3>
-                <h3 class="text-xl font-bold text-cream hidden" data-lang="en">Geospatial LLM</h3>
-              </div>
-              <div class="grid sm:grid-cols-2 gap-4">
-                <div class="svc-card">
-                  <h4 class="font-semibold text-cream mb-1.5" data-lang="es">NLP para Leyendas de Mapas</h4>
-                  <h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">NLP for Map Legends</h4>
-                  <p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Extracción automática de información de leyendas cartográficas.</p>
-                  <p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Automatic extraction of information from cartographic legends.</p>
-                  <div class="flex flex-wrap gap-1.5"><span class="svc-tag">GPT-4</span><span class="svc-tag">Claude</span><span class="svc-tag">spaCy</span></div>
-                </div>
-                <div class="svc-card">
-                  <h4 class="font-semibold text-cream mb-1.5" data-lang="es">Generación de Embeddings EO</h4>
-                  <h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">EO Embedding Generation</h4>
-                  <p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Embeddings vectoriales para búsqueda semántica de imágenes.</p>
-                  <p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Vector embeddings for semantic image search.</p>
-                  <div class="flex flex-wrap gap-1.5"><span class="svc-tag">CLIP</span><span class="svc-tag">SatCLIP</span><span class="svc-tag">FAISS</span></div>
-                </div>
-                <div class="svc-card sm:col-span-2">
-                  <h4 class="font-semibold text-cream mb-1.5" data-lang="es">Inteligencia Documental</h4>
-                  <h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Document Intelligence</h4>
-                  <p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Procesamiento de informes técnicos y documentación ambiental.</p>
-                  <p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Processing of technical reports and environmental documentation.</p>
-                  <div class="flex flex-wrap gap-1.5"><span class="svc-tag">LangChain</span><span class="svc-tag">RAG</span><span class="svc-tag">Document AI</span></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Geospatial Graphs -->
-            <div class="animate-on-scroll">
-              <div class="flex items-center gap-3 mb-4">
-                <svg class="sub-ico w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="5" cy="6" r="2"/><circle cx="19" cy="6" r="2"/><circle cx="12" cy="18" r="2"/><path d="M6.7 7.5l4 8.5M17.3 7.5l-4 8.5M7 6h10"/></svg>
-                <h3 class="text-xl font-bold text-cream" data-lang="es">Grafos Geoespaciales</h3>
-                <h3 class="text-xl font-bold text-cream hidden" data-lang="en">Geospatial Graphs</h3>
-              </div>
-              <div class="grid sm:grid-cols-2 gap-4">
-                <div class="svc-card">
-                  <h4 class="font-semibold text-cream mb-1.5" data-lang="es">Conectividad y Corredores</h4>
-                  <h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Connectivity &amp; Corridors</h4>
-                  <p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Análisis de conectividad ecológica, ECA, ΔECA y redes de resistencia.</p>
-                  <p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Ecological connectivity analysis, ECA, ΔECA and resistance networks.</p>
-                  <div class="flex flex-wrap gap-1.5"><span class="svc-tag">Circuitscape</span><span class="svc-tag">Conefor</span><span class="svc-tag">NetworkX</span></div>
-                </div>
-                <div class="svc-card">
-                  <h4 class="font-semibold text-cream mb-1.5" data-lang="es">Construcción de Grafos Espaciales</h4>
-                  <h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Spatial Graph Construction</h4>
-                  <p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Modelado de redes espaciales para análisis de hábitat y fragmentación.</p>
-                  <p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Spatial network modeling for habitat and fragmentation analysis.</p>
-                  <div class="flex flex-wrap gap-1.5"><span class="svc-tag">Graph Neural Networks</span><span class="svc-tag">Neo4j</span><span class="svc-tag">igraph</span></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Visors & Dashboards -->
-            <div class="animate-on-scroll">
-              <div class="flex items-center gap-3 mb-4">
-                <svg class="sub-ico w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                <h3 class="text-xl font-bold text-cream" data-lang="es">Visores y Dashboards</h3>
-                <h3 class="text-xl font-bold text-cream hidden" data-lang="en">Visors &amp; Dashboards</h3>
-              </div>
-              <div class="grid sm:grid-cols-2 gap-4">
-                <div class="svc-card">
-                  <h4 class="font-semibold text-cream mb-1.5" data-lang="es">Visores Geoespaciales Personalizados</h4>
-                  <h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Custom Geospatial Visors</h4>
-                  <p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Aplicaciones web de mapas interactivos con visualización avanzada.</p>
-                  <p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Interactive web mapping applications with advanced visualization.</p>
-                  <div class="flex flex-wrap gap-1.5"><span class="svc-tag">MapLibre</span><span class="svc-tag">Deck.gl</span><span class="svc-tag">PMTiles</span></div>
-                </div>
-                <div class="svc-card">
-                  <h4 class="font-semibold text-cream mb-1.5" data-lang="es">Herramientas de Exportación No-Code</h4>
-                  <h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">No-Code Export Tools</h4>
-                  <p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Interfaces intuitivas para exportar datos geoespaciales sin programar.</p>
-                  <p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Intuitive interfaces to export geospatial data without coding.</p>
-                  <div class="flex flex-wrap gap-1.5"><span class="svc-tag">React</span><span class="svc-tag">GeoJSON</span><span class="svc-tag">Shapefile</span></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Environmental AI -->
-            <div class="animate-on-scroll">
-              <div class="flex items-center gap-3 mb-4">
-                <svg class="sub-ico w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M11 20A7 7 0 019.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
-                <h3 class="text-xl font-bold text-cream" data-lang="es">IA Ambiental</h3>
-                <h3 class="text-xl font-bold text-cream hidden" data-lang="en">Environmental AI</h3>
-              </div>
-              <div class="grid sm:grid-cols-2 gap-4">
-                <div class="svc-card"><h4 class="font-semibold text-cream mb-1.5" data-lang="es">Mapeo de Carbono</h4><h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Carbon Mapping</h4><p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Estimación de captura y stock de carbono mediante teledetección.</p><p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Carbon capture and stock estimation via remote sensing.</p><div class="flex flex-wrap gap-1.5"><span class="svc-tag">LiDAR</span><span class="svc-tag">Sentinel-2</span><span class="svc-tag">Biomass Models</span></div></div>
-                <div class="svc-card"><h4 class="font-semibold text-cream mb-1.5" data-lang="es">Predicción de Cobertura Nival</h4><h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Snow Cover Prediction</h4><p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Modelos predictivos para acumulación y derretimiento de nieve.</p><p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Predictive models for snow accumulation and melting.</p><div class="flex flex-wrap gap-1.5"><span class="svc-tag">MODIS</span><span class="svc-tag">Sentinel-1</span><span class="svc-tag">ML</span></div></div>
-                <div class="svc-card"><h4 class="font-semibold text-cream mb-1.5" data-lang="es">Riesgo de Avalanchas</h4><h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Avalanche/Slope Risk</h4><p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Evaluación de riesgo en laderas y predicción de avalanchas.</p><p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Slope risk assessment and avalanche prediction.</p><div class="flex flex-wrap gap-1.5"><span class="svc-tag">DEM</span><span class="svc-tag">Slope Analysis</span><span class="svc-tag">RF/XGBoost</span></div></div>
-                <div class="svc-card"><h4 class="font-semibold text-cream mb-1.5" data-lang="es">Susceptibilidad a Incendios</h4><h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Wildfire Susceptibility</h4><p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Modelado de riesgo de incendios y mapeo post-incendio.</p><p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Fire risk modeling and post-fire mapping.</p><div class="flex flex-wrap gap-1.5"><span class="svc-tag">VIIRS</span><span class="svc-tag">Landsat</span><span class="svc-tag">dNBR</span></div></div>
-                <div class="svc-card"><h4 class="font-semibold text-cream mb-1.5" data-lang="es">Riesgo de Inundaciones</h4><h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Flood Hazard</h4><p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Mapeo de zonas inundables y modelado hidrológico.</p><p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Flood zone mapping and hydrological modeling.</p><div class="flex flex-wrap gap-1.5"><span class="svc-tag">SAR</span><span class="svc-tag">DEM</span><span class="svc-tag">HEC-RAS</span></div></div>
-                <div class="svc-card"><h4 class="font-semibold text-cream mb-1.5" data-lang="es">Distribución de Especies</h4><h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Species Distribution</h4><p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Modelos de distribución de especies y hábitat potencial.</p><p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Species distribution models and potential habitat.</p><div class="flex flex-wrap gap-1.5"><span class="svc-tag">MaxEnt</span><span class="svc-tag">SDM</span><span class="svc-tag">GBIF</span></div></div>
-                <div class="svc-card"><h4 class="font-semibold text-cream mb-1.5" data-lang="es">Detección de Contaminación</h4><h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Pollution Detection</h4><p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Monitoreo de calidad del aire y contaminación del agua.</p><p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Air quality monitoring and water pollution.</p><div class="flex flex-wrap gap-1.5"><span class="svc-tag">Sentinel-5P</span><span class="svc-tag">NO2/SO2</span><span class="svc-tag">Spectral Analysis</span></div></div>
-                <div class="svc-card"><h4 class="font-semibold text-cream mb-1.5" data-lang="es">Erosión Costera</h4><h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Coastal Erosion</h4><p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Análisis de cambios en línea de costa y vulnerabilidad.</p><p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Shoreline change analysis and vulnerability.</p><div class="flex flex-wrap gap-1.5"><span class="svc-tag">Landsat</span><span class="svc-tag">DSAS</span><span class="svc-tag">Time Series</span></div></div>
-                <div class="svc-card"><h4 class="font-semibold text-cream mb-1.5" data-lang="es">Análisis de Conectividad</h4><h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Connectivity Analysis</h4><p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Identificación de corredores ecológicos y fragmentación.</p><p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Ecological corridor identification and fragmentation.</p><div class="flex flex-wrap gap-1.5"><span class="svc-tag">Circuitscape</span><span class="svc-tag">Linkage Mapper</span></div></div>
-                <div class="svc-card"><h4 class="font-semibold text-cream mb-1.5" data-lang="es">Priorización de Rewilding</h4><h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Rewilding Prioritization</h4><p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Identificación de áreas prioritarias para restauración.</p><p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Identification of priority areas for restoration.</p><div class="flex flex-wrap gap-1.5"><span class="svc-tag">Zonation</span><span class="svc-tag">Marxan</span><span class="svc-tag">MCA</span></div></div>
-                <div class="svc-card"><h4 class="font-semibold text-cream mb-1.5" data-lang="es">Islas de Calor Urbano</h4><h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Urban Heat Island</h4><p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Mapeo de temperatura superficial y planificación verde.</p><p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Surface temperature mapping and green planning.</p><div class="flex flex-wrap gap-1.5"><span class="svc-tag">Landsat LST</span><span class="svc-tag">ECOSTRESS</span></div></div>
-                <div class="svc-card"><h4 class="font-semibold text-cream mb-1.5" data-lang="es">Blanqueamiento de Corales</h4><h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Coral Reef Bleaching</h4><p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Monitoreo de salud de arrecifes y detección de blanqueamiento.</p><p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Reef health monitoring and bleaching detection.</p><div class="flex flex-wrap gap-1.5"><span class="svc-tag">Sentinel-2</span><span class="svc-tag">Planet</span><span class="svc-tag">SST</span></div></div>
-              </div>
-            </div>
-
-            <!-- Geospatial Indicators -->
-            <div class="animate-on-scroll">
-              <div class="flex items-center gap-3 mb-4">
-                <svg class="sub-ico w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3.5 15a9 9 0 1117 0"/><path d="M12 14l3.5-3.5"/></svg>
-                <h3 class="text-xl font-bold text-cream" data-lang="es">Indicadores Geoespaciales</h3>
-                <h3 class="text-xl font-bold text-cream hidden" data-lang="en">Geospatial Indicators</h3>
-              </div>
-              <div class="grid sm:grid-cols-2 gap-4">
-                <div class="svc-card">
-                  <h4 class="font-semibold text-cream mb-1.5" data-lang="es">Modelado de Indicadores Ambientales</h4>
-                  <h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Environmental Indicator Modeling</h4>
-                  <p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Desarrollo de índices compuestos para evaluación ambiental.</p>
-                  <p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Development of composite indices for environmental assessment.</p>
-                  <div class="flex flex-wrap gap-1.5"><span class="svc-tag">NDVI</span><span class="svc-tag">EVI</span><span class="svc-tag">Custom Indices</span></div>
-                </div>
-                <div class="svc-card">
-                  <h4 class="font-semibold text-cream mb-1.5" data-lang="es">Puntuación de Salud Ecosistémica</h4>
-                  <h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Ecosystem Health Scoring</h4>
-                  <p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Métricas integradas de estado y tendencia de ecosistemas.</p>
-                  <p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Integrated ecosystem state and trend metrics.</p>
-                  <div class="flex flex-wrap gap-1.5"><span class="svc-tag">MCA</span><span class="svc-tag">Composite Scoring</span></div>
-                </div>
-              </div>
-            </div>
-
-          </div>
+      <!-- GEOSPATIAL CORE -->
+      <div class="mb-20 animate-on-scroll">
+        <div class="category-header text-white rounded-t-lg p-4 mb-0">
+          <h2 class="text-2xl font-bold" data-lang="es">Software Geoespacial, Datos e Ingeniería de IA</h2>
+          <h2 class="text-2xl font-bold hidden" data-lang="en">Geospatial Software, Data & AI Engineering</h2>
         </div>
-      </div>
-    </section>
 
-    <!-- ============ CATEGORY 2 — General Engineering ============ -->
-    <section class="bg-teal-deep section-rule py-20 lg:py-28">
-      <div class="container mx-auto px-6">
-        <div class="cat-grid">
-          <div class="cat-sticky mb-12 lg:mb-0 animate-on-scroll">
-            <span class="cat-num text-sm">02</span>
-            <svg class="svc-ico w-12 h-12 my-4" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M8 6l-6 6 6 6M16 6l6 6-6 6"/></svg>
-            <h2 class="font-bold text-cream leading-tight mb-4" style="font-size:clamp(1.7rem,3vw,2.4rem);" data-lang="es">Ingeniería General</h2>
-            <h2 class="font-bold text-cream leading-tight mb-4 hidden" style="font-size:clamp(1.7rem,3vw,2.4rem);" data-lang="en">General Engineering</h2>
-            <p class="text-cream-dim leading-relaxed" data-lang="es">Software de extremo a extremo: frontend, backend, ingeniería y ciencia de datos, y operaciones.</p>
-            <p class="text-cream-dim leading-relaxed hidden" data-lang="en">End-to-end software: frontend, backend, data engineering and science, and operations.</p>
-          </div>
-
-          <div class="space-y-12">
-            <!-- Frontend -->
-            <div class="animate-on-scroll">
-              <div class="flex items-center gap-3 mb-4">
-                <svg class="sub-ico w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01"/></svg>
-                <h3 class="text-xl font-bold text-cream" data-lang="es">Ingeniería Frontend</h3>
-                <h3 class="text-xl font-bold text-cream hidden" data-lang="en">Frontend Engineering</h3>
-              </div>
-              <div class="grid sm:grid-cols-2 gap-4">
-                <div class="svc-card"><h4 class="font-semibold text-cream mb-1.5" data-lang="es">Aplicaciones Web React</h4><h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">React Web Applications</h4><p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Desarrollo de SPAs modernas con React y TypeScript.</p><p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Modern SPA development with React and TypeScript.</p><div class="flex flex-wrap gap-1.5"><span class="svc-tag">React</span><span class="svc-tag">TypeScript</span><span class="svc-tag">Next.js</span></div></div>
-                <div class="svc-card"><h4 class="font-semibold text-cream mb-1.5" data-lang="es">Visualización de Datos</h4><h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Data Visualization</h4><p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Gráficos interactivos y dashboards de análisis.</p><p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Interactive charts and analytics dashboards.</p><div class="flex flex-wrap gap-1.5"><span class="svc-tag">D3.js</span><span class="svc-tag">Chart.js</span><span class="svc-tag">Plotly</span></div></div>
-                <div class="svc-card sm:col-span-2"><h4 class="font-semibold text-cream mb-1.5" data-lang="es">Mapas Web Interactivos</h4><h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Interactive Web Maps</h4><p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Integración de mapas con capas dinámicas y controles.</p><p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Map integration with dynamic layers and controls.</p><div class="flex flex-wrap gap-1.5"><span class="svc-tag">MapLibre</span><span class="svc-tag">Leaflet</span><span class="svc-tag">OpenLayers</span></div></div>
+        <!-- Geospatial Data Engineering -->
+        <div class="bg-white rounded-b-lg shadow-lg p-6 mb-8">
+          <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-primary"></span>
+            <span data-lang="es">Ingeniería de Datos Geoespaciales</span>
+            <span class="hidden" data-lang="en">Geospatial Data Engineering</span>
+          </h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2">ETL/ELT Pipelines</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Pipelines de datos escalables en la nube, frameworks plug & play, datos preparados para IA.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Scalable cloud data pipelines, plug & play frameworks, AI-ready data.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">Apache Airflow</span>
+                <span class="tech-tag">dbt</span>
+                <span class="tech-tag">Prefect</span>
               </div>
             </div>
-
-            <!-- Backend -->
-            <div class="animate-on-scroll">
-              <div class="flex items-center gap-3 mb-4">
-                <svg class="sub-ico w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="1"/><rect x="3" y="13" width="18" height="7" rx="1"/><path d="M7 7.5h.01M7 16.5h.01"/></svg>
-                <h3 class="text-xl font-bold text-cream" data-lang="es">Ingeniería Backend</h3>
-                <h3 class="text-xl font-bold text-cream hidden" data-lang="en">Backend Engineering</h3>
-              </div>
-              <div class="grid sm:grid-cols-2 gap-4">
-                <div class="svc-card"><h4 class="font-semibold text-cream mb-1.5" data-lang="es">APIs REST y GraphQL</h4><h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">REST &amp; GraphQL APIs</h4><p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Diseño e implementación de APIs escalables.</p><p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Design and implementation of scalable APIs.</p><div class="flex flex-wrap gap-1.5"><span class="svc-tag">FastAPI</span><span class="svc-tag">Node.js</span><span class="svc-tag">GraphQL</span></div></div>
-                <div class="svc-card"><h4 class="font-semibold text-cream mb-1.5" data-lang="es">Servicios Cloud</h4><h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Cloud Services</h4><p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Despliegue en infraestructura cloud serverless.</p><p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Deployment on serverless cloud infrastructure.</p><div class="flex flex-wrap gap-1.5"><span class="svc-tag">Cloud Run</span><span class="svc-tag">AWS Lambda</span><span class="svc-tag">Azure Functions</span></div></div>
-                <div class="svc-card sm:col-span-2"><h4 class="font-semibold text-cream mb-1.5" data-lang="es">Autenticación y Seguridad</h4><h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Authentication &amp; Security</h4><p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Implementación de auth, permisos y seguridad.</p><p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Auth implementation, permissions and security.</p><div class="flex flex-wrap gap-1.5"><span class="svc-tag">OAuth 2.0</span><span class="svc-tag">JWT</span><span class="svc-tag">Auth0</span></div></div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Limpieza y Armonización</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Data Cleaning & Harmonization</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Normalización de datos multi-fuente, control de calidad, estandarización de formatos.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Multi-source data normalization, quality control, format standardization.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">GDAL</span>
+                <span class="tech-tag">Rasterio</span>
+                <span class="tech-tag">GeoPandas</span>
               </div>
             </div>
-
-            <!-- General Data Engineering -->
-            <div class="animate-on-scroll">
-              <div class="flex items-center gap-3 mb-4">
-                <svg class="sub-ico w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.66 3.58 3 8 3s8-1.34 8-3V5"/><path d="M4 12c0 1.66 3.58 3 8 3s8-1.34 8-3"/></svg>
-                <h3 class="text-xl font-bold text-cream" data-lang="es">Ingeniería de Datos General</h3>
-                <h3 class="text-xl font-bold text-cream hidden" data-lang="en">General Data Engineering</h3>
-              </div>
-              <div class="grid sm:grid-cols-2 gap-4">
-                <div class="svc-card"><h4 class="font-semibold text-cream mb-1.5">Data Lakes</h4><p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Arquitecturas de data lake para almacenamiento masivo.</p><p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Data lake architectures for massive storage.</p><div class="flex flex-wrap gap-1.5"><span class="svc-tag">Delta Lake</span><span class="svc-tag">Iceberg</span><span class="svc-tag">S3/GCS</span></div></div>
-                <div class="svc-card"><h4 class="font-semibold text-cream mb-1.5" data-lang="es">Integración de APIs</h4><h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">API Integration</h4><p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Conexión con fuentes de datos externas y servicios.</p><p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Connection with external data sources and services.</p><div class="flex flex-wrap gap-1.5"><span class="svc-tag">REST</span><span class="svc-tag">Webhooks</span><span class="svc-tag">Kafka</span></div></div>
-                <div class="svc-card sm:col-span-2"><h4 class="font-semibold text-cream mb-1.5" data-lang="es">Calidad de Datos</h4><h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Data Quality</h4><p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Validación, testing y monitoreo de datos.</p><p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Data validation, testing and monitoring.</p><div class="flex flex-wrap gap-1.5"><span class="svc-tag">Great Expectations</span><span class="svc-tag">dbt tests</span><span class="svc-tag">Soda</span></div></div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Almacenamiento Geoespacial</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Geospatial Warehousing</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Data warehouses espaciales optimizados para consultas a escala.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Spatial data warehouses optimized for queries at scale.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">PostGIS</span>
+                <span class="tech-tag">BigQuery</span>
+                <span class="tech-tag">Snowflake</span>
               </div>
             </div>
-
-            <!-- General Data Science -->
-            <div class="animate-on-scroll">
-              <div class="flex items-center gap-3 mb-4">
-                <svg class="sub-ico w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 15l3-4 3 3 5-7"/></svg>
-                <h3 class="text-xl font-bold text-cream" data-lang="es">Ciencia de Datos General</h3>
-                <h3 class="text-xl font-bold text-cream hidden" data-lang="en">General Data Science</h3>
-              </div>
-              <div class="grid sm:grid-cols-2 gap-4">
-                <div class="svc-card"><h4 class="font-semibold text-cream mb-1.5" data-lang="es">Modelado Estadístico</h4><h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Statistical Modeling</h4><p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Análisis estadístico avanzado y modelado predictivo.</p><p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Advanced statistical analysis and predictive modeling.</p><div class="flex flex-wrap gap-1.5"><span class="svc-tag">R</span><span class="svc-tag">statsmodels</span><span class="svc-tag">scipy</span></div></div>
-                <div class="svc-card"><h4 class="font-semibold text-cream mb-1.5" data-lang="es">Clustering y Segmentación</h4><h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Clustering &amp; Segmentation</h4><p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Agrupación de datos y segmentación de usuarios/áreas.</p><p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Data clustering and user/area segmentation.</p><div class="flex flex-wrap gap-1.5"><span class="svc-tag">K-means</span><span class="svc-tag">DBSCAN</span><span class="svc-tag">scikit-learn</span></div></div>
-                <div class="svc-card sm:col-span-2"><h4 class="font-semibold text-cream mb-1.5">Feature Engineering</h4><p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Creación de variables predictivas y transformaciones.</p><p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Predictive variable creation and transformations.</p><div class="flex flex-wrap gap-1.5"><span class="svc-tag">Pandas</span><span class="svc-tag">Polars</span><span class="svc-tag">Feature Store</span></div></div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Generación de Tiles</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Tile Generation</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Creación de tiles vectoriales y raster para visualización web.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Vector and raster tile creation for web visualization.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">PMTiles</span>
+                <span class="tech-tag">Tippecanoe</span>
+                <span class="tech-tag">COG</span>
               </div>
             </div>
-
-            <!-- Data/Dev Ops -->
-            <div class="animate-on-scroll">
-              <div class="flex items-center gap-3 mb-4">
-                <svg class="sub-ico w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M21 12a9 9 0 11-2.64-6.36"/><path d="M21 3v5h-5"/></svg>
-                <h3 class="text-xl font-bold text-cream">Data/Dev Ops</h3>
-              </div>
-              <div class="grid sm:grid-cols-2 gap-4">
-                <div class="svc-card"><h4 class="font-semibold text-cream mb-1.5" data-lang="es">Orquestación de Pipelines</h4><h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Pipeline Orchestration</h4><p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Automatización y scheduling de flujos de datos.</p><p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Data flow automation and scheduling.</p><div class="flex flex-wrap gap-1.5"><span class="svc-tag">Apache Airflow</span><span class="svc-tag">Prefect</span><span class="svc-tag">Dagster</span></div></div>
-                <div class="svc-card"><h4 class="font-semibold text-cream mb-1.5">CI/CD</h4><p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Integración y despliegue continuo de pipelines.</p><p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Continuous integration and deployment of pipelines.</p><div class="flex flex-wrap gap-1.5"><span class="svc-tag">GitHub Actions</span><span class="svc-tag">GitLab CI</span><span class="svc-tag">Cloud Build</span></div></div>
-                <div class="svc-card"><h4 class="font-semibold text-cream mb-1.5" data-lang="es">Infraestructura como Código</h4><h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Infrastructure as Code</h4><p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Provisión automatizada de infraestructura cloud.</p><p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Automated cloud infrastructure provisioning.</p><div class="flex flex-wrap gap-1.5"><span class="svc-tag">Terraform</span><span class="svc-tag">Pulumi</span><span class="svc-tag">CloudFormation</span></div></div>
-                <div class="svc-card"><h4 class="font-semibold text-cream mb-1.5" data-lang="es">Monitoreo y Observabilidad</h4><h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Monitoring &amp; Observability</h4><p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Métricas, logs y alertas para sistemas en producción.</p><p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Metrics, logs and alerts for production systems.</p><div class="flex flex-wrap gap-1.5"><span class="svc-tag">Prometheus</span><span class="svc-tag">Grafana</span><span class="svc-tag">Datadog</span></div></div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Feature Engineering Espacial</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Spatial Feature Engineering</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Extracción de características espaciales para modelos ML.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Spatial feature extraction for ML models.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">H3</span>
+                <span class="tech-tag">S2</span>
+                <span class="tech-tag">Uber H3</span>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- ============ CATEGORY 3 — Finance, Supply Chain & BI ============ -->
-    <section class="bg-teal-base section-rule py-20 lg:py-28">
-      <div class="container mx-auto px-6">
-        <div class="cat-grid">
-          <div class="cat-sticky mb-12 lg:mb-0 animate-on-scroll">
-            <span class="cat-num text-sm">03</span>
-            <svg class="svc-ico w-12 h-12 my-4" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l3-4 3 3 4-6"/></svg>
-            <h2 class="font-bold text-cream leading-tight mb-4" style="font-size:clamp(1.7rem,3vw,2.4rem);" data-lang="es">Finanzas, Supply Chain y Business Intelligence</h2>
-            <h2 class="font-bold text-cream leading-tight mb-4 hidden" style="font-size:clamp(1.7rem,3vw,2.4rem);" data-lang="en">Finance, Supply Chain &amp; Business Intelligence</h2>
-            <p class="text-cream-dim leading-relaxed" data-lang="es">La misma ingeniería de datos e IA aplicada a operaciones, finanzas y decisiones de negocio.</p>
-            <p class="text-cream-dim leading-relaxed hidden" data-lang="en">The same data and AI engineering applied to operations, finance and business decisions.</p>
-          </div>
-
-          <div class="space-y-12">
-            <!-- Supply Chain -->
-            <div class="animate-on-scroll">
-              <div class="flex items-center gap-3 mb-4">
-                <svg class="sub-ico w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="1" y="6" width="13" height="10" rx="1"/><path d="M14 9h4l3 3v4h-7z"/><circle cx="6" cy="18" r="1.6"/><circle cx="18" cy="18" r="1.6"/></svg>
-                <h3 class="text-xl font-bold text-cream">Supply Chain Analytics</h3>
-              </div>
-              <div class="grid sm:grid-cols-2 gap-4">
-                <div class="svc-card"><h4 class="font-semibold text-cream mb-1.5" data-lang="es">Modelos Predictivos de Supply Chain</h4><h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Supply Chain Predictive Models</h4><p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Predicción de demanda, inventario y optimización de cadena de suministro.</p><p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Demand forecasting, inventory prediction, and supply chain optimization.</p><div class="flex flex-wrap gap-1.5"><span class="svc-tag">XGBoost</span><span class="svc-tag">Prophet</span><span class="svc-tag">ARIMA</span></div></div>
-                <div class="svc-card"><h4 class="font-semibold text-cream mb-1.5" data-lang="es">Productividad de Activos</h4><h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Asset Productivity</h4><p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Modelos de rendimiento de activos, mantenimiento predictivo y optimización de utilización.</p><p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Asset performance models, predictive maintenance, and utilization optimization.</p><div class="flex flex-wrap gap-1.5"><span class="svc-tag">ML Models</span><span class="svc-tag">IoT Data</span><span class="svc-tag">Time Series</span></div></div>
-                <div class="svc-card sm:col-span-2"><h4 class="font-semibold text-cream mb-1.5" data-lang="es">Optimización Logística</h4><h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Logistics Optimization</h4><p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Rutas óptimas, gestión de flotas y reducción de costos operativos.</p><p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Optimal routing, fleet management, and operational cost reduction.</p><div class="flex flex-wrap gap-1.5"><span class="svc-tag">OR-Tools</span><span class="svc-tag">Routing APIs</span><span class="svc-tag">Optimization</span></div></div>
+        <!-- Geospatial ML -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+          <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-primary"></span>
+            <span data-lang="es">Machine Learning Geoespacial</span>
+            <span class="hidden" data-lang="en">Geospatial ML</span>
+          </h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Entrenamiento de Modelos Supervisados</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Supervised Model Training</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">CNNs, Transformers y modelos fundacionales para imágenes satelitales.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">CNNs, Transformers, and foundation models for satellite imagery.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">PyTorch</span>
+                <span class="tech-tag">TensorFlow</span>
+                <span class="tech-tag">Prithvi</span>
               </div>
             </div>
-
-            <!-- Finance Data Engineering -->
-            <div class="animate-on-scroll">
-              <div class="flex items-center gap-3 mb-4">
-                <svg class="sub-ico w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="9" cy="9" r="6"/><path d="M15 5.2a6 6 0 010 11.6"/><path d="M9 6.5v5M7.2 8h3"/></svg>
-                <h3 class="text-xl font-bold text-cream" data-lang="es">Ingeniería de Datos Financieros</h3>
-                <h3 class="text-xl font-bold text-cream hidden" data-lang="en">Finance Data Engineering</h3>
-              </div>
-              <div class="grid sm:grid-cols-2 gap-4">
-                <div class="svc-card"><h4 class="font-semibold text-cream mb-1.5" data-lang="es">Modelado P&amp;L</h4><h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">P&amp;L Modeling</h4><p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Modelos de pérdidas y ganancias automatizados.</p><p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Automated profit and loss models.</p><div class="flex flex-wrap gap-1.5"><span class="svc-tag">SQL</span><span class="svc-tag">dbt</span><span class="svc-tag">Python</span></div></div>
-                <div class="svc-card"><h4 class="font-semibold text-cream mb-1.5" data-lang="es">ETL Financiero</h4><h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Finance ETL</h4><p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Integración de datos contables y financieros.</p><p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Accounting and financial data integration.</p><div class="flex flex-wrap gap-1.5"><span class="svc-tag">ERP Connectors</span><span class="svc-tag">Fivetran</span><span class="svc-tag">Airbyte</span></div></div>
-                <div class="svc-card sm:col-span-2"><h4 class="font-semibold text-cream mb-1.5" data-lang="es">Arquitectura de Datos Enterprise</h4><h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Enterprise Data Architecture</h4><p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Diseño de arquitecturas de datos para multinacionales y grandes corporaciones con múltiples fuentes y regiones.</p><p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Data architecture design for multinationals and large corporations with multiple sources and regions.</p><div class="flex flex-wrap gap-1.5"><span class="svc-tag">Data Mesh</span><span class="svc-tag">Snowflake</span><span class="svc-tag">Databricks</span></div></div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Modelado Temporal</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Temporal Modeling</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Series temporales, detección de cambios y forecasting.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Time series, change detection, and forecasting.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">LSTM</span>
+                <span class="tech-tag">Prophet</span>
+                <span class="tech-tag">Temporal CNNs</span>
               </div>
             </div>
-
-            <!-- Power BI -->
-            <div class="animate-on-scroll">
-              <div class="flex items-center gap-3 mb-4">
-                <svg class="sub-ico w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M8 17V9M13 17V5M18 17v-6"/></svg>
-                <h3 class="text-xl font-bold text-cream">Power BI &amp; Dashboards</h3>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Validación y Drift</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Model Validation & Drift</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Monitoreo de rendimiento y detección de drift en producción.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Performance monitoring and drift detection in production.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">MLflow</span>
+                <span class="tech-tag">Evidently</span>
+                <span class="tech-tag">Weights & Biases</span>
               </div>
-              <div class="grid sm:grid-cols-2 gap-4">
-                <div class="svc-card"><h4 class="font-semibold text-cream mb-1.5" data-lang="es">Dashboards Ejecutivos</h4><h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Executive Dashboards</h4><p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Visualizaciones de KPIs y métricas de negocio.</p><p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Business KPI and metrics visualizations.</p><div class="flex flex-wrap gap-1.5"><span class="svc-tag">Power BI</span><span class="svc-tag">Tableau</span><span class="svc-tag">Looker</span></div></div>
-                <div class="svc-card"><h4 class="font-semibold text-cream mb-1.5" data-lang="es">Reportes Financieros</h4><h4 class="font-semibold text-cream mb-1.5 hidden" data-lang="en">Financial Reports</h4><p class="text-cream-dim text-sm leading-relaxed mb-3" data-lang="es">Informes automatizados de finanzas y operaciones.</p><p class="text-cream-dim text-sm leading-relaxed mb-3 hidden" data-lang="en">Automated finance and operations reports.</p><div class="flex flex-wrap gap-1.5"><span class="svc-tag">DAX</span><span class="svc-tag">Power Query</span><span class="svc-tag">Excel</span></div></div>
+            </div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Despliegue de APIs de Inferencia</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Inference API Deployment</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">APIs de predicción en tiempo real para aplicaciones geoespaciales.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Real-time prediction APIs for geospatial applications.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">FastAPI</span>
+                <span class="tech-tag">Cloud Run</span>
+                <span class="tech-tag">TorchServe</span>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- CTA -->
-    <section class="bg-teal-deep section-rule py-24 lg:py-32">
-      <div class="container mx-auto px-6 text-center max-w-2xl animate-on-scroll">
-        <p class="eyebrow mb-5 inline-flex" data-lang="es">Empecemos</p>
-        <p class="eyebrow mb-5 inline-flex hidden" data-lang="en">Let's start</p>
-        <h2 class="font-bold text-cream leading-tight mb-6" style="font-size:clamp(2rem,4.5vw,3.2rem);" data-lang="es">¿Listo para empezar?</h2>
-        <h2 class="font-bold text-cream leading-tight mb-6 hidden" style="font-size:clamp(2rem,4.5vw,3.2rem);" data-lang="en">Ready to get started?</h2>
-        <p class="text-cream-dim text-lg leading-relaxed mb-8" data-lang="es">Contáctanos para discutir cómo podemos ayudarte con tu próximo proyecto geoespacial o de datos.</p>
-        <p class="text-cream-dim text-lg leading-relaxed mb-8 hidden" data-lang="en">Contact us to discuss how we can help you with your next geospatial or data project.</p>
-        <div class="flex flex-wrap items-center justify-center gap-4">
-          <a href="./index.html#contact" class="btn-accent px-8 py-3.5 rounded-full font-semibold text-sm tracking-wide" data-lang="es">Contactar</a>
-          <a href="./index.html#contact" class="btn-accent px-8 py-3.5 rounded-full font-semibold text-sm tracking-wide hidden" data-lang="en">Contact us</a>
-          <a href="./index.html" class="btn-ghost px-8 py-3.5 rounded-full font-semibold text-sm tracking-wide" data-lang="es">Volver al inicio</a>
-          <a href="./index.html" class="btn-ghost px-8 py-3.5 rounded-full font-semibold text-sm tracking-wide hidden" data-lang="en">Back to home</a>
+        <!-- Geospatial LLM -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+          <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-primary"></span>
+            <span data-lang="es">LLM Geoespacial</span>
+            <span class="hidden" data-lang="en">Geospatial LLM</span>
+          </h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">NLP para Leyendas de Mapas</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">NLP for Map Legends</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Extracción automática de información de leyendas cartográficas.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Automatic extraction of information from cartographic legends.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">GPT-4</span>
+                <span class="tech-tag">Claude</span>
+                <span class="tech-tag">spaCy</span>
+              </div>
+            </div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Generación de Embeddings EO</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">EO Embedding Generation</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Embeddings vectoriales para búsqueda semántica de imágenes.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Vector embeddings for semantic image search.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">CLIP</span>
+                <span class="tech-tag">SatCLIP</span>
+                <span class="tech-tag">FAISS</span>
+              </div>
+            </div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Inteligencia Documental</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Document Intelligence</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Procesamiento de informes técnicos y documentación ambiental.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Processing of technical reports and environmental documentation.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">LangChain</span>
+                <span class="tech-tag">RAG</span>
+                <span class="tech-tag">Document AI</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Geospatial Graphs -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+          <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-primary"></span>
+            <span data-lang="es">Grafos Geoespaciales</span>
+            <span class="hidden" data-lang="en">Geospatial Graphs</span>
+          </h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Conectividad y Corredores</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Connectivity & Corridors</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Análisis de conectividad ecológica, ECA, ΔECA y redes de resistencia.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Ecological connectivity analysis, ECA, ΔECA and resistance networks.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">Circuitscape</span>
+                <span class="tech-tag">Conefor</span>
+                <span class="tech-tag">NetworkX</span>
+              </div>
+            </div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Construcción de Grafos Espaciales</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Spatial Graph Construction</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Modelado de redes espaciales para análisis de hábitat y fragmentación.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Spatial network modeling for habitat and fragmentation analysis.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">Graph Neural Networks</span>
+                <span class="tech-tag">Neo4j</span>
+                <span class="tech-tag">igraph</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Visors -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+          <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-primary"></span>
+            <span data-lang="es">Visores y Dashboards</span>
+            <span class="hidden" data-lang="en">Visors & Dashboards</span>
+          </h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Visores Geoespaciales Personalizados</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Custom Geospatial Visors</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Aplicaciones web de mapas interactivos con visualización avanzada.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Interactive web mapping applications with advanced visualization.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">MapLibre</span>
+                <span class="tech-tag">Deck.gl</span>
+                <span class="tech-tag">PMTiles</span>
+              </div>
+            </div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Herramientas de Exportación No-Code</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">No-Code Export Tools</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Interfaces intuitivas para exportar datos geoespaciales sin programar.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Intuitive interfaces to export geospatial data without coding.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">GeoJSON</span>
+                <span class="tech-tag">Shapefile</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Environmental AI -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+          <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-primary"></span>
+            <span data-lang="es">IA Ambiental</span>
+            <span class="hidden" data-lang="en">Environmental AI</span>
+          </h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Mapeo de Carbono</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Carbon Mapping</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Estimación de captura y stock de carbono mediante teledetección.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Carbon capture and stock estimation via remote sensing.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">LiDAR</span>
+                <span class="tech-tag">Sentinel-2</span>
+                <span class="tech-tag">Biomass Models</span>
+              </div>
+            </div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Predicción de Cobertura Nival</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Snow Cover Prediction</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Modelos predictivos para acumulación y derretimiento de nieve.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Predictive models for snow accumulation and melting.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">MODIS</span>
+                <span class="tech-tag">Sentinel-1</span>
+                <span class="tech-tag">ML</span>
+              </div>
+            </div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Riesgo de Avalanchas</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Avalanche/Slope Risk</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Evaluación de riesgo en laderas y predicción de avalanchas.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Slope risk assessment and avalanche prediction.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">DEM</span>
+                <span class="tech-tag">Slope Analysis</span>
+                <span class="tech-tag">RF/XGBoost</span>
+              </div>
+            </div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Susceptibilidad a Incendios</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Wildfire Susceptibility</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Modelado de riesgo de incendios y mapeo post-incendio.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Fire risk modeling and post-fire mapping.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">VIIRS</span>
+                <span class="tech-tag">Landsat</span>
+                <span class="tech-tag">dNBR</span>
+              </div>
+            </div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Riesgo de Inundaciones</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Flood Hazard</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Mapeo de zonas inundables y modelado hidrológico.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Flood zone mapping and hydrological modeling.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">SAR</span>
+                <span class="tech-tag">DEM</span>
+                <span class="tech-tag">HEC-RAS</span>
+              </div>
+            </div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Distribución de Especies</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Species Distribution</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Modelos de distribución de especies y hábitat potencial.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Species distribution models and potential habitat.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">MaxEnt</span>
+                <span class="tech-tag">SDM</span>
+                <span class="tech-tag">GBIF</span>
+              </div>
+            </div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Detección de Contaminación</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Pollution Detection</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Monitoreo de calidad del aire y contaminación del agua.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Air quality monitoring and water pollution.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">Sentinel-5P</span>
+                <span class="tech-tag">NO2/SO2</span>
+                <span class="tech-tag">Spectral Analysis</span>
+              </div>
+            </div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Erosión Costera</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Coastal Erosion</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Análisis de cambios en línea de costa y vulnerabilidad.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Shoreline change analysis and vulnerability.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">Landsat</span>
+                <span class="tech-tag">DSAS</span>
+                <span class="tech-tag">Time Series</span>
+              </div>
+            </div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Análisis de Conectividad</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Connectivity Analysis</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Identificación de corredores ecológicos y fragmentación.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Ecological corridor identification and fragmentation.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">Circuitscape</span>
+                <span class="tech-tag">Linkage Mapper</span>
+              </div>
+            </div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Priorización de Rewilding</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Rewilding Prioritization</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Identificación de áreas prioritarias para restauración.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Identification of priority areas for restoration.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">Zonation</span>
+                <span class="tech-tag">Marxan</span>
+                <span class="tech-tag">MCA</span>
+              </div>
+            </div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Islas de Calor Urbano</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Urban Heat Island</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Mapeo de temperatura superficial y planificación verde.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Surface temperature mapping and green planning.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">Landsat LST</span>
+                <span class="tech-tag">ECOSTRESS</span>
+              </div>
+            </div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Blanqueamiento de Corales</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Coral Reef Bleaching</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Monitoreo de salud de arrecifes y detección de blanqueamiento.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Reef health monitoring and bleaching detection.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">Sentinel-2</span>
+                <span class="tech-tag">Planet</span>
+                <span class="tech-tag">SST</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Geospatial Indicators -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-primary"></span>
+            <span data-lang="es">Indicadores Geoespaciales</span>
+            <span class="hidden" data-lang="en">Geospatial Indicators</span>
+          </h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Modelado de Indicadores Ambientales</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Environmental Indicator Modeling</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Desarrollo de índices compuestos para evaluación ambiental.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Development of composite indices for environmental assessment.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">NDVI</span>
+                <span class="tech-tag">EVI</span>
+                <span class="tech-tag">Custom Indices</span>
+              </div>
+            </div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Puntuación de Salud Ecosistémica</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Ecosystem Health Scoring</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Métricas integradas de estado y tendencia de ecosistemas.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Integrated ecosystem state and trend metrics.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">MCA</span>
+                <span class="tech-tag">Composite Scoring</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GENERAL ENGINEERING -->
+      <div class="mb-20 animate-on-scroll">
+        <div class="category-header text-white rounded-t-lg p-4 mb-0">
+          <h2 class="text-2xl font-bold" data-lang="es">Ingeniería General</h2>
+          <h2 class="text-2xl font-bold hidden" data-lang="en">General Engineering</h2>
+        </div>
+
+        <!-- Frontend Engineering -->
+        <div class="bg-white rounded-b-lg shadow-lg p-6 mb-8">
+          <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-primary"></span>
+            <span data-lang="es">Ingeniería Frontend</span>
+            <span class="hidden" data-lang="en">Frontend Engineering</span>
+          </h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Aplicaciones Web React</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">React Web Applications</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Desarrollo de SPAs modernas con React y TypeScript.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Modern SPA development with React and TypeScript.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">React</span>
+                <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">Next.js</span>
+              </div>
+            </div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Visualización de Datos</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Data Visualization</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Gráficos interactivos y dashboards de análisis.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Interactive charts and analytics dashboards.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">D3.js</span>
+                <span class="tech-tag">Chart.js</span>
+                <span class="tech-tag">Plotly</span>
+              </div>
+            </div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Mapas Web Interactivos</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Interactive Web Maps</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Integración de mapas con capas dinámicas y controles.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Map integration with dynamic layers and controls.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">MapLibre</span>
+                <span class="tech-tag">Leaflet</span>
+                <span class="tech-tag">OpenLayers</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Backend Engineering -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+          <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-primary"></span>
+            <span data-lang="es">Ingeniería Backend</span>
+            <span class="hidden" data-lang="en">Backend Engineering</span>
+          </h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">APIs REST y GraphQL</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">REST & GraphQL APIs</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Diseño e implementación de APIs escalables.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Design and implementation of scalable APIs.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">FastAPI</span>
+                <span class="tech-tag">Node.js</span>
+                <span class="tech-tag">GraphQL</span>
+              </div>
+            </div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Servicios Cloud</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Cloud Services</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Despliegue en infraestructura cloud serverless.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Deployment on serverless cloud infrastructure.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">Cloud Run</span>
+                <span class="tech-tag">AWS Lambda</span>
+                <span class="tech-tag">Azure Functions</span>
+              </div>
+            </div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Autenticación y Seguridad</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Authentication & Security</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Implementación de auth, permisos y seguridad.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Auth implementation, permissions and security.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">OAuth 2.0</span>
+                <span class="tech-tag">JWT</span>
+                <span class="tech-tag">Auth0</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- General Data Engineering -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+          <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-primary"></span>
+            <span data-lang="es">Ingeniería de Datos General</span>
+            <span class="hidden" data-lang="en">General Data Engineering</span>
+          </h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Data Lakes</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Data Lakes</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Arquitecturas de data lake para almacenamiento masivo.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Data lake architectures for massive storage.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">Delta Lake</span>
+                <span class="tech-tag">Iceberg</span>
+                <span class="tech-tag">S3/GCS</span>
+              </div>
+            </div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Integración de APIs</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">API Integration</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Conexión con fuentes de datos externas y servicios.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Connection with external data sources and services.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">REST</span>
+                <span class="tech-tag">Webhooks</span>
+                <span class="tech-tag">Kafka</span>
+              </div>
+            </div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Calidad de Datos</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Data Quality</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Validación, testing y monitoreo de datos.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Data validation, testing and monitoring.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">Great Expectations</span>
+                <span class="tech-tag">dbt tests</span>
+                <span class="tech-tag">Soda</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- General Data Science -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+          <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-primary"></span>
+            <span data-lang="es">Ciencia de Datos General</span>
+            <span class="hidden" data-lang="en">General Data Science</span>
+          </h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Modelado Estadístico</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Statistical Modeling</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Análisis estadístico avanzado y modelado predictivo.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Advanced statistical analysis and predictive modeling.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">R</span>
+                <span class="tech-tag">statsmodels</span>
+                <span class="tech-tag">scipy</span>
+              </div>
+            </div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Clustering y Segmentación</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Clustering & Segmentation</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Agrupación de datos y segmentación de usuarios/áreas.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Data clustering and user/area segmentation.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">K-means</span>
+                <span class="tech-tag">DBSCAN</span>
+                <span class="tech-tag">scikit-learn</span>
+              </div>
+            </div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Feature Engineering</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Feature Engineering</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Creación de variables predictivas y transformaciones.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Predictive variable creation and transformations.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">Pandas</span>
+                <span class="tech-tag">Polars</span>
+                <span class="tech-tag">Feature Store</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Data/Dev Ops -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-primary"></span>
+            <span>Data/Dev Ops</span>
+          </h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Orquestación de Pipelines</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Pipeline Orchestration</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Automatización y scheduling de flujos de datos.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Data flow automation and scheduling.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">Apache Airflow</span>
+                <span class="tech-tag">Prefect</span>
+                <span class="tech-tag">Dagster</span>
+              </div>
+            </div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2">CI/CD</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Integración y despliegue continuo de pipelines.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Continuous integration and deployment of pipelines.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">GitHub Actions</span>
+                <span class="tech-tag">GitLab CI</span>
+                <span class="tech-tag">Cloud Build</span>
+              </div>
+            </div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Infraestructura como Código</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Infrastructure as Code</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Provisión automatizada de infraestructura cloud.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Automated cloud infrastructure provisioning.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">Terraform</span>
+                <span class="tech-tag">Pulumi</span>
+                <span class="tech-tag">CloudFormation</span>
+              </div>
+            </div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Monitoreo y Observabilidad</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Monitoring & Observability</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Métricas, logs y alertas para sistemas en producción.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Metrics, logs and alerts for production systems.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">Prometheus</span>
+                <span class="tech-tag">Grafana</span>
+                <span class="tech-tag">Datadog</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FINANCE, SUPPLY CHAIN & BUSINESS -->
+      <div class="mb-20 animate-on-scroll">
+        <div class="category-header text-white rounded-t-lg p-4 mb-0">
+          <h2 class="text-2xl font-bold" data-lang="es">Finanzas, Supply Chain y Business Intelligence</h2>
+          <h2 class="text-2xl font-bold hidden" data-lang="en">Finance, Supply Chain & Business Intelligence</h2>
+        </div>
+
+        <!-- Supply Chain -->
+        <div class="bg-white rounded-b-lg shadow-lg p-6 mb-8">
+          <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-primary"></span>
+            <span data-lang="es">Supply Chain Analytics</span>
+            <span class="hidden" data-lang="en">Supply Chain Analytics</span>
+          </h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Modelos Predictivos de Supply Chain</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Supply Chain Predictive Models</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Predicción de demanda, inventario y optimización de cadena de suministro.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Demand forecasting, inventory prediction, and supply chain optimization.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">XGBoost</span>
+                <span class="tech-tag">Prophet</span>
+                <span class="tech-tag">ARIMA</span>
+              </div>
+            </div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Productividad de Activos</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Asset Productivity</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Modelos de rendimiento de activos, mantenimiento predictivo y optimización de utilización.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Asset performance models, predictive maintenance, and utilization optimization.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">ML Models</span>
+                <span class="tech-tag">IoT Data</span>
+                <span class="tech-tag">Time Series</span>
+              </div>
+            </div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Optimización Logística</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Logistics Optimization</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Rutas óptimas, gestión de flotas y reducción de costos operativos.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Optimal routing, fleet management, and operational cost reduction.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">OR-Tools</span>
+                <span class="tech-tag">Routing APIs</span>
+                <span class="tech-tag">Optimization</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Finance Data Engineering -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+          <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-primary"></span>
+            <span data-lang="es">Ingeniería de Datos Financieros</span>
+            <span class="hidden" data-lang="en">Finance Data Engineering</span>
+          </h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Modelado P&L</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">P&L Modeling</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Modelos de pérdidas y ganancias automatizados.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Automated profit and loss models.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">SQL</span>
+                <span class="tech-tag">dbt</span>
+                <span class="tech-tag">Python</span>
+              </div>
+            </div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">ETL Financiero</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Finance ETL</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Integración de datos contables y financieros.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Accounting and financial data integration.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">ERP Connectors</span>
+                <span class="tech-tag">Fivetran</span>
+                <span class="tech-tag">Airbyte</span>
+              </div>
+            </div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Arquitectura de Datos Enterprise</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Enterprise Data Architecture</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Diseño de arquitecturas de datos para multinacionales y grandes corporaciones con múltiples fuentes y regiones.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Data architecture design for multinationals and large corporations with multiple sources and regions.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">Data Mesh</span>
+                <span class="tech-tag">Snowflake</span>
+                <span class="tech-tag">Databricks</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Power BI -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-primary"></span>
+            <span>Power BI & Dashboards</span>
+          </h3>
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Dashboards Ejecutivos</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Executive Dashboards</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Visualizaciones de KPIs y métricas de negocio.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Business KPI and metrics visualizations.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">Power BI</span>
+                <span class="tech-tag">Tableau</span>
+                <span class="tech-tag">Looker</span>
+              </div>
+            </div>
+            <div class="service-card p-4 rounded transition">
+              <h4 class="font-semibold text-slate-800 mb-2" data-lang="es">Reportes Financieros</h4>
+              <h4 class="font-semibold text-slate-800 mb-2 hidden" data-lang="en">Financial Reports</h4>
+              <p class="text-sm text-slate-600 mb-3" data-lang="es">Informes automatizados de finanzas y operaciones.</p>
+              <p class="text-sm text-slate-600 mb-3 hidden" data-lang="en">Automated finance and operations reports.</p>
+              <div class="flex flex-wrap gap-1">
+                <span class="tech-tag">DAX</span>
+                <span class="tech-tag">Power Query</span>
+                <span class="tech-tag">Excel</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Section -->
+      <div class="text-center mt-16 animate-on-scroll">
+        <h2 class="text-2xl font-bold text-slate-900 mb-4" data-lang="es">¿Listo para empezar?</h2>
+        <h2 class="text-2xl font-bold text-slate-900 mb-4 hidden" data-lang="en">Ready to get started?</h2>
+        <p class="text-slate-600 mb-8 max-w-2xl mx-auto" data-lang="es">
+          Contáctanos para discutir cómo podemos ayudarte con tu próximo proyecto geoespacial o de datos.
+        </p>
+        <p class="text-slate-600 mb-8 max-w-2xl mx-auto hidden" data-lang="en">
+          Contact us to discuss how we can help you with your next geospatial or data project.
+        </p>
+        <a href="./index.html#contact" class="inline-block bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-lg transition shadow-lg hover:shadow-xl" data-lang="es">Contactar</a>
+        <a href="./index.html#contact" class="inline-block bg-primary hover:bg-primary-dark text-white font-bold py-3 px-8 rounded-lg transition shadow-lg hover:shadow-xl hidden" data-lang="en">Contact Us</a>
+      </div>
+
+    </div>
+
+    <!-- Partners Marquee -->
+    <section class="py-16 overflow-hidden bg-white border-t border-slate-100">
+      <div class="text-center mb-10 animate-on-scroll">
+        <h2 class="text-2xl font-bold text-slate-900" data-lang="es">Nuestros Clientes y Partners</h2>
+        <h2 class="text-2xl font-bold text-slate-900 hidden" data-lang="en">Our Clients & Partners</h2>
+      </div>
+      <div class="marquee-container">
+        <div class="marquee-track">
+          <img src="./assets/partners/seo_bird_life.jpg" alt="SEO Birdlife" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/orygen_earth_logo.jpg" alt="Orygen" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/kompass.jpg" alt="Kompass" class="h-10 object-contain partner-logo">
+          <img src="./assets/partners/universidad_politecnica.jpg" alt="UPM" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/universidad_avila.jpg" alt="UCAV" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/urjc.png" alt="URJC" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/johns_hopkins.webp" alt="Johns Hopkins University" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/csic.png" alt="CSIC" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/quercy.png" alt="Quercy" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/fundacion_monte_mediterraneo.png" alt="Fundación Monte Mediterráneo" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/google_partner.png" alt="Google Partner" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/upwork.png" alt="Upwork" class="h-9 object-contain partner-logo">
+          <!-- Duplicate set for seamless loop -->
+          <img src="./assets/partners/seo_bird_life.jpg" alt="SEO Birdlife" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/orygen_earth_logo.jpg" alt="Orygen" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/kompass.jpg" alt="Kompass" class="h-10 object-contain partner-logo">
+          <img src="./assets/partners/universidad_politecnica.jpg" alt="UPM" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/universidad_avila.jpg" alt="UCAV" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/urjc.png" alt="URJC" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/johns_hopkins.webp" alt="Johns Hopkins University" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/csic.png" alt="CSIC" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/quercy.png" alt="Quercy" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/fundacion_monte_mediterraneo.png" alt="Fundación Monte Mediterráneo" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/google_partner.png" alt="Google Partner" class="h-14 object-contain partner-logo">
+          <img src="./assets/partners/upwork.png" alt="Upwork" class="h-9 object-contain partner-logo">
         </div>
       </div>
     </section>
 
-    <!-- Partners -->
-    <section class="bg-teal-base section-rule py-16 lg:py-20 overflow-hidden">
-      <p class="eyebrow text-center block mb-8" data-lang="es" style="justify-content:center;">Clientes y partners</p>
-      <p class="eyebrow text-center block mb-8 hidden" data-lang="en" style="justify-content:center;">Clients &amp; partners</p>
-      <div class="overflow-hidden" style="mask-image:linear-gradient(to right,transparent,black 10%,black 90%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,black 10%,black 90%,transparent);">
-        <div class="flex items-center gap-12 w-max animate-marquee">
-          <img src="./assets/partners/seo_bird_life.jpg" alt="SEO Birdlife" class="h-11 partner-logo rounded">
-          <img src="./assets/partners/orygen_earth_logo.jpg" alt="Orygen" class="h-11 partner-logo rounded">
-          <img src="./assets/partners/universidad_politecnica.jpg" alt="UPM" class="h-11 partner-logo rounded">
-          <img src="./assets/partners/csic.png" alt="CSIC" class="h-11 partner-logo">
-          <img src="./assets/partners/google_partner.png" alt="Google Partner" class="h-11 partner-logo">
-          <img src="./assets/partners/upwork.png" alt="Upwork" class="h-7 partner-logo">
-          <img src="./assets/partners/kompass.jpg" alt="Kompass" class="h-9 partner-logo rounded">
-          <img src="./assets/partners/quercy.png" alt="Quercy" class="h-11 partner-logo">
-          <img src="./assets/partners/universidad_avila.jpg" alt="UCAV" class="h-11 partner-logo rounded">
-          <img src="./assets/partners/fundacion_monte_mediterraneo.png" alt="Fundación Monte Mediterráneo" class="h-11 partner-logo">
-          <img src="./assets/partners/urjc.png" alt="URJC" class="h-11 partner-logo">
-          <img src="./assets/partners/johns_hopkins.webp" alt="Johns Hopkins University" class="h-11 partner-logo">
-          <!-- duplicate -->
-          <img src="./assets/partners/seo_bird_life.jpg" alt="SEO Birdlife" class="h-11 partner-logo rounded">
-          <img src="./assets/partners/orygen_earth_logo.jpg" alt="Orygen" class="h-11 partner-logo rounded">
-          <img src="./assets/partners/universidad_politecnica.jpg" alt="UPM" class="h-11 partner-logo rounded">
-          <img src="./assets/partners/csic.png" alt="CSIC" class="h-11 partner-logo">
-          <img src="./assets/partners/google_partner.png" alt="Google Partner" class="h-11 partner-logo">
-          <img src="./assets/partners/upwork.png" alt="Upwork" class="h-7 partner-logo">
-          <img src="./assets/partners/kompass.jpg" alt="Kompass" class="h-9 partner-logo rounded">
-          <img src="./assets/partners/quercy.png" alt="Quercy" class="h-11 partner-logo">
-          <img src="./assets/partners/universidad_avila.jpg" alt="UCAV" class="h-11 partner-logo rounded">
-          <img src="./assets/partners/fundacion_monte_mediterraneo.png" alt="Fundación Monte Mediterráneo" class="h-11 partner-logo">
-          <img src="./assets/partners/urjc.png" alt="URJC" class="h-11 partner-logo">
-          <img src="./assets/partners/johns_hopkins.webp" alt="Johns Hopkins University" class="h-11 partner-logo">
-        </div>
-      </div>
-    </section>
   </main>
 
   <!-- Footer -->
-  <footer class="bg-teal-deep border-t border-line py-14">
-    <div class="container mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-6">
-      <a href="./index.html"><img src="./assets/brand/logo_darwin.png" alt="Logo de Darwin Geospatial" class="h-14 w-auto"></a>
-      <p class="text-cream-faint text-xs" data-lang="es">&copy; 2026 Darwin Geospatial. Todos los derechos reservados.</p>
-      <p class="text-cream-faint text-xs hidden" data-lang="en">&copy; 2026 Darwin Geospatial. All rights reserved.</p>
+  <footer class="bg-slate-900 text-slate-400 py-12">
+    <div class="container mx-auto px-6 text-center">
+      <img src="./assets/brand/logo_darwin.png" alt="Logo de Darwin Geospatial" class="h-16 w-auto mx-auto mb-4">
+      <p data-lang="es">&copy; 2026 Darwin Geospatial. Todos los derechos reservados.</p>
+      <p class="hidden" data-lang="en">&copy; 2026 Darwin Geospatial. All rights reserved.</p>
+      <p class="text-sm mt-2" data-lang="es">Haciendo la naturaleza más comprensible a través de los datos.</p>
+      <p class="text-sm mt-2 hidden" data-lang="en">Making nature more understandable through data.</p>
     </div>
   </footer>
 
   <script src="./lang.js"></script>
-  <script>
-    (function(){
-      var header = document.getElementById('header');
-      function onScroll(){ header.classList.toggle('scrolled', window.scrollY > 24); }
-      window.addEventListener('scroll', onScroll, {passive:true});
-      onScroll();
-    })();
-  </script>
 </body>
 </html>

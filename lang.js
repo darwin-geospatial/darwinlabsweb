@@ -501,11 +501,10 @@ document.addEventListener('DOMContentLoaded', () => {
     var innerR = Math.min(W, H) * 0.15;
     var outerR = Math.max(W, H) * 0.7;
     var grad = ctx.createRadialGradient(cx, cy, innerR, cx, cy, outerR);
-    // Dark-edge vignette (deep teal #0e1f24) — focuses center, blends into dark section
-    grad.addColorStop(0, 'rgba(14,31,36,0.0)');
-    grad.addColorStop(0.55, 'rgba(14,31,36,0.0)');
-    grad.addColorStop(0.85, 'rgba(14,31,36,0.45)');
-    grad.addColorStop(1, 'rgba(14,31,36,0.85)');
+    grad.addColorStop(0, 'rgba(240,243,239,0.55)');
+    grad.addColorStop(0.35, 'rgba(240,243,239,0.3)');
+    grad.addColorStop(0.7, 'rgba(240,243,239,0.05)');
+    grad.addColorStop(1, 'rgba(240,243,239,0.0)');
     ctx.fillStyle = grad;
     ctx.fillRect(0, 0, W, H);
   }
