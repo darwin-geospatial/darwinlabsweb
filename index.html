@@ -191,21 +191,20 @@
     .hr-layer { position: absolute; inset: 0; background-size: cover; background-position: center; }
     /* Images shown muted (not full color) — the branded veil above does the rest */
     #hr-base { filter: saturate(0.9) brightness(1.18); }
+    /* Organic liquid reveal: top image masked by an SVG blob that glides to the
+       cursor with a viscous cubic-bezier transition (no fade — crisp blob edge). */
     #hr-reveal {
-      -webkit-mask: radial-gradient(circle var(--brush,0px) at var(--mx,50%) var(--my,50%), #000 0 97%, rgba(0,0,0,0) 100%);
-              mask: radial-gradient(circle var(--brush,0px) at var(--mx,50%) var(--my,50%), #000 0 97%, rgba(0,0,0,0) 100%);
+      --blob: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpath fill='white' d='M101,20 C128,17 152,31 165,54 C177,75 176,101 170,123 C163,147 149,168 124,177 C100,186 71,183 49,169 C29,156 15,135 15,110 C15,84 25,58 46,41 C62,28 79,23 101,20 Z'/%3E%3C/svg%3E");
+      -webkit-mask-image: var(--blob); mask-image: var(--blob);
+      -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+      -webkit-mask-size: var(--brush,0px); mask-size: var(--brush,0px);
+      -webkit-mask-position: calc(var(--mx,50%) - var(--brush,0px)/2) calc(var(--my,50%) - var(--brush,0px)/2);
+              mask-position: calc(var(--mx,50%) - var(--brush,0px)/2) calc(var(--my,50%) - var(--brush,0px)/2);
+      transition: none;
       filter: saturate(0.9) brightness(0.95);
-      will-change: -webkit-mask, mask;
+      will-change: -webkit-mask-position, mask-position, -webkit-mask-size, mask-size;
     }
-    #hr-ring {
-      position: absolute; left: var(--mx,50%); top: var(--my,50%);
-      width: calc(var(--brush,0px) * 2); height: calc(var(--brush,0px) * 2);
-      transform: translate(-50%,-50%); border-radius: 50%;
-      border: 1.5px solid rgba(252,245,227,0.8);
-      box-shadow: 0 0 45px rgba(188,190,118,0.35), inset 0 0 25px rgba(188,190,118,0.12);
-      opacity: 0; transition: opacity .35s ease; pointer-events: none;
-    }
-    #hero-reveal.brushing #hr-ring { opacity: 1; }
+    #hr-ring { display: none; }
 
     /* WebGL liquid-distortion canvas — shown only when the shader initializes */
     #hero-gl { position: absolute; inset: 0; width: 100%; height: 100%; display: block; opacity: 0; transition: opacity .5s ease; }
@@ -1433,31 +1432,45 @@
       onScroll();
     })();
 
-    // Hero brush reveal — circular mask follows the cursor (hover devices only; touch uses CSS crossfade)
+    // Hero liquid reveal — blob mask follows the cursor INSTANTLY (no lag) with a live
+    // breathing + wobble for dynamism (hover devices only; touch uses the CSS crossfade).
     (function(){
       var hero = document.getElementById('home');
       var wrap = document.getElementById('hero-reveal');
       if (!hero || !wrap) return;
       if (!window.matchMedia('(hover: hover)').matches) return;
-      function radius(){ return Math.max(110, Math.min(window.innerWidth, window.innerHeight) * 0.18); }
-      var R = radius();
-      window.addEventListener('resize', function(){ R = radius(); });
+      function size(){ return Math.max(300, Math.round(wrap.clientHeight * 0.62)); }
+      var R = size();
+      window.addEventListener('resize', function(){ R = size(); });
+
+      var curX = null, curY = null, tHov = 0, hov = 0, raf = null, t0 = null;
+      function render(ts){
+        if (t0 === null) t0 = ts; var t = (ts - t0) * 0.001;
+        hov += (tHov - hov) * 0.25;                       // quick, snappy in/out
+        if (curX !== null){
+          var pulse = 1.0 + 0.055 * Math.sin(t * 3.1);    // breathing
+          var wx = 6.0 * Math.sin(t * 2.3);               // subtle orbit wobble
+          var wy = 6.0 * Math.cos(t * 1.8);
+          wrap.style.setProperty('--mx', (curX + wx) + 'px');
+          wrap.style.setProperty('--my', (curY + wy) + 'px');
+          wrap.style.setProperty('--brush', (R * pulse * hov) + 'px');
+        }
+        if (hov > 0.002 || tHov > 0.5){ raf = requestAnimationFrame(render); }
+        else { raf = null; wrap.style.setProperty('--brush', '0px'); }
+      }
+      function kick(){ if (raf === null) raf = requestAnimationFrame(render); }
+
       hero.addEventListener('mousemove', function(e){
         var rect = wrap.getBoundingClientRect();
-        wrap.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
-        wrap.style.setProperty('--my', (e.clientY - rect.top) + 'px');
-        wrap.style.setProperty('--brush', R + 'px');
-        wrap.classList.add('brushing');
+        curX = e.clientX - rect.left; curY = e.clientY - rect.top;
+        tHov = 1; kick();
       }, {passive:true});
-      hero.addEventListener('mouseleave', function(){
-        wrap.style.setProperty('--brush', '0px');
-        wrap.classList.remove('brushing');
-      });
+      hero.addEventListener('mouseleave', function(){ tHov = 0; kick(); });
     })();
 
-    // Hero magnetic liquid distortion (WebGL) — cursor-driven displacement + parallax + eased
-    // relax, keeping the RGB → AlphaEarth reveal. Desktop/hover only; falls back to the CSS brush.
+    // (WebGL warp module disabled — the hero uses the CSS SVG-mask reveal above.)
     (function(){
+      return;
       var wrap = document.getElementById('hero-reveal');
       var hero = document.getElementById('home');
       var canvas = document.getElementById('hero-gl');
@@ -1480,6 +1493,10 @@
         'uniform vec2 uRes; uniform float uImgAspect;' +
         'uniform vec2 uMouse; uniform vec2 uVel; uniform float uHover; uniform float uTime; uniform float uRadius;' +
         'uniform vec2 uPts[14]; uniform float uLife[14];' +
+        'float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1,311.7)))*43758.5453); }' +
+        'float noise(vec2 p){ vec2 i=floor(p); vec2 f=fract(p); f=f*f*(3.0-2.0*f);' +
+        '  float a=hash(i), b=hash(i+vec2(1.0,0.0)), c=hash(i+vec2(0.0,1.0)), e=hash(i+vec2(1.0,1.0));' +
+        '  return mix(mix(a,b,f.x), mix(c,e,f.x), f.y); }' +
         'void main(){' +
         '  float ca = uRes.x/uRes.y;' +
         '  vec2 uv = vUv;' +                     // object-fit: cover mapping (no displacement)
@@ -1487,22 +1504,27 @@
         '  else { uv.x = (uv.x-0.5)*(ca/uImgAspect)+0.5; }' +
         '  vec4 rgb = texture2D(uRGB, uv);' +
         '  vec4 ae  = texture2D(uAE, uv);' +
-        // liquid head at the eased cursor (trails a touch with velocity)
-        '  vec2 d = vUv - uMouse; d.x *= ca; d += uVel * 0.3;' +
-        '  float dist = length(d);' +
-        '  float ang = atan(d.y, d.x);' +
-        '  float wob = 1.0 + 0.09*sin(ang*3.0 + uTime*1.8) + 0.06*sin(ang*5.0 - uTime*2.3) + 0.04*sin(ang*2.0 + uTime*1.1);' +
-        '  float ripple = 0.012*sin(dist*24.0 - uTime*5.0);' +
-        '  float r = (uRadius * wob + ripple) * uHover;' +
-        '  float aa = 0.0022;' +                             // thin antialias only (crisp edge, no blur)
-        '  float reveal = 1.0 - smoothstep(r - aa, r + aa, dist);' +
-        // liquid brush trail: short in space (distance-laid), lingers longer in time
+        // organic liquid mask: soft edge + noise boundary + velocity stretch
+        '  vec2 d = vUv - uMouse; d.x *= ca;' +
+        '  vec2 vel = uVel; vel.x *= ca;' +
+        '  float sp = length(vel);' +
+        '  vec2 vdir = sp > 1e-4 ? vel/sp : vec2(1.0, 0.0);' +
+        '  vec2 perp = vec2(-vdir.y, vdir.x);' +
+        '  float av = dot(d, vdir); float bv = dot(d, perp);' +
+        '  float stretch = clamp(sp * 7.0, 0.0, 0.55);' +          // elongate along motion
+        '  av /= (1.0 + stretch);' +
+        '  float ed = length(vec2(av, bv));' +
+        '  float ang = atan(bv, av);' +
+        '  float n = noise(vec2(cos(ang), sin(ang)) * 2.2 + vec2(uTime * 0.3));' +
+        '  float r = uRadius * uHover * (1.0 + (n - 0.5) * 0.18);' + // organic wobble via noise
+        '  float reveal = 1.0 - smoothstep(r * 0.4, r, ed);' +      // soft feathered edge
+        // soft trailing trace (distance-laid points, fading)
         '  for (int i=0;i<14;i++){' +
         '    float s = uLife[i];' +
         '    vec2 dd = vUv - uPts[i]; dd.x *= ca;' +
         '    float rr = uRadius * (0.5 + 0.4*s) * uHover;' +
-        '    float rev = 1.0 - smoothstep(rr - aa, rr + aa, length(dd));' +
-        '    reveal = max(reveal, rev * s);' +
+        '    float rev = (1.0 - smoothstep(rr*0.4, rr, length(dd))) * s;' +
+        '    reveal = max(reveal, rev);' +
         '  }' +
         '  gl_FragColor = mix(rgb, ae, reveal);' +
         '}';
@@ -1551,7 +1573,7 @@
 
       function render(ts){
         if(t0===null) t0=ts; var time=(ts-t0)*0.001;
-        mx=tmx; my=tmy;                                  // 0 follow lag
+        mx+=(tmx-mx)*0.16; my+=(tmy-my)*0.16;            // lerped follow (smooth)
         vx=(mx-pmx); vy=(my-pmy); pmx=mx; pmy=my;
         var vlen=Math.sqrt(vx*vx+vy*vy), vmax=0.08;
         if(vlen>vmax){ vx*=vmax/vlen; vy*=vmax/vlen; }   // clamp so fast flicks don't fling the head
