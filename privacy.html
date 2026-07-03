@@ -5,141 +5,135 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Política de Privacidad — Darwin Geospatial</title>
 
-  <!-- SEO Meta Tags -->
   <meta name="description" content="Política de privacidad de Darwin Geospatial: qué datos recogemos, uso de cookies y Google Analytics, y tus derechos."/>
   <link rel="canonical" href="https://darwingeospatial.com/privacy.html"/>
   <meta name="robots" content="noindex"/>
 
-  <!-- Open Graph / Social -->
   <meta property="og:type" content="website"/>
   <meta property="og:title" content="Política de Privacidad — Darwin Geospatial"/>
   <meta property="og:description" content="Política de privacidad de Darwin Geospatial: qué datos recogemos, uso de cookies y Google Analytics, y tus derechos."/>
   <meta property="og:url" content="https://darwingeospatial.com/privacy.html"/>
   <meta property="og:site_name" content="Darwin Geospatial"/>
+  <link rel="icon" href="./favicon.ico?v=2" sizes="any"/>
 
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="./analytics.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 
   <style>
     :root {
-      --darwin-green-dark: #395935;
-      --darwin-green-base: #46633A;
-      --darwin-green-medium: #576F50;
-      --darwin-green-accent: #5D713F;
-      --darwin-grey: #939494;
-      --darwin-green-light: #f0f3ef;
+      --teal-deep:#0e1f24; --teal-base:#1b373f; --teal-elev:#213f47; --teal-line:#2e525b;
+      --green:#426331; --green-soft:#5a8045; --olive:#879753; --olive-light:#bcbe76;
+      --cream:#fcf5e3; --cream-dim:rgba(252,245,227,0.66); --cream-faint:rgba(252,245,227,0.42);
     }
+    html, body { background-color: var(--teal-deep); }
+    body { font-family:'Inter',sans-serif; color:var(--cream); -webkit-font-smoothing:antialiased; }
+    .font-display{ font-family:'Bebas Neue',sans-serif; }
+    .font-mono{ font-family:'Space Mono',monospace; }
+    .eyebrow{ display:inline-flex; align-items:center; font-family:'Inter',sans-serif; font-weight:600; font-size:.8rem; letter-spacing:.2em; text-transform:uppercase; color:var(--olive-light); }
+    .text-cream{color:var(--cream);} .text-cream-dim{color:var(--cream-dim);} .text-cream-faint{color:var(--cream-faint);}
+    .text-olive{color:var(--olive-light);}
+    .bg-teal-deep{background-color:var(--teal-deep);} .bg-teal-base{background-color:var(--teal-base);}
+    .border-line{border-color:var(--teal-line);}
+    .section-rule{ border-top:1px solid var(--teal-line); }
 
-    body { font-family: 'Inter', sans-serif; }
+    .lang-switcher button{ color:var(--cream-faint); transition:color .2s; }
+    .lang-switcher button.active{ color:var(--olive-light); font-weight:700; }
 
-    .bg-primary { background-color: var(--darwin-green-base); }
-    .bg-primary-dark { background-color: var(--darwin-green-dark); }
-    .bg-primary-light { background-color: var(--darwin-green-light); }
-    .text-primary { color: var(--darwin-green-base); }
-    .text-accent { color: var(--darwin-green-accent); }
-    .border-primary { border-color: var(--darwin-green-base); }
-    .hover\:bg-primary-dark:hover { background-color: var(--darwin-green-dark); }
-    .hover\:text-primary:hover { color: var(--darwin-green-base); }
+    #header{ background-color:rgba(14,31,36,0.72); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid transparent; transition:background-color .3s ease, border-color .3s ease; }
+    #header.scrolled{ background-color:rgba(14,31,36,0.92); border-bottom-color:var(--teal-line); }
+    .header-row{ background:linear-gradient(90deg,#d7d3b9 0,#d7d3b9 190px,transparent 380px); }
+    .nav-link{ color:var(--cream-dim); font-weight:500; transition:color .25s; position:relative; }
+    .nav-link:hover{ color:var(--cream); }
+    .nav-link.active{ color:var(--olive-light); }
+    .nav-link::after{ content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:var(--olive-light); transition:width .3s ease; }
+    .nav-link:hover::after{ width:100%; }
+    .btn-accent{ background-color:var(--green); color:var(--cream); border:1px solid transparent; transition:background-color .25s, transform .25s, box-shadow .25s; }
+    .btn-accent:hover{ background-color:var(--green-soft); transform:translateY(-1px); box-shadow:0 8px 24px rgba(90,128,69,0.3); }
 
-    .lang-switcher button.active { color: var(--darwin-green-base); font-weight: 700; }
+    .breadcrumb a{ color:var(--cream-dim); text-decoration:none; } .breadcrumb a:hover{ color:var(--cream); }
+    .breadcrumb span{ color:var(--cream-faint); margin:0 .4rem; }
 
-    .breadcrumb a { color: rgba(255,255,255,0.75); text-decoration: none; }
-    .breadcrumb a:hover { color: white; }
-    .breadcrumb span { color: rgba(255,255,255,0.5); margin: 0 0.4rem; }
-
-    .legal h2 {
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      color: #1e293b;
-      font-size: 1.375rem;
-      margin-top: 2.25rem;
-      margin-bottom: 0.75rem;
-    }
-    .legal p, .legal li { color: #475569; line-height: 1.75; }
-    .legal ul { list-style: disc; padding-left: 1.5rem; margin: 0.75rem 0; }
-    .legal a { color: var(--darwin-green-base); text-decoration: underline; }
-    .legal a:hover { color: var(--darwin-green-dark); }
+    /* Legal long-form — dark */
+    .legal h2{ font-family:'Inter',sans-serif; font-weight:700; color:var(--cream); font-size:1.3rem; margin-top:2.25rem; margin-bottom:.75rem; }
+    .legal p, .legal li{ color:var(--cream-dim); line-height:1.8; }
+    .legal p{ margin-bottom:.9rem; }
+    .legal ul{ list-style:disc; padding-left:1.5rem; margin:.75rem 0; }
+    .legal li{ margin-bottom:.35rem; }
+    .legal strong{ color:var(--cream); font-weight:600; }
+    .legal a{ color:var(--olive-light); text-decoration:underline; text-underline-offset:2px; }
+    .legal a:hover{ color:var(--cream); }
   </style>
-  <script src="./analytics.js"></script>
 </head>
-<body class="bg-slate-50 text-slate-800">
+<body>
 
   <!-- Header -->
-  <header id="header" class="bg-white/90 backdrop-blur-md fixed top-0 left-0 right-0 z-50 shadow-md transition-all duration-300">
-    <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+  <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="header-row w-full px-5 md:px-8 py-3 flex justify-between items-center">
       <a href="./index.html" class="flex-shrink-0">
-        <img src="./assets/brand/logo_darwin.png" alt="Darwin Geospatial logo" class="h-10 md:h-12 w-auto">
+        <img src="./assets/brand/logo_darwin.png" alt="Darwin Geospatial logo" class="h-10 md:h-[52px] w-auto">
       </a>
-
       <nav class="hidden md:flex space-x-8 items-center">
-        <a href="./index.html#about" class="text-slate-600 hover:text-primary transition" data-lang="es">Nosotros</a>
-        <a href="./index.html#about" class="text-slate-600 hover:text-primary transition hidden" data-lang="en">About</a>
-
-        <a href="./services.html" class="text-slate-600 hover:text-primary transition" data-lang="es">Servicios</a>
-        <a href="./services.html" class="text-slate-600 hover:text-primary transition hidden" data-lang="en">Services</a>
-
-        <a href="./index.html#projects-hero" class="text-slate-600 hover:text-primary transition" data-lang="es">Proyectos</a>
-        <a href="./index.html#projects-hero" class="text-slate-600 hover:text-primary transition hidden" data-lang="en">Projects</a>
-
-        <a href="./index.html#team" class="text-slate-600 hover:text-primary transition" data-lang="es">Equipo</a>
-        <a href="./index.html#team" class="text-slate-600 hover:text-primary transition hidden" data-lang="en">Team</a>
-
-        <a href="./blog/index.html" class="text-slate-600 hover:text-primary transition">Blog</a>
-
-        <a href="./index.html#contact" class="bg-primary text-white px-5 py-2 rounded-full font-semibold hover:bg-primary-dark transition text-sm" data-lang="es">Contacto</a>
-        <a href="./index.html#contact" class="bg-primary text-white px-5 py-2 rounded-full font-semibold hover:bg-primary-dark transition text-sm hidden" data-lang="en">Contact</a>
+        <a href="./index.html#about" class="nav-link text-[15px]" data-lang="es">Nosotros</a>
+        <a href="./index.html#about" class="nav-link text-[15px] hidden" data-lang="en">About</a>
+        <a href="./index.html#solutions" class="nav-link text-[15px]" data-lang="es">Soluciones</a>
+        <a href="./index.html#solutions" class="nav-link text-[15px] hidden" data-lang="en">Solutions</a>
+        <a href="./index.html#projects-hero" class="nav-link text-[15px]" data-lang="es">Proyectos</a>
+        <a href="./index.html#projects-hero" class="nav-link text-[15px] hidden" data-lang="en">Projects</a>
+        <a href="./index.html#team" class="nav-link text-[15px]" data-lang="es">Equipo</a>
+        <a href="./index.html#team" class="nav-link text-[15px] hidden" data-lang="en">Team</a>
+        <a href="./blog/" class="nav-link text-[15px]">Blog</a>
+        <a href="./index.html#contact" class="btn-accent px-5 py-2 rounded-full font-semibold text-sm" data-lang="es">Agenda una llamada</a>
+        <a href="./index.html#contact" class="btn-accent px-5 py-2 rounded-full font-semibold text-sm hidden" data-lang="en">Book a call</a>
       </nav>
-
       <div class="flex items-center">
-        <div class="lang-switcher text-sm text-slate-500 ml-4">
+        <div class="lang-switcher font-mono text-sm ml-4">
           <button id="lang-es" class="active">ES</button>
-          <span>/</span>
+          <span class="text-cream-faint">/</span>
           <button id="lang-en">EN</button>
         </div>
         <button id="mobile-menu-button" class="md:hidden focus:outline-none ml-4">
-          <svg class="w-6 h-6 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
-          </svg>
+          <svg class="w-6 h-6 text-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
         </button>
       </div>
     </div>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
-      <a href="./index.html#about" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Nosotros</a>
-      <a href="./index.html#about" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">About</a>
-      <a href="./services.html" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Servicios</a>
-      <a href="./services.html" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">Services</a>
-      <a href="./index.html#projects-hero" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Proyectos</a>
-      <a href="./index.html#projects-hero" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">Projects</a>
-      <a href="./index.html#team" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Equipo</a>
-      <a href="./index.html#team" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">Team</a>
-      <a href="./blog/index.html" class="block py-2 text-slate-600 hover:text-primary">Blog</a>
-      <a href="./index.html#contact" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Contacto</a>
-      <a href="./index.html#contact" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">Contact</a>
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 pt-2 border-t border-line bg-teal-deep">
+      <a href="./index.html#about" class="block py-2 text-cream-dim hover:text-cream" data-lang="es">Nosotros</a>
+      <a href="./index.html#about" class="block py-2 text-cream-dim hover:text-cream hidden" data-lang="en">About</a>
+      <a href="./index.html#solutions" class="block py-2 text-cream-dim hover:text-cream" data-lang="es">Soluciones</a>
+      <a href="./index.html#solutions" class="block py-2 text-cream-dim hover:text-cream hidden" data-lang="en">Solutions</a>
+      <a href="./index.html#projects-hero" class="block py-2 text-cream-dim hover:text-cream" data-lang="es">Proyectos</a>
+      <a href="./index.html#projects-hero" class="block py-2 text-cream-dim hover:text-cream hidden" data-lang="en">Projects</a>
+      <a href="./index.html#team" class="block py-2 text-cream-dim hover:text-cream" data-lang="es">Equipo</a>
+      <a href="./index.html#team" class="block py-2 text-cream-dim hover:text-cream hidden" data-lang="en">Team</a>
+      <a href="./blog/" class="block py-2 text-cream-dim hover:text-cream">Blog</a>
+      <a href="./index.html#contact" class="block py-2 mt-2 btn-accent text-center px-5 py-2.5 rounded-full font-semibold text-sm" data-lang="es">Agenda una llamada</a>
+      <a href="./index.html#contact" class="block py-2 mt-2 btn-accent text-center px-5 py-2.5 rounded-full font-semibold text-sm hidden" data-lang="en">Book a call</a>
     </div>
   </header>
 
   <!-- Hero -->
-  <section class="pt-32 pb-14 bg-primary text-white">
+  <section class="pt-32 pb-14 bg-teal-base section-rule">
     <div class="container mx-auto px-6 max-w-4xl">
-      <p class="breadcrumb text-sm mb-4">
+      <p class="breadcrumb text-sm mb-5">
         <a href="./index.html">Home</a>
         <span>›</span>
-        <span style="color:rgba(255,255,255,0.9);" data-lang="es">Privacidad</span>
-        <span style="color:rgba(255,255,255,0.9);" data-lang="en">Privacy</span>
+        <span class="text-cream-dim" data-lang="es">Privacidad</span>
+        <span class="text-cream-dim hidden" data-lang="en">Privacy</span>
       </p>
-      <h1 class="text-3xl md:text-4xl font-bold mb-3" style="font-family:'Playfair Display',serif;" data-lang="es">Política de Privacidad</h1>
-      <h1 class="text-3xl md:text-4xl font-bold mb-3 hidden" style="font-family:'Playfair Display',serif;" data-lang="en">Privacy Policy</h1>
-      <p class="text-white/75 max-w-xl" data-lang="es">Última actualización: 3 de julio de 2026</p>
-      <p class="text-white/75 max-w-xl hidden" data-lang="en">Last updated: July 3, 2026</p>
+      <p class="eyebrow mb-4" data-lang="es">Legal</p>
+      <p class="eyebrow mb-4 hidden" data-lang="en">Legal</p>
+      <h1 class="font-display uppercase text-cream leading-none mb-4" style="font-size:clamp(2.4rem,5vw,3.6rem);" data-lang="es">Política de Privacidad</h1>
+      <h1 class="font-display uppercase text-cream leading-none mb-4 hidden" style="font-size:clamp(2.4rem,5vw,3.6rem);" data-lang="en">Privacy Policy</h1>
+      <p class="text-cream-faint text-sm" data-lang="es">Última actualización: 3 de julio de 2026</p>
+      <p class="text-cream-faint text-sm hidden" data-lang="en">Last updated: July 3, 2026</p>
     </div>
   </section>
 
   <!-- Content -->
-  <main class="py-12 lg:py-16">
+  <main class="py-14 lg:py-20">
     <div class="container mx-auto px-6">
       <div class="max-w-3xl mx-auto legal">
 
@@ -214,16 +208,24 @@
   </main>
 
   <!-- Footer -->
-  <footer class="bg-slate-900 text-slate-400 py-12">
+  <footer class="bg-teal-deep section-rule py-12">
     <div class="container mx-auto px-6 text-center">
-      <img src="./assets/brand/logo_darwin.png" alt="Darwin Geospatial logo" class="h-16 w-auto mx-auto mb-4">
-      <p data-lang="es">&copy; 2026 Darwin Geospatial. Todos los derechos reservados.</p>
-      <p class="hidden" data-lang="en">&copy; 2026 Darwin Geospatial. All rights reserved.</p>
-      <p class="text-sm mt-2" data-lang="es">Haciendo la naturaleza más comprensible a través de los datos.</p>
-      <p class="text-sm mt-2 hidden" data-lang="en">Making nature more understandable through data.</p>
+      <img src="./assets/brand/logo_darwin.png" alt="Darwin Geospatial logo" class="h-14 w-auto mx-auto mb-4">
+      <p class="text-cream-dim text-sm" data-lang="es">&copy; 2026 Darwin Geospatial. Todos los derechos reservados.</p>
+      <p class="text-cream-dim text-sm hidden" data-lang="en">&copy; 2026 Darwin Geospatial. All rights reserved.</p>
+      <p class="text-cream-faint text-xs mt-2">
+        <a href="./index.html" class="underline hover:text-cream transition" data-lang="es">Volver al inicio</a>
+        <a href="./index.html" class="underline hover:text-cream transition hidden" data-lang="en">Back to home</a>
+      </p>
     </div>
   </footer>
 
   <script src="./lang.js"></script>
+  <script>
+    (function(){
+      var h = document.getElementById('header');
+      if (h) window.addEventListener('scroll', function(){ h.classList.toggle('scrolled', window.scrollY > 20); }, {passive:true});
+    })();
+  </script>
 </body>
 </html>

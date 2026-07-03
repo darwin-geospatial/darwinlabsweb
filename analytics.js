@@ -36,6 +36,8 @@
     }
   };
 
+  var MORE = { es: 'Política de Privacidad', en: 'Privacy Policy' };
+
   function setConsent(value) {
     try { localStorage.setItem(CONSENT_KEY, value); } catch (e) {}
     var el = document.getElementById('dg-cookie-banner');
@@ -51,29 +53,35 @@
     el.setAttribute('role', 'dialog');
     el.setAttribute('aria-live', 'polite');
     el.style.cssText =
-      'position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#1c1f1a;' +
-      'color:#f5f5f0;padding:16px 20px;display:flex;flex-wrap:wrap;gap:12px;' +
-      'align-items:center;justify-content:center;font-family:system-ui,sans-serif;' +
-      'font-size:14px;box-shadow:0 -2px 12px rgba(0,0,0,.25);';
+      'position:fixed;left:0;right:0;bottom:0;z-index:9999;background:#0e1f24;' +
+      'color:#fcf5e3;padding:16px 20px;display:flex;flex-wrap:wrap;gap:12px;' +
+      'align-items:center;justify-content:center;border-top:1px solid #2e525b;' +
+      'font-family:Inter,system-ui,sans-serif;font-size:14px;' +
+      'box-shadow:0 -6px 24px rgba(0,0,0,.35);';
 
     var msg = document.createElement('span');
-    msg.textContent = t.msg;
     msg.style.cssText = 'flex:1 1 260px;';
+    msg.appendChild(document.createTextNode(t.msg + ' '));
+    var more = document.createElement('a');
+    more.href = '/privacy.html';
+    more.textContent = MORE[getLang()];
+    more.style.cssText = 'color:#bcbe76;text-decoration:underline;text-underline-offset:2px;';
+    msg.appendChild(more);
 
     var reject = document.createElement('button');
     reject.type = 'button';
     reject.textContent = t.reject;
     reject.style.cssText =
-      'background:transparent;color:#f5f5f0;border:1px solid #666;' +
-      'padding:8px 18px;border-radius:6px;cursor:pointer;';
+      'background:transparent;color:#fcf5e3;border:1px solid #2e525b;' +
+      'padding:8px 20px;border-radius:999px;cursor:pointer;font-weight:500;';
     reject.addEventListener('click', function () { setConsent('denied'); });
 
     var accept = document.createElement('button');
     accept.type = 'button';
     accept.textContent = t.accept;
     accept.style.cssText =
-      'background:#46633a;color:#fff;border:none;padding:8px 18px;' +
-      'border-radius:6px;cursor:pointer;font-weight:600;';
+      'background:#426331;color:#fcf5e3;border:none;padding:8px 20px;' +
+      'border-radius:999px;cursor:pointer;font-weight:600;';
     accept.addEventListener('click', function () { setConsent('granted'); });
 
     el.appendChild(msg);
