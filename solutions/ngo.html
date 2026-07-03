@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ONG y conservación — Darwin Geospatial</title>
+
+  <meta name="description" content="Ayudamos a organizaciones de conservación a monitorear hábitats, medir resultados y justificar financiación con datos de satélite fiables y a bajo coste, sin montar un equipo técnico propio."/>
+  <link rel="canonical" href="https://darwingeospatial.com/solutions/ngo.html"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="ONG y conservación — Darwin Geospatial"/>
+  <meta property="og:description" content="Demuestra tu impacto a escala de paisaje con datos de satélite fiables y a bajo coste."/>
+  <meta property="og:url" content="https://darwingeospatial.com/solutions/ngo.html"/>
+  <meta property="og:site_name" content="Darwin Geospatial"/>
+  <link rel="icon" href="../favicon.ico?v=2" sizes="any"/>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../analytics.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --teal-deep:#0e1f24; --teal-base:#1b373f; --teal-elev:#213f47; --teal-line:#2e525b;
+      --green:#426331; --green-soft:#5a8045; --olive:#879753; --olive-light:#bcbe76;
+      --cream:#fcf5e3; --cream-dim:rgba(252,245,227,0.66); --cream-faint:rgba(252,245,227,0.42);
+    }
+    html, body { background-color: var(--teal-deep); }
+    body { font-family:'Inter',sans-serif; color:var(--cream); -webkit-font-smoothing:antialiased; }
+    .font-display{ font-family:'Bebas Neue',sans-serif; letter-spacing:.01em; }
+    .font-mono{ font-family:'Space Mono',monospace; }
+    .eyebrow{ display:inline-flex; align-items:center; gap:.6rem; font-family:'Inter',sans-serif; font-weight:600; font-size:.8rem; letter-spacing:.2em; text-transform:uppercase; color:var(--olive-light); }
+    .eyebrow::before{ content:""; width:26px; height:1px; background:var(--olive-light); opacity:.7; }
+    .text-cream{color:var(--cream);} .text-cream-dim{color:var(--cream-dim);} .text-cream-faint{color:var(--cream-faint);}
+    .text-olive{color:var(--olive-light);}
+    .bg-teal-deep{background-color:var(--teal-deep);} .bg-teal-base{background-color:var(--teal-base);} .bg-teal-elev{background-color:var(--teal-elev);}
+    .border-line{border-color:var(--teal-line);}
+    .section-rule{ border-top:1px solid var(--teal-line); }
+
+    /* Light section remap */
+    .section-light{ background:var(--cream); color:var(--teal-deep); }
+    .section-light .eyebrow{ color:var(--green); } .section-light .eyebrow::before{ background:var(--green); }
+    .section-light .text-cream{ color:var(--teal-deep) !important; }
+    .section-light .text-cream-dim{ color:rgba(14,31,36,0.66) !important; }
+    .section-light .text-olive{ color:var(--green) !important; }
+
+    .lang-switcher button{ color:var(--cream-faint); transition:color .2s; }
+    .lang-switcher button.active{ color:var(--olive-light); font-weight:700; }
+
+    #header{ background-color:rgba(14,31,36,0.72); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid transparent; transition:background-color .3s ease, border-color .3s ease; }
+    #header.scrolled{ background-color:rgba(14,31,36,0.92); border-bottom-color:var(--teal-line); }
+    .header-row{ background:linear-gradient(90deg,#d7d3b9 0,#d7d3b9 190px,transparent 380px); }
+    .nav-link{ color:var(--cream-dim); font-weight:500; transition:color .25s; position:relative; }
+    .nav-link:hover{ color:var(--cream); } .nav-link.active{ color:var(--olive-light); }
+    .nav-link::after{ content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:var(--olive-light); transition:width .3s ease; }
+    .nav-link:hover::after{ width:100%; }
+    .btn-accent{ background-color:var(--green); color:var(--cream); border:1px solid transparent; transition:background-color .25s, transform .25s, box-shadow .25s; }
+    .btn-accent:hover{ background-color:var(--green-soft); transform:translateY(-1px); box-shadow:0 8px 24px rgba(90,128,69,0.3); }
+    .btn-ghost{ background:transparent; color:var(--cream); border:1px solid var(--teal-line); transition:border-color .25s, background-color .25s, transform .25s; }
+    .btn-ghost:hover{ border-color:var(--olive-light); background:rgba(188,190,118,0.08); transform:translateY(-1px); }
+
+    .animate-on-scroll{ opacity:0; transform:translateY(30px); transition:opacity .7s cubic-bezier(0.22,1,0.36,1), transform .7s cubic-bezier(0.22,1,0.36,1); }
+    .animate-on-scroll.is-visible{ opacity:1; transform:translateY(0); }
+
+    /* Hero */
+    .hero-ai{ position:relative; overflow:hidden; }
+    .hero-ai::before{ content:""; position:absolute; inset:0;
+      background:
+        radial-gradient(680px 420px at 78% 12%, rgba(66,99,49,0.42), transparent 60%),
+        radial-gradient(560px 380px at 12% 88%, rgba(135,151,83,0.20), transparent 62%);
+      pointer-events:none; }
+    .hero-grid{ position:absolute; inset:0; opacity:.10; pointer-events:none;
+      background-image:linear-gradient(var(--teal-line) 1px, transparent 1px), linear-gradient(90deg, var(--teal-line) 1px, transparent 1px);
+      background-size:46px 46px; mask-image:radial-gradient(circle at 70% 20%, #000 0%, transparent 70%); -webkit-mask-image:radial-gradient(circle at 70% 20%, #000 0%, transparent 70%); }
+
+    /* Agent chat mock */
+    .chat{ background:var(--teal-elev); border:1px solid var(--teal-line); border-radius:1.1rem; overflow:hidden; box-shadow:0 30px 60px rgba(0,0,0,.45); }
+    .chat-head{ display:flex; align-items:center; gap:.55rem; padding:.9rem 1.1rem; border-bottom:1px solid var(--teal-line); background:rgba(14,31,36,0.4); }
+    .dot{ width:10px; height:10px; border-radius:99px; }
+    .bubble{ border-radius:.9rem; padding:.7rem .95rem; font-size:.92rem; line-height:1.5; max-width:88%; }
+    .bubble.user{ background:var(--green); color:var(--cream); margin-left:auto; border-bottom-right-radius:.2rem; }
+    .bubble.bot{ background:rgba(14,31,36,0.55); color:var(--cream-dim); border:1px solid var(--teal-line); border-bottom-left-radius:.2rem; }
+
+    /* Scrollytelling */
+    .scrolly-pin{ position:sticky; top:0; height:100vh; display:flex; align-items:flex-start; overflow:hidden; padding-top:6rem; box-sizing:border-box; }
+    .stage{ position:relative; width:100%; aspect-ratio:4/3; border-radius:1.1rem; overflow:hidden; border:1px solid var(--teal-line); background:var(--teal-elev); }
+    .stage img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .8s ease; }
+    .stage img.on{ opacity:1; }
+    .stage-veil{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(14,31,36,0.15), rgba(14,31,36,0.55)); }
+    .scan{ position:absolute; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,var(--olive-light),transparent); box-shadow:0 0 18px var(--olive-light); top:0; animation:scan 3.6s ease-in-out infinite; }
+    @keyframes scan{ 0%{top:6%;opacity:0;} 15%{opacity:1;} 85%{opacity:1;} 100%{top:94%;opacity:0;} }
+    .stage-cap{ position:absolute; left:1rem; bottom:1rem; right:1rem; }
+    .step{ opacity:.32; transition:opacity .4s, border-color .4s; border-left:2px solid var(--teal-line); padding-left:1.4rem; }
+    .step.active{ opacity:1; border-left-color:var(--olive-light); }
+    .step-n{ font-family:'Space Mono',monospace; font-size:.72rem; letter-spacing:.18em; color:var(--olive-light); }
+
+    /* Agent cards */
+    .agent-card{ background:var(--teal-elev); border:1px solid var(--teal-line); border-radius:1rem; padding:1.6rem; transition:transform .4s cubic-bezier(0.22,1,0.36,1), border-color .4s, box-shadow .4s; height:100%; }
+    .agent-card:hover{ transform:translateY(-6px); border-color:rgba(188,190,118,0.45); box-shadow:0 22px 46px rgba(0,0,0,0.42); }
+    .agent-badge{ display:inline-flex; align-items:center; gap:.5rem; font-family:'Space Mono',monospace; font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--olive-light); border:1px solid var(--teal-line); border-radius:99px; padding:.28rem .7rem; }
+    .cap-card{ background:rgba(255,255,255,0.55); border:1px solid rgba(14,31,36,0.10); border-radius:.9rem; padding:1.3rem; }
+    .icon-wrap{ width:3rem; height:3rem; border-radius:.7rem; display:flex; align-items:center; justify-content:center; background:rgba(66,99,49,0.12); color:var(--green); }
+    @media (max-width:1023px){ .scrolly-pin{ position:static; height:auto; display:block; padding-top:1.5rem; } .stage{ margin-bottom:2rem; } }
+    @media (prefers-reduced-motion: reduce){ .scan{ animation:none; display:none; } .animate-on-scroll{ opacity:1; transform:none; } }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="header-row w-full px-5 md:px-8 py-3 flex justify-between items-center">
+      <a href="../index.html" class="flex-shrink-0">
+        <img src="../assets/brand/logo_darwin.png" alt="Darwin Geospatial logo" class="h-10 md:h-[52px] w-auto">
+      </a>
+      <nav class="hidden md:flex space-x-8 items-center">
+        <a href="../index.html#about" class="nav-link text-[15px]" data-lang="es">Nosotros</a>
+        <a href="../index.html#about" class="nav-link text-[15px] hidden" data-lang="en">About</a>
+        <a href="../index.html#solutions" class="nav-link text-[15px]" data-lang="es">Soluciones</a>
+        <a href="../index.html#solutions" class="nav-link text-[15px] hidden" data-lang="en">Solutions</a>
+        <a href="../index.html#projects-hero" class="nav-link text-[15px]" data-lang="es">Proyectos</a>
+        <a href="../index.html#projects-hero" class="nav-link text-[15px] hidden" data-lang="en">Projects</a>
+        <a href="../index.html#team" class="nav-link text-[15px]" data-lang="es">Equipo</a>
+        <a href="../index.html#team" class="nav-link text-[15px] hidden" data-lang="en">Team</a>
+        <a href="../blog/" class="nav-link text-[15px]">Blog</a>
+        <a href="../index.html#contact" class="btn-accent px-5 py-2 rounded-full font-semibold text-sm" data-lang="es">Agenda una llamada</a>
+        <a href="../index.html#contact" class="btn-accent px-5 py-2 rounded-full font-semibold text-sm hidden" data-lang="en">Book a call</a>
+      </nav>
+      <div class="flex items-center">
+        <div class="lang-switcher font-mono text-sm ml-4">
+          <button id="lang-es" class="active">ES</button>
+          <span class="text-cream-faint">/</span>
+          <button id="lang-en">EN</button>
+        </div>
+        <button id="mobile-menu-button" class="md:hidden focus:outline-none ml-4">
+          <svg class="w-6 h-6 text-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 pt-2 border-t border-line bg-teal-deep">
+      <a href="../index.html#about" class="block py-2 text-cream-dim hover:text-cream" data-lang="es">Nosotros</a>
+      <a href="../index.html#about" class="block py-2 text-cream-dim hover:text-cream hidden" data-lang="en">About</a>
+      <a href="../index.html#solutions" class="block py-2 text-cream-dim hover:text-cream" data-lang="es">Soluciones</a>
+      <a href="../index.html#solutions" class="block py-2 text-cream-dim hover:text-cream hidden" data-lang="en">Solutions</a>
+      <a href="../index.html#projects-hero" class="block py-2 text-cream-dim hover:text-cream" data-lang="es">Proyectos</a>
+      <a href="../index.html#projects-hero" class="block py-2 text-cream-dim hover:text-cream hidden" data-lang="en">Projects</a>
+      <a href="../blog/" class="block py-2 text-cream-dim hover:text-cream">Blog</a>
+      <a href="../index.html#contact" class="block py-2 mt-2 btn-accent text-center px-5 py-2.5 rounded-full font-semibold text-sm" data-lang="es">Agenda una llamada</a>
+      <a href="../index.html#contact" class="block py-2 mt-2 btn-accent text-center px-5 py-2.5 rounded-full font-semibold text-sm hidden" data-lang="en">Book a call</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero-ai bg-teal-deep pt-32 pb-20 lg:pt-40 lg:pb-28">
+    <div class="hero-grid"></div>
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="animate-on-scroll">
+          <p class="eyebrow mb-6" data-lang="es">Para · ONG y conservación</p>
+          <p class="eyebrow mb-6 hidden" data-lang="en">For · NGOs &amp; conservation</p>
+          <h1 class="font-display uppercase text-cream leading-[0.95] mb-6" style="font-size:clamp(2.6rem,6vw,5rem);" data-lang="es">Demuestra tu impacto <span class="text-olive">a escala de paisaje</span></h1>
+          <h1 class="font-display uppercase text-cream leading-[0.95] mb-6 hidden" style="font-size:clamp(2.6rem,6vw,5rem);" data-lang="en">Prove your impact <span class="text-olive">at landscape scale</span></h1>
+          <p class="text-lg text-cream-dim leading-relaxed max-w-xl mb-8" data-lang="es">Ayudamos a organizaciones de conservación a monitorear hábitats, medir resultados y justificar financiación, con datos de satélite fiables y a bajo coste, sin montar un equipo técnico propio.</p>
+          <p class="text-lg text-cream-dim leading-relaxed max-w-xl mb-8 hidden" data-lang="en">We help conservation organizations monitor habitats, measure outcomes and justify funding, with reliable, low-cost satellite data, and without building an in-house technical team.</p>
+          <div class="flex flex-wrap gap-4">
+            <a href="../index.html#contact" class="btn-accent px-7 py-3.5 rounded-full font-semibold text-sm tracking-wide" data-lang="es">Agenda una llamada</a>
+            <a href="../index.html#contact" class="btn-accent px-7 py-3.5 rounded-full font-semibold text-sm tracking-wide hidden" data-lang="en">Book a call</a>
+            <a href="#help" class="btn-ghost px-7 py-3.5 rounded-full font-semibold text-sm tracking-wide" data-lang="es">Cómo ayudamos</a>
+            <a href="#help" class="btn-ghost px-7 py-3.5 rounded-full font-semibold text-sm tracking-wide hidden" data-lang="en">How we help</a>
+          </div>
+        </div>
+
+        <!-- Stage image card -->
+        <div class="animate-on-scroll">
+          <div class="stage">
+            <img class="on" src="../projects/habitat_hub/assets/banner.png" alt="">
+            <div class="stage-veil"></div>
+            <div class="scan"></div>
+            <div class="stage-cap">
+              <span class="agent-badge" data-lang="es">Monitoreo de hábitat</span>
+              <span class="agent-badge hidden" data-lang="en">Habitat monitoring</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The problem (light) -->
+  <section class="section-light section-rule py-20 lg:py-24">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mb-14 animate-on-scroll">
+        <p class="eyebrow mb-5" data-lang="es">Lo que os frena</p>
+        <p class="eyebrow mb-5 hidden" data-lang="en">What holds you back</p>
+        <h2 class="font-bold text-cream leading-tight" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="es">Quieres proteger un territorio. Demostrarlo con datos es otra historia.</h2>
+        <h2 class="font-bold text-cream leading-tight hidden" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="en">You want to protect a territory. Proving it with data is another story.</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="cap-card animate-on-scroll">
+          <h3 class="font-bold text-cream mb-2 text-lg" data-lang="es">El campo es caro y lento</h3>
+          <h3 class="font-bold text-cream mb-2 text-lg hidden" data-lang="en">Field work is slow and costly</h3>
+          <p class="text-cream-dim text-sm leading-relaxed" data-lang="es">Salir al terreno no escala con el presupuesto de una subvención. Cubrir un paisaje entero, año tras año, queda fuera de tu alcance.</p>
+          <p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">Field monitoring doesn't scale on a grant budget. Covering a whole landscape, year after year, stays out of reach.</p>
+        </div>
+        <div class="cap-card animate-on-scroll">
+          <h3 class="font-bold text-cream mb-2 text-lg" data-lang="es">Hay que demostrar resultados</h3>
+          <h3 class="font-bold text-cream mb-2 text-lg hidden" data-lang="en">You have to show results</h3>
+          <p class="text-cream-dim text-sm leading-relaxed" data-lang="es">Los financiadores quieren impacto medible y comparable en el tiempo, no buenas intenciones ni fotos sueltas.</p>
+          <p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">Funders want measurable, comparable impact over time, not good intentions or scattered photos.</p>
+        </div>
+        <div class="cap-card animate-on-scroll">
+          <h3 class="font-bold text-cream mb-2 text-lg" data-lang="es">Sin equipo técnico propio</h3>
+          <h3 class="font-bold text-cream mb-2 text-lg hidden" data-lang="en">No in-house technical team</h3>
+          <p class="text-cream-dim text-sm leading-relaxed" data-lang="es">No tienes capacidad de teledetección dentro de casa, y contratar un equipo GIS permanente no es una opción realista.</p>
+          <p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">You have no in-house remote-sensing capacity, and hiring a permanent GIS team is not a realistic option.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scrollytelling: from satellite to proof of impact -->
+  <section class="bg-teal-deep section-rule">
+    <div class="container mx-auto px-6 pt-20 lg:pt-28">
+      <div class="max-w-3xl animate-on-scroll">
+        <p class="eyebrow mb-5" data-lang="es">Del satélite a la evidencia de impacto</p>
+        <p class="eyebrow mb-5 hidden" data-lang="en">From satellite to proof of impact</p>
+        <h2 class="font-bold text-cream leading-tight mb-4" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="es">De una imagen de satélite a un informe que convence a un financiador</h2>
+        <h2 class="font-bold text-cream leading-tight mb-4 hidden" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="en">From a satellite image to a report that convinces a funder</h2>
+      </div>
+    </div>
+    <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-10 lg:gap-16 pb-20">
+      <!-- Sticky visual -->
+      <div>
+        <div class="scrolly-pin">
+          <div class="stage">
+            <img id="stg-0" class="on" src="../assets/hero/forest_rgb.jpg" alt="">
+            <img id="stg-1" src="../assets/hero/forest_seg.jpg" alt="">
+            <img id="stg-2" src="../assets/hero/habitat.webp" alt="">
+            <img id="stg-3" src="../assets/hero/ndvi.webp" alt="">
+            <div class="stage-veil"></div>
+            <div class="scan"></div>
+            <div class="stage-cap">
+              <span id="stg-cap" class="agent-badge">01 · Área y línea base</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Steps -->
+      <div class="pt-4 lg:pt-28 space-y-10 lg:space-y-24">
+        <div class="step active" data-step="0">
+          <p class="step-n mb-2">01</p>
+          <h3 class="font-bold text-cream text-xl lg:text-2xl mb-2" data-lang="es">Definimos el área y la línea base</h3>
+          <h3 class="font-bold text-cream text-xl lg:text-2xl mb-2 hidden" data-lang="en">We define the area and the baseline</h3>
+          <p class="text-cream-dim leading-relaxed" data-lang="es">Delimitamos tu territorio y fijamos un punto de partida claro con imágenes de satélite: así todo lo que venga después se puede comparar.</p>
+          <p class="text-cream-dim leading-relaxed hidden" data-lang="en">We delimit your territory and set a clear starting point from satellite imagery, so everything that follows can be compared.</p>
+        </div>
+        <div class="step" data-step="1">
+          <p class="step-n mb-2">02</p>
+          <h3 class="font-bold text-cream text-xl lg:text-2xl mb-2" data-lang="es">Monitoreamos hábitat y cambio</h3>
+          <h3 class="font-bold text-cream text-xl lg:text-2xl mb-2 hidden" data-lang="en">We monitor habitat and change</h3>
+          <p class="text-cream-dim leading-relaxed" data-lang="es">Nuestros modelos segmentan el paisaje y detectan cómo evoluciona: qué hábitats se mantienen, cuáles se degradan y dónde hay presión.</p>
+          <p class="text-cream-dim leading-relaxed hidden" data-lang="en">Our models segment the landscape and track how it evolves: which habitats hold, which degrade and where the pressure is.</p>
+        </div>
+        <div class="step" data-step="2">
+          <p class="step-n mb-2">03</p>
+          <h3 class="font-bold text-cream text-xl lg:text-2xl mb-2" data-lang="es">Medimos el resultado en el tiempo</h3>
+          <h3 class="font-bold text-cream text-xl lg:text-2xl mb-2 hidden" data-lang="en">We measure the outcome over time</h3>
+          <p class="text-cream-dim leading-relaxed" data-lang="es">Traducimos las imágenes en indicadores comparables año tras año, con números que respaldan lo que ves sobre el terreno.</p>
+          <p class="text-cream-dim leading-relaxed hidden" data-lang="en">We turn the imagery into indicators comparable year after year, with numbers that back up what you see on the ground.</p>
+        </div>
+        <div class="step" data-step="3">
+          <p class="step-n mb-2">04</p>
+          <h3 class="font-bold text-cream text-xl lg:text-2xl mb-2" data-lang="es">Informe listo para financiadores</h3>
+          <h3 class="font-bold text-cream text-xl lg:text-2xl mb-2 hidden" data-lang="en">A report ready for funders</h3>
+          <p class="text-cream-dim leading-relaxed" data-lang="es">Entregamos mapas y evidencia clara y visual, lista para memorias, solicitudes de subvención y rendición de cuentas.</p>
+          <p class="text-cream-dim leading-relaxed hidden" data-lang="en">We deliver maps and clear, visual evidence, ready for reports, grant applications and accountability.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What we help with -->
+  <section id="help" class="bg-teal-base section-rule py-20 lg:py-28">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mb-14 animate-on-scroll">
+        <p class="eyebrow mb-5" data-lang="es">En qué te ayudamos</p>
+        <p class="eyebrow mb-5 hidden" data-lang="en">What we help with</p>
+        <h2 class="font-bold text-cream leading-tight mb-4" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="es">Datos geoespaciales al servicio de la conservación</h2>
+        <h2 class="font-bold text-cream leading-tight mb-4 hidden" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="en">Geospatial data in the service of conservation</h2>
+        <p class="text-cream-dim leading-relaxed" data-lang="es">Trabajamos como tu socio técnico: ponemos el satélite, los modelos y los informes, y tú te centras en el terreno y en tu misión.</p>
+        <p class="text-cream-dim leading-relaxed hidden" data-lang="en">We work as your technical partner: we bring the satellites, the models and the reports, and you focus on the field and on your mission.</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <a href="https://storage.googleapis.com/openpas-hdh-test-exports/web-test/index.html" target="_blank" rel="noopener" class="agent-card animate-on-scroll block">
+          <div class="stage mb-5" style="aspect-ratio:16/9;">
+            <img class="on" src="../assets/hero/habitat.webp" alt="">
+            <div class="stage-veil"></div>
+          </div>
+          <h3 class="font-display uppercase text-cream text-3xl mb-2">Estado de conservación de hábitats</h3>
+          <p class="text-cream-dim leading-relaxed text-sm" data-lang="es">Seguimiento del estado de hábitats Natura 2000, pastizales y bosques a partir de imágenes de satélite.</p>
+          <p class="text-cream-dim leading-relaxed text-sm hidden" data-lang="en">Tracking the condition of Natura 2000 habitats, grasslands and forests from satellite imagery.</p>
+        </a>
+        <div class="agent-card animate-on-scroll">
+          <div class="stage mb-5" style="aspect-ratio:16/9;">
+            <img class="on" src="../assets/hero/forest_seg.jpg" alt="">
+            <div class="stage-veil"></div>
+          </div>
+          <h3 class="font-display uppercase text-cream text-3xl mb-2">Monitoreo de restauración</h3>
+          <p class="text-cream-dim leading-relaxed text-sm" data-lang="es">Verifica que la naturaleza se recupera y que tus acciones de restauración funcionan, con evidencia año tras año.</p>
+          <p class="text-cream-dim leading-relaxed text-sm hidden" data-lang="en">Verify that nature is recovering and that your restoration work is paying off, with evidence year after year.</p>
+        </div>
+        <a href="https://endworldhungerohio.com/" target="_blank" rel="noopener" class="agent-card animate-on-scroll block">
+          <div class="stage mb-5" style="aspect-ratio:16/9;">
+            <img class="on" src="../projects/habitat_hub/assets/banner.png" alt="">
+            <div class="stage-veil"></div>
+          </div>
+          <h3 class="font-display uppercase text-cream text-3xl mb-2">Adaptación climática comunitaria</h3>
+          <p class="text-cream-dim leading-relaxed text-sm" data-lang="es">Somos tu socio de monitoreo geoespacial para programas de comunidad y clima, con datos que acompañan a las personas.</p>
+          <p class="text-cream-dim leading-relaxed text-sm hidden" data-lang="en">We are your geospatial monitoring partner for community and climate programs, with data that stands beside people.</p>
+        </a>
+        <div class="agent-card animate-on-scroll">
+          <div class="stage mb-5" style="aspect-ratio:16/9;">
+            <img class="on" src="../assets/hero/ndvi.webp" alt="">
+            <div class="stage-veil"></div>
+          </div>
+          <h3 class="font-display uppercase text-cream text-3xl mb-2">Informes para financiadores</h3>
+          <p class="text-cream-dim leading-relaxed text-sm" data-lang="es">Evidencia clara y visual para justificar subvenciones y rendir cuentas ante quien financia tu trabajo.</p>
+          <p class="text-cream-dim leading-relaxed text-sm hidden" data-lang="en">Clear, visual evidence to justify grants and account for your work to those who fund it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Real example (light) -->
+  <section class="section-light section-rule py-20 lg:py-24">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl animate-on-scroll">
+        <p class="eyebrow mb-5" data-lang="es">Trabajo real</p>
+        <p class="eyebrow mb-5 hidden" data-lang="en">Real work</p>
+        <h2 class="font-bold text-cream leading-tight mb-6" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="es">Ya lo estamos haciendo</h2>
+        <h2 class="font-bold text-cream leading-tight mb-6 hidden" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="en">We are already doing this</h2>
+        <p class="text-cream-dim leading-relaxed" data-lang="es">Con OpenPAS trabajamos en el estado de conservación de pastizales Natura 2000, midiendo cómo evolucionan estos hábitats a partir de datos de satélite. Y somos socio de monitoreo de <a href="https://endworldhungerohio.com/" target="_blank" rel="noopener" class="text-olive underline">End World Hunger Ohio</a> para un programa de huertos comunitarios y adaptación climática. Son proyectos modestos, pero reales, y muestran cómo aplicamos los mismos datos a causas muy distintas.</p>
+        <p class="text-cream-dim leading-relaxed hidden" data-lang="en">With OpenPAS we work on the conservation status of Natura 2000 grasslands, measuring how these habitats evolve from satellite data. And we are the monitoring partner of <a href="https://endworldhungerohio.com/" target="_blank" rel="noopener" class="text-olive underline">End World Hunger Ohio</a> for a community gardens and climate adaptation program. These are modest but real projects, and they show how we apply the same data to very different causes.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-teal-deep section-rule py-20 lg:py-28">
+    <div class="container mx-auto px-6 text-center max-w-2xl">
+      <p class="eyebrow justify-center mb-6 animate-on-scroll" data-lang="es">El siguiente paso</p>
+      <p class="eyebrow justify-center mb-6 animate-on-scroll hidden" data-lang="en">Next step</p>
+      <h2 class="font-display uppercase text-cream leading-none mb-6 animate-on-scroll" style="font-size:clamp(2.2rem,5vw,4rem);" data-lang="es">¿Qué quieres demostrar?</h2>
+      <h2 class="font-display uppercase text-cream leading-none mb-6 animate-on-scroll hidden" style="font-size:clamp(2.2rem,5vw,4rem);" data-lang="en">What do you want to prove?</h2>
+      <p class="text-cream-dim leading-relaxed mb-9 animate-on-scroll" data-lang="es">Cuéntanos qué territorio proteges y qué necesitas demostrar. En una llamada te decimos qué datos podemos poner detrás de tu impacto.</p>
+      <p class="text-cream-dim leading-relaxed mb-9 animate-on-scroll hidden" data-lang="en">Tell us what territory you protect and what you need to prove. In one call we'll tell you what data we can put behind your impact.</p>
+      <a href="../index.html#contact" class="btn-accent inline-block px-8 py-3.5 rounded-full text-sm font-semibold tracking-wide animate-on-scroll" data-lang="es">Agenda una llamada</a>
+      <a href="../index.html#contact" class="btn-accent inline-block px-8 py-3.5 rounded-full text-sm font-semibold tracking-wide animate-on-scroll hidden" data-lang="en">Book a call</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-teal-deep section-rule py-12">
+    <div class="container mx-auto px-6 text-center">
+      <img src="../assets/brand/logo_darwin.png" alt="Darwin Geospatial logo" class="h-14 w-auto mx-auto mb-4">
+      <p class="text-cream-dim text-sm" data-lang="es">&copy; 2026 Darwin Geospatial. Todos los derechos reservados.</p>
+      <p class="text-cream-dim text-sm hidden" data-lang="en">&copy; 2026 Darwin Geospatial. All rights reserved.</p>
+      <p class="text-cream-faint text-xs mt-2">
+        <a href="../privacy.html" class="underline hover:text-cream transition" data-lang="es">Política de Privacidad</a>
+        <a href="../privacy.html" class="underline hover:text-cream transition hidden" data-lang="en">Privacy Policy</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="../lang.js"></script>
+  <script>
+    (function(){
+      var h = document.getElementById('header');
+      if (h) window.addEventListener('scroll', function(){ h.classList.toggle('scrolled', window.scrollY > 20); }, {passive:true});
+
+      // Scrollytelling: activate steps + swap sticky visual
+      var steps = Array.prototype.slice.call(document.querySelectorAll('.step'));
+      var imgs = ['stg-0','stg-1','stg-2','stg-3'].map(function(id){ return document.getElementById(id); });
+      var caps = {
+        0:['01 · Área y línea base','01 · Area & baseline'],
+        1:['02 · Hábitat y cambio','02 · Habitat & change'],
+        2:['03 · Resultado en el tiempo','03 · Outcome over time'],
+        3:['04 · Informe','04 · Report']
+      };
+      var capEl = document.getElementById('stg-cap');
+      function activate(n){
+        steps.forEach(function(s){ s.classList.toggle('active', +s.dataset.step === n); });
+        imgs.forEach(function(im,i){ if(im) im.classList.toggle('on', i === n); });
+        if (capEl){ var lang = document.documentElement.lang === 'en' ? 1 : 0; capEl.textContent = caps[n][lang]; }
+      }
+      if ('IntersectionObserver' in window){
+        var obs = new IntersectionObserver(function(entries){
+          entries.forEach(function(e){ if (e.isIntersecting) activate(+e.target.dataset.step); });
+        }, {threshold: 0.6, rootMargin: '-20% 0px -30% 0px'});
+        steps.forEach(function(s){ obs.observe(s); });
+      }
+    })();
+  </script>
+</body>
+</html>

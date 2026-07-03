@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Software para la naturaleza — Darwin Geospatial</title>
+
+  <meta name="description" content="Construimos plataformas, visores y pipelines a medida para el trabajo ambiental: rápidos, robustos y usables por cualquiera del equipo. Más de 600.000 líneas de código al servicio de la naturaleza."/>
+  <link rel="canonical" href="https://darwingeospatial.com/solutions/software-for-nature.html"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Software para la naturaleza — Darwin Geospatial"/>
+  <meta property="og:description" content="Plataformas, visores y pipelines a medida para el trabajo ambiental."/>
+  <meta property="og:url" content="https://darwingeospatial.com/solutions/software-for-nature.html"/>
+  <meta property="og:site_name" content="Darwin Geospatial"/>
+  <link rel="icon" href="../favicon.ico?v=2" sizes="any"/>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../analytics.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --teal-deep:#0e1f24; --teal-base:#1b373f; --teal-elev:#213f47; --teal-line:#2e525b;
+      --green:#426331; --green-soft:#5a8045; --olive:#879753; --olive-light:#bcbe76;
+      --cream:#fcf5e3; --cream-dim:rgba(252,245,227,0.66); --cream-faint:rgba(252,245,227,0.42);
+    }
+    html, body { background-color: var(--teal-deep); }
+    body { font-family:'Inter',sans-serif; color:var(--cream); -webkit-font-smoothing:antialiased; }
+    .font-display{ font-family:'Bebas Neue',sans-serif; letter-spacing:.01em; }
+    .font-mono{ font-family:'Space Mono',monospace; }
+    .eyebrow{ display:inline-flex; align-items:center; gap:.6rem; font-family:'Inter',sans-serif; font-weight:600; font-size:.8rem; letter-spacing:.2em; text-transform:uppercase; color:var(--olive-light); }
+    .eyebrow::before{ content:""; width:26px; height:1px; background:var(--olive-light); opacity:.7; }
+    .text-cream{color:var(--cream);} .text-cream-dim{color:var(--cream-dim);} .text-cream-faint{color:var(--cream-faint);}
+    .text-olive{color:var(--olive-light);}
+    .bg-teal-deep{background-color:var(--teal-deep);} .bg-teal-base{background-color:var(--teal-base);} .bg-teal-elev{background-color:var(--teal-elev);}
+    .border-line{border-color:var(--teal-line);}
+    .section-rule{ border-top:1px solid var(--teal-line); }
+
+    /* Light section remap */
+    .section-light{ background:var(--cream); color:var(--teal-deep); }
+    .section-light .eyebrow{ color:var(--green); } .section-light .eyebrow::before{ background:var(--green); }
+    .section-light .text-cream{ color:var(--teal-deep) !important; }
+    .section-light .text-cream-dim{ color:rgba(14,31,36,0.66) !important; }
+    .section-light .text-olive{ color:var(--green) !important; }
+
+    .lang-switcher button{ color:var(--cream-faint); transition:color .2s; }
+    .lang-switcher button.active{ color:var(--olive-light); font-weight:700; }
+
+    #header{ background-color:rgba(14,31,36,0.72); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid transparent; transition:background-color .3s ease, border-color .3s ease; }
+    #header.scrolled{ background-color:rgba(14,31,36,0.92); border-bottom-color:var(--teal-line); }
+    .header-row{ background:linear-gradient(90deg,#d7d3b9 0,#d7d3b9 190px,transparent 380px); }
+    .nav-link{ color:var(--cream-dim); font-weight:500; transition:color .25s; position:relative; }
+    .nav-link:hover{ color:var(--cream); } .nav-link.active{ color:var(--olive-light); }
+    .nav-link::after{ content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:var(--olive-light); transition:width .3s ease; }
+    .nav-link:hover::after{ width:100%; }
+    .btn-accent{ background-color:var(--green); color:var(--cream); border:1px solid transparent; transition:background-color .25s, transform .25s, box-shadow .25s; }
+    .btn-accent:hover{ background-color:var(--green-soft); transform:translateY(-1px); box-shadow:0 8px 24px rgba(90,128,69,0.3); }
+    .btn-ghost{ background:transparent; color:var(--cream); border:1px solid var(--teal-line); transition:border-color .25s, background-color .25s, transform .25s; }
+    .btn-ghost:hover{ border-color:var(--olive-light); background:rgba(188,190,118,0.08); transform:translateY(-1px); }
+
+    .animate-on-scroll{ opacity:0; transform:translateY(30px); transition:opacity .7s cubic-bezier(0.22,1,0.36,1), transform .7s cubic-bezier(0.22,1,0.36,1); }
+    .animate-on-scroll.is-visible{ opacity:1; transform:translateY(0); }
+
+    /* Hero */
+    .hero-ai{ position:relative; overflow:hidden; }
+    .hero-ai::before{ content:""; position:absolute; inset:0;
+      background:
+        radial-gradient(680px 420px at 78% 12%, rgba(66,99,49,0.42), transparent 60%),
+        radial-gradient(560px 380px at 12% 88%, rgba(135,151,83,0.20), transparent 62%);
+      pointer-events:none; }
+    .hero-grid{ position:absolute; inset:0; opacity:.10; pointer-events:none;
+      background-image:linear-gradient(var(--teal-line) 1px, transparent 1px), linear-gradient(90deg, var(--teal-line) 1px, transparent 1px);
+      background-size:46px 46px; mask-image:radial-gradient(circle at 70% 20%, #000 0%, transparent 70%); -webkit-mask-image:radial-gradient(circle at 70% 20%, #000 0%, transparent 70%); }
+
+    /* Agent chat mock */
+    .chat{ background:var(--teal-elev); border:1px solid var(--teal-line); border-radius:1.1rem; overflow:hidden; box-shadow:0 30px 60px rgba(0,0,0,.45); }
+    .chat-head{ display:flex; align-items:center; gap:.55rem; padding:.9rem 1.1rem; border-bottom:1px solid var(--teal-line); background:rgba(14,31,36,0.4); }
+    .dot{ width:10px; height:10px; border-radius:99px; }
+    .bubble{ border-radius:.9rem; padding:.7rem .95rem; font-size:.92rem; line-height:1.5; max-width:88%; }
+    .bubble.user{ background:var(--green); color:var(--cream); margin-left:auto; border-bottom-right-radius:.2rem; }
+    .bubble.bot{ background:rgba(14,31,36,0.55); color:var(--cream-dim); border:1px solid var(--teal-line); border-bottom-left-radius:.2rem; }
+
+    /* Scrollytelling */
+    .scrolly-pin{ position:sticky; top:0; height:100vh; display:flex; align-items:flex-start; overflow:hidden; padding-top:6rem; box-sizing:border-box; }
+    .stage{ position:relative; width:100%; aspect-ratio:4/3; border-radius:1.1rem; overflow:hidden; border:1px solid var(--teal-line); background:var(--teal-elev); }
+    .stage img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .8s ease; }
+    .stage img.on{ opacity:1; }
+    .stage-veil{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(14,31,36,0.15), rgba(14,31,36,0.55)); }
+    .scan{ position:absolute; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,var(--olive-light),transparent); box-shadow:0 0 18px var(--olive-light); top:0; animation:scan 3.6s ease-in-out infinite; }
+    @keyframes scan{ 0%{top:6%;opacity:0;} 15%{opacity:1;} 85%{opacity:1;} 100%{top:94%;opacity:0;} }
+    .stage-cap{ position:absolute; left:1rem; bottom:1rem; right:1rem; }
+    .step{ opacity:.32; transition:opacity .4s, border-color .4s; border-left:2px solid var(--teal-line); padding-left:1.4rem; }
+    .step.active{ opacity:1; border-left-color:var(--olive-light); }
+    .step-n{ font-family:'Space Mono',monospace; font-size:.72rem; letter-spacing:.18em; color:var(--olive-light); }
+
+    /* Agent cards */
+    .agent-card{ background:var(--teal-elev); border:1px solid var(--teal-line); border-radius:1rem; padding:1.6rem; transition:transform .4s cubic-bezier(0.22,1,0.36,1), border-color .4s, box-shadow .4s; height:100%; }
+    .agent-card:hover{ transform:translateY(-6px); border-color:rgba(188,190,118,0.45); box-shadow:0 22px 46px rgba(0,0,0,0.42); }
+    .agent-badge{ display:inline-flex; align-items:center; gap:.5rem; font-family:'Space Mono',monospace; font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--olive-light); border:1px solid var(--teal-line); border-radius:99px; padding:.28rem .7rem; }
+    .cap-card{ background:rgba(255,255,255,0.55); border:1px solid rgba(14,31,36,0.10); border-radius:.9rem; padding:1.3rem; }
+    .icon-wrap{ width:3rem; height:3rem; border-radius:.7rem; display:flex; align-items:center; justify-content:center; background:rgba(66,99,49,0.12); color:var(--green); }
+    @media (max-width:1023px){ .scrolly-pin{ position:static; height:auto; display:block; padding-top:1.5rem; } .stage{ margin-bottom:2rem; } }
+    @media (prefers-reduced-motion: reduce){ .scan{ animation:none; display:none; } .animate-on-scroll{ opacity:1; transform:none; } }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="header-row w-full px-5 md:px-8 py-3 flex justify-between items-center">
+      <a href="../index.html" class="flex-shrink-0">
+        <img src="../assets/brand/logo_darwin.png" alt="Darwin Geospatial logo" class="h-10 md:h-[52px] w-auto">
+      </a>
+      <nav class="hidden md:flex space-x-8 items-center">
+        <a href="../index.html#about" class="nav-link text-[15px]" data-lang="es">Nosotros</a>
+        <a href="../index.html#about" class="nav-link text-[15px] hidden" data-lang="en">About</a>
+        <a href="../index.html#solutions" class="nav-link text-[15px]" data-lang="es">Soluciones</a>
+        <a href="../index.html#solutions" class="nav-link text-[15px] hidden" data-lang="en">Solutions</a>
+        <a href="../index.html#projects-hero" class="nav-link text-[15px]" data-lang="es">Proyectos</a>
+        <a href="../index.html#projects-hero" class="nav-link text-[15px] hidden" data-lang="en">Projects</a>
+        <a href="../index.html#team" class="nav-link text-[15px]" data-lang="es">Equipo</a>
+        <a href="../index.html#team" class="nav-link text-[15px] hidden" data-lang="en">Team</a>
+        <a href="../blog/" class="nav-link text-[15px]">Blog</a>
+        <a href="../index.html#contact" class="btn-accent px-5 py-2 rounded-full font-semibold text-sm" data-lang="es">Agenda una llamada</a>
+        <a href="../index.html#contact" class="btn-accent px-5 py-2 rounded-full font-semibold text-sm hidden" data-lang="en">Book a call</a>
+      </nav>
+      <div class="flex items-center">
+        <div class="lang-switcher font-mono text-sm ml-4">
+          <button id="lang-es" class="active">ES</button>
+          <span class="text-cream-faint">/</span>
+          <button id="lang-en">EN</button>
+        </div>
+        <button id="mobile-menu-button" class="md:hidden focus:outline-none ml-4">
+          <svg class="w-6 h-6 text-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 pt-2 border-t border-line bg-teal-deep">
+      <a href="../index.html#about" class="block py-2 text-cream-dim hover:text-cream" data-lang="es">Nosotros</a>
+      <a href="../index.html#about" class="block py-2 text-cream-dim hover:text-cream hidden" data-lang="en">About</a>
+      <a href="../index.html#solutions" class="block py-2 text-cream-dim hover:text-cream" data-lang="es">Soluciones</a>
+      <a href="../index.html#solutions" class="block py-2 text-cream-dim hover:text-cream hidden" data-lang="en">Solutions</a>
+      <a href="../index.html#projects-hero" class="block py-2 text-cream-dim hover:text-cream" data-lang="es">Proyectos</a>
+      <a href="../index.html#projects-hero" class="block py-2 text-cream-dim hover:text-cream hidden" data-lang="en">Projects</a>
+      <a href="../blog/" class="block py-2 text-cream-dim hover:text-cream">Blog</a>
+      <a href="../index.html#contact" class="block py-2 mt-2 btn-accent text-center px-5 py-2.5 rounded-full font-semibold text-sm" data-lang="es">Agenda una llamada</a>
+      <a href="../index.html#contact" class="block py-2 mt-2 btn-accent text-center px-5 py-2.5 rounded-full font-semibold text-sm hidden" data-lang="en">Book a call</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero-ai bg-teal-deep pt-32 pb-20 lg:pt-40 lg:pb-28">
+    <div class="hero-grid"></div>
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="animate-on-scroll">
+          <p class="eyebrow mb-6" data-lang="es">Solución · Software para la naturaleza</p>
+          <p class="eyebrow mb-6 hidden" data-lang="en">Solution · Software for nature</p>
+          <h1 class="font-display uppercase text-cream leading-[0.95] mb-6" style="font-size:clamp(2.6rem,6vw,5rem);" data-lang="es">Software hecho <span class="text-olive">para el terreno</span></h1>
+          <h1 class="font-display uppercase text-cream leading-[0.95] mb-6 hidden" style="font-size:clamp(2.6rem,6vw,5rem);" data-lang="en">Software built <span class="text-olive">for the field</span></h1>
+          <p class="text-lg text-cream-dim leading-relaxed max-w-xl mb-8" data-lang="es">Construimos plataformas, visores y pipelines a medida para el trabajo ambiental: rápidos, robustos y usables por cualquiera del equipo. Más de 600.000 líneas de código al servicio de la naturaleza.</p>
+          <p class="text-lg text-cream-dim leading-relaxed max-w-xl mb-8 hidden" data-lang="en">We build bespoke platforms, viewers and pipelines for environmental work: fast, robust and usable by anyone on the team. More than 600,000 lines of code in the service of nature.</p>
+          <div class="flex flex-wrap gap-4">
+            <a href="../index.html#contact" class="btn-accent px-7 py-3.5 rounded-full font-semibold text-sm tracking-wide" data-lang="es">Agenda una llamada</a>
+            <a href="../index.html#contact" class="btn-accent px-7 py-3.5 rounded-full font-semibold text-sm tracking-wide hidden" data-lang="en">Book a call</a>
+            <a href="#projects" class="btn-ghost px-7 py-3.5 rounded-full font-semibold text-sm tracking-wide" data-lang="es">Ver proyectos</a>
+            <a href="#projects" class="btn-ghost px-7 py-3.5 rounded-full font-semibold text-sm tracking-wide hidden" data-lang="en">See projects</a>
+          </div>
+        </div>
+
+        <!-- Stage image card -->
+        <div class="animate-on-scroll">
+          <div class="stage">
+            <img class="on" src="../projects/darwin_visor/assets/banner.jpeg" alt="Visor de datos geoespaciales">
+            <div class="stage-veil"></div>
+            <div class="scan"></div>
+            <div class="stage-cap">
+              <span class="agent-badge" data-lang="es">Visor de datos geoespaciales</span>
+              <span class="agent-badge hidden" data-lang="en">Geospatial data viewer</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The problem (light) -->
+  <section class="section-light section-rule py-20 lg:py-24">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mb-14 animate-on-scroll">
+        <p class="eyebrow mb-5" data-lang="es">El problema</p>
+        <p class="eyebrow mb-5 hidden" data-lang="en">The problem</p>
+        <h2 class="font-bold text-cream leading-tight" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="es">Tienes los datos. Falta una herramienta que tu equipo use de verdad.</h2>
+        <h2 class="font-bold text-cream leading-tight hidden" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="en">You have the data. What's missing is a tool your team actually uses.</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="cap-card animate-on-scroll">
+          <h3 class="font-bold text-cream mb-2 text-lg" data-lang="es">Herramientas genéricas que no encajan</h3>
+          <h3 class="font-bold text-cream mb-2 text-lg hidden" data-lang="en">Generic tools that don't fit</h3>
+          <p class="text-cream-dim text-sm leading-relaxed" data-lang="es">El GIS de estantería es pesado y genérico: pagas por cientos de funciones y usas cuatro, y ninguna encaja con tu flujo real.</p>
+          <p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">Off-the-shelf GIS is heavy and generic: you pay for hundreds of features and use four, and none fit your real workflow.</p>
+        </div>
+        <div class="cap-card animate-on-scroll">
+          <h3 class="font-bold text-cream mb-2 text-lg" data-lang="es">Datos atascados en formatos técnicos</h3>
+          <h3 class="font-bold text-cream mb-2 text-lg hidden" data-lang="en">Data locked in technical formats</h3>
+          <p class="text-cream-dim text-sm leading-relaxed" data-lang="es">Shapefiles, GeoTIFF, tablas enormes: información valiosa encerrada en formatos que casi nadie del equipo puede abrir.</p>
+          <p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">Shapefiles, GeoTIFF, huge tables: valuable information trapped in formats almost no one on the team can open.</p>
+        </div>
+        <div class="cap-card animate-on-scroll">
+          <h3 class="font-bold text-cream mb-2 text-lg" data-lang="es">Dependes de un experto para todo</h3>
+          <h3 class="font-bold text-cream mb-2 text-lg hidden" data-lang="en">You depend on an expert for everything</h3>
+          <p class="text-cream-dim text-sm leading-relaxed" data-lang="es">Cada consulta pasa por un especialista. El cuello de botella no son los datos, es tener que pedirlos siempre a la misma persona.</p>
+          <p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">Every query goes through a specialist. The bottleneck isn't the data, it's always having to ask the same person for it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scrollytelling: from raw data to a usable tool -->
+  <section class="bg-teal-deep section-rule">
+    <div class="container mx-auto px-6 pt-20 lg:pt-28">
+      <div class="max-w-3xl animate-on-scroll">
+        <p class="eyebrow mb-5" data-lang="es">Cómo construimos</p>
+        <p class="eyebrow mb-5 hidden" data-lang="en">How we build</p>
+        <h2 class="font-bold text-cream leading-tight mb-4" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="es">De datos crudos a una herramienta que se usa</h2>
+        <h2 class="font-bold text-cream leading-tight mb-4 hidden" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="en">From raw data to a tool people actually use</h2>
+      </div>
+    </div>
+    <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-10 lg:gap-16 pb-20">
+      <!-- Sticky visual -->
+      <div>
+        <div class="scrolly-pin">
+          <div class="stage">
+            <img id="stg-0" class="on" src="../projects/darwin_visor/assets/banner.jpeg" alt="">
+            <img id="stg-1" src="../projects/darwin_maps/assets/background_darwin_maps.png" alt="">
+            <img id="stg-2" src="../assets/services/software_new.png" alt="">
+            <img id="stg-3" src="../projects/guadarramaski/assets/banner.jpg" alt="">
+            <div class="stage-veil"></div>
+            <div class="scan"></div>
+            <div class="stage-cap">
+              <span id="stg-cap" class="agent-badge">01 · Ingesta y limpieza</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Steps -->
+      <div class="pt-4 lg:pt-28 space-y-10 lg:space-y-24">
+        <div class="step active" data-step="0">
+          <p class="step-n mb-2">01</p>
+          <h3 class="font-bold text-cream text-xl lg:text-2xl mb-2" data-lang="es">Ingesta y limpieza de datos</h3>
+          <h3 class="font-bold text-cream text-xl lg:text-2xl mb-2 hidden" data-lang="en">Data ingestion and cleaning</h3>
+          <p class="text-cream-dim leading-relaxed" data-lang="es">Recogemos satélite, LiDAR, clima, catastro y tus propias capas, y los dejamos limpios, alineados y listos para trabajar.</p>
+          <p class="text-cream-dim leading-relaxed hidden" data-lang="en">We gather satellite, LiDAR, climate, cadastre and your own layers, and leave them clean, aligned and ready to work with.</p>
+        </div>
+        <div class="step" data-step="1">
+          <p class="step-n mb-2">02</p>
+          <h3 class="font-bold text-cream text-xl lg:text-2xl mb-2" data-lang="es">Modelos y pipelines</h3>
+          <h3 class="font-bold text-cream text-xl lg:text-2xl mb-2 hidden" data-lang="en">Models and pipelines</h3>
+          <p class="text-cream-dim leading-relaxed" data-lang="es">Procesamiento reproducible en Earth Engine y Python: modelos que clasifican, miden y actualizan solos, sin trabajo manual.</p>
+          <p class="text-cream-dim leading-relaxed hidden" data-lang="en">Reproducible processing in Earth Engine and Python: models that classify, measure and update on their own, with no manual work.</p>
+        </div>
+        <div class="step" data-step="2">
+          <p class="step-n mb-2">03</p>
+          <h3 class="font-bold text-cream text-xl lg:text-2xl mb-2" data-lang="es">Visor o API a medida</h3>
+          <h3 class="font-bold text-cream text-xl lg:text-2xl mb-2 hidden" data-lang="en">Bespoke viewer or API</h3>
+          <p class="text-cream-dim leading-relaxed" data-lang="es">Envolvemos los datos en una interfaz clara o una API limpia, diseñada alrededor de las preguntas que realmente te haces.</p>
+          <p class="text-cream-dim leading-relaxed hidden" data-lang="en">We wrap the data in a clear interface or a clean API, designed around the questions you actually ask.</p>
+        </div>
+        <div class="step" data-step="3">
+          <p class="step-n mb-2">04</p>
+          <h3 class="font-bold text-cream text-xl lg:text-2xl mb-2" data-lang="es">Tu equipo lo usa sin código</h3>
+          <h3 class="font-bold text-cream text-xl lg:text-2xl mb-2 hidden" data-lang="en">Your team uses it without code</h3>
+          <p class="text-cream-dim leading-relaxed" data-lang="es">Cualquiera del equipo consulta, exporta y decide por su cuenta. La herramienta deja de depender de una sola persona.</p>
+          <p class="text-cream-dim leading-relaxed hidden" data-lang="en">Anyone on the team can query, export and decide on their own. The tool no longer depends on a single person.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project showcase -->
+  <section id="projects" class="bg-teal-base section-rule py-20 lg:py-28">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mb-14 animate-on-scroll">
+        <p class="eyebrow mb-5" data-lang="es">Proyectos reales</p>
+        <p class="eyebrow mb-5 hidden" data-lang="en">Real projects</p>
+        <h2 class="font-bold text-cream leading-tight mb-4" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="es">Software que ya está en producción</h2>
+        <h2 class="font-bold text-cream leading-tight mb-4 hidden" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="en">Software already in production</h2>
+        <p class="text-cream-dim leading-relaxed" data-lang="es">Cada proyecto empezó como una necesidad concreta y terminó como una herramienta viva que la gente usa cada día.</p>
+        <p class="text-cream-dim leading-relaxed hidden" data-lang="en">Each project started as a concrete need and ended as a living tool people use every day.</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Darwin Visor -->
+        <div class="agent-card animate-on-scroll" style="padding:0; overflow:hidden;">
+          <img src="../projects/darwin_visor/assets/banner2.jpeg" alt="Darwin Visor" class="w-full h-52 object-cover">
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-4">
+              <span class="agent-badge">Darwin Visor</span>
+              <span class="font-mono text-xs text-cream-faint">visor</span>
+            </div>
+            <h3 class="font-display uppercase text-cream text-3xl mb-2">Darwin Visor</h3>
+            <p class="text-cream-dim leading-relaxed text-sm" data-lang="es">Exporta datos geoespaciales sin escribir una línea de código.</p>
+            <p class="text-cream-dim leading-relaxed text-sm hidden" data-lang="en">Export geospatial data without writing a single line of code.</p>
+          </div>
+        </div>
+        <!-- Darwin Maps -->
+        <a href="https://darwinmaps.web.app/" target="_blank" rel="noopener" class="agent-card animate-on-scroll block" style="padding:0; overflow:hidden;">
+          <img src="../projects/darwin_maps/assets/darwin_geo_ai.png" alt="Darwin Maps" class="w-full h-52 object-cover">
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-4">
+              <span class="agent-badge">Darwin Maps</span>
+              <span class="font-mono text-xs text-cream-faint">darwinmaps.web.app ↗</span>
+            </div>
+            <h3 class="font-display uppercase text-cream text-3xl mb-2">Darwin Maps</h3>
+            <p class="text-cream-dim leading-relaxed text-sm" data-lang="es">Visor multi-capa con asistente de IA para análisis de territorio.</p>
+            <p class="text-cream-dim leading-relaxed text-sm hidden" data-lang="en">Multi-layer viewer with an AI assistant for territory analysis.</p>
+          </div>
+        </a>
+        <!-- GuadarramaSKI -->
+        <div class="agent-card animate-on-scroll" style="padding:0; overflow:hidden;">
+          <img src="../projects/guadarramaski/assets/banner.jpg" alt="GuadarramaSKI" class="w-full h-52 object-cover">
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-4">
+              <span class="agent-badge">GuadarramaSKI</span>
+              <span class="font-mono text-xs text-cream-faint">ski</span>
+            </div>
+            <h3 class="font-display uppercase text-cream text-3xl mb-2">GuadarramaSKI</h3>
+            <p class="text-cream-dim leading-relaxed text-sm" data-lang="es">Rutas de esquí y análisis de cobertura de nieve en la sierra de Guadarrama.</p>
+            <p class="text-cream-dim leading-relaxed text-sm hidden" data-lang="en">Ski routes and snow cover analysis in the Guadarrama mountains.</p>
+          </div>
+        </div>
+        <!-- NivoSense -->
+        <a href="https://storage.googleapis.com/nivosense-web/index.html" target="_blank" rel="noopener" class="agent-card animate-on-scroll block" style="padding:0; overflow:hidden;">
+          <img src="../projects/guadarramaski/assets/acc_snow.webp" alt="NivoSense" class="w-full h-52 object-cover">
+          <div class="p-6">
+            <div class="flex items-center justify-between mb-4">
+              <span class="agent-badge">NivoSense</span>
+              <span class="font-mono text-xs text-cream-faint">nivosense ↗</span>
+            </div>
+            <h3 class="font-display uppercase text-cream text-3xl mb-2">NivoSense</h3>
+            <p class="text-cream-dim leading-relaxed text-sm" data-lang="es">Visor de nieve en tiempo real con predicción a corto y medio plazo.</p>
+            <p class="text-cream-dim leading-relaxed text-sm hidden" data-lang="en">Real-time snow viewer with short and medium-term forecasting.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- How we build (light) -->
+  <section class="section-light section-rule py-20 lg:py-24">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mb-12 animate-on-scroll">
+        <p class="eyebrow mb-5" data-lang="es">Cómo trabajamos</p>
+        <p class="eyebrow mb-5 hidden" data-lang="en">How we build</p>
+        <h2 class="font-bold text-cream leading-tight" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="es">De la idea al despliegue, sobre tus datos</h2>
+        <h2 class="font-bold text-cream leading-tight hidden" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="en">From idea to deployment, on your data</h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="cap-card animate-on-scroll"><h3 class="font-bold text-cream mb-2" data-lang="es">Visores interactivos</h3><h3 class="font-bold text-cream mb-2 hidden" data-lang="en">Interactive viewers</h3><p class="text-cream-dim text-sm leading-relaxed" data-lang="es">Mapas y paneles que cualquiera puede explorar en el navegador.</p><p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">Maps and dashboards anyone can explore in the browser.</p></div>
+        <div class="cap-card animate-on-scroll"><h3 class="font-bold text-cream mb-2" data-lang="es">APIs y datacubes</h3><h3 class="font-bold text-cream mb-2 hidden" data-lang="en">APIs and datacubes</h3><p class="text-cream-dim text-sm leading-relaxed" data-lang="es">Acceso limpio a tus datos, servido bajo demanda a otras apps.</p><p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">Clean access to your data, served on demand to other apps.</p></div>
+        <div class="cap-card animate-on-scroll"><h3 class="font-bold text-cream mb-2" data-lang="es">Pipelines de datos (Earth Engine, Python)</h3><h3 class="font-bold text-cream mb-2 hidden" data-lang="en">Data pipelines (Earth Engine, Python)</h3><p class="text-cream-dim text-sm leading-relaxed" data-lang="es">Procesamiento reproducible que se actualiza solo con datos nuevos.</p><p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">Reproducible processing that updates itself with new data.</p></div>
+        <div class="cap-card animate-on-scroll"><h3 class="font-bold text-cream mb-2" data-lang="es">Apps web a medida</h3><h3 class="font-bold text-cream mb-2 hidden" data-lang="en">Bespoke web apps</h3><p class="text-cream-dim text-sm leading-relaxed" data-lang="es">Herramientas diseñadas alrededor de tu flujo, no al revés.</p><p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">Tools designed around your workflow, not the other way round.</p></div>
+        <div class="cap-card animate-on-scroll"><h3 class="font-bold text-cream mb-2" data-lang="es">Integración con tus sistemas</h3><h3 class="font-bold text-cream mb-2 hidden" data-lang="en">Integration with your systems</h3><p class="text-cream-dim text-sm leading-relaxed" data-lang="es">Conectamos con tu GIS, tus bases de datos y tus herramientas.</p><p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">We connect to your GIS, your databases and your tools.</p></div>
+        <div class="cap-card animate-on-scroll"><h3 class="font-bold text-cream mb-2" data-lang="es">Despliegue en la nube (GCP)</h3><h3 class="font-bold text-cream mb-2 hidden" data-lang="en">Cloud deployment (GCP)</h3><p class="text-cream-dim text-sm leading-relaxed" data-lang="es">Infraestructura que escala sola y está disponible siempre.</p><p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">Infrastructure that scales on its own and is always available.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Metrics band -->
+  <section class="bg-teal-deep section-rule py-20 lg:py-24">
+    <div class="container mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-10 text-center">
+        <div class="animate-on-scroll">
+          <p class="font-display text-olive leading-none" style="font-size:clamp(3rem,7vw,5.5rem);" data-lang="es">+600.000</p>
+          <p class="font-display text-olive leading-none hidden" style="font-size:clamp(3rem,7vw,5.5rem);" data-lang="en">+600,000</p>
+          <p class="font-mono text-xs uppercase tracking-[0.18em] text-cream-dim mt-3" data-lang="es">Líneas de código</p>
+          <p class="font-mono text-xs uppercase tracking-[0.18em] text-cream-dim mt-3 hidden" data-lang="en">Lines of code</p>
+        </div>
+        <div class="animate-on-scroll">
+          <p class="font-display text-olive leading-none" style="font-size:clamp(3rem,7vw,5.5rem);">+12</p>
+          <p class="font-mono text-xs uppercase tracking-[0.18em] text-cream-dim mt-3" data-lang="es">Proyectos entregados</p>
+          <p class="font-mono text-xs uppercase tracking-[0.18em] text-cream-dim mt-3 hidden" data-lang="en">Projects delivered</p>
+        </div>
+        <div class="animate-on-scroll">
+          <p class="font-display text-olive leading-none" style="font-size:clamp(3rem,7vw,5.5rem);">100%</p>
+          <p class="font-mono text-xs uppercase tracking-[0.18em] text-cream-dim mt-3" data-lang="es">En la nube</p>
+          <p class="font-mono text-xs uppercase tracking-[0.18em] text-cream-dim mt-3 hidden" data-lang="en">Cloud-native</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-teal-deep section-rule py-20 lg:py-28">
+    <div class="container mx-auto px-6 text-center max-w-2xl">
+      <p class="eyebrow justify-center mb-6 animate-on-scroll" data-lang="es">El siguiente paso</p>
+      <p class="eyebrow justify-center mb-6 animate-on-scroll hidden" data-lang="en">Next step</p>
+      <h2 class="font-display uppercase text-cream leading-none mb-6 animate-on-scroll" style="font-size:clamp(2.2rem,5vw,4rem);" data-lang="es">¿Qué herramienta te falta?</h2>
+      <h2 class="font-display uppercase text-cream leading-none mb-6 animate-on-scroll hidden" style="font-size:clamp(2.2rem,5vw,4rem);" data-lang="en">What tool are you missing?</h2>
+      <p class="text-cream-dim leading-relaxed mb-9 animate-on-scroll" data-lang="es">Cuéntanos qué necesitas visualizar, exportar o automatizar. En una llamada te decimos cómo lo construiríamos y con qué esfuerzo.</p>
+      <p class="text-cream-dim leading-relaxed mb-9 animate-on-scroll hidden" data-lang="en">Tell us what you need to visualize, export or automate. In one call we'll tell you how we'd build it and with what effort.</p>
+      <a href="../index.html#contact" class="btn-accent inline-block px-8 py-3.5 rounded-full text-sm font-semibold tracking-wide animate-on-scroll" data-lang="es">Agenda una llamada</a>
+      <a href="../index.html#contact" class="btn-accent inline-block px-8 py-3.5 rounded-full text-sm font-semibold tracking-wide animate-on-scroll hidden" data-lang="en">Book a call</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-teal-deep section-rule py-12">
+    <div class="container mx-auto px-6 text-center">
+      <img src="../assets/brand/logo_darwin.png" alt="Darwin Geospatial logo" class="h-14 w-auto mx-auto mb-4">
+      <p class="text-cream-dim text-sm" data-lang="es">&copy; 2026 Darwin Geospatial. Todos los derechos reservados.</p>
+      <p class="text-cream-dim text-sm hidden" data-lang="en">&copy; 2026 Darwin Geospatial. All rights reserved.</p>
+      <p class="text-cream-faint text-xs mt-2">
+        <a href="../privacy.html" class="underline hover:text-cream transition" data-lang="es">Política de Privacidad</a>
+        <a href="../privacy.html" class="underline hover:text-cream transition hidden" data-lang="en">Privacy Policy</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="../lang.js"></script>
+  <script>
+    (function(){
+      var h = document.getElementById('header');
+      if (h) window.addEventListener('scroll', function(){ h.classList.toggle('scrolled', window.scrollY > 20); }, {passive:true});
+
+      // Scrollytelling: activate steps + swap sticky visual
+      var steps = Array.prototype.slice.call(document.querySelectorAll('.step'));
+      var imgs = ['stg-0','stg-1','stg-2','stg-3'].map(function(id){ return document.getElementById(id); });
+      var caps = {
+        0:['01 · Ingesta y limpieza','01 · Ingestion & cleaning'],
+        1:['02 · Modelos y pipelines','02 · Models & pipelines'],
+        2:['03 · Visor o API','03 · Viewer or API'],
+        3:['04 · Tu equipo lo usa','04 · Your team uses it']
+      };
+      var capEl = document.getElementById('stg-cap');
+      function activate(n){
+        steps.forEach(function(s){ s.classList.toggle('active', +s.dataset.step === n); });
+        imgs.forEach(function(im,i){ if(im) im.classList.toggle('on', i === n); });
+        if (capEl){ var lang = document.documentElement.lang === 'en' ? 1 : 0; capEl.textContent = caps[n][lang]; }
+      }
+      if ('IntersectionObserver' in window){
+        var obs = new IntersectionObserver(function(entries){
+          entries.forEach(function(e){ if (e.isIntersecting) activate(+e.target.dataset.step); });
+        }, {threshold: 0.6, rootMargin: '-20% 0px -30% 0px'});
+        steps.forEach(function(s){ obs.observe(s); });
+      }
+    })();
+  </script>
+</body>
+</html>

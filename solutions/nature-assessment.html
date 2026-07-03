@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Evaluación de la naturaleza — Darwin Geospatial</title>
+
+  <meta name="description" content="Evaluamos hábitats, biodiversidad, suelo y usos del territorio desde el satélite: monitoreo continuo, a escala de campo, por una fracción del coste del trabajo de campo tradicional."/>
+  <link rel="canonical" href="https://darwingeospatial.com/solutions/nature-assessment.html"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Evaluación de la naturaleza — Darwin Geospatial"/>
+  <meta property="og:description" content="Mapea la naturaleza a escala, cada año: hábitats, biodiversidad, suelo y usos del territorio desde el satélite."/>
+  <meta property="og:url" content="https://darwingeospatial.com/solutions/nature-assessment.html"/>
+  <meta property="og:site_name" content="Darwin Geospatial"/>
+  <link rel="icon" href="../favicon.ico?v=2" sizes="any"/>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../analytics.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --teal-deep:#0e1f24; --teal-base:#1b373f; --teal-elev:#213f47; --teal-line:#2e525b;
+      --green:#426331; --green-soft:#5a8045; --olive:#879753; --olive-light:#bcbe76;
+      --cream:#fcf5e3; --cream-dim:rgba(252,245,227,0.66); --cream-faint:rgba(252,245,227,0.42);
+    }
+    html, body { background-color: var(--teal-deep); }
+    body { font-family:'Inter',sans-serif; color:var(--cream); -webkit-font-smoothing:antialiased; }
+    .font-display{ font-family:'Bebas Neue',sans-serif; letter-spacing:.01em; }
+    .font-mono{ font-family:'Space Mono',monospace; }
+    .eyebrow{ display:inline-flex; align-items:center; gap:.6rem; font-family:'Inter',sans-serif; font-weight:600; font-size:.8rem; letter-spacing:.2em; text-transform:uppercase; color:var(--olive-light); }
+    .eyebrow::before{ content:""; width:26px; height:1px; background:var(--olive-light); opacity:.7; }
+    .text-cream{color:var(--cream);} .text-cream-dim{color:var(--cream-dim);} .text-cream-faint{color:var(--cream-faint);}
+    .text-olive{color:var(--olive-light);}
+    .bg-teal-deep{background-color:var(--teal-deep);} .bg-teal-base{background-color:var(--teal-base);} .bg-teal-elev{background-color:var(--teal-elev);}
+    .border-line{border-color:var(--teal-line);}
+    .section-rule{ border-top:1px solid var(--teal-line); }
+
+    /* Light section remap */
+    .section-light{ background:var(--cream); color:var(--teal-deep); }
+    .section-light .eyebrow{ color:var(--green); } .section-light .eyebrow::before{ background:var(--green); }
+    .section-light .text-cream{ color:var(--teal-deep) !important; }
+    .section-light .text-cream-dim{ color:rgba(14,31,36,0.66) !important; }
+    .section-light .text-olive{ color:var(--green) !important; }
+
+    .lang-switcher button{ color:var(--cream-faint); transition:color .2s; }
+    .lang-switcher button.active{ color:var(--olive-light); font-weight:700; }
+
+    #header{ background-color:rgba(14,31,36,0.72); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border-bottom:1px solid transparent; transition:background-color .3s ease, border-color .3s ease; }
+    #header.scrolled{ background-color:rgba(14,31,36,0.92); border-bottom-color:var(--teal-line); }
+    .header-row{ background:linear-gradient(90deg,#d7d3b9 0,#d7d3b9 190px,transparent 380px); }
+    .nav-link{ color:var(--cream-dim); font-weight:500; transition:color .25s; position:relative; }
+    .nav-link:hover{ color:var(--cream); } .nav-link.active{ color:var(--olive-light); }
+    .nav-link::after{ content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:var(--olive-light); transition:width .3s ease; }
+    .nav-link:hover::after{ width:100%; }
+    .btn-accent{ background-color:var(--green); color:var(--cream); border:1px solid transparent; transition:background-color .25s, transform .25s, box-shadow .25s; }
+    .btn-accent:hover{ background-color:var(--green-soft); transform:translateY(-1px); box-shadow:0 8px 24px rgba(90,128,69,0.3); }
+    .btn-ghost{ background:transparent; color:var(--cream); border:1px solid var(--teal-line); transition:border-color .25s, background-color .25s, transform .25s; }
+    .btn-ghost:hover{ border-color:var(--olive-light); background:rgba(188,190,118,0.08); transform:translateY(-1px); }
+
+    .animate-on-scroll{ opacity:0; transform:translateY(30px); transition:opacity .7s cubic-bezier(0.22,1,0.36,1), transform .7s cubic-bezier(0.22,1,0.36,1); }
+    .animate-on-scroll.is-visible{ opacity:1; transform:translateY(0); }
+
+    /* Hero */
+    .hero-ai{ position:relative; overflow:hidden; }
+    .hero-ai::before{ content:""; position:absolute; inset:0;
+      background:
+        radial-gradient(680px 420px at 78% 12%, rgba(66,99,49,0.42), transparent 60%),
+        radial-gradient(560px 380px at 12% 88%, rgba(135,151,83,0.20), transparent 62%);
+      pointer-events:none; }
+    .hero-grid{ position:absolute; inset:0; opacity:.10; pointer-events:none;
+      background-image:linear-gradient(var(--teal-line) 1px, transparent 1px), linear-gradient(90deg, var(--teal-line) 1px, transparent 1px);
+      background-size:46px 46px; mask-image:radial-gradient(circle at 70% 20%, #000 0%, transparent 70%); -webkit-mask-image:radial-gradient(circle at 70% 20%, #000 0%, transparent 70%); }
+
+    /* Agent chat mock */
+    .chat{ background:var(--teal-elev); border:1px solid var(--teal-line); border-radius:1.1rem; overflow:hidden; box-shadow:0 30px 60px rgba(0,0,0,.45); }
+    .chat-head{ display:flex; align-items:center; gap:.55rem; padding:.9rem 1.1rem; border-bottom:1px solid var(--teal-line); background:rgba(14,31,36,0.4); }
+    .dot{ width:10px; height:10px; border-radius:99px; }
+    .bubble{ border-radius:.9rem; padding:.7rem .95rem; font-size:.92rem; line-height:1.5; max-width:88%; }
+    .bubble.user{ background:var(--green); color:var(--cream); margin-left:auto; border-bottom-right-radius:.2rem; }
+    .bubble.bot{ background:rgba(14,31,36,0.55); color:var(--cream-dim); border:1px solid var(--teal-line); border-bottom-left-radius:.2rem; }
+
+    /* Scrollytelling */
+    .scrolly-pin{ position:sticky; top:0; height:100vh; display:flex; align-items:flex-start; overflow:hidden; padding-top:6rem; box-sizing:border-box; }
+    .stage{ position:relative; width:100%; aspect-ratio:4/3; border-radius:1.1rem; overflow:hidden; border:1px solid var(--teal-line); background:var(--teal-elev); }
+    .stage img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0; transition:opacity .8s ease; }
+    .stage img.on{ opacity:1; }
+    .stage-veil{ position:absolute; inset:0; background:linear-gradient(180deg, rgba(14,31,36,0.15), rgba(14,31,36,0.55)); }
+    .scan{ position:absolute; left:0; right:0; height:2px; background:linear-gradient(90deg,transparent,var(--olive-light),transparent); box-shadow:0 0 18px var(--olive-light); top:0; animation:scan 3.6s ease-in-out infinite; }
+    @keyframes scan{ 0%{top:6%;opacity:0;} 15%{opacity:1;} 85%{opacity:1;} 100%{top:94%;opacity:0;} }
+    .stage-cap{ position:absolute; left:1rem; bottom:1rem; right:1rem; }
+    .step{ opacity:.32; transition:opacity .4s, border-color .4s; border-left:2px solid var(--teal-line); padding-left:1.4rem; }
+    .step.active{ opacity:1; border-left-color:var(--olive-light); }
+    .step-n{ font-family:'Space Mono',monospace; font-size:.72rem; letter-spacing:.18em; color:var(--olive-light); }
+
+    /* Agent cards */
+    .agent-card{ background:var(--teal-elev); border:1px solid var(--teal-line); border-radius:1rem; padding:1.6rem; transition:transform .4s cubic-bezier(0.22,1,0.36,1), border-color .4s, box-shadow .4s; height:100%; }
+    .agent-card:hover{ transform:translateY(-6px); border-color:rgba(188,190,118,0.45); box-shadow:0 22px 46px rgba(0,0,0,0.42); }
+    .agent-badge{ display:inline-flex; align-items:center; gap:.5rem; font-family:'Space Mono',monospace; font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--olive-light); border:1px solid var(--teal-line); border-radius:99px; padding:.28rem .7rem; }
+    .cap-card{ background:rgba(255,255,255,0.55); border:1px solid rgba(14,31,36,0.10); border-radius:.9rem; padding:1.3rem; }
+    .icon-wrap{ width:3rem; height:3rem; border-radius:.7rem; display:flex; align-items:center; justify-content:center; background:rgba(66,99,49,0.12); color:var(--green); }
+    .card-img{ width:100%; height:10rem; object-fit:cover; border-radius:.7rem; border:1px solid var(--teal-line); margin-bottom:1.1rem; }
+    @media (max-width:1023px){ .scrolly-pin{ position:static; height:auto; display:block; padding-top:1.5rem; } .stage{ margin-bottom:2rem; } }
+    @media (prefers-reduced-motion: reduce){ .scan{ animation:none; display:none; } .animate-on-scroll{ opacity:1; transform:none; } }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="header-row w-full px-5 md:px-8 py-3 flex justify-between items-center">
+      <a href="../index.html" class="flex-shrink-0">
+        <img src="../assets/brand/logo_darwin.png" alt="Darwin Geospatial logo" class="h-10 md:h-[52px] w-auto">
+      </a>
+      <nav class="hidden md:flex space-x-8 items-center">
+        <a href="../index.html#about" class="nav-link text-[15px]" data-lang="es">Nosotros</a>
+        <a href="../index.html#about" class="nav-link text-[15px] hidden" data-lang="en">About</a>
+        <a href="../index.html#solutions" class="nav-link text-[15px]" data-lang="es">Soluciones</a>
+        <a href="../index.html#solutions" class="nav-link text-[15px] hidden" data-lang="en">Solutions</a>
+        <a href="../index.html#projects-hero" class="nav-link text-[15px]" data-lang="es">Proyectos</a>
+        <a href="../index.html#projects-hero" class="nav-link text-[15px] hidden" data-lang="en">Projects</a>
+        <a href="../index.html#team" class="nav-link text-[15px]" data-lang="es">Equipo</a>
+        <a href="../index.html#team" class="nav-link text-[15px] hidden" data-lang="en">Team</a>
+        <a href="../blog/" class="nav-link text-[15px]">Blog</a>
+        <a href="../index.html#contact" class="btn-accent px-5 py-2 rounded-full font-semibold text-sm" data-lang="es">Agenda una llamada</a>
+        <a href="../index.html#contact" class="btn-accent px-5 py-2 rounded-full font-semibold text-sm hidden" data-lang="en">Book a call</a>
+      </nav>
+      <div class="flex items-center">
+        <div class="lang-switcher font-mono text-sm ml-4">
+          <button id="lang-es" class="active">ES</button>
+          <span class="text-cream-faint">/</span>
+          <button id="lang-en">EN</button>
+        </div>
+        <button id="mobile-menu-button" class="md:hidden focus:outline-none ml-4">
+          <svg class="w-6 h-6 text-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 pt-2 border-t border-line bg-teal-deep">
+      <a href="../index.html#about" class="block py-2 text-cream-dim hover:text-cream" data-lang="es">Nosotros</a>
+      <a href="../index.html#about" class="block py-2 text-cream-dim hover:text-cream hidden" data-lang="en">About</a>
+      <a href="../index.html#solutions" class="block py-2 text-cream-dim hover:text-cream" data-lang="es">Soluciones</a>
+      <a href="../index.html#solutions" class="block py-2 text-cream-dim hover:text-cream hidden" data-lang="en">Solutions</a>
+      <a href="../index.html#projects-hero" class="block py-2 text-cream-dim hover:text-cream" data-lang="es">Proyectos</a>
+      <a href="../index.html#projects-hero" class="block py-2 text-cream-dim hover:text-cream hidden" data-lang="en">Projects</a>
+      <a href="../blog/" class="block py-2 text-cream-dim hover:text-cream">Blog</a>
+      <a href="../index.html#contact" class="block py-2 mt-2 btn-accent text-center px-5 py-2.5 rounded-full font-semibold text-sm" data-lang="es">Agenda una llamada</a>
+      <a href="../index.html#contact" class="block py-2 mt-2 btn-accent text-center px-5 py-2.5 rounded-full font-semibold text-sm hidden" data-lang="en">Book a call</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero-ai bg-teal-deep pt-32 pb-20 lg:pt-40 lg:pb-28">
+    <div class="hero-grid"></div>
+    <div class="container mx-auto px-6 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div class="animate-on-scroll">
+          <p class="eyebrow mb-6" data-lang="es">Solución · Evaluación de la naturaleza</p>
+          <p class="eyebrow mb-6 hidden" data-lang="en">Solution · Nature assessment</p>
+          <h1 class="font-display uppercase text-cream leading-[0.95] mb-6" style="font-size:clamp(2.6rem,6vw,5rem);" data-lang="es">Mapea la naturaleza <span class="text-olive">a escala</span>, cada año</h1>
+          <h1 class="font-display uppercase text-cream leading-[0.95] mb-6 hidden" style="font-size:clamp(2.6rem,6vw,5rem);" data-lang="en">Map nature <span class="text-olive">at scale</span>, every year</h1>
+          <p class="text-lg text-cream-dim leading-relaxed max-w-xl mb-8" data-lang="es">Evaluamos hábitats, biodiversidad, suelo y usos del territorio desde el satélite: monitoreo continuo, a escala de campo, por una fracción del coste del trabajo de campo tradicional.</p>
+          <p class="text-lg text-cream-dim leading-relaxed max-w-xl mb-8 hidden" data-lang="en">We assess habitats, biodiversity, soil and land use from satellite: continuous monitoring, at field scale, for a fraction of the cost of traditional fieldwork.</p>
+          <div class="flex flex-wrap gap-4">
+            <a href="../index.html#contact" class="btn-accent px-7 py-3.5 rounded-full font-semibold text-sm tracking-wide" data-lang="es">Agenda una llamada</a>
+            <a href="../index.html#contact" class="btn-accent px-7 py-3.5 rounded-full font-semibold text-sm tracking-wide hidden" data-lang="en">Book a call</a>
+            <a href="#projects" class="btn-ghost px-7 py-3.5 rounded-full font-semibold text-sm tracking-wide" data-lang="es">Ver proyectos</a>
+            <a href="#projects" class="btn-ghost px-7 py-3.5 rounded-full font-semibold text-sm tracking-wide hidden" data-lang="en">See projects</a>
+          </div>
+        </div>
+
+        <!-- Before / after visual -->
+        <div class="animate-on-scroll">
+          <div class="grid grid-cols-2 gap-3">
+            <div class="stage" style="aspect-ratio:3/4;">
+              <img class="on" src="../projects/soil_saver/assets/patones_1956_raw.png" alt="Territorio en 1956">
+              <div class="stage-veil"></div>
+              <div class="stage-cap"><span class="agent-badge">1956</span></div>
+            </div>
+            <div class="stage" style="aspect-ratio:3/4;">
+              <img class="on" src="../projects/soil_saver/assets/patones_2025_raw.png" alt="Territorio en 2025">
+              <div class="stage-veil"></div>
+              <div class="stage-cap"><span class="agent-badge">2025</span></div>
+            </div>
+          </div>
+          <div class="flex items-center gap-3 mt-4">
+            <span class="agent-badge">1956 &rarr; 2025</span>
+            <span class="font-mono text-xs text-cream-faint" data-lang="es">69 años de cambio, un mismo lugar</span>
+            <span class="font-mono text-xs text-cream-faint hidden" data-lang="en">69 years of change, one place</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The problem (light) -->
+  <section class="section-light section-rule py-20 lg:py-24">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mb-14 animate-on-scroll">
+        <p class="eyebrow mb-5" data-lang="es">El problema</p>
+        <p class="eyebrow mb-5 hidden" data-lang="en">The problem</p>
+        <h2 class="font-bold text-cream leading-tight" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="es">Vigilar la naturaleza a mano no escala. El satélite sí.</h2>
+        <h2 class="font-bold text-cream leading-tight hidden" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="en">Watching nature by hand doesn't scale. Satellite does.</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="cap-card animate-on-scroll">
+          <h3 class="font-bold text-cream mb-2 text-lg" data-lang="es">El campo no escala</h3>
+          <h3 class="font-bold text-cream mb-2 text-lg hidden" data-lang="en">Fieldwork doesn't scale</h3>
+          <p class="text-cream-dim text-sm leading-relaxed" data-lang="es">Los inventarios de campo son lentos, caros y dispersos: cubren muestras puntuales y quedan obsoletos antes de terminar.</p>
+          <p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">Field surveys are slow, costly and sparse: they cover point samples and go stale before they are finished.</p>
+        </div>
+        <div class="cap-card animate-on-scroll">
+          <h3 class="font-bold text-cream mb-2 text-lg" data-lang="es">Los hábitats cambian</h3>
+          <h3 class="font-bold text-cream mb-2 text-lg hidden" data-lang="en">Habitats change</h3>
+          <p class="text-cream-dim text-sm leading-relaxed" data-lang="es">Sin un seguimiento anual y comparable, es imposible saber si un hábitat mejora o se degrada, ni a qué ritmo.</p>
+          <p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">Without annual, comparable monitoring, there is no way to know whether a habitat is improving or degrading, or how fast.</p>
+        </div>
+        <div class="cap-card animate-on-scroll">
+          <h3 class="font-bold text-cream mb-2 text-lg" data-lang="es">Hay que justificar el estado</h3>
+          <h3 class="font-bold text-cream mb-2 text-lg hidden" data-lang="en">Status must be justified</h3>
+          <p class="text-cream-dim text-sm leading-relaxed" data-lang="es">La red Natura 2000 y los informes de estado de conservación exigen evidencia sólida, trazable y repetible.</p>
+          <p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">Natura 2000 and conservation status reporting demand solid, traceable and repeatable evidence.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scrollytelling: from image to habitat map -->
+  <section class="bg-teal-deep section-rule">
+    <div class="container mx-auto px-6 pt-20 lg:pt-28">
+      <div class="max-w-3xl animate-on-scroll">
+        <p class="eyebrow mb-5" data-lang="es">Cómo trabajamos</p>
+        <p class="eyebrow mb-5 hidden" data-lang="en">How we work</p>
+        <h2 class="font-bold text-cream leading-tight mb-4" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="es">De la imagen al mapa de hábitat</h2>
+        <h2 class="font-bold text-cream leading-tight mb-4 hidden" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="en">From image to habitat map</h2>
+      </div>
+    </div>
+    <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-10 lg:gap-16 pb-20">
+      <!-- Sticky visual -->
+      <div>
+        <div class="scrolly-pin">
+          <div class="stage">
+            <img id="stg-0" class="on" src="../assets/hero/forest_rgb.jpg" alt="">
+            <img id="stg-1" src="../assets/hero/forest_seg.jpg" alt="">
+            <img id="stg-2" src="../assets/hero/habitat.webp" alt="">
+            <img id="stg-3" src="../assets/hero/ndvi.webp" alt="">
+            <div class="stage-veil"></div>
+            <div class="scan"></div>
+            <div class="stage-cap">
+              <span id="stg-cap" class="agent-badge">01 · Captura multi-fuente</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Steps -->
+      <div class="pt-4 lg:pt-28 space-y-10 lg:space-y-24">
+        <div class="step active" data-step="0">
+          <p class="step-n mb-2">01</p>
+          <h3 class="font-bold text-cream text-xl lg:text-2xl mb-2" data-lang="es">Captura multi-fuente</h3>
+          <h3 class="font-bold text-cream text-xl lg:text-2xl mb-2 hidden" data-lang="en">Multi-source capture</h3>
+          <p class="text-cream-dim leading-relaxed" data-lang="es">Reunimos imágenes de satélite, radar y LiDAR, alineadas en el espacio y el tiempo sobre el mismo territorio.</p>
+          <p class="text-cream-dim leading-relaxed hidden" data-lang="en">We bring together satellite, radar and LiDAR imagery, aligned in space and time over the same territory.</p>
+        </div>
+        <div class="step" data-step="1">
+          <p class="step-n mb-2">02</p>
+          <h3 class="font-bold text-cream text-xl lg:text-2xl mb-2" data-lang="es">Segmenta y clasifica</h3>
+          <h3 class="font-bold text-cream text-xl lg:text-2xl mb-2 hidden" data-lang="en">Segment and classify</h3>
+          <p class="text-cream-dim leading-relaxed" data-lang="es">Modelos propios y un fine-tune de Prithvi-EO delimitan cada hábitat y lo clasifican píxel a píxel.</p>
+          <p class="text-cream-dim leading-relaxed hidden" data-lang="en">Our own models and a Prithvi-EO fine-tune delineate every habitat and classify it pixel by pixel.</p>
+        </div>
+        <div class="step" data-step="2">
+          <p class="step-n mb-2">03</p>
+          <h3 class="font-bold text-cream text-xl lg:text-2xl mb-2" data-lang="es">Cuantifica el cambio</h3>
+          <h3 class="font-bold text-cream text-xl lg:text-2xl mb-2 hidden" data-lang="en">Quantify change</h3>
+          <p class="text-cream-dim leading-relaxed" data-lang="es">Con series temporales medimos cómo evoluciona cada superficie: qué gana, qué pierde y a qué velocidad.</p>
+          <p class="text-cream-dim leading-relaxed hidden" data-lang="en">With time series we measure how each surface evolves: what it gains, what it loses and how fast.</p>
+        </div>
+        <div class="step" data-step="3">
+          <p class="step-n mb-2">04</p>
+          <h3 class="font-bold text-cream text-xl lg:text-2xl mb-2" data-lang="es">Informe de estado</h3>
+          <h3 class="font-bold text-cream text-xl lg:text-2xl mb-2 hidden" data-lang="en">Status report</h3>
+          <p class="text-cream-dim leading-relaxed" data-lang="es">Entregamos mapas y métricas listos para el reporte: evidencia trazable del estado de conservación.</p>
+          <p class="text-cream-dim leading-relaxed hidden" data-lang="en">We deliver maps and metrics ready for reporting: traceable evidence of conservation status.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project showcase -->
+  <section id="projects" class="bg-teal-base section-rule py-20 lg:py-28">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mb-14 animate-on-scroll">
+        <p class="eyebrow mb-5" data-lang="es">Proyectos reales</p>
+        <p class="eyebrow mb-5 hidden" data-lang="en">Real projects</p>
+        <h2 class="font-bold text-cream leading-tight mb-4" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="es">Ya evaluamos la naturaleza a escala</h2>
+        <h2 class="font-bold text-cream leading-tight mb-4 hidden" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="en">We already assess nature at scale</h2>
+        <p class="text-cream-dim leading-relaxed" data-lang="es">Desde pastizales y bosques Natura 2000 hasta erosión del suelo y usos del territorio, cada proyecto combina datos satelitales, modelos propios y entregables listos para decidir.</p>
+        <p class="text-cream-dim leading-relaxed hidden" data-lang="en">From Natura 2000 grasslands and forests to soil erosion and land use, each project combines satellite data, our own models and decision-ready deliverables.</p>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- OpenPAS -->
+        <a href="https://storage.googleapis.com/openpas-hdh-test-exports/web-test/index.html" target="_blank" rel="noopener" class="agent-card animate-on-scroll block">
+          <img class="card-img" src="../projects/habitat_hub/assets/banner.png" alt="OpenPAS">
+          <div class="flex items-center justify-between mb-4">
+            <span class="agent-badge">Natura 2000 · Pastizales</span>
+            <span class="font-mono text-xs text-cream-faint">openpas</span>
+          </div>
+          <h3 class="font-display uppercase text-cream text-3xl mb-2">OpenPAS</h3>
+          <p class="text-cream-dim leading-relaxed text-sm" data-lang="es">Estado de conservación de pastizales Natura 2000: plataforma en la nube y pipeline de machine learning para evaluarlos a escala.</p>
+          <p class="text-cream-dim leading-relaxed text-sm hidden" data-lang="en">Conservation status of Natura 2000 grasslands: a cloud platform and machine learning pipeline to assess them at scale.</p>
+        </a>
+        <!-- CONFOR-CCAD -->
+        <a href="https://confor-ccad-visor.web.app" target="_blank" rel="noopener" class="agent-card animate-on-scroll block">
+          <img class="card-img" src="../assets/hero/habitat.webp" alt="CONFOR-CCAD">
+          <div class="flex items-center justify-between mb-4">
+            <span class="agent-badge">Natura 2000 · Bosques</span>
+            <span class="font-mono text-xs text-cream-faint">confor-ccad</span>
+          </div>
+          <h3 class="font-display uppercase text-cream text-3xl mb-2">CONFOR-CCAD</h3>
+          <p class="text-cream-dim leading-relaxed text-sm" data-lang="es">Hábitats forestales Natura 2000 y especies bajo escenarios de clima, en un visor interactivo.</p>
+          <p class="text-cream-dim leading-relaxed text-sm hidden" data-lang="en">Natura 2000 forest habitats and species under climate scenarios, in an interactive viewer.</p>
+        </a>
+        <!-- SoilSaveR -->
+        <a href="../projects/soil_saver/index.html" class="agent-card animate-on-scroll block">
+          <img class="card-img" src="../projects/soil_saver/assets/patones_2025_raw.png" alt="SoilSaveR">
+          <div class="flex items-center justify-between mb-4">
+            <span class="agent-badge">Suelo · Sentinel-2</span>
+            <span class="font-mono text-xs text-cream-faint">soilsaver</span>
+          </div>
+          <h3 class="font-display uppercase text-cream text-3xl mb-2">SoilSaveR</h3>
+          <p class="text-cream-dim leading-relaxed text-sm" data-lang="es">Erosión y degradación del suelo a escala de campo desde series Sentinel-2: 24.000 km² de la Cuenca del Segura, 70 años de análisis (1956 a 2025) y un fine-tune de Prithvi-EO.</p>
+          <p class="text-cream-dim leading-relaxed text-sm hidden" data-lang="en">Soil erosion and degradation at field scale from Sentinel-2 series: 24,000 km² of the Segura Basin, 70 years of analysis (1956 to 2025) and a Prithvi-EO fine-tune.</p>
+        </a>
+        <!-- AlphaEarth Crop & Land-Use -->
+        <a href="../projects/darwin_crops_landuse/index.html" class="agent-card animate-on-scroll block">
+          <img class="card-img" src="../projects/darwin_crops_landuse/assets/prediction.png" alt="AlphaEarth Crop & Land-Use">
+          <div class="flex items-center justify-between mb-4">
+            <span class="agent-badge">Usos del suelo · California</span>
+            <span class="font-mono text-xs text-cream-faint">alphaearth</span>
+          </div>
+          <h3 class="font-display uppercase text-cream text-3xl mb-2">AlphaEarth Crop &amp; Land-Use</h3>
+          <p class="text-cream-dim leading-relaxed text-sm" data-lang="es">Cultivos y usos del suelo en California con Sentinel-1/2, embeddings AlphaEarth y una U-Net.</p>
+          <p class="text-cream-dim leading-relaxed text-sm hidden" data-lang="en">Crops and land use across California with Sentinel-1/2, AlphaEarth embeddings and a U-Net.</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Metrics band -->
+  <section class="bg-teal-deep section-rule py-20 lg:py-24">
+    <div class="container mx-auto px-6">
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="agent-card animate-on-scroll text-center">
+          <p class="font-display text-olive leading-none" style="font-size:clamp(2.6rem,5vw,3.6rem);">+2.400.000</p>
+          <p class="font-mono text-xs uppercase tracking-widest text-cream-dim mt-3" data-lang="es">Hectáreas analizadas</p>
+          <p class="font-mono text-xs uppercase tracking-widest text-cream-dim mt-3 hidden" data-lang="en">Hectares analysed</p>
+        </div>
+        <div class="agent-card animate-on-scroll text-center">
+          <p class="font-display text-olive leading-none" style="font-size:clamp(2.6rem,5vw,3.6rem);">70</p>
+          <p class="font-mono text-xs uppercase tracking-widest text-cream-dim mt-3" data-lang="es">Años de cambio reconstruidos</p>
+          <p class="font-mono text-xs uppercase tracking-widest text-cream-dim mt-3 hidden" data-lang="en">Years of change reconstructed</p>
+        </div>
+        <div class="agent-card animate-on-scroll text-center">
+          <p class="font-display text-olive leading-none" style="font-size:clamp(2.6rem,5vw,3.6rem);">8</p>
+          <p class="font-mono text-xs uppercase tracking-widest text-cream-dim mt-3" data-lang="es">Años de registro Sentinel-2</p>
+          <p class="font-mono text-xs uppercase tracking-widest text-cream-dim mt-3 hidden" data-lang="en">8-year Sentinel-2 record</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="bg-teal-deep section-rule py-20 lg:py-28">
+    <div class="container mx-auto px-6 text-center max-w-2xl">
+      <p class="eyebrow justify-center mb-6 animate-on-scroll" data-lang="es">El siguiente paso</p>
+      <p class="eyebrow justify-center mb-6 animate-on-scroll hidden" data-lang="en">Next step</p>
+      <h2 class="font-display uppercase text-cream leading-none mb-6 animate-on-scroll" style="font-size:clamp(2.2rem,5vw,4rem);" data-lang="es">¿Qué hábitat necesitas vigilar?</h2>
+      <h2 class="font-display uppercase text-cream leading-none mb-6 animate-on-scroll hidden" style="font-size:clamp(2.2rem,5vw,4rem);" data-lang="en">Which habitat do you need to watch?</h2>
+      <p class="text-cream-dim leading-relaxed mb-9 animate-on-scroll" data-lang="es">Cuéntanos qué territorio o qué hábitat necesitas evaluar. En una llamada te decimos cómo hacerlo a escala desde el satélite.</p>
+      <p class="text-cream-dim leading-relaxed mb-9 animate-on-scroll hidden" data-lang="en">Tell us which territory or habitat you need to assess. In one call we'll tell you how to do it at scale from satellite.</p>
+      <a href="../index.html#contact" class="btn-accent inline-block px-8 py-3.5 rounded-full text-sm font-semibold tracking-wide animate-on-scroll" data-lang="es">Agenda una llamada</a>
+      <a href="../index.html#contact" class="btn-accent inline-block px-8 py-3.5 rounded-full text-sm font-semibold tracking-wide animate-on-scroll hidden" data-lang="en">Book a call</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-teal-deep section-rule py-12">
+    <div class="container mx-auto px-6 text-center">
+      <img src="../assets/brand/logo_darwin.png" alt="Darwin Geospatial logo" class="h-14 w-auto mx-auto mb-4">
+      <p class="text-cream-dim text-sm" data-lang="es">&copy; 2026 Darwin Geospatial. Todos los derechos reservados.</p>
+      <p class="text-cream-dim text-sm hidden" data-lang="en">&copy; 2026 Darwin Geospatial. All rights reserved.</p>
+      <p class="text-cream-faint text-xs mt-2">
+        <a href="../privacy.html" class="underline hover:text-cream transition" data-lang="es">Política de Privacidad</a>
+        <a href="../privacy.html" class="underline hover:text-cream transition hidden" data-lang="en">Privacy Policy</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="../lang.js"></script>
+  <script>
+    (function(){
+      var h = document.getElementById('header');
+      if (h) window.addEventListener('scroll', function(){ h.classList.toggle('scrolled', window.scrollY > 20); }, {passive:true});
+
+      // Scrollytelling: activate steps + swap sticky visual
+      var steps = Array.prototype.slice.call(document.querySelectorAll('.step'));
+      var imgs = ['stg-0','stg-1','stg-2','stg-3'].map(function(id){ return document.getElementById(id); });
+      var caps = {
+        0:['01 · Captura multi-fuente','01 · Multi-source capture'],
+        1:['02 · Segmenta y clasifica','02 · Segment and classify'],
+        2:['03 · Cuantifica el cambio','03 · Quantify change'],
+        3:['04 · Informe de estado','04 · Status report']
+      };
+      var capEl = document.getElementById('stg-cap');
+      function activate(n){
+        steps.forEach(function(s){ s.classList.toggle('active', +s.dataset.step === n); });
+        imgs.forEach(function(im,i){ if(im) im.classList.toggle('on', i === n); });
+        if (capEl){ var lang = document.documentElement.lang === 'en' ? 1 : 0; capEl.textContent = caps[n][lang]; }
+      }
+      if ('IntersectionObserver' in window){
+        var obs = new IntersectionObserver(function(entries){
+          entries.forEach(function(e){ if (e.isIntersecting) activate(+e.target.dataset.step); });
+        }, {threshold: 0.6, rootMargin: '-20% 0px -30% 0px'});
+        steps.forEach(function(s){ obs.observe(s); });
+      }
+    })();
+  </script>
+</body>
+</html>
