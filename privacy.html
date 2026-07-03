@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Política de Privacidad — Darwin Geospatial</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Política de privacidad de Darwin Geospatial: qué datos recogemos, uso de cookies y Google Analytics, y tus derechos."/>
+  <link rel="canonical" href="https://darwingeospatial.com/privacy.html"/>
+  <meta name="robots" content="noindex"/>
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="Política de Privacidad — Darwin Geospatial"/>
+  <meta property="og:description" content="Política de privacidad de Darwin Geospatial: qué datos recogemos, uso de cookies y Google Analytics, y tus derechos."/>
+  <meta property="og:url" content="https://darwingeospatial.com/privacy.html"/>
+  <meta property="og:site_name" content="Darwin Geospatial"/>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --darwin-green-dark: #395935;
+      --darwin-green-base: #46633A;
+      --darwin-green-medium: #576F50;
+      --darwin-green-accent: #5D713F;
+      --darwin-grey: #939494;
+      --darwin-green-light: #f0f3ef;
+    }
+
+    body { font-family: 'Inter', sans-serif; }
+
+    .bg-primary { background-color: var(--darwin-green-base); }
+    .bg-primary-dark { background-color: var(--darwin-green-dark); }
+    .bg-primary-light { background-color: var(--darwin-green-light); }
+    .text-primary { color: var(--darwin-green-base); }
+    .text-accent { color: var(--darwin-green-accent); }
+    .border-primary { border-color: var(--darwin-green-base); }
+    .hover\:bg-primary-dark:hover { background-color: var(--darwin-green-dark); }
+    .hover\:text-primary:hover { color: var(--darwin-green-base); }
+
+    .lang-switcher button.active { color: var(--darwin-green-base); font-weight: 700; }
+
+    .breadcrumb a { color: rgba(255,255,255,0.75); text-decoration: none; }
+    .breadcrumb a:hover { color: white; }
+    .breadcrumb span { color: rgba(255,255,255,0.5); margin: 0 0.4rem; }
+
+    .legal h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      color: #1e293b;
+      font-size: 1.375rem;
+      margin-top: 2.25rem;
+      margin-bottom: 0.75rem;
+    }
+    .legal p, .legal li { color: #475569; line-height: 1.75; }
+    .legal ul { list-style: disc; padding-left: 1.5rem; margin: 0.75rem 0; }
+    .legal a { color: var(--darwin-green-base); text-decoration: underline; }
+    .legal a:hover { color: var(--darwin-green-dark); }
+  </style>
+  <script src="./analytics.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+  <!-- Header -->
+  <header id="header" class="bg-white/90 backdrop-blur-md fixed top-0 left-0 right-0 z-50 shadow-md transition-all duration-300">
+    <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+      <a href="./index.html" class="flex-shrink-0">
+        <img src="./assets/brand/logo_darwin.png" alt="Darwin Geospatial logo" class="h-10 md:h-12 w-auto">
+      </a>
+
+      <nav class="hidden md:flex space-x-8 items-center">
+        <a href="./index.html#about" class="text-slate-600 hover:text-primary transition" data-lang="es">Nosotros</a>
+        <a href="./index.html#about" class="text-slate-600 hover:text-primary transition hidden" data-lang="en">About</a>
+
+        <a href="./services.html" class="text-slate-600 hover:text-primary transition" data-lang="es">Servicios</a>
+        <a href="./services.html" class="text-slate-600 hover:text-primary transition hidden" data-lang="en">Services</a>
+
+        <a href="./index.html#projects-hero" class="text-slate-600 hover:text-primary transition" data-lang="es">Proyectos</a>
+        <a href="./index.html#projects-hero" class="text-slate-600 hover:text-primary transition hidden" data-lang="en">Projects</a>
+
+        <a href="./index.html#team" class="text-slate-600 hover:text-primary transition" data-lang="es">Equipo</a>
+        <a href="./index.html#team" class="text-slate-600 hover:text-primary transition hidden" data-lang="en">Team</a>
+
+        <a href="./blog/index.html" class="text-slate-600 hover:text-primary transition">Blog</a>
+
+        <a href="./index.html#contact" class="bg-primary text-white px-5 py-2 rounded-full font-semibold hover:bg-primary-dark transition text-sm" data-lang="es">Contacto</a>
+        <a href="./index.html#contact" class="bg-primary text-white px-5 py-2 rounded-full font-semibold hover:bg-primary-dark transition text-sm hidden" data-lang="en">Contact</a>
+      </nav>
+
+      <div class="flex items-center">
+        <div class="lang-switcher text-sm text-slate-500 ml-4">
+          <button id="lang-es" class="active">ES</button>
+          <span>/</span>
+          <button id="lang-en">EN</button>
+        </div>
+        <button id="mobile-menu-button" class="md:hidden focus:outline-none ml-4">
+          <svg class="w-6 h-6 text-slate-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
+      <a href="./index.html#about" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Nosotros</a>
+      <a href="./index.html#about" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">About</a>
+      <a href="./services.html" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Servicios</a>
+      <a href="./services.html" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">Services</a>
+      <a href="./index.html#projects-hero" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Proyectos</a>
+      <a href="./index.html#projects-hero" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">Projects</a>
+      <a href="./index.html#team" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Equipo</a>
+      <a href="./index.html#team" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">Team</a>
+      <a href="./blog/index.html" class="block py-2 text-slate-600 hover:text-primary">Blog</a>
+      <a href="./index.html#contact" class="block py-2 text-slate-600 hover:text-primary" data-lang="es">Contacto</a>
+      <a href="./index.html#contact" class="block py-2 text-slate-600 hover:text-primary hidden" data-lang="en">Contact</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="pt-32 pb-14 bg-primary text-white">
+    <div class="container mx-auto px-6 max-w-4xl">
+      <p class="breadcrumb text-sm mb-4">
+        <a href="./index.html">Home</a>
+        <span>›</span>
+        <span style="color:rgba(255,255,255,0.9);" data-lang="es">Privacidad</span>
+        <span style="color:rgba(255,255,255,0.9);" data-lang="en">Privacy</span>
+      </p>
+      <h1 class="text-3xl md:text-4xl font-bold mb-3" style="font-family:'Playfair Display',serif;" data-lang="es">Política de Privacidad</h1>
+      <h1 class="text-3xl md:text-4xl font-bold mb-3 hidden" style="font-family:'Playfair Display',serif;" data-lang="en">Privacy Policy</h1>
+      <p class="text-white/75 max-w-xl" data-lang="es">Última actualización: 3 de julio de 2026</p>
+      <p class="text-white/75 max-w-xl hidden" data-lang="en">Last updated: July 3, 2026</p>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <main class="py-12 lg:py-16">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto legal">
+
+        <!-- ES -->
+        <div data-lang="es">
+          <p>Darwin Geospatial ("nosotros") opera el sitio web <a href="https://darwingeospatial.com">darwingeospatial.com</a>. Esta página explica qué datos recogemos cuando lo visitas, con qué finalidad, y qué opciones tienes.</p>
+
+          <h2>1. Responsable del tratamiento</h2>
+          <p>Darwin Geospatial. Para cualquier consulta sobre esta política o tus datos, puedes escribirnos a través del formulario de contacto en la <a href="./index.html#contact">página principal</a>.</p>
+
+          <h2>2. Qué datos recogemos</h2>
+          <p>No recogemos datos personales directamente salvo que nos los envíes tú mismo (por ejemplo, al rellenar un formulario de contacto o solicitar información sobre un proyecto). De forma automática, mediante cookies de analítica, podemos recoger:</p>
+          <ul>
+            <li>Páginas visitadas y tiempo de permanencia.</li>
+            <li>Ubicación aproximada (país/ciudad, no dirección exacta).</li>
+            <li>Tipo de dispositivo y navegador.</li>
+            <li>Cómo llegaste a la web (buscador, red social, enlace directo).</li>
+          </ul>
+
+          <h2>3. Google Analytics</h2>
+          <p>Usamos <strong>Google Analytics 4</strong>, un servicio de analítica web de Google Ireland Limited, para entender cómo se usa esta web y mejorarla. Google Analytics recoge los datos descritos en la sección anterior mediante cookies y tecnología similar.</p>
+          <p>Estas cookies <strong>solo se activan si das tu consentimiento</strong> en el banner que aparece al visitar la web. Puedes rechazarlas y seguir navegando con normalidad. Google puede tratar estos datos según su propia política de privacidad: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.</p>
+
+          <h2>4. Cookies</h2>
+          <p>Además de las cookies de Google Analytics (solo con consentimiento), usamos una cookie/almacenamiento local técnico para recordar tu idioma preferido (ES/EN) y tu elección sobre el banner de cookies. Esta cookie técnica no requiere consentimiento porque es necesaria para el funcionamiento básico del sitio.</p>
+
+          <h2>5. Con quién compartimos tus datos</h2>
+          <p>No vendemos ni cedemos tus datos a terceros. Los únicos datos que salen de nuestro control son los que procesa Google Analytics, bajo sus propios términos.</p>
+
+          <h2>6. Tus derechos</h2>
+          <p>Puedes ejercer tus derechos de acceso, rectificación, supresión y oposición sobre cualquier dato personal que nos hayas facilitado directamente (por ejemplo, a través del formulario de contacto), escribiéndonos por ese mismo canal. Puedes retirar tu consentimiento de analítica en cualquier momento borrando las cookies de tu navegador, lo que hará que el banner vuelva a aparecer.</p>
+
+          <h2>7. Cambios en esta política</h2>
+          <p>Podemos actualizar esta política ocasionalmente. La fecha de la última actualización aparece al principio de esta página.</p>
+        </div>
+
+        <!-- EN -->
+        <div data-lang="en" class="hidden">
+          <p>Darwin Geospatial ("we") operates the website <a href="https://darwingeospatial.com">darwingeospatial.com</a>. This page explains what data we collect when you visit it, why, and what choices you have.</p>
+
+          <h2>1. Data controller</h2>
+          <p>Darwin Geospatial. For any question about this policy or your data, you can reach us through the contact form on the <a href="./index.html#contact">homepage</a>.</p>
+
+          <h2>2. What data we collect</h2>
+          <p>We do not collect personal data directly unless you submit it yourself (for example, filling out a contact form or requesting information about a project). Automatically, via analytics cookies, we may collect:</p>
+          <ul>
+            <li>Pages visited and time spent.</li>
+            <li>Approximate location (country/city, not exact address).</li>
+            <li>Device and browser type.</li>
+            <li>How you reached the site (search engine, social media, direct link).</li>
+          </ul>
+
+          <h2>3. Google Analytics</h2>
+          <p>We use <strong>Google Analytics 4</strong>, a web analytics service provided by Google Ireland Limited, to understand how this site is used and improve it. Google Analytics collects the data described above through cookies and similar technology.</p>
+          <p>These cookies are <strong>only activated if you give consent</strong> in the banner shown when you visit the site. You can decline them and keep browsing normally. Google may process this data according to its own privacy policy: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.</p>
+
+          <h2>4. Cookies</h2>
+          <p>Besides the Google Analytics cookies (consent-based only), we use a technical cookie/local storage entry to remember your preferred language (ES/EN) and your choice on the cookie banner. This technical cookie does not require consent because it is necessary for basic site functionality.</p>
+
+          <h2>5. Who we share your data with</h2>
+          <p>We do not sell or transfer your data to third parties. The only data outside our direct control is what Google Analytics processes, under its own terms.</p>
+
+          <h2>6. Your rights</h2>
+          <p>You can exercise your rights of access, rectification, erasure, and objection over any personal data you have directly provided us (for example, via the contact form) by writing to us through that same channel. You can withdraw analytics consent at any time by clearing your browser cookies, which will make the banner reappear.</p>
+
+          <h2>7. Changes to this policy</h2>
+          <p>We may update this policy occasionally. The date of the last update appears at the top of this page.</p>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 text-slate-400 py-12">
+    <div class="container mx-auto px-6 text-center">
+      <img src="./assets/brand/logo_darwin.png" alt="Darwin Geospatial logo" class="h-16 w-auto mx-auto mb-4">
+      <p data-lang="es">&copy; 2026 Darwin Geospatial. Todos los derechos reservados.</p>
+      <p class="hidden" data-lang="en">&copy; 2026 Darwin Geospatial. All rights reserved.</p>
+      <p class="text-sm mt-2" data-lang="es">Haciendo la naturaleza más comprensible a través de los datos.</p>
+      <p class="text-sm mt-2 hidden" data-lang="en">Making nature more understandable through data.</p>
+    </div>
+  </footer>
+
+  <script src="./lang.js"></script>
+</body>
+</html>
