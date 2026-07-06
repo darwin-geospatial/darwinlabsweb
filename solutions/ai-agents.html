@@ -77,9 +77,15 @@
     .chat{ background:var(--teal-elev); border:1px solid var(--teal-line); border-radius:1.1rem; overflow:hidden; box-shadow:0 30px 60px rgba(0,0,0,.45); }
     .chat-head{ display:flex; align-items:center; gap:.55rem; padding:.9rem 1.1rem; border-bottom:1px solid var(--teal-line); background:rgba(14,31,36,0.4); }
     .dot{ width:10px; height:10px; border-radius:99px; }
-    .bubble{ border-radius:.9rem; padding:.7rem .95rem; font-size:.92rem; line-height:1.5; max-width:88%; }
-    .bubble.user{ background:var(--green); color:var(--cream); margin-left:auto; border-bottom-right-radius:.2rem; }
-    .bubble.bot{ background:rgba(14,31,36,0.55); color:var(--cream-dim); border:1px solid var(--teal-line); border-bottom-left-radius:.2rem; }
+    .bubble{ border-radius:.9rem; padding:.7rem .95rem; font-size:.92rem; line-height:1.5; }
+    .bubble.bot{ background:rgba(14,31,36,0.55); color:var(--cream-dim); border:1px solid var(--teal-line); }
+
+    /* Branded Geo AI console (professional, not a chat clone) */
+    .console-head{ display:flex; align-items:center; gap:.6rem; padding:.8rem 1.1rem; border-bottom:1px solid var(--teal-line); background:rgba(14,31,36,0.5); }
+    .io-label{ display:block; font-family:'Space Mono',monospace; font-size:.62rem; letter-spacing:.18em; text-transform:uppercase; color:var(--olive-light); margin-bottom:.4rem; }
+    .io-q{ background:rgba(14,31,36,0.5); border:1px solid var(--teal-line); border-left:2px solid var(--olive-light); border-radius:.55rem; padding:.7rem .9rem; color:var(--cream); font-size:.92rem; line-height:1.5; }
+    .io-map{ flex:none; border-radius:.6rem; overflow:hidden; border:1px solid var(--teal-line); }
+    .io-map img{ display:block; width:104px; height:104px; object-fit:cover; }
 
     /* Trust bar */
     @keyframes marqueeScroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
@@ -95,7 +101,11 @@
     .gc-badge{ display:flex; width:fit-content; background:var(--cream); border-radius:.85rem; padding:.7rem .95rem; box-shadow:0 8px 22px rgba(0,0,0,.28); }
 
     .agent-badge{ display:inline-flex; align-items:center; gap:.5rem; font-family:'Space Mono',monospace; font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--olive-light); border:1px solid var(--teal-line); border-radius:99px; padding:.28rem .7rem; }
-    .cap-card{ background:rgba(255,255,255,0.55); border:1px solid rgba(14,31,36,0.10); border-radius:.9rem; padding:1.3rem; }
+    .cap-card{ background:rgba(255,255,255,0.6); border:1px solid rgba(14,31,36,0.10); border-radius:1rem; padding:1.6rem; transition:transform .4s cubic-bezier(0.22,1,0.36,1), box-shadow .4s, border-color .4s; }
+    .cap-card:hover{ transform:translateY(-5px); box-shadow:0 20px 40px rgba(14,31,36,0.12); border-color:rgba(66,99,49,0.35); }
+    .cap-ico{ width:3rem; height:3rem; border-radius:.8rem; display:flex; align-items:center; justify-content:center; background:rgba(66,99,49,0.12); color:var(--green); }
+    .cap-ico svg{ width:1.5rem; height:1.5rem; }
+    .cap-num{ font-family:'Space Mono',monospace; font-size:.66rem; letter-spacing:.16em; color:var(--green); opacity:.65; }
 
     /* Tabbed solutions */
     .tab-btn{ display:block; width:100%; text-align:left; padding:1.15rem 1.3rem; border:1px solid var(--teal-line); border-radius:.9rem; background:transparent; color:var(--cream-dim); cursor:pointer; transition:border-color .3s, background-color .3s, color .3s; }
@@ -211,22 +221,37 @@
           </div>
         </div>
 
-        <!-- Chat mock -->
+        <!-- Branded Geo AI console -->
         <div class="animate-on-scroll">
           <div class="chat">
-            <div class="chat-head">
-              <span class="dot" style="background:#e06c5a;"></span><span class="dot" style="background:#e0b84a;"></span><span class="dot" style="background:var(--green-soft);"></span>
-              <span class="font-mono text-xs text-cream-faint ml-2">darwin · geo-ai-agent</span>
+            <div class="console-head">
+              <img src="../assets/brand/logo_circle.png" alt="" class="h-7 w-7 rounded-full">
+              <span class="font-semibold text-sm text-cream">Darwin Geo AI</span>
+              <span class="ad-live" data-lang="es">En vivo</span>
+              <span class="ad-live hidden" data-lang="en">Live</span>
             </div>
-            <div class="p-5 space-y-3">
-              <div class="bubble user" data-lang="es">¿Dónde se está degradando el suelo en la cuenca del Segura?</div>
-              <div class="bubble user hidden" data-lang="en">Where is soil degrading in the Segura Basin?</div>
-              <div class="bubble bot" data-lang="es">He cruzado la serie Sentinel-2 (2018 a 2025) sobre el área de estudio y la he comparado con la imagen histórica de 1956. Te dejo el mapa de degradación a escala de campo y un informe con las zonas prioritarias.</div>
-              <div class="bubble bot hidden" data-lang="en">I cross-read the Sentinel-2 series (2018 to 2025) over the study area and compared it with the 1956 historical imagery. Here is the field-scale degradation map and a report with the priority areas.</div>
-              <div class="flex gap-2 flex-wrap pt-1">
-                <span class="agent-badge">Segura · 24.000 km²</span>
-                <span class="agent-badge">1956-2025</span>
-                <span class="agent-badge">informe.pdf</span>
+            <div class="p-5 space-y-5">
+              <div>
+                <span class="io-label" data-lang="es">Consulta</span>
+                <span class="io-label hidden" data-lang="en">Query</span>
+                <p class="io-q" data-lang="es">¿Dónde se está degradando el suelo en la cuenca del Segura?</p>
+                <p class="io-q hidden" data-lang="en">Where is soil degrading in the Segura Basin?</p>
+              </div>
+              <div>
+                <span class="io-label" data-lang="es">Respuesta del agente</span>
+                <span class="io-label hidden" data-lang="en">Agent response</span>
+                <div class="flex gap-3 items-start">
+                  <div class="io-map"><img src="../assets/hero/ndvi.webp" alt=""></div>
+                  <div class="flex-1">
+                    <p class="text-cream-dim text-sm leading-relaxed" data-lang="es">Serie Sentinel-2 (2018 a 2025) cruzada con la imagen de 1956. Mapa de degradación a escala de campo y zonas prioritarias de la cuenca.</p>
+                    <p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">Sentinel-2 series (2018 to 2025) cross-read with the 1956 imagery. Field-scale degradation map and priority areas of the basin.</p>
+                    <div class="flex gap-2 flex-wrap pt-3">
+                      <span class="agent-badge">Segura · 24.000 km²</span>
+                      <span class="agent-badge">1956-2025</span>
+                      <span class="agent-badge">informe.pdf</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -382,63 +407,6 @@
     </div>
   </section>
 
-  <!-- Scrollytelling: how an agent works -->
-  <section class="bg-teal-deep section-rule">
-    <div class="container mx-auto px-6 pt-20 lg:pt-28">
-      <div class="max-w-3xl animate-on-scroll">
-        <p class="eyebrow mb-5" data-lang="es">Cómo trabaja un agente</p>
-        <p class="eyebrow mb-5 hidden" data-lang="en">How an agent works</p>
-        <h2 class="font-bold text-cream leading-tight mb-4" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="es">De los píxeles a la decisión, sin pasar por un experto</h2>
-        <h2 class="font-bold text-cream leading-tight mb-4 hidden" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="en">From pixels to decision, without going through an expert</h2>
-      </div>
-    </div>
-    <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-10 lg:gap-16 pb-20">
-      <div>
-        <div class="scrolly-pin">
-          <div class="stage">
-            <img id="stg-0" class="on" src="../assets/hero/alps_rgb.jpg" alt="">
-            <img id="stg-1" src="../assets/hero/alps_alphaearth.jpg" alt="">
-            <img id="stg-2" src="../projects/darwin_maps/assets/darwin_geo_ai.png" alt="">
-            <img id="stg-3" src="../assets/hero/ndvi.webp" alt="">
-            <div class="stage-veil"></div>
-            <div class="scan"></div>
-            <div class="stage-cap"><span id="stg-cap" class="agent-badge">01 · Lee las capas</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="pt-4 lg:pt-28 space-y-10 lg:space-y-24">
-        <div class="step active" data-step="0">
-          <p class="step-n mb-2">01</p>
-          <h3 class="font-bold text-cream text-xl lg:text-2xl mb-2" data-lang="es">Lee las capas</h3>
-          <h3 class="font-bold text-cream text-xl lg:text-2xl mb-2 hidden" data-lang="en">Reads the layers</h3>
-          <p class="text-cream-dim leading-relaxed" data-lang="es">El agente ingiere imágenes de satélite, radar, LiDAR, clima y tus propios datos, alineados en el espacio y el tiempo.</p>
-          <p class="text-cream-dim leading-relaxed hidden" data-lang="en">The agent ingests satellite, radar, LiDAR, climate and your own data, aligned in space and time.</p>
-        </div>
-        <div class="step" data-step="1">
-          <p class="step-n mb-2">02</p>
-          <h3 class="font-bold text-cream text-xl lg:text-2xl mb-2" data-lang="es">Razona con nuestros modelos</h3>
-          <h3 class="font-bold text-cream text-xl lg:text-2xl mb-2 hidden" data-lang="en">Reasons with our models</h3>
-          <p class="text-cream-dim leading-relaxed" data-lang="es">Modelos propios segmentan, clasifican y miden. El agente detecta el cambio, lo cuantifica y lo pone en contexto.</p>
-          <p class="text-cream-dim leading-relaxed hidden" data-lang="en">Our own models segment, classify and measure. The agent detects change, quantifies it and puts it in context.</p>
-        </div>
-        <div class="step" data-step="2">
-          <p class="step-n mb-2">03</p>
-          <h3 class="font-bold text-cream text-xl lg:text-2xl mb-2" data-lang="es">Responde en tu idioma</h3>
-          <h3 class="font-bold text-cream text-xl lg:text-2xl mb-2 hidden" data-lang="en">Answers in your language</h3>
-          <p class="text-cream-dim leading-relaxed" data-lang="es">Preguntas en lenguaje natural, respuestas con el mapa, el número y la fuente detrás. Sin GIS, sin código.</p>
-          <p class="text-cream-dim leading-relaxed hidden" data-lang="en">Ask in plain language, get the map, the number and the source behind it. No GIS, no code.</p>
-        </div>
-        <div class="step" data-step="3">
-          <p class="step-n mb-2">04</p>
-          <h3 class="font-bold text-cream text-xl lg:text-2xl mb-2" data-lang="es">Actúa y entrega</h3>
-          <h3 class="font-bold text-cream text-xl lg:text-2xl mb-2 hidden" data-lang="en">Acts and delivers</h3>
-          <p class="text-cream-dim leading-relaxed" data-lang="es">Genera el informe, prepara la propuesta, actualiza el registro o dispara la alerta. El agente cierra el bucle.</p>
-          <p class="text-cream-dim leading-relaxed hidden" data-lang="en">It generates the report, drafts the proposal, updates the record or fires the alert. The agent closes the loop.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Agent in action: self-built animated demo -->
   <section class="bg-teal-base section-rule py-20 lg:py-28">
     <div class="container mx-auto px-6">
@@ -451,28 +419,40 @@
         <p class="text-cream-dim leading-relaxed hidden" data-lang="en">A real example, based on our soil degradation work in the Segura Basin: the agent understands the task, gathers the data, runs the model and delivers the result, step by step.</p>
       </div>
       <div id="agent-demo" class="agent-demo max-w-3xl mx-auto animate-on-scroll">
-        <div class="chat-head">
-          <span class="dot" style="background:#e06c5a;"></span><span class="dot" style="background:#e0b84a;"></span><span class="dot" style="background:var(--green-soft);"></span>
-          <span class="font-mono text-xs text-cream-faint ml-2">darwin · geo-ai-agent</span>
-          <span class="ad-live" data-lang="es">En vivo</span>
-          <span class="ad-live hidden" data-lang="en">Live</span>
+        <div class="console-head">
+          <img src="../assets/brand/logo_circle.png" alt="" class="h-7 w-7 rounded-full">
+          <span class="font-semibold text-sm text-cream">Darwin Geo AI</span>
+          <span class="font-mono text-xs text-cream-faint">· agente</span>
+          <span class="ad-live" data-lang="es">Ejecutando</span>
+          <span class="ad-live hidden" data-lang="en">Running</span>
         </div>
         <div class="ad-body">
-          <div class="bubble user" data-lang="es">Evalúa la degradación del suelo en la cuenca del Segura.</div>
-          <div class="bubble user hidden" data-lang="en">Assess soil degradation in the Segura Basin.</div>
+          <div class="mb-4">
+            <span class="io-label" data-lang="es">Tarea</span>
+            <span class="io-label hidden" data-lang="en">Task</span>
+            <p class="io-q" data-lang="es">Evalúa la degradación del suelo en la cuenca del Segura.</p>
+            <p class="io-q hidden" data-lang="en">Assess soil degradation in the Segura Basin.</p>
+          </div>
           <ul class="ad-steps">
             <li class="ad-step"><span class="ad-ico"></span><span class="ad-step-tx"><span data-lang="es">Reuniendo la serie Sentinel-2 (2018 a 2025)</span><span class="hidden" data-lang="en">Gathering the Sentinel-2 series (2018 to 2025)</span></span></li>
             <li class="ad-step"><span class="ad-ico"></span><span class="ad-step-tx"><span data-lang="es">Alineando el área de estudio (24.000 km²) con la imagen histórica de 1956</span><span class="hidden" data-lang="en">Aligning the study area (24,000 km²) with the 1956 historical imagery</span></span></li>
             <li class="ad-step"><span class="ad-ico"></span><span class="ad-step-tx"><span data-lang="es">Ejecutando el modelo propio (Prithvi-EO afinado)</span><span class="hidden" data-lang="en">Running our own model (fine-tuned Prithvi-EO)</span></span></li>
             <li class="ad-step"><span class="ad-ico"></span><span class="ad-step-tx"><span data-lang="es">Detectando erosión y cárcavas, y redactando el informe</span><span class="hidden" data-lang="en">Detecting erosion and gullies, drafting the report</span></span></li>
           </ul>
-          <div class="ad-result bubble bot">
-            <span data-lang="es">Listo. He preparado un mapa de degradación a escala de campo y un informe con las zonas prioritarias de la cuenca.</span>
-            <span class="hidden" data-lang="en">Done. I have prepared a field-scale degradation map and a report with the basin's priority areas.</span>
-            <div class="flex gap-2 flex-wrap pt-3">
-              <span class="agent-badge">Segura · 24.000 km²</span>
-              <span class="agent-badge">1956-2025</span>
-              <span class="agent-badge">informe.pdf</span>
+          <div class="ad-result mt-5">
+            <span class="io-label" data-lang="es">Resultado</span>
+            <span class="io-label hidden" data-lang="en">Result</span>
+            <div class="bubble bot flex gap-3 items-start">
+              <div class="io-map"><img src="../assets/hero/ndvi.webp" alt=""></div>
+              <div class="flex-1">
+                <p class="text-cream-dim text-sm leading-relaxed" data-lang="es">Mapa de degradación a escala de campo e informe con las zonas prioritarias de la cuenca.</p>
+                <p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">Field-scale degradation map and a report with the basin's priority areas.</p>
+                <div class="flex gap-2 flex-wrap pt-3">
+                  <span class="agent-badge">Segura · 24.000 km²</span>
+                  <span class="agent-badge">1956-2025</span>
+                  <span class="agent-badge">informe.pdf</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -488,16 +468,40 @@
       <div class="max-w-3xl mb-12 animate-on-scroll">
         <p class="eyebrow mb-5" data-lang="es">Qué construimos</p>
         <p class="eyebrow mb-5 hidden" data-lang="en">What we build</p>
-        <h2 class="font-bold text-cream leading-tight" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="es">Agentes a medida, sobre tus datos y tus reglas</h2>
-        <h2 class="font-bold text-cream leading-tight hidden" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="en">Bespoke agents, on your data and your rules</h2>
+        <h2 class="font-bold text-cream leading-tight" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="es">Las piezas que combinamos en cada agente</h2>
+        <h2 class="font-bold text-cream leading-tight hidden" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="en">The building blocks we combine in every agent</h2>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="cap-card animate-on-scroll"><h3 class="font-bold text-cream mb-2" data-lang="es">Asistentes conversacionales</h3><h3 class="font-bold text-cream mb-2 hidden" data-lang="en">Conversational assistants</h3><p class="text-cream-dim text-sm leading-relaxed" data-lang="es">Pregunta al territorio en lenguaje natural sobre tus propias capas.</p><p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">Query the land in plain language over your own layers.</p></div>
-        <div class="cap-card animate-on-scroll"><h3 class="font-bold text-cream mb-2" data-lang="es">Automatización de informes</h3><h3 class="font-bold text-cream mb-2 hidden" data-lang="en">Report automation</h3><p class="text-cream-dim text-sm leading-relaxed" data-lang="es">Del dato al documento: informes y propuestas listos para enviar.</p><p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">From data to document: reports and proposals ready to send.</p></div>
-        <div class="cap-card animate-on-scroll"><h3 class="font-bold text-cream mb-2" data-lang="es">Detección de cambio</h3><h3 class="font-bold text-cream mb-2 hidden" data-lang="en">Change detection</h3><p class="text-cream-dim text-sm leading-relaxed" data-lang="es">Vigilancia continua con alertas cuando algo cambia en el terreno.</p><p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">Continuous watch with alerts when something changes on the ground.</p></div>
-        <div class="cap-card animate-on-scroll"><h3 class="font-bold text-cream mb-2" data-lang="es">Integración con tus sistemas</h3><h3 class="font-bold text-cream mb-2 hidden" data-lang="en">Integration with your systems</h3><p class="text-cream-dim text-sm leading-relaxed" data-lang="es">Conectamos con tu correo, tu GIS y tus bases de datos.</p><p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">We connect to your email, your GIS and your databases.</p></div>
-        <div class="cap-card animate-on-scroll"><h3 class="font-bold text-cream mb-2" data-lang="es">Cerco de seguridad</h3><h3 class="font-bold text-cream mb-2 hidden" data-lang="en">Safety fence</h3><p class="text-cream-dim text-sm leading-relaxed" data-lang="es">Cada agente tiene límites claros: hace su trabajo y se detiene ante lo que debe decidir un humano.</p><p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">Every agent has clear limits: it does its job and stops where a human must decide.</p></div>
-        <div class="cap-card animate-on-scroll"><h3 class="font-bold text-cream mb-2" data-lang="es">Modelos propios</h3><h3 class="font-bold text-cream mb-2 hidden" data-lang="en">Our own models</h3><p class="text-cream-dim text-sm leading-relaxed" data-lang="es">No solo llamamos a una API: entrenamos modelos para leer cada píxel.</p><p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">We don't just call an API: we train models to read every pixel.</p></div>
+        <div class="cap-card animate-on-scroll">
+          <div class="flex items-center justify-between mb-4"><div class="cap-ico"><svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 10h8M8 14h5m-9 6l3.5-2.5H18a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v13z"/></svg></div><span class="cap-num">01</span></div>
+          <h3 class="font-bold text-cream mb-2" data-lang="es">Asistentes conversacionales</h3><h3 class="font-bold text-cream mb-2 hidden" data-lang="en">Conversational assistants</h3>
+          <p class="text-cream-dim text-sm leading-relaxed" data-lang="es">Pregunta al territorio en lenguaje natural sobre tus propias capas.</p><p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">Query the land in plain language over your own layers.</p>
+        </div>
+        <div class="cap-card animate-on-scroll" style="transition-delay:70ms;">
+          <div class="flex items-center justify-between mb-4"><div class="cap-ico"><svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m-8 4h10a2 2 0 002-2V8l-5-5H7a2 2 0 00-2 2v12a2 2 0 002 2zm7-17v4a2 2 0 002 2h4"/></svg></div><span class="cap-num">02</span></div>
+          <h3 class="font-bold text-cream mb-2" data-lang="es">Automatización de informes</h3><h3 class="font-bold text-cream mb-2 hidden" data-lang="en">Report automation</h3>
+          <p class="text-cream-dim text-sm leading-relaxed" data-lang="es">Del dato al documento: informes y propuestas listos para enviar.</p><p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">From data to document: reports and proposals ready to send.</p>
+        </div>
+        <div class="cap-card animate-on-scroll" style="transition-delay:140ms;">
+          <div class="flex items-center justify-between mb-4"><div class="cap-ico"><svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12h3l3 8 4-16 3 8h5"/></svg></div><span class="cap-num">03</span></div>
+          <h3 class="font-bold text-cream mb-2" data-lang="es">Detección de cambio</h3><h3 class="font-bold text-cream mb-2 hidden" data-lang="en">Change detection</h3>
+          <p class="text-cream-dim text-sm leading-relaxed" data-lang="es">Vigilancia continua con alertas cuando algo cambia en el terreno.</p><p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">Continuous watch with alerts when something changes on the ground.</p>
+        </div>
+        <div class="cap-card animate-on-scroll">
+          <div class="flex items-center justify-between mb-4"><div class="cap-ico"><svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div><span class="cap-num">04</span></div>
+          <h3 class="font-bold text-cream mb-2" data-lang="es">Integración con tus sistemas</h3><h3 class="font-bold text-cream mb-2 hidden" data-lang="en">Integration with your systems</h3>
+          <p class="text-cream-dim text-sm leading-relaxed" data-lang="es">Conectamos con tu correo, tu GIS y tus bases de datos.</p><p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">We connect to your email, your GIS and your databases.</p>
+        </div>
+        <div class="cap-card animate-on-scroll" style="transition-delay:70ms;">
+          <div class="flex items-center justify-between mb-4"><div class="cap-ico"><svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9.5 12l1.8 1.8L15 10"/></svg></div><span class="cap-num">05</span></div>
+          <h3 class="font-bold text-cream mb-2" data-lang="es">Cerco de seguridad</h3><h3 class="font-bold text-cream mb-2 hidden" data-lang="en">Safety fence</h3>
+          <p class="text-cream-dim text-sm leading-relaxed" data-lang="es">Cada agente tiene límites claros: hace su trabajo y se detiene ante lo que debe decidir un humano.</p><p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">Every agent has clear limits: it does its job and stops where a human must decide.</p>
+        </div>
+        <div class="cap-card animate-on-scroll" style="transition-delay:140ms;">
+          <div class="flex items-center justify-between mb-4"><div class="cap-ico"><svg fill="none" stroke="currentColor" stroke-width="1.6" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2"/><path stroke-linecap="round" stroke-linejoin="round" d="M10 3v3m4-3v3m-4 12v3m4-3v3M3 10h3m-3 4h3m12-4h3m-3 4h3"/></svg></div><span class="cap-num">06</span></div>
+          <h3 class="font-bold text-cream mb-2" data-lang="es">Modelos propios</h3><h3 class="font-bold text-cream mb-2 hidden" data-lang="en">Our own models</h3>
+          <p class="text-cream-dim text-sm leading-relaxed" data-lang="es">No solo llamamos a una API: entrenamos modelos para leer cada píxel.</p><p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">We don't just call an API: we train models to read every pixel.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -606,23 +610,6 @@
             });
           }, {threshold: 0.35}).observe(demo);
         } else { playDemo(); }
-      }
-
-      // Scrollytelling
-      var steps = Array.prototype.slice.call(document.querySelectorAll('.step'));
-      var imgs = ['stg-0','stg-1','stg-2','stg-3'].map(function(id){ return document.getElementById(id); });
-      var caps = { 0:['01 · Lee las capas','01 · Reads the layers'], 1:['02 · Razona','02 · Reasons'], 2:['03 · Responde','03 · Answers'], 3:['04 · Actúa','04 · Delivers'] };
-      var capEl = document.getElementById('stg-cap');
-      function activate(n){
-        steps.forEach(function(s){ s.classList.toggle('active', +s.dataset.step === n); });
-        imgs.forEach(function(im,i){ if(im) im.classList.toggle('on', i === n); });
-        if (capEl){ var lang = document.documentElement.lang === 'en' ? 1 : 0; capEl.textContent = caps[n][lang]; }
-      }
-      if ('IntersectionObserver' in window){
-        var obs = new IntersectionObserver(function(entries){
-          entries.forEach(function(e){ if (e.isIntersecting) activate(+e.target.dataset.step); });
-        }, {threshold: 0.6, rootMargin: '-20% 0px -30% 0px'});
-        steps.forEach(function(s){ obs.observe(s); });
       }
     })();
   </script>
