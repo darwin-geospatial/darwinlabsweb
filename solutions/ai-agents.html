@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Agentes Geo AI — Darwin Geospatial</title>
 
-  <meta name="description" content="Construimos agentes de IA geoespacial que leen los datos del territorio, razonan sobre ellos y actúan: asistentes conversacionales, automatización de documentos, prospección y monitoreo."/>
+  <meta name="description" content="Hacemos simple la IA geoespacial. Construimos agentes que leen los datos del territorio, razonan sobre ellos y actúan: asistentes conversacionales, automatización de documentos, prospección y monitoreo."/>
   <link rel="canonical" href="https://darwingeospatial.com/solutions/ai-agents.html"/>
   <meta property="og:type" content="website"/>
   <meta property="og:title" content="Agentes Geo AI — Darwin Geospatial"/>
-  <meta property="og:description" content="Agentes de IA que leen el territorio, razonan y actúan."/>
+  <meta property="og:description" content="Hacemos simple la IA geoespacial: agentes que leen el territorio, razonan y actúan."/>
   <meta property="og:url" content="https://darwingeospatial.com/solutions/ai-agents.html"/>
   <meta property="og:site_name" content="Darwin Geospatial"/>
   <link rel="icon" href="../favicon.ico?v=2" sizes="any"/>
@@ -38,7 +38,6 @@
     .border-line{border-color:var(--teal-line);}
     .section-rule{ border-top:1px solid var(--teal-line); }
 
-    /* Light section remap */
     .section-light{ background:var(--cream); color:var(--teal-deep); }
     .section-light .eyebrow{ color:var(--green); } .section-light .eyebrow::before{ background:var(--green); }
     .section-light .text-cream{ color:var(--teal-deep) !important; }
@@ -74,13 +73,42 @@
       background-image:linear-gradient(var(--teal-line) 1px, transparent 1px), linear-gradient(90deg, var(--teal-line) 1px, transparent 1px);
       background-size:46px 46px; mask-image:radial-gradient(circle at 70% 20%, #000 0%, transparent 70%); -webkit-mask-image:radial-gradient(circle at 70% 20%, #000 0%, transparent 70%); }
 
-    /* Agent chat mock */
+    /* Chat mock */
     .chat{ background:var(--teal-elev); border:1px solid var(--teal-line); border-radius:1.1rem; overflow:hidden; box-shadow:0 30px 60px rgba(0,0,0,.45); }
     .chat-head{ display:flex; align-items:center; gap:.55rem; padding:.9rem 1.1rem; border-bottom:1px solid var(--teal-line); background:rgba(14,31,36,0.4); }
     .dot{ width:10px; height:10px; border-radius:99px; }
     .bubble{ border-radius:.9rem; padding:.7rem .95rem; font-size:.92rem; line-height:1.5; max-width:88%; }
     .bubble.user{ background:var(--green); color:var(--cream); margin-left:auto; border-bottom-right-radius:.2rem; }
     .bubble.bot{ background:rgba(14,31,36,0.55); color:var(--cream-dim); border:1px solid var(--teal-line); border-bottom-left-radius:.2rem; }
+
+    /* Trust bar */
+    @keyframes marqueeScroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+    .animate-marquee{ animation:marqueeScroll 40s linear infinite; }
+    .animate-marquee:hover{ animation-play-state:paused; }
+    .partner-logo{ filter:grayscale(1) brightness(1.6); opacity:.55; transition:filter .3s, opacity .3s; }
+    .partner-logo:hover{ filter:none; opacity:1; }
+
+    /* Value-prop cards (Valere-style) */
+    .val-card{ background:var(--teal-elev); border:1px solid var(--teal-line); border-radius:1.1rem; padding:1.9rem 1.7rem; height:100%; transition:transform .4s cubic-bezier(0.22,1,0.36,1), border-color .4s, box-shadow .4s; }
+    .val-card:hover{ transform:translateY(-6px); border-color:rgba(188,190,118,0.45); box-shadow:0 22px 46px rgba(0,0,0,0.42); }
+    .val-big{ font-family:'Bebas Neue',sans-serif; color:var(--olive-light); line-height:.9; font-size:clamp(2.6rem,4.4vw,3.6rem); }
+
+    .agent-badge{ display:inline-flex; align-items:center; gap:.5rem; font-family:'Space Mono',monospace; font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--olive-light); border:1px solid var(--teal-line); border-radius:99px; padding:.28rem .7rem; }
+    .cap-card{ background:rgba(255,255,255,0.55); border:1px solid rgba(14,31,36,0.10); border-radius:.9rem; padding:1.3rem; }
+
+    /* Tabbed solutions */
+    .tab-btn{ display:block; width:100%; text-align:left; padding:1.15rem 1.3rem; border:1px solid var(--teal-line); border-radius:.9rem; background:transparent; color:var(--cream-dim); cursor:pointer; transition:border-color .3s, background-color .3s, color .3s; }
+    .tab-btn:hover{ border-color:rgba(188,190,118,0.4); color:var(--cream); }
+    .tab-btn.active{ background:var(--teal-elev); border-color:var(--olive-light); color:var(--cream); }
+    .tab-btn .tb-code{ font-family:'Space Mono',monospace; font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:var(--olive-light); }
+    .tab-panel{ display:none; }
+    .tab-panel.active{ display:block; animation:tabIn .5s cubic-bezier(0.22,1,0.36,1); }
+    @keyframes tabIn{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);} }
+    .tab-visual{ width:100%; aspect-ratio:16/10; object-fit:cover; border-radius:1.1rem; border:1px solid var(--teal-line); }
+
+    /* Video embed */
+    .video-wrap{ position:relative; width:100%; aspect-ratio:16/9; border-radius:1.2rem; overflow:hidden; border:1px solid var(--teal-line); box-shadow:0 30px 60px rgba(0,0,0,.45); background:var(--teal-elev); }
+    .video-wrap iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
 
     /* Scrollytelling */
     .scrolly-pin{ position:sticky; top:0; height:100vh; display:flex; align-items:flex-start; overflow:hidden; padding-top:6rem; box-sizing:border-box; }
@@ -95,14 +123,8 @@
     .step.active{ opacity:1; border-left-color:var(--olive-light); }
     .step-n{ font-family:'Space Mono',monospace; font-size:.72rem; letter-spacing:.18em; color:var(--olive-light); }
 
-    /* Agent cards */
-    .agent-card{ background:var(--teal-elev); border:1px solid var(--teal-line); border-radius:1rem; padding:1.6rem; transition:transform .4s cubic-bezier(0.22,1,0.36,1), border-color .4s, box-shadow .4s; height:100%; }
-    .agent-card:hover{ transform:translateY(-6px); border-color:rgba(188,190,118,0.45); box-shadow:0 22px 46px rgba(0,0,0,0.42); }
-    .agent-badge{ display:inline-flex; align-items:center; gap:.5rem; font-family:'Space Mono',monospace; font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; color:var(--olive-light); border:1px solid var(--teal-line); border-radius:99px; padding:.28rem .7rem; }
-    .cap-card{ background:rgba(255,255,255,0.55); border:1px solid rgba(14,31,36,0.10); border-radius:.9rem; padding:1.3rem; }
-    .icon-wrap{ width:3rem; height:3rem; border-radius:.7rem; display:flex; align-items:center; justify-content:center; background:rgba(66,99,49,0.12); color:var(--green); }
     @media (max-width:1023px){ .scrolly-pin{ position:static; height:auto; display:block; padding-top:1.5rem; } .stage{ margin-bottom:2rem; } }
-    @media (prefers-reduced-motion: reduce){ .scan{ animation:none; display:none; } .animate-on-scroll{ opacity:1; transform:none; } }
+    @media (prefers-reduced-motion: reduce){ .scan{ animation:none; display:none; } .animate-marquee{ animation:none; } .animate-on-scroll{ opacity:1; transform:none; } }
   </style>
 </head>
 <body>
@@ -158,10 +180,10 @@
         <div class="animate-on-scroll">
           <p class="eyebrow mb-6" data-lang="es">Solución · Agentes Geo AI</p>
           <p class="eyebrow mb-6 hidden" data-lang="en">Solution · Geo AI agents</p>
-          <h1 class="font-display uppercase text-cream leading-[0.95] mb-6" style="font-size:clamp(2.6rem,6vw,5rem);" data-lang="es">Agentes que <span class="text-olive">entienden</span> el territorio</h1>
-          <h1 class="font-display uppercase text-cream leading-[0.95] mb-6 hidden" style="font-size:clamp(2.6rem,6vw,5rem);" data-lang="en">Agents that <span class="text-olive">understand</span> the land</h1>
-          <p class="text-lg text-cream-dim leading-relaxed max-w-xl mb-8" data-lang="es">No basta con un mapa. Construimos agentes de IA que leen tus capas geoespaciales, razonan sobre ellas y actúan: responden en lenguaje natural, generan documentos y automatizan el trabajo repetitivo que hoy te frena.</p>
-          <p class="text-lg text-cream-dim leading-relaxed max-w-xl mb-8 hidden" data-lang="en">A map is not enough. We build AI agents that read your geospatial layers, reason over them and act: they answer in plain language, generate documents and automate the repetitive work that slows you down today.</p>
+          <h1 class="font-display uppercase text-cream leading-[0.92] mb-6" style="font-size:clamp(2.8rem,6.4vw,5.4rem);" data-lang="es">Hacemos simple<br>la IA <span class="text-olive">del territorio</span></h1>
+          <h1 class="font-display uppercase text-cream leading-[0.92] mb-6 hidden" style="font-size:clamp(2.8rem,6.4vw,5.4rem);" data-lang="en">We make<br>geospatial AI <span class="text-olive">simple</span></h1>
+          <p class="text-lg text-cream-dim leading-relaxed max-w-xl mb-8" data-lang="es">Construimos agentes de IA que leen tus capas geoespaciales, razonan sobre ellas y actúan. De la estrategia a la puesta en producción, para que tu organización decida con datos y no con intuición.</p>
+          <p class="text-lg text-cream-dim leading-relaxed max-w-xl mb-8 hidden" data-lang="en">We build AI agents that read your geospatial layers, reason over them and act. From strategy to production, so your organization decides with data, not gut feeling.</p>
           <div class="flex flex-wrap gap-4">
             <a href="../index.html#contact" class="btn-accent px-7 py-3.5 rounded-full font-semibold text-sm tracking-wide" data-lang="es">Agenda una llamada</a>
             <a href="../index.html#contact" class="btn-accent px-7 py-3.5 rounded-full font-semibold text-sm tracking-wide hidden" data-lang="en">Book a call</a>
@@ -194,33 +216,148 @@
     </div>
   </section>
 
-  <!-- The problem (light) -->
-  <section class="section-light section-rule py-20 lg:py-24">
+  <!-- Trust bar -->
+  <section class="bg-teal-base section-rule py-12 overflow-hidden">
+    <div class="container mx-auto px-6">
+      <p class="eyebrow justify-center text-center w-full mb-8" data-lang="es">Con la confianza de equipos de ciencia y gobierno</p>
+      <p class="eyebrow justify-center text-center w-full mb-8 hidden" data-lang="en">Trusted by teams in science and government</p>
+    </div>
+    <div class="relative w-full">
+      <div class="flex items-center gap-12 w-max animate-marquee px-6">
+        <img src="../assets/partners/seo_bird_life.jpg" alt="SEO BirdLife" class="h-11 partner-logo rounded">
+        <img src="../assets/partners/csic.png" alt="CSIC" class="h-11 partner-logo">
+        <img src="../assets/partners/johns_hopkins.webp" alt="Johns Hopkins University" class="h-11 partner-logo">
+        <img src="../assets/partners/universidad_politecnica.jpg" alt="UPM" class="h-11 partner-logo rounded">
+        <img src="../assets/partners/google_partner.png" alt="Google Partner" class="h-11 partner-logo">
+        <img src="../assets/partners/urjc.png" alt="URJC" class="h-11 partner-logo">
+        <img src="../assets/partners/fundacion_monte_mediterraneo.png" alt="Fundación Monte Mediterráneo" class="h-11 partner-logo">
+        <img src="../assets/partners/universidad_avila.jpg" alt="Universidad de Ávila" class="h-11 partner-logo rounded">
+        <img src="../assets/partners/orygen_earth_logo.jpg" alt="Orygen" class="h-11 partner-logo rounded">
+        <!-- duplicate for seamless loop -->
+        <img src="../assets/partners/seo_bird_life.jpg" alt="" aria-hidden="true" class="h-11 partner-logo rounded">
+        <img src="../assets/partners/csic.png" alt="" aria-hidden="true" class="h-11 partner-logo">
+        <img src="../assets/partners/johns_hopkins.webp" alt="" aria-hidden="true" class="h-11 partner-logo">
+        <img src="../assets/partners/universidad_politecnica.jpg" alt="" aria-hidden="true" class="h-11 partner-logo rounded">
+        <img src="../assets/partners/google_partner.png" alt="" aria-hidden="true" class="h-11 partner-logo">
+        <img src="../assets/partners/urjc.png" alt="" aria-hidden="true" class="h-11 partner-logo">
+        <img src="../assets/partners/fundacion_monte_mediterraneo.png" alt="" aria-hidden="true" class="h-11 partner-logo">
+        <img src="../assets/partners/universidad_avila.jpg" alt="" aria-hidden="true" class="h-11 partner-logo rounded">
+        <img src="../assets/partners/orygen_earth_logo.jpg" alt="" aria-hidden="true" class="h-11 partner-logo rounded">
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Darwin — value-prop grid (Valere-style) -->
+  <section class="bg-teal-deep section-rule py-20 lg:py-28">
     <div class="container mx-auto px-6">
       <div class="max-w-3xl mb-14 animate-on-scroll">
-        <p class="eyebrow mb-5" data-lang="es">El problema</p>
-        <p class="eyebrow mb-5 hidden" data-lang="en">The problem</p>
-        <h2 class="font-bold text-cream leading-tight" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="es">Tienes los datos. Falta quien los lea, los entienda y actúe.</h2>
-        <h2 class="font-bold text-cream leading-tight hidden" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="en">You have the data. What's missing is someone to read it, understand it and act.</h2>
+        <p class="eyebrow mb-5" data-lang="es">Por qué Darwin</p>
+        <p class="eyebrow mb-5 hidden" data-lang="en">Why Darwin</p>
+        <h2 class="font-bold text-cream leading-tight" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="es">Agentes serios, sobre datos reales, con resultados medibles</h2>
+        <h2 class="font-bold text-cream leading-tight hidden" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="en">Serious agents, on real data, with measurable results</h2>
       </div>
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="cap-card animate-on-scroll">
-          <h3 class="font-bold text-cream mb-2 text-lg" data-lang="es">Datos dispersos y técnicos</h3>
-          <h3 class="font-bold text-cream mb-2 text-lg hidden" data-lang="en">Scattered, technical data</h3>
-          <p class="text-cream-dim text-sm leading-relaxed" data-lang="es">Satélite, LiDAR, clima, catastro: cada capa vive en su formato y hace falta un experto GIS para cruzarlas.</p>
-          <p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">Satellite, LiDAR, climate, cadastre: every layer lives in its own format and needs a GIS expert to combine them.</p>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="val-card animate-on-scroll">
+          <p class="val-big mb-3">+2.4M</p>
+          <h3 class="font-bold text-cream text-lg mb-2" data-lang="es">Hectáreas analizadas</h3>
+          <h3 class="font-bold text-cream text-lg mb-2 hidden" data-lang="en">Hectares analysed</h3>
+          <p class="text-cream-dim text-sm leading-relaxed" data-lang="es">Historial real: +12 proyectos entregados y +600.000 líneas de código al servicio de la naturaleza.</p>
+          <p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">A real track record: +12 delivered projects and +600,000 lines of code in service of nature.</p>
         </div>
-        <div class="cap-card animate-on-scroll">
-          <h3 class="font-bold text-cream mb-2 text-lg" data-lang="es">Preguntas simples, respuestas lentas</h3>
-          <h3 class="font-bold text-cream mb-2 text-lg hidden" data-lang="en">Simple questions, slow answers</h3>
-          <p class="text-cream-dim text-sm leading-relaxed" data-lang="es">"¿Qué ha cambiado aquí?" debería tardar segundos, no un encargo de semanas a un equipo técnico.</p>
-          <p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">"What changed here?" should take seconds, not a multi-week request to a technical team.</p>
+        <div class="val-card animate-on-scroll" style="transition-delay:80ms;">
+          <p class="val-big mb-3" data-lang="es">Propios</p>
+          <p class="val-big mb-3 hidden" data-lang="en">In-house</p>
+          <h3 class="font-bold text-cream text-lg mb-2" data-lang="es">Modelos, no cajas negras</h3>
+          <h3 class="font-bold text-cream text-lg mb-2 hidden" data-lang="en">Models, not black boxes</h3>
+          <p class="text-cream-dim text-sm leading-relaxed" data-lang="es">Entrenamos nuestras propias redes para leer cada píxel. Sabes qué mide el modelo y por qué.</p>
+          <p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">We train our own networks to read every pixel. You know what the model measures and why.</p>
         </div>
-        <div class="cap-card animate-on-scroll">
-          <h3 class="font-bold text-cream mb-2 text-lg" data-lang="es">Trabajo repetitivo</h3>
-          <h3 class="font-bold text-cream mb-2 text-lg hidden" data-lang="en">Repetitive work</h3>
-          <p class="text-cream-dim text-sm leading-relaxed" data-lang="es">Informes, propuestas, seguimiento, triaje de fuentes: horas de trabajo manual que un agente puede hacer bien.</p>
-          <p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">Reports, proposals, follow-ups, source triage: hours of manual work an agent can do well.</p>
+        <div class="val-card animate-on-scroll" style="transition-delay:160ms;">
+          <p class="val-big mb-3" data-lang="es">Cerco</p>
+          <p class="val-big mb-3 hidden" data-lang="en">Fenced</p>
+          <h3 class="font-bold text-cream text-lg mb-2" data-lang="es">Seguridad por diseño</h3>
+          <h3 class="font-bold text-cream text-lg mb-2 hidden" data-lang="en">Safe by design</h3>
+          <p class="text-cream-dim text-sm leading-relaxed" data-lang="es">Cada agente tiene límites claros: hace su trabajo y se detiene ante lo que debe decidir un humano.</p>
+          <p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">Every agent has clear limits: it does its job and stops where a human must decide.</p>
+        </div>
+        <div class="val-card animate-on-scroll" style="transition-delay:240ms;">
+          <p class="val-big mb-3">GCP</p>
+          <h3 class="font-bold text-cream text-lg mb-2" data-lang="es">De la nube al terreno</h3>
+          <h3 class="font-bold text-cream text-lg mb-2 hidden" data-lang="en">From cloud to ground</h3>
+          <p class="text-cream-dim text-sm leading-relaxed" data-lang="es">Desplegamos en Google Cloud y Earth Engine, con datos alineados en espacio y tiempo, listos para producción.</p>
+          <p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">We deploy on Google Cloud and Earth Engine, with data aligned in space and time, ready for production.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tabbed solutions — the agent family (Valere-style tabs) -->
+  <section id="agents" class="bg-teal-base section-rule py-20 lg:py-28">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mb-12 animate-on-scroll">
+        <p class="eyebrow mb-5" data-lang="es">Nuestra familia de agentes</p>
+        <p class="eyebrow mb-5 hidden" data-lang="en">Our agent family</p>
+        <h2 class="font-bold text-cream leading-tight mb-4" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="es">Ya estamos construyendo agentes como estos</h2>
+        <h2 class="font-bold text-cream leading-tight mb-4 hidden" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="en">We are already building agents like these</h2>
+        <p class="text-cream-dim leading-relaxed" data-lang="es">Algunos operan dentro de Darwin, otros los construimos a medida para clientes. Elige uno para ver qué hace.</p>
+        <p class="text-cream-dim leading-relaxed hidden" data-lang="en">Some run inside Darwin, others we build bespoke for clients. Pick one to see what it does.</p>
+      </div>
+
+      <div class="grid lg:grid-cols-5 gap-6 lg:gap-10 items-start">
+        <!-- Tab buttons -->
+        <div class="lg:col-span-2 space-y-3" id="agent-tabs">
+          <button class="tab-btn active" data-tab="0">
+            <span class="tb-code">darwinmaps</span>
+            <span class="block font-bold text-lg mt-1" data-lang="es">Asistente geoespacial</span>
+            <span class="block font-bold text-lg mt-1 hidden" data-lang="en">Geospatial assistant</span>
+          </button>
+          <button class="tab-btn" data-tab="1">
+            <span class="tb-code">pato</span>
+            <span class="block font-bold text-lg mt-1" data-lang="es">Documentos y propuestas</span>
+            <span class="block font-bold text-lg mt-1 hidden" data-lang="en">Documents and proposals</span>
+          </button>
+          <button class="tab-btn" data-tab="2">
+            <span class="tb-code">carls</span>
+            <span class="block font-bold text-lg mt-1" data-lang="es">Prospección y seguimiento</span>
+            <span class="block font-bold text-lg mt-1 hidden" data-lang="en">Prospecting and follow-up</span>
+          </button>
+          <button class="tab-btn" data-tab="3">
+            <span class="tb-code">lupe</span>
+            <span class="block font-bold text-lg mt-1" data-lang="es">Triaje y monitoreo</span>
+            <span class="block font-bold text-lg mt-1 hidden" data-lang="en">Triage and routing</span>
+          </button>
+        </div>
+
+        <!-- Tab panels -->
+        <div class="lg:col-span-3">
+          <div class="tab-panel active" data-panel="0">
+            <img class="tab-visual mb-6" src="../projects/darwin_maps/assets/darwin_geo_ai.png" alt="Darwin Maps Geo AI assistant">
+            <span class="agent-badge mb-3" data-lang="es">Asistente conversacional</span>
+            <span class="agent-badge mb-3 hidden" data-lang="en">Conversational assistant</span>
+            <p class="text-cream-dim leading-relaxed" data-lang="es">Un asistente conversacional sobre un visor: cruza capas por territorio, interpreta el paisaje y responde preguntas sin necesidad de GIS. Vive en Darwin Maps y explica cada respuesta con el mapa, el número y la fuente detrás.</p>
+            <p class="text-cream-dim leading-relaxed hidden" data-lang="en">A conversational assistant on top of a map viewer: it cross-reads layers by territory, interprets the landscape and answers questions with no GIS needed. It lives in Darwin Maps and backs every answer with the map, the number and the source.</p>
+          </div>
+          <div class="tab-panel" data-panel="1">
+            <img class="tab-visual mb-6" src="../assets/services/software_new.png" alt="Document automation agent">
+            <span class="agent-badge mb-3" data-lang="es">Automatización de documentos</span>
+            <span class="agent-badge mb-3 hidden" data-lang="en">Document automation</span>
+            <p class="text-cream-dim leading-relaxed" data-lang="es">Toma un encargo o un briefing y produce un documento a medida: elige los ejemplos relevantes, los ajusta al caso y arma el entregable. Nunca inventa: si algo no encaja, se detiene y avisa para que decida una persona.</p>
+            <p class="text-cream-dim leading-relaxed hidden" data-lang="en">Takes a brief and produces a tailored document: it picks the relevant examples, matches them to the case and assembles the deliverable. It never fabricates: if something doesn't fit, it stops and flags it for a person to decide.</p>
+          </div>
+          <div class="tab-panel" data-panel="2">
+            <img class="tab-visual mb-6" src="../assets/services/analytics.jpeg" alt="Outreach and CRM agent">
+            <span class="agent-badge mb-3" data-lang="es">Ventas y CRM</span>
+            <span class="agent-badge mb-3 hidden" data-lang="en">Sales & CRM</span>
+            <p class="text-cream-dim leading-relaxed" data-lang="es">Descubre oportunidades, las puntúa contra un catálogo y mantiene un registro vivo en sincronía con el correo. Una única fuente de verdad, siempre al día, sin dejar que nada se enfríe por olvido.</p>
+            <p class="text-cream-dim leading-relaxed hidden" data-lang="en">Finds opportunities, scores them against a catalog and keeps a living record in sync with email. A single source of truth, always current, so nothing goes cold by neglect.</p>
+          </div>
+          <div class="tab-panel" data-panel="3">
+            <img class="tab-visual mb-6" src="../assets/hero/ndvi.webp" alt="Triage and monitoring agent">
+            <span class="agent-badge mb-3" data-lang="es">Vigilancia</span>
+            <span class="agent-badge mb-3 hidden" data-lang="en">Monitoring</span>
+            <p class="text-cream-dim leading-relaxed" data-lang="es">Rastrea fuentes en volumen, puntúa cada elemento por relevancia y encamina solo lo que importa al siguiente paso. Ideal para vigilar cambios en el territorio o filtrar señal del ruido.</p>
+            <p class="text-cream-dim leading-relaxed hidden" data-lang="en">Scans sources at volume, scores each item by relevance and routes only what matters to the next step. Ideal for watching for change on the ground or filtering signal from noise.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -237,7 +374,6 @@
       </div>
     </div>
     <div class="container mx-auto px-6 grid lg:grid-cols-2 gap-10 lg:gap-16 pb-20">
-      <!-- Sticky visual -->
       <div>
         <div class="scrolly-pin">
           <div class="stage">
@@ -247,13 +383,10 @@
             <img id="stg-3" src="../assets/hero/ndvi.webp" alt="">
             <div class="stage-veil"></div>
             <div class="scan"></div>
-            <div class="stage-cap">
-              <span id="stg-cap" class="agent-badge">01 · Lee las capas</span>
-            </div>
+            <div class="stage-cap"><span id="stg-cap" class="agent-badge">01 · Lee las capas</span></div>
           </div>
         </div>
       </div>
-      <!-- Steps -->
       <div class="pt-4 lg:pt-28 space-y-10 lg:space-y-24">
         <div class="step active" data-step="0">
           <p class="step-n mb-2">01</p>
@@ -287,61 +420,20 @@
     </div>
   </section>
 
-  <!-- Agent lineup -->
-  <section id="agents" class="bg-teal-base section-rule py-20 lg:py-28">
+  <!-- Video: an agent in action -->
+  <section class="bg-teal-base section-rule py-20 lg:py-28">
     <div class="container mx-auto px-6">
-      <div class="max-w-3xl mb-14 animate-on-scroll">
-        <p class="eyebrow mb-5" data-lang="es">Nuestra familia de agentes</p>
-        <p class="eyebrow mb-5 hidden" data-lang="en">Our agent family</p>
-        <h2 class="font-bold text-cream leading-tight mb-4" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="es">Ya estamos construyendo agentes como estos</h2>
-        <h2 class="font-bold text-cream leading-tight mb-4 hidden" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="en">We are already building agents like these</h2>
-        <p class="text-cream-dim leading-relaxed" data-lang="es">Algunos operan dentro de Darwin, otros los construimos a medida para clientes. Todos comparten el mismo principio: leer, razonar y actuar sobre datos reales, con un cerco de seguridad claro.</p>
-        <p class="text-cream-dim leading-relaxed hidden" data-lang="en">Some run inside Darwin, others we build bespoke for clients. All share the same principle: read, reason and act on real data, within a clear safety fence.</p>
+      <div class="max-w-3xl mb-10 animate-on-scroll">
+        <p class="eyebrow mb-5" data-lang="es">Agentes en acción</p>
+        <p class="eyebrow mb-5 hidden" data-lang="en">Agents in action</p>
+        <h2 class="font-bold text-cream leading-tight mb-4" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="es">Míralo funcionar, de principio a fin</h2>
+        <h2 class="font-bold text-cream leading-tight mb-4 hidden" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="en">Watch it work, end to end</h2>
+        <p class="text-cream-dim leading-relaxed" data-lang="es">Un agente no solo responde: entiende una tarea, la planifica y la ejecuta paso a paso. Así se ve la clase de autonomía que construimos.</p>
+        <p class="text-cream-dim leading-relaxed hidden" data-lang="en">An agent does more than answer: it understands a task, plans it and carries it out step by step. This is the kind of autonomy we build.</p>
       </div>
-      <div class="grid md:grid-cols-2 gap-6">
-        <div class="agent-card animate-on-scroll">
-          <div class="flex items-center justify-between mb-4">
-            <span class="agent-badge" data-lang="es">Asistente conversacional</span>
-            <span class="agent-badge hidden" data-lang="en">Conversational assistant</span>
-            <span class="font-mono text-xs text-cream-faint">darwinmaps</span>
-          </div>
-          <h3 class="font-display uppercase text-cream text-3xl mb-2" data-lang="es">Asistente geoespacial</h3>
-          <h3 class="font-display uppercase text-cream text-3xl mb-2 hidden" data-lang="en">Geospatial assistant</h3>
-          <p class="text-cream-dim leading-relaxed text-sm" data-lang="es">Un asistente conversacional sobre un visor: cruza capas por territorio, interpreta el paisaje y responde preguntas sin necesidad de GIS. Vive en Darwin Maps.</p>
-          <p class="text-cream-dim leading-relaxed text-sm hidden" data-lang="en">A conversational assistant on top of a map viewer: it cross-reads layers by territory, interprets the landscape and answers questions with no GIS needed. It lives in Darwin Maps.</p>
-        </div>
-        <div class="agent-card animate-on-scroll">
-          <div class="flex items-center justify-between mb-4">
-            <span class="agent-badge" data-lang="es">Automatización de documentos</span>
-            <span class="agent-badge hidden" data-lang="en">Document automation</span>
-            <span class="font-mono text-xs text-cream-faint">pato</span>
-          </div>
-          <h3 class="font-display uppercase text-cream text-3xl mb-2" data-lang="es">Documentos y propuestas</h3>
-          <h3 class="font-display uppercase text-cream text-3xl mb-2 hidden" data-lang="en">Documents and proposals</h3>
-          <p class="text-cream-dim leading-relaxed text-sm" data-lang="es">Toma un encargo o un briefing y produce un documento a medida: elige los ejemplos relevantes, los ajusta al caso y arma el entregable. Nunca inventa: si algo no encaja, se detiene y avisa.</p>
-          <p class="text-cream-dim leading-relaxed text-sm hidden" data-lang="en">Takes a brief and produces a tailored document: it picks the relevant examples, matches them to the case and assembles the deliverable. It never fabricates: if something doesn't fit, it stops and flags it.</p>
-        </div>
-        <div class="agent-card animate-on-scroll">
-          <div class="flex items-center justify-between mb-4">
-            <span class="agent-badge" data-lang="es">Ventas y CRM</span>
-            <span class="agent-badge hidden" data-lang="en">Sales & CRM</span>
-            <span class="font-mono text-xs text-cream-faint">carls</span>
-          </div>
-          <h3 class="font-display uppercase text-cream text-3xl mb-2" data-lang="es">Prospección y seguimiento</h3>
-          <h3 class="font-display uppercase text-cream text-3xl mb-2 hidden" data-lang="en">Prospecting and follow-up</h3>
-          <p class="text-cream-dim leading-relaxed text-sm" data-lang="es">Descubre oportunidades, las puntúa contra un catálogo y mantiene un registro vivo en sincronía con el correo. Una única fuente de verdad, siempre al día.</p>
-          <p class="text-cream-dim leading-relaxed text-sm hidden" data-lang="en">Finds opportunities, scores them against a catalog and keeps a living record in sync with email. A single source of truth, always current.</p>
-        </div>
-        <div class="agent-card animate-on-scroll">
-          <div class="flex items-center justify-between mb-4">
-            <span class="agent-badge" data-lang="es">Vigilancia</span>
-            <span class="agent-badge hidden" data-lang="en">Monitoring</span>
-            <span class="font-mono text-xs text-cream-faint">lupe</span>
-          </div>
-          <h3 class="font-display uppercase text-cream text-3xl mb-2" data-lang="es">Triaje y monitoreo</h3>
-          <h3 class="font-display uppercase text-cream text-3xl mb-2 hidden" data-lang="en">Triage and routing</h3>
-          <p class="text-cream-dim leading-relaxed text-sm" data-lang="es">Rastrea fuentes en volumen, puntúa cada elemento por relevancia y encamina solo lo que importa al siguiente paso. Ideal para vigilar cambios o filtrar señales.</p>
-          <p class="text-cream-dim leading-relaxed text-sm hidden" data-lang="en">Scans sources at volume, scores each item by relevance and routes only what matters to the next step. Ideal for watching for change or filtering signal from noise.</p>
+      <div class="max-w-4xl mx-auto animate-on-scroll">
+        <div class="video-wrap">
+          <iframe src="https://www.youtube-nocookie.com/embed/blGtYq9mL18?rel=0" title="AI agent in action" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
         </div>
       </div>
     </div>
@@ -363,6 +455,34 @@
         <div class="cap-card animate-on-scroll"><h3 class="font-bold text-cream mb-2" data-lang="es">Integración con tus sistemas</h3><h3 class="font-bold text-cream mb-2 hidden" data-lang="en">Integration with your systems</h3><p class="text-cream-dim text-sm leading-relaxed" data-lang="es">Conectamos con tu correo, tu GIS y tus bases de datos.</p><p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">We connect to your email, your GIS and your databases.</p></div>
         <div class="cap-card animate-on-scroll"><h3 class="font-bold text-cream mb-2" data-lang="es">Cerco de seguridad</h3><h3 class="font-bold text-cream mb-2 hidden" data-lang="en">Safety fence</h3><p class="text-cream-dim text-sm leading-relaxed" data-lang="es">Cada agente tiene límites claros: hace su trabajo y se detiene ante lo que debe decidir un humano.</p><p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">Every agent has clear limits: it does its job and stops where a human must decide.</p></div>
         <div class="cap-card animate-on-scroll"><h3 class="font-bold text-cream mb-2" data-lang="es">Modelos propios</h3><h3 class="font-bold text-cream mb-2 hidden" data-lang="en">Our own models</h3><p class="text-cream-dim text-sm leading-relaxed" data-lang="es">No solo llamamos a una API: entrenamos modelos para leer cada píxel.</p><p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">We don't just call an API: we train models to read every pixel.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Metrics band -->
+  <section class="bg-teal-base section-rule py-16 lg:py-20">
+    <div class="container mx-auto px-6">
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-px rounded-xl overflow-hidden border border-line" style="background:var(--teal-line);">
+        <div class="bg-teal-base p-8 text-center">
+          <div class="font-display text-4xl lg:text-5xl text-olive leading-none mb-2">+2.400.000</div>
+          <p class="font-mono text-xs tracking-wider uppercase text-cream-dim" data-lang="es">Hectáreas analizadas</p>
+          <p class="font-mono text-xs tracking-wider uppercase text-cream-dim hidden" data-lang="en">Hectares analysed</p>
+        </div>
+        <div class="bg-teal-base p-8 text-center">
+          <div class="font-display text-4xl lg:text-5xl text-olive leading-none mb-2">+600.000</div>
+          <p class="font-mono text-xs tracking-wider uppercase text-cream-dim" data-lang="es">Líneas de código</p>
+          <p class="font-mono text-xs tracking-wider uppercase text-cream-dim hidden" data-lang="en">Lines of code</p>
+        </div>
+        <div class="bg-teal-base p-8 text-center">
+          <div class="font-display text-5xl lg:text-6xl text-olive leading-none mb-2">70</div>
+          <p class="font-mono text-xs tracking-wider uppercase text-cream-dim" data-lang="es">Años reconstruidos</p>
+          <p class="font-mono text-xs tracking-wider uppercase text-cream-dim hidden" data-lang="en">Years reconstructed</p>
+        </div>
+        <div class="bg-teal-base p-8 text-center">
+          <div class="font-display text-5xl lg:text-6xl text-olive leading-none mb-2">+12</div>
+          <p class="font-mono text-xs tracking-wider uppercase text-cream-dim" data-lang="es">Proyectos entregados</p>
+          <p class="font-mono text-xs tracking-wider uppercase text-cream-dim hidden" data-lang="en">Projects delivered</p>
+        </div>
       </div>
     </div>
   </section>
@@ -400,15 +520,21 @@
       var h = document.getElementById('header');
       if (h) window.addEventListener('scroll', function(){ h.classList.toggle('scrolled', window.scrollY > 20); }, {passive:true});
 
-      // Scrollytelling: activate steps + swap sticky visual
+      // Tabbed solutions
+      var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab-btn'));
+      var panels = Array.prototype.slice.call(document.querySelectorAll('.tab-panel'));
+      tabs.forEach(function(t){
+        t.addEventListener('click', function(){
+          var n = t.dataset.tab;
+          tabs.forEach(function(x){ x.classList.toggle('active', x === t); });
+          panels.forEach(function(p){ p.classList.toggle('active', p.dataset.panel === n); });
+        });
+      });
+
+      // Scrollytelling
       var steps = Array.prototype.slice.call(document.querySelectorAll('.step'));
       var imgs = ['stg-0','stg-1','stg-2','stg-3'].map(function(id){ return document.getElementById(id); });
-      var caps = {
-        0:['01 · Lee las capas','01 · Reads the layers'],
-        1:['02 · Razona','02 · Reasons'],
-        2:['03 · Responde','03 · Answers'],
-        3:['04 · Actúa','04 · Delivers']
-      };
+      var caps = { 0:['01 · Lee las capas','01 · Reads the layers'], 1:['02 · Razona','02 · Reasons'], 2:['03 · Responde','03 · Answers'], 3:['04 · Actúa','04 · Delivers'] };
       var capEl = document.getElementById('stg-cap');
       function activate(n){
         steps.forEach(function(s){ s.classList.toggle('active', +s.dataset.step === n); });
