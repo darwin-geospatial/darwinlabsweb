@@ -106,9 +106,24 @@
     @keyframes tabIn{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);} }
     .tab-visual{ width:100%; aspect-ratio:16/10; object-fit:cover; border-radius:1.1rem; border:1px solid var(--teal-line); }
 
-    /* Video embed */
-    .video-wrap{ position:relative; width:100%; aspect-ratio:16/9; border-radius:1.2rem; overflow:hidden; border:1px solid var(--teal-line); box-shadow:0 30px 60px rgba(0,0,0,.45); background:var(--teal-elev); }
-    .video-wrap iframe{ position:absolute; inset:0; width:100%; height:100%; border:0; }
+    /* Self-built agent demo */
+    .agent-demo{ background:var(--teal-elev); border:1px solid var(--teal-line); border-radius:1.2rem; overflow:hidden; box-shadow:0 30px 60px rgba(0,0,0,.45); }
+    .ad-live{ margin-left:auto; display:inline-flex; align-items:center; gap:.4rem; font-family:'Space Mono',monospace; font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--olive-light); }
+    .ad-live::before{ content:""; width:7px; height:7px; border-radius:99px; background:var(--green-soft); box-shadow:0 0 8px var(--green-soft); animation:adpulse 1.6s ease-in-out infinite; }
+    @keyframes adpulse{ 0%,100%{opacity:1;} 50%{opacity:.35;} }
+    .ad-body{ padding:1.4rem 1.5rem; min-height:380px; }
+    .ad-steps{ margin:1.1rem 0; display:flex; flex-direction:column; gap:.8rem; }
+    .ad-step{ display:flex; align-items:flex-start; gap:.7rem; opacity:0; transform:translateY(6px); transition:opacity .4s, transform .4s; }
+    .ad-step.show{ opacity:1; transform:none; }
+    .ad-ico{ flex:none; width:20px; height:20px; border-radius:99px; border:2px solid var(--teal-line); position:relative; margin-top:1px; box-sizing:border-box; }
+    .ad-step.active .ad-ico{ border-color:var(--olive-light); border-top-color:transparent; animation:adspin .7s linear infinite; }
+    .ad-step.done .ad-ico{ border-color:var(--green-soft); background:var(--green-soft); animation:none; }
+    .ad-step.done .ad-ico::after{ content:""; position:absolute; left:5px; top:2px; width:5px; height:9px; border:solid var(--cream); border-width:0 2px 2px 0; transform:rotate(45deg); }
+    @keyframes adspin{ to{ transform:rotate(360deg); } }
+    .ad-step-tx{ font-size:.9rem; color:var(--cream-dim); line-height:1.45; }
+    .ad-step.done .ad-step-tx, .ad-step.active .ad-step-tx{ color:var(--cream); }
+    .ad-result{ opacity:0; transform:translateY(8px); transition:opacity .5s, transform .5s; }
+    .ad-result.show{ opacity:1; transform:none; }
 
     /* Scrollytelling */
     .scrolly-pin{ position:sticky; top:0; height:100vh; display:flex; align-items:flex-start; overflow:hidden; padding-top:6rem; box-sizing:border-box; }
@@ -190,6 +205,10 @@
             <a href="#agents" class="btn-ghost px-7 py-3.5 rounded-full font-semibold text-sm tracking-wide" data-lang="es">Ver los agentes</a>
             <a href="#agents" class="btn-ghost px-7 py-3.5 rounded-full font-semibold text-sm tracking-wide hidden" data-lang="en">Meet the agents</a>
           </div>
+          <div class="flex items-center gap-3 mt-8">
+            <img src="../assets/partners/google_partner.png" alt="Google Cloud Partner" class="h-8 w-auto opacity-90">
+            <span class="font-mono text-xs tracking-wider uppercase text-cream-faint">Google Cloud Partner</span>
+          </div>
         </div>
 
         <!-- Chat mock -->
@@ -200,14 +219,14 @@
               <span class="font-mono text-xs text-cream-faint ml-2">darwin · geo-ai-agent</span>
             </div>
             <div class="p-5 space-y-3">
-              <div class="bubble user" data-lang="es">¿Dónde ha perdido cobertura vegetal esta cuenca en los últimos 8 años?</div>
-              <div class="bubble user hidden" data-lang="en">Where has this basin lost vegetation cover over the last 8 years?</div>
-              <div class="bubble bot" data-lang="es">He cruzado la serie Sentinel-2 (2018 a 2025). La pérdida se concentra en 3 subcuencas del sureste, con una caída del NDVI del 18% en las laderas sobre 15° de pendiente. Te dejo el mapa y un informe con las zonas prioritarias.</div>
-              <div class="bubble bot hidden" data-lang="en">I cross-read the Sentinel-2 series (2018 to 2025). Loss concentrates in 3 south-east sub-basins, with an 18% NDVI drop on slopes above 15°. Here is the map and a report with the priority areas.</div>
+              <div class="bubble user" data-lang="es">¿Dónde se está degradando el suelo en la cuenca del Segura?</div>
+              <div class="bubble user hidden" data-lang="en">Where is soil degrading in the Segura Basin?</div>
+              <div class="bubble bot" data-lang="es">He cruzado la serie Sentinel-2 (2018 a 2025) sobre el área de estudio y la he comparado con la imagen histórica de 1956. Te dejo el mapa de degradación a escala de campo y un informe con las zonas prioritarias.</div>
+              <div class="bubble bot hidden" data-lang="en">I cross-read the Sentinel-2 series (2018 to 2025) over the study area and compared it with the 1956 historical imagery. Here is the field-scale degradation map and a report with the priority areas.</div>
               <div class="flex gap-2 flex-wrap pt-1">
-                <span class="agent-badge">NDVI · 2018-2025</span>
-                <span class="agent-badge">Sentinel-2</span>
-                <span class="agent-badge">report.pdf</span>
+                <span class="agent-badge">Segura · 24.000 km²</span>
+                <span class="agent-badge">1956-2025</span>
+                <span class="agent-badge">informe.pdf</span>
               </div>
             </div>
           </div>
@@ -281,11 +300,10 @@
           <p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">Every agent has clear limits: it does its job and stops where a human must decide.</p>
         </div>
         <div class="val-card animate-on-scroll" style="transition-delay:240ms;">
-          <p class="val-big mb-3">GCP</p>
-          <h3 class="font-bold text-cream text-lg mb-2" data-lang="es">De la nube al terreno</h3>
-          <h3 class="font-bold text-cream text-lg mb-2 hidden" data-lang="en">From cloud to ground</h3>
-          <p class="text-cream-dim text-sm leading-relaxed" data-lang="es">Desplegamos en Google Cloud y Earth Engine, con datos alineados en espacio y tiempo, listos para producción.</p>
-          <p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">We deploy on Google Cloud and Earth Engine, with data aligned in space and time, ready for production.</p>
+          <img src="../assets/partners/google_partner.png" alt="Google Cloud Partner" class="h-11 w-auto mb-4">
+          <h3 class="font-bold text-cream text-lg mb-2">Google Cloud Partner</h3>
+          <p class="text-cream-dim text-sm leading-relaxed" data-lang="es">Somos Google Cloud Partner: desplegamos en Google Cloud y Earth Engine, con datos alineados en espacio y tiempo y listos para producción.</p>
+          <p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">We are a Google Cloud Partner: we deploy on Google Cloud and Earth Engine, with data aligned in space and time and ready for production.</p>
         </div>
       </div>
     </div>
@@ -420,22 +438,46 @@
     </div>
   </section>
 
-  <!-- Video: an agent in action -->
+  <!-- Agent in action: self-built animated demo -->
   <section class="bg-teal-base section-rule py-20 lg:py-28">
     <div class="container mx-auto px-6">
       <div class="max-w-3xl mb-10 animate-on-scroll">
-        <p class="eyebrow mb-5" data-lang="es">Agentes en acción</p>
-        <p class="eyebrow mb-5 hidden" data-lang="en">Agents in action</p>
-        <h2 class="font-bold text-cream leading-tight mb-4" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="es">Míralo funcionar, de principio a fin</h2>
-        <h2 class="font-bold text-cream leading-tight mb-4 hidden" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="en">Watch it work, end to end</h2>
-        <p class="text-cream-dim leading-relaxed" data-lang="es">Un agente no solo responde: entiende una tarea, la planifica y la ejecuta paso a paso. Así se ve la clase de autonomía que construimos.</p>
-        <p class="text-cream-dim leading-relaxed hidden" data-lang="en">An agent does more than answer: it understands a task, plans it and carries it out step by step. This is the kind of autonomy we build.</p>
+        <p class="eyebrow mb-5" data-lang="es">Un agente en acción</p>
+        <p class="eyebrow mb-5 hidden" data-lang="en">An agent in action</p>
+        <h2 class="font-bold text-cream leading-tight mb-4" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="es">No solo responde: planifica y ejecuta</h2>
+        <h2 class="font-bold text-cream leading-tight mb-4 hidden" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="en">More than an answer: it plans and executes</h2>
+        <p class="text-cream-dim leading-relaxed" data-lang="es">Un ejemplo real, basado en nuestro trabajo de degradación del suelo en la cuenca del Segura: el agente entiende la tarea, reúne los datos, ejecuta el modelo y entrega el resultado, paso a paso.</p>
+        <p class="text-cream-dim leading-relaxed hidden" data-lang="en">A real example, based on our soil degradation work in the Segura Basin: the agent understands the task, gathers the data, runs the model and delivers the result, step by step.</p>
       </div>
-      <div class="max-w-4xl mx-auto animate-on-scroll">
-        <div class="video-wrap">
-          <iframe src="https://www.youtube-nocookie.com/embed/blGtYq9mL18?rel=0" title="AI agent in action" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      <div id="agent-demo" class="agent-demo max-w-3xl mx-auto animate-on-scroll">
+        <div class="chat-head">
+          <span class="dot" style="background:#e06c5a;"></span><span class="dot" style="background:#e0b84a;"></span><span class="dot" style="background:var(--green-soft);"></span>
+          <span class="font-mono text-xs text-cream-faint ml-2">darwin · geo-ai-agent</span>
+          <span class="ad-live" data-lang="es">En vivo</span>
+          <span class="ad-live hidden" data-lang="en">Live</span>
+        </div>
+        <div class="ad-body">
+          <div class="bubble user" data-lang="es">Evalúa la degradación del suelo en la cuenca del Segura.</div>
+          <div class="bubble user hidden" data-lang="en">Assess soil degradation in the Segura Basin.</div>
+          <ul class="ad-steps">
+            <li class="ad-step"><span class="ad-ico"></span><span class="ad-step-tx"><span data-lang="es">Reuniendo la serie Sentinel-2 (2018 a 2025)</span><span class="hidden" data-lang="en">Gathering the Sentinel-2 series (2018 to 2025)</span></span></li>
+            <li class="ad-step"><span class="ad-ico"></span><span class="ad-step-tx"><span data-lang="es">Alineando el área de estudio (24.000 km²) con la imagen histórica de 1956</span><span class="hidden" data-lang="en">Aligning the study area (24,000 km²) with the 1956 historical imagery</span></span></li>
+            <li class="ad-step"><span class="ad-ico"></span><span class="ad-step-tx"><span data-lang="es">Ejecutando el modelo propio (Prithvi-EO afinado)</span><span class="hidden" data-lang="en">Running our own model (fine-tuned Prithvi-EO)</span></span></li>
+            <li class="ad-step"><span class="ad-ico"></span><span class="ad-step-tx"><span data-lang="es">Detectando erosión y cárcavas, y redactando el informe</span><span class="hidden" data-lang="en">Detecting erosion and gullies, drafting the report</span></span></li>
+          </ul>
+          <div class="ad-result bubble bot">
+            <span data-lang="es">Listo. He preparado un mapa de degradación a escala de campo y un informe con las zonas prioritarias de la cuenca.</span>
+            <span class="hidden" data-lang="en">Done. I have prepared a field-scale degradation map and a report with the basin's priority areas.</span>
+            <div class="flex gap-2 flex-wrap pt-3">
+              <span class="agent-badge">Segura · 24.000 km²</span>
+              <span class="agent-badge">1956-2025</span>
+              <span class="agent-badge">informe.pdf</span>
+            </div>
+          </div>
         </div>
       </div>
+      <p class="text-cream-faint text-xs text-center mt-4" data-lang="es">Demostración ilustrativa del flujo de un agente, con datos reales del proyecto SoilSaveR.</p>
+      <p class="text-cream-faint text-xs text-center mt-4 hidden" data-lang="en">Illustrative demo of an agent's workflow, with real data from the SoilSaveR project.</p>
     </div>
   </section>
 
@@ -530,6 +572,40 @@
           panels.forEach(function(p){ p.classList.toggle('active', p.dataset.panel === n); });
         });
       });
+
+      // Self-built agent demo animation (loops while on screen)
+      var demo = document.getElementById('agent-demo');
+      if (demo){
+        var dsteps = Array.prototype.slice.call(demo.querySelectorAll('.ad-step'));
+        var dresult = demo.querySelector('.ad-result');
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var demoTimers = [];
+        function clearDemo(){ demoTimers.forEach(clearTimeout); demoTimers = []; }
+        function playDemo(){
+          clearDemo();
+          dsteps.forEach(function(s){ s.classList.remove('show','active','done'); });
+          dresult.classList.remove('show');
+          if (reduce){ dsteps.forEach(function(s){ s.classList.add('show','done'); }); dresult.classList.add('show'); return; }
+          var t = 400;
+          dsteps.forEach(function(s){
+            demoTimers.push(setTimeout(function(){ s.classList.add('show','active'); }, t));
+            t += 1150;
+            demoTimers.push(setTimeout(function(){ s.classList.remove('active'); s.classList.add('done'); }, t));
+            t += 300;
+          });
+          demoTimers.push(setTimeout(function(){ dresult.classList.add('show'); }, t + 200));
+          demoTimers.push(setTimeout(playDemo, t + 5200)); // loop
+        }
+        if ('IntersectionObserver' in window){
+          var running = false;
+          new IntersectionObserver(function(entries){
+            entries.forEach(function(e){
+              if (e.isIntersecting && !running){ running = true; playDemo(); }
+              else if (!e.isIntersecting && running){ running = false; clearDemo(); }
+            });
+          }, {threshold: 0.35}).observe(demo);
+        } else { playDemo(); }
+      }
 
       // Scrollytelling
       var steps = Array.prototype.slice.call(document.querySelectorAll('.step'));
