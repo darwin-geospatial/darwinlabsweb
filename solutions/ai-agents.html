@@ -117,6 +117,22 @@
     @keyframes tabIn{ from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);} }
     .tab-visual{ width:100%; aspect-ratio:16/10; object-fit:cover; border-radius:1.1rem; border:1px solid var(--teal-line); }
 
+    /* n8n-style workflow diagram */
+    .wf{ display:flex; align-items:center; gap:.45rem; overflow-x:auto; padding:1.5rem 1.2rem; border:1px solid var(--teal-line); border-radius:1.1rem;
+      background-color:rgba(14,31,36,0.55); background-image:radial-gradient(rgba(46,82,91,0.55) 1px, transparent 1px); background-size:18px 18px; }
+    .wf::-webkit-scrollbar{ height:6px; } .wf::-webkit-scrollbar-thumb{ background:var(--teal-line); border-radius:6px; }
+    .wf-node{ flex:none; width:104px; background:var(--teal-elev); border:1px solid var(--teal-line); border-radius:.7rem; padding:.65rem .55rem; text-align:center; }
+    .wf-node.is-out{ border-color:rgba(188,190,118,0.5); }
+    .wf-dot{ width:9px; height:9px; border-radius:99px; margin:0 auto .45rem; }
+    .wf-tx{ font-size:.72rem; line-height:1.25; color:var(--cream-dim); display:block; }
+    .wf-node.is-out .wf-tx{ color:var(--cream); }
+    .wf-link{ flex:none; width:24px; height:2px; background:linear-gradient(90deg,var(--teal-line),var(--olive-light)); position:relative; }
+    .wf-link::after{ content:""; position:absolute; right:-1px; top:-3px; border-left:6px solid var(--olive-light); border-top:4px solid transparent; border-bottom:4px solid transparent; }
+    .wf-branch{ flex:none; display:flex; flex-direction:column; gap:.5rem; }
+    .wf-tag{ display:block; font-family:'Space Mono',monospace; font-size:.56rem; letter-spacing:.1em; text-transform:uppercase; margin-bottom:.3rem; }
+    .wf-tag.yes{ color:var(--green-soft); } .wf-tag.no{ color:var(--cream-faint); }
+    .gc-plain{ border-radius:.7rem; height:3.5rem; width:auto; display:block; }
+
     /* Self-built agent demo */
     .agent-demo{ background:var(--teal-elev); border:1px solid var(--teal-line); border-radius:1.2rem; overflow:hidden; box-shadow:0 30px 60px rgba(0,0,0,.45); }
     .ad-live{ margin-left:auto; display:inline-flex; align-items:center; gap:.4rem; font-family:'Space Mono',monospace; font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--olive-light); }
@@ -215,9 +231,6 @@
             <a href="../index.html#contact" class="btn-accent px-7 py-3.5 rounded-full font-semibold text-sm tracking-wide hidden" data-lang="en">Book a call</a>
             <a href="#agents" class="btn-ghost px-7 py-3.5 rounded-full font-semibold text-sm tracking-wide" data-lang="es">Ver los agentes</a>
             <a href="#agents" class="btn-ghost px-7 py-3.5 rounded-full font-semibold text-sm tracking-wide hidden" data-lang="en">Meet the agents</a>
-          </div>
-          <div class="mt-8">
-            <div class="gc-badge"><img src="../assets/partners/google_cloud_partner.png" alt="Google Cloud Partner" class="h-16 w-auto"></div>
           </div>
         </div>
 
@@ -325,7 +338,7 @@
           <p class="text-cream-dim text-sm leading-relaxed hidden" data-lang="en">Every agent has clear limits: it does its job and stops where a human must decide.</p>
         </div>
         <div class="val-card animate-on-scroll" style="transition-delay:240ms;">
-          <div class="gc-badge mb-4"><img src="../assets/partners/google_cloud_partner.png" alt="Google Cloud Partner" class="h-16 w-auto"></div>
+          <img src="../assets/partners/google_cloud_partner.png" alt="Google Cloud Partner" class="gc-plain mb-4">
           <h3 class="font-bold text-cream text-lg mb-2" data-lang="es">Nube y producción</h3>
           <h3 class="font-bold text-cream text-lg mb-2 hidden" data-lang="en">Cloud and production</h3>
           <p class="text-cream-dim text-sm leading-relaxed" data-lang="es">Somos Google Cloud Partner: desplegamos en Google Cloud y Earth Engine, con datos alineados en espacio y tiempo y listos para producción.</p>
@@ -375,28 +388,66 @@
         <!-- Tab panels -->
         <div class="lg:col-span-3">
           <div class="tab-panel active" data-panel="0">
-            <img class="tab-visual mb-6" src="../projects/darwin_maps/assets/darwin_geo_ai.png" alt="Darwin Maps Geo AI assistant">
+            <div class="wf mb-6">
+              <div class="wf-node"><div class="wf-dot" style="background:var(--olive-light);"></div><span class="wf-tx"><span data-lang="es">Pregunta</span><span class="hidden" data-lang="en">Question</span></span></div>
+              <div class="wf-link"></div>
+              <div class="wf-node"><div class="wf-dot" style="background:var(--green-soft);"></div><span class="wf-tx"><span data-lang="es">Recupera capas</span><span class="hidden" data-lang="en">Fetch layers</span></span></div>
+              <div class="wf-link"></div>
+              <div class="wf-node"><div class="wf-dot" style="background:var(--green-soft);"></div><span class="wf-tx"><span data-lang="es">Razona</span><span class="hidden" data-lang="en">Reason</span></span></div>
+              <div class="wf-link"></div>
+              <div class="wf-node is-out"><div class="wf-dot" style="background:var(--olive);"></div><span class="wf-tx"><span data-lang="es">Responde con fuentes</span><span class="hidden" data-lang="en">Answer with sources</span></span></div>
+            </div>
             <span class="agent-badge mb-3" data-lang="es">Asistente conversacional</span>
             <span class="agent-badge mb-3 hidden" data-lang="en">Conversational assistant</span>
             <p class="text-cream-dim leading-relaxed" data-lang="es">Un asistente conversacional sobre un visor: cruza capas por territorio, interpreta el paisaje y responde preguntas sin necesidad de GIS. Vive en Darwin Maps y explica cada respuesta con el mapa, el número y la fuente detrás.</p>
             <p class="text-cream-dim leading-relaxed hidden" data-lang="en">A conversational assistant on top of a map viewer: it cross-reads layers by territory, interprets the landscape and answers questions with no GIS needed. It lives in Darwin Maps and backs every answer with the map, the number and the source.</p>
           </div>
           <div class="tab-panel" data-panel="1">
-            <img class="tab-visual mb-6" src="../assets/services/software_new.png" alt="Document automation agent">
+            <div class="wf mb-6">
+              <div class="wf-node"><div class="wf-dot" style="background:var(--olive-light);"></div><span class="wf-tx"><span data-lang="es">Briefing</span><span class="hidden" data-lang="en">Brief</span></span></div>
+              <div class="wf-link"></div>
+              <div class="wf-node"><div class="wf-dot" style="background:var(--green-soft);"></div><span class="wf-tx"><span data-lang="es">Busca ejemplos</span><span class="hidden" data-lang="en">Match examples</span></span></div>
+              <div class="wf-link"></div>
+              <div class="wf-node"><div class="wf-dot" style="background:#e0b84a;"></div><span class="wf-tx"><span data-lang="es">¿Encaja?</span><span class="hidden" data-lang="en">Fits?</span></span></div>
+              <div class="wf-link"></div>
+              <div class="wf-branch">
+                <div class="wf-node is-out"><span class="wf-tag yes">Sí / Yes</span><span class="wf-tx"><span data-lang="es">Genera documento</span><span class="hidden" data-lang="en">Build document</span></span></div>
+                <div class="wf-node"><span class="wf-tag no">No</span><span class="wf-tx"><span data-lang="es">Se detiene y avisa</span><span class="hidden" data-lang="en">Stops and flags</span></span></div>
+              </div>
+            </div>
             <span class="agent-badge mb-3" data-lang="es">Automatización de documentos</span>
             <span class="agent-badge mb-3 hidden" data-lang="en">Document automation</span>
             <p class="text-cream-dim leading-relaxed" data-lang="es">Toma un encargo o un briefing y produce un documento a medida: elige los ejemplos relevantes, los ajusta al caso y arma el entregable. Nunca inventa: si algo no encaja, se detiene y avisa para que decida una persona.</p>
             <p class="text-cream-dim leading-relaxed hidden" data-lang="en">Takes a brief and produces a tailored document: it picks the relevant examples, matches them to the case and assembles the deliverable. It never fabricates: if something doesn't fit, it stops and flags it for a person to decide.</p>
           </div>
           <div class="tab-panel" data-panel="2">
-            <img class="tab-visual mb-6" src="../assets/services/analytics.jpeg" alt="Outreach and CRM agent">
+            <div class="wf mb-6">
+              <div class="wf-node"><div class="wf-dot" style="background:var(--olive-light);"></div><span class="wf-tx"><span data-lang="es">Descubre oportunidad</span><span class="hidden" data-lang="en">Discover lead</span></span></div>
+              <div class="wf-link"></div>
+              <div class="wf-node"><div class="wf-dot" style="background:var(--green-soft);"></div><span class="wf-tx"><span data-lang="es">Puntúa</span><span class="hidden" data-lang="en">Score</span></span></div>
+              <div class="wf-link"></div>
+              <div class="wf-node"><div class="wf-dot" style="background:var(--green-soft);"></div><span class="wf-tx"><span data-lang="es">Actualiza registro</span><span class="hidden" data-lang="en">Update CRM</span></span></div>
+              <div class="wf-link"></div>
+              <div class="wf-node is-out"><div class="wf-dot" style="background:var(--olive);"></div><span class="wf-tx"><span data-lang="es">Sincroniza correo</span><span class="hidden" data-lang="en">Sync email</span></span></div>
+            </div>
             <span class="agent-badge mb-3" data-lang="es">Ventas y CRM</span>
             <span class="agent-badge mb-3 hidden" data-lang="en">Sales & CRM</span>
             <p class="text-cream-dim leading-relaxed" data-lang="es">Descubre oportunidades, las puntúa contra un catálogo y mantiene un registro vivo en sincronía con el correo. Una única fuente de verdad, siempre al día, sin dejar que nada se enfríe por olvido.</p>
             <p class="text-cream-dim leading-relaxed hidden" data-lang="en">Finds opportunities, scores them against a catalog and keeps a living record in sync with email. A single source of truth, always current, so nothing goes cold by neglect.</p>
           </div>
           <div class="tab-panel" data-panel="3">
-            <img class="tab-visual mb-6" src="../assets/hero/ndvi.webp" alt="Triage and monitoring agent">
+            <div class="wf mb-6">
+              <div class="wf-node"><div class="wf-dot" style="background:var(--olive-light);"></div><span class="wf-tx"><span data-lang="es">Rastrea fuentes</span><span class="hidden" data-lang="en">Scan sources</span></span></div>
+              <div class="wf-link"></div>
+              <div class="wf-node"><div class="wf-dot" style="background:var(--green-soft);"></div><span class="wf-tx"><span data-lang="es">Puntúa relevancia</span><span class="hidden" data-lang="en">Score relevance</span></span></div>
+              <div class="wf-link"></div>
+              <div class="wf-node"><div class="wf-dot" style="background:#e0b84a;"></div><span class="wf-tx"><span data-lang="es">¿Relevante?</span><span class="hidden" data-lang="en">Relevant?</span></span></div>
+              <div class="wf-link"></div>
+              <div class="wf-branch">
+                <div class="wf-node is-out"><span class="wf-tag yes">Sí / Yes</span><span class="wf-tx"><span data-lang="es">Encamina</span><span class="hidden" data-lang="en">Route on</span></span></div>
+                <div class="wf-node"><span class="wf-tag no">No</span><span class="wf-tx"><span data-lang="es">Descarta</span><span class="hidden" data-lang="en">Drop</span></span></div>
+              </div>
+            </div>
             <span class="agent-badge mb-3" data-lang="es">Vigilancia</span>
             <span class="agent-badge mb-3 hidden" data-lang="en">Monitoring</span>
             <p class="text-cream-dim leading-relaxed" data-lang="es">Rastrea fuentes en volumen, puntúa cada elemento por relevancia y encamina solo lo que importa al siguiente paso. Ideal para vigilar cambios en el territorio o filtrar señal del ruido.</p>
