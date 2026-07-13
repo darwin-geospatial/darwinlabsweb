@@ -266,7 +266,7 @@
     /* ── Folder cards (What we do): rounded folder w/ tab; hover drops an info curtain ── */
     .folder-card{ position:relative; display:block; cursor:pointer; transition:transform .4s cubic-bezier(0.22,1,0.36,1); }
     .folder-card:hover{ transform:translateY(-6px); }
-    .fc-body{ position:relative; height:17.5rem; overflow:hidden; border:1px solid var(--teal-line); background:var(--teal-elev);
+    .fc-body{ position:relative; height:14.5rem; overflow:hidden; border:1px solid var(--teal-line); background:var(--teal-elev);
       border-radius:1.3rem; transition:box-shadow .4s; }
     .folder-card:hover .fc-body{ box-shadow:0 26px 54px rgba(0,0,0,0.45); }
     .fc-img{ position:absolute; inset:0; background-size:cover; background-position:center; transition:transform .6s ease; }
@@ -276,7 +276,7 @@
     .fc-curtain{ position:absolute; inset:0; z-index:4; transform:translateY(-101%);
       transition:transform .55s cubic-bezier(0.22,1,0.36,1);
       background:rgba(14,31,36,0.74); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px);
-      padding:1.5rem 1.6rem; display:flex; flex-direction:column; }
+      padding:1.3rem 1.5rem; display:flex; flex-direction:column; }
     .folder-card:hover .fc-curtain{ transform:translateY(0); }
     .fc-curtain .pillar-icon{ display:none; }
     /* keep card text cream even inside the light section */
@@ -285,7 +285,7 @@
     .section-light .folder-card .text-olive{ color:var(--olive-light); }
     .section-light .folder-card .pillar-icon{ color:var(--olive-light); }
     @media (hover:none){ .folder-card .fc-curtain{ transform:translateY(0); background:rgba(14,31,36,0.62); } }
-    @media (max-width:767px){ .fc-body{ height:20rem; } .fc-curtain ul{ display:none; } }
+    @media (max-width:767px){ .fc-body{ height:15rem; } }
 
     /* Project cards */
     .project-card{
@@ -584,8 +584,8 @@
           <p class="eyebrow mb-6 animate-on-scroll" data-lang="es">Nuestra misión</p>
           <p class="eyebrow mb-6 animate-on-scroll hidden" data-lang="en">Our mission</p>
 
-          <h2 class="font-bold text-cream mission-headline mb-8" style="font-size:clamp(1.6rem,4vw,2.9rem); line-height:1.12;" data-lang="es"><span class="mission-part" data-delay="0">Entender la naturaleza</span> <span class="mission-part mission-arrow" data-delay="600"><svg viewBox="0 0 36 16"><path d="M2,9 C8,8 18,7 26,8"/><path d="M22,3 C25,5 28,8 26,8 C28,8 25,11 22,13"/></svg></span> <span class="mission-word" data-delay="1200">para</span> <span class="mission-word" data-delay="1500">gestionarla</span> <span class="mission-word" data-delay="1800">mejor.</span></h2>
-          <h2 class="font-bold text-cream mission-headline mb-8 hidden" style="font-size:clamp(1.6rem,4vw,2.9rem); line-height:1.12;" data-lang="en"><span class="mission-part" data-delay="0">Understand nature</span> <span class="mission-part mission-arrow" data-delay="600"><svg viewBox="0 0 36 16"><path d="M2,9 C8,8 18,7 26,8"/><path d="M22,3 C25,5 28,8 26,8 C28,8 25,11 22,13"/></svg></span> <span class="mission-word" data-delay="1200">to</span> <span class="mission-word" data-delay="1500">manage</span> <span class="mission-word" data-delay="1800">it better.</span></h2>
+          <h2 class="font-bold text-cream mission-headline mb-8 animate-on-scroll" style="font-size:clamp(1.6rem,4vw,2.9rem); line-height:1.12;" data-lang="es"><span class="mission-part" data-delay="0">Entender la naturaleza</span> <span class="mission-part mission-arrow" data-delay="600"><svg viewBox="0 0 36 16"><path d="M2,9 C8,8 18,7 26,8"/><path d="M22,3 C25,5 28,8 26,8 C28,8 25,11 22,13"/></svg></span> <span class="mission-word" data-delay="1200">para</span> <span class="mission-word" data-delay="1500">gestionarla</span> <span class="mission-word" data-delay="1800">mejor.</span></h2>
+          <h2 class="font-bold text-cream mission-headline mb-8 animate-on-scroll hidden" style="font-size:clamp(1.6rem,4vw,2.9rem); line-height:1.12;" data-lang="en"><span class="mission-part" data-delay="0">Understand nature</span> <span class="mission-part mission-arrow" data-delay="600"><svg viewBox="0 0 36 16"><path d="M2,9 C8,8 18,7 26,8"/><path d="M22,3 C25,5 28,8 26,8 C28,8 25,11 22,13"/></svg></span> <span class="mission-word" data-delay="1200">to</span> <span class="mission-word" data-delay="1500">manage</span> <span class="mission-word" data-delay="1800">it better.</span></h2>
 
           <p class="text-base md:text-lg text-cream-dim leading-relaxed animate-on-scroll" data-lang="es">
             Usamos datos geoespaciales e inteligencia artificial para transformar cómo se estudian, monitorean y gestionan los sistemas naturales. Lo que no se mide, no se gestiona. Y lo que no se ve desde el espacio, hoy ya se puede entender.
@@ -649,16 +649,8 @@
                 <svg class="pillar-icon w-12 h-12 mb-2" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 3H5a2 2 0 00-2 2v4m6-6h6m-6 0v18m6-18h4a2 2 0 012 2v4m0 0v6m0-6h-6m6 6v4a2 2 0 01-2 2h-4m0 0H9m6 0v-6m-6 6H5a2 2 0 01-2-2v-4m0 0V9m0 6h6"/><circle cx="12" cy="12" r="2.2"/></svg>
                 <h3 class="text-2xl font-bold text-cream mb-3" data-lang="es">Transformación con IA</h3>
                 <h3 class="text-2xl font-bold text-cream mb-3 hidden" data-lang="en">AI transformation</h3>
-                <p class="text-cream-dim text-base leading-relaxed mb-5" data-lang="es">De usar IA a operar con IA. Diseñamos tu estrategia y la ejecutamos: construimos el software, automatizamos los procesos y ponemos agentes a trabajar en tu operación.</p>
-                <p class="text-cream-dim text-base leading-relaxed mb-5 hidden" data-lang="en">From using AI to running on it. We design your strategy and execute it: we build the software, automate the processes and put agents to work in your operation.</p>
-                <ul class="font-mono text-sm space-y-2 text-cream-dim mb-6">
-                  <li data-lang="es">Estrategia y hoja de ruta de IA</li>
-                  <li class="hidden" data-lang="en">AI strategy & roadmap</li>
-                  <li data-lang="es">Software de IA en producción</li>
-                  <li class="hidden" data-lang="en">Production-grade AI software</li>
-                  <li data-lang="es">Agentes que automatizan procesos</li>
-                  <li class="hidden" data-lang="en">Agents that automate processes</li>
-                </ul>
+                <p class="text-cream-dim text-lg leading-relaxed mb-4" data-lang="es">De usar IA a operar con IA. Diseñamos tu estrategia y la ejecutamos: construimos el software, automatizamos los procesos y ponemos agentes a trabajar en tu operación.</p>
+                <p class="text-cream-dim text-lg leading-relaxed mb-4 hidden" data-lang="en">From using AI to running on it. We design your strategy and execute it: we build the software, automate the processes and put agents to work in your operation.</p>
                 <span class="mt-auto inline-flex items-center gap-2 text-olive text-base font-semibold">
                   <span data-lang="es">Ver transformación con IA</span><span class="hidden" data-lang="en">Explore AI transformation</span>
                   <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
@@ -681,16 +673,8 @@
                 <svg class="pillar-icon w-12 h-12 mb-2" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11 20A7 7 0 019.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path stroke-linecap="round" stroke-linejoin="round" d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
                 <h3 class="text-2xl font-bold text-cream mb-3" data-lang="es">Evaluación de Hábitats</h3>
                 <h3 class="text-2xl font-bold text-cream mb-3 hidden" data-lang="en">Habitat Assessment</h3>
-                <p class="text-cream-dim text-base leading-relaxed mb-5" data-lang="es">Monitoreo de hábitats y pastos capa a capa: índices de vegetación, clasificación de hábitats, suelo, clima y detección de cambios sobre áreas protegidas.</p>
-                <p class="text-cream-dim text-base leading-relaxed mb-5 hidden" data-lang="en">Layer-by-layer habitat and pasture monitoring: vegetation indices, habitat classification, soil, climate and change detection across protected areas.</p>
-                <ul class="font-mono text-sm space-y-2 text-cream-dim mb-6">
-                  <li data-lang="es">Índices de vegetación (NDVI y más)</li>
-                  <li class="hidden" data-lang="en">Vegetation indices (NDVI & more)</li>
-                  <li data-lang="es">Clasificación y conectividad ecológica</li>
-                  <li class="hidden" data-lang="en">Classification & ecological connectivity</li>
-                  <li data-lang="es">Detección de cambios temporales</li>
-                  <li class="hidden" data-lang="en">Temporal change detection</li>
-                </ul>
+                <p class="text-cream-dim text-lg leading-relaxed mb-4" data-lang="es">Monitoreo de hábitats y pastos capa a capa: índices de vegetación, clasificación de hábitats, suelo, clima y detección de cambios sobre áreas protegidas.</p>
+                <p class="text-cream-dim text-lg leading-relaxed mb-4 hidden" data-lang="en">Layer-by-layer habitat and pasture monitoring: vegetation indices, habitat classification, soil, climate and change detection across protected areas.</p>
                 <span class="mt-auto inline-flex items-center gap-2 text-olive text-base font-semibold">
                   <span data-lang="es">Evaluación de la naturaleza</span><span class="hidden" data-lang="en">Nature assessment</span>
                   <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
@@ -713,16 +697,8 @@
                 <svg class="pillar-icon w-12 h-12 mb-2" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path stroke-linecap="round" stroke-linejoin="round" d="m9 12 2 2 4-4"/></svg>
                 <h3 class="text-2xl font-bold text-cream mb-3" data-lang="es">Sostenibilidad (ESG)</h3>
                 <h3 class="text-2xl font-bold text-cream mb-3 hidden" data-lang="en">Sustainability (ESG)</h3>
-                <p class="text-cream-dim text-base leading-relaxed mb-5" data-lang="es">Indicadores ambientales medibles y auditables: carbono orgánico del suelo, degradación, agricultura regenerativa y métricas para reporte ESG y cumplimiento normativo.</p>
-                <p class="text-cream-dim text-base leading-relaxed mb-5 hidden" data-lang="en">Measurable, auditable environmental indicators: soil organic carbon, degradation, regenerative agriculture and metrics for ESG reporting and regulatory compliance.</p>
-                <ul class="font-mono text-sm space-y-2 text-cream-dim mb-6">
-                  <li data-lang="es">Carbono orgánico del suelo (SOC)</li>
-                  <li class="hidden" data-lang="en">Soil organic carbon (SOC)</li>
-                  <li data-lang="es">Indicadores ambientales y reporte ESG</li>
-                  <li class="hidden" data-lang="en">Environmental indicators & ESG reporting</li>
-                  <li data-lang="es">Agricultura regenerativa</li>
-                  <li class="hidden" data-lang="en">Regenerative agriculture</li>
-                </ul>
+                <p class="text-cream-dim text-lg leading-relaxed mb-4" data-lang="es">Indicadores ambientales medibles y auditables: carbono orgánico del suelo, degradación, agricultura regenerativa y métricas para reporte ESG y cumplimiento normativo.</p>
+                <p class="text-cream-dim text-lg leading-relaxed mb-4 hidden" data-lang="en">Measurable, auditable environmental indicators: soil organic carbon, degradation, regenerative agriculture and metrics for ESG reporting and regulatory compliance.</p>
                 <span class="mt-auto inline-flex items-center gap-2 text-olive text-base font-semibold">
                   <span data-lang="es">Datos para ESG</span><span class="hidden" data-lang="en">ESG data</span>
                   <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
@@ -745,16 +721,8 @@
                 <svg class="pillar-icon w-12 h-12 mb-2" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
                 <h3 class="text-2xl font-bold text-cream mb-3" data-lang="es">Software para la Naturaleza</h3>
                 <h3 class="text-2xl font-bold text-cream mb-3 hidden" data-lang="en">Software for Nature</h3>
-                <p class="text-cream-dim text-base leading-relaxed mb-5" data-lang="es">Visores, dashboards y herramientas geoespaciales a medida. Desde datos oceánicos hasta soluciones basadas en la naturaleza para ciudades más resilientes.</p>
-                <p class="text-cream-dim text-base leading-relaxed mb-5 hidden" data-lang="en">Custom geospatial viewers, dashboards and tools, from ocean data to nature-based solutions for more resilient cities.</p>
-                <ul class="font-mono text-sm space-y-2 text-cream-dim mb-6">
-                  <li data-lang="es">Visores y dashboards personalizados</li>
-                  <li class="hidden" data-lang="en">Custom viewers & dashboards</li>
-                  <li data-lang="es">Ingeniería de datos y pipelines ETL</li>
-                  <li class="hidden" data-lang="en">Data engineering & ETL pipelines</li>
-                  <li data-lang="es">Soluciones basadas en la naturaleza</li>
-                  <li class="hidden" data-lang="en">Nature-based solutions</li>
-                </ul>
+                <p class="text-cream-dim text-lg leading-relaxed mb-4" data-lang="es">Visores, dashboards y herramientas geoespaciales a medida. Desde datos oceánicos hasta soluciones basadas en la naturaleza para ciudades más resilientes.</p>
+                <p class="text-cream-dim text-lg leading-relaxed mb-4 hidden" data-lang="en">Custom geospatial viewers, dashboards and tools, from ocean data to nature-based solutions for more resilient cities.</p>
                 <span class="mt-auto inline-flex items-center gap-2 text-olive text-base font-semibold">
                   <span data-lang="es">Software a medida</span><span class="hidden" data-lang="en">Custom software</span>
                   <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
@@ -1408,6 +1376,9 @@
               <a href="https://www.linkedin.com/company/darwin-geospatial" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="inline-block opacity-70 hover:opacity-100 transition">
                 <img src="./assets/brand/linkedin_logo.png" alt="" aria-hidden="true" class="w-5 h-auto">
               </a>
+            </li>
+            <li class="pt-3">
+              <img src="./assets/partners/google_cloud_partner.png" alt="Google Cloud Partner" class="h-20 w-auto rounded-lg">
             </li>
           </ul>
         </div>
