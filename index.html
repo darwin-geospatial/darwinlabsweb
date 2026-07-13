@@ -94,6 +94,9 @@
     /* Section hairline divider */
     .section-rule { border-top: 1px solid var(--teal-line); }
 
+    /* Offset in-page anchor targets so the fixed header doesn't cover their top content */
+    #trust, #about, #solutions, #projects-hero, #team, #contact { scroll-margin-top: 90px; }
+
     /* ── Scroll reveal (kept from original; consumed by lang.js) ── */
     .animate-on-scroll{
       opacity:0; transform:translateY(30px);
@@ -574,7 +577,7 @@
     </section>
 
     <!-- About / Mission -->
-    <section id="about" class="bg-teal-base section-rule py-24 lg:py-36 overflow-hidden relative">
+    <section id="about" class="bg-teal-base section-rule pt-14 lg:pt-20 pb-24 lg:pb-36 overflow-hidden relative">
       <canvas id="mission-canvas" aria-hidden="true"></canvas>
       <div class="container mx-auto px-6 relative" style="z-index:1;">
         <div class="max-w-3xl mx-auto text-center">
@@ -639,25 +642,25 @@
               <div class="fc-shade"></div>
               <div class="fc-base">
                 <svg class="pillar-icon w-12 h-12 mb-3" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 3H5a2 2 0 00-2 2v4m6-6h6m-6 0v18m6-18h4a2 2 0 012 2v4m0 0v6m0-6h-6m6 6v4a2 2 0 01-2 2h-4m0 0H9m6 0v-6m-6 6H5a2 2 0 01-2-2v-4m0 0V9m0 6h6"/><circle cx="12" cy="12" r="2.2"/></svg>
-                <h3 class="text-2xl font-bold text-cream" data-lang="es">Agentes de IA</h3>
-                <h3 class="text-2xl font-bold text-cream hidden" data-lang="en">AI Agents</h3>
+                <h3 class="text-2xl font-bold text-cream" data-lang="es">Transformación con IA</h3>
+                <h3 class="text-2xl font-bold text-cream hidden" data-lang="en">AI transformation</h3>
               </div>
               <div class="fc-curtain">
                 <svg class="pillar-icon w-12 h-12 mb-2" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 3H5a2 2 0 00-2 2v4m6-6h6m-6 0v18m6-18h4a2 2 0 012 2v4m0 0v6m0-6h-6m6 6v4a2 2 0 01-2 2h-4m0 0H9m6 0v-6m-6 6H5a2 2 0 01-2-2v-4m0 0V9m0 6h6"/><circle cx="12" cy="12" r="2.2"/></svg>
-                <h3 class="text-2xl font-bold text-cream mb-3" data-lang="es">Agentes de IA</h3>
-                <h3 class="text-2xl font-bold text-cream mb-3 hidden" data-lang="en">AI Agents</h3>
-                <p class="text-cream-dim text-base leading-relaxed mb-5" data-lang="es">Asistentes geoespaciales que interpretan el paisaje por ti. Modelos propios de IA ambiental que leen imágenes satelitales, clasifican y responden preguntas sobre el territorio.</p>
-                <p class="text-cream-dim text-base leading-relaxed mb-5 hidden" data-lang="en">Geospatial assistants that interpret the landscape for you. Our own environmental AI models that read satellite imagery, classify, and answer questions about the land.</p>
+                <h3 class="text-2xl font-bold text-cream mb-3" data-lang="es">Transformación con IA</h3>
+                <h3 class="text-2xl font-bold text-cream mb-3 hidden" data-lang="en">AI transformation</h3>
+                <p class="text-cream-dim text-base leading-relaxed mb-5" data-lang="es">De usar IA a operar con IA. Diseñamos tu estrategia y la ejecutamos: construimos el software, automatizamos los procesos y ponemos agentes a trabajar en tu operación.</p>
+                <p class="text-cream-dim text-base leading-relaxed mb-5 hidden" data-lang="en">From using AI to running on it. We design your strategy and execute it: we build the software, automate the processes and put agents to work in your operation.</p>
                 <ul class="font-mono text-sm space-y-2 text-cream-dim mb-6">
-                  <li data-lang="es">Geo AI · asistentes conversacionales</li>
-                  <li class="hidden" data-lang="en">Geo AI · conversational assistants</li>
-                  <li data-lang="es">Modelos ML / Deep Learning propios</li>
-                  <li class="hidden" data-lang="en">In-house ML / Deep Learning models</li>
-                  <li data-lang="es">Interpretación automática del paisaje</li>
-                  <li class="hidden" data-lang="en">Automated landscape interpretation</li>
+                  <li data-lang="es">Estrategia y hoja de ruta de IA</li>
+                  <li class="hidden" data-lang="en">AI strategy & roadmap</li>
+                  <li data-lang="es">Software de IA en producción</li>
+                  <li class="hidden" data-lang="en">Production-grade AI software</li>
+                  <li data-lang="es">Agentes que automatizan procesos</li>
+                  <li class="hidden" data-lang="en">Agents that automate processes</li>
                 </ul>
                 <span class="mt-auto inline-flex items-center gap-2 text-olive text-base font-semibold">
-                  <span data-lang="es">Descubrir agentes de IA</span><span class="hidden" data-lang="en">Explore AI agents</span>
+                  <span data-lang="es">Ver transformación con IA</span><span class="hidden" data-lang="en">Explore AI transformation</span>
                   <svg class="w-5 h-5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                 </span>
               </div>
@@ -1376,7 +1379,7 @@
           <p class="eyebrow mb-5" data-lang="es">Soluciones</p>
           <p class="eyebrow mb-5 hidden" data-lang="en">Solutions</p>
           <ul class="space-y-3 text-sm">
-            <li><a href="#solutions" class="text-cream-dim hover:text-cream transition" data-lang="es">Agentes de IA</a><a href="#solutions" class="text-cream-dim hover:text-cream transition hidden" data-lang="en">AI Agents</a></li>
+            <li><a href="./solutions/ai-agents.html" class="text-cream-dim hover:text-cream transition" data-lang="es">Transformación con IA</a><a href="./solutions/ai-agents.html" class="text-cream-dim hover:text-cream transition hidden" data-lang="en">AI transformation</a></li>
             <li><a href="#solutions" class="text-cream-dim hover:text-cream transition" data-lang="es">Evaluación de Hábitats</a><a href="#solutions" class="text-cream-dim hover:text-cream transition hidden" data-lang="en">Habitat Assessment</a></li>
             <li><a href="#solutions" class="text-cream-dim hover:text-cream transition" data-lang="es">Sostenibilidad (ESG)</a><a href="#solutions" class="text-cream-dim hover:text-cream transition hidden" data-lang="en">Sustainability (ESG)</a></li>
             <li><a href="#solutions" class="text-cream-dim hover:text-cream transition" data-lang="es">Software para la Naturaleza</a><a href="#solutions" class="text-cream-dim hover:text-cream transition hidden" data-lang="en">Software for Nature</a></li>
