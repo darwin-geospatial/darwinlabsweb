@@ -5,50 +5,67 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Darwin Geospatial - Inteligencia Geoespacial para la Naturaleza</title>
 
-  <!-- Favicon -->
-  <link rel="icon" href="./favicon.ico?v=2" sizes="any"/>
-  <link rel="icon" type="image/png" sizes="32x32" href="./assets/brand/favicon-32x32.png?v=2"/>
-  <link rel="icon" type="image/png" sizes="16x16" href="./assets/brand/favicon-16x16.png?v=2"/>
-  <link rel="apple-touch-icon" sizes="180x180" href="./assets/brand/apple-touch-icon.png?v=2"/>
+  <!-- Favicon (Google shows the homepage favicon in search; needs a square icon >= 48x48) -->
+  <link rel="icon" href="/favicon.ico" sizes="any"/>
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/brand/favicon-192x192.png"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-32x32.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/brand/favicon-16x16.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/brand/apple-touch-icon.png"/>
 
   <!-- SEO Meta Tags -->
-  <meta name="description" content="Darwin Geospatial: geospatial intelligence for nature. Remote sensing, satellite imagery analysis, erosion detection, land use mapping, and environmental monitoring solutions."/>
-  <meta name="keywords" content="geospatial intelligence, remote sensing, satellite imagery, environmental monitoring, erosion detection, land use, Darwin Geospatial"/>
+  <meta name="description" content="Darwin Geospatial: geospatial intelligence for nature. AI agents, habitat assessment, sustainability (ESG) and software for nature. Remote sensing, satellite imagery analysis and environmental monitoring."/>
+  <meta name="keywords" content="geospatial intelligence, AI agents, habitat assessment, ESG, sustainability, remote sensing, satellite imagery, environmental monitoring, Darwin Geospatial"/>
   <link rel="canonical" href="https://darwingeospatial.com/"/>
 
   <!-- Open Graph / Social -->
   <meta property="og:type" content="website"/>
-  <meta property="og:title" content="Darwin Geospatial — Geospatial Intelligence for Nature"/>
-  <meta property="og:description" content="Remote sensing, satellite imagery analysis, erosion detection, land use mapping, and environmental monitoring solutions."/>
+  <meta property="og:title" content="Darwin Geospatial: Geospatial Intelligence for Nature"/>
+  <meta property="og:description" content="AI agents, habitat assessment, sustainability (ESG) and software for nature."/>
   <meta property="og:url" content="https://darwingeospatial.com/"/>
   <meta property="og:site_name" content="Darwin Geospatial"/>
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image"/>
-  <meta name="twitter:title" content="Darwin Geospatial — Geospatial Intelligence for Nature"/>
-  <meta name="twitter:description" content="Remote sensing, satellite imagery analysis, and environmental monitoring solutions."/>
+  <meta name="twitter:title" content="Darwin Geospatial: Geospatial Intelligence for Nature"/>
+  <meta name="twitter:description" content="AI agents, habitat assessment, sustainability (ESG) and software for nature."/>
+
+  <!-- Organization structured data (brand logo for Google knowledge panel) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Darwin Geospatial",
+    "url": "https://darwingeospatial.com/",
+    "logo": "https://darwingeospatial.com/assets/brand/logo_circle.png",
+    "sameAs": ["https://www.linkedin.com/company/darwin-geospatial"]
+  }
+  </script>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="./analytics.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
-  <link rel="preload" href="./assets/hero/hero_1.webp" as="image"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="preload" href="./assets/hero/alps_rgb.jpg" as="image"/>
 
   <style>
-    /* Color palette */
+    /* ── Brand palette — official Darwin colors (dark premium system) ── */
     :root {
-      --darwin-green-dark: #395935;
-      --darwin-green-base: #46633A;
-      --darwin-green-medium: #576F50;
-      --darwin-green-accent: #5D713F;
-      --darwin-grey: #939494;
-      --darwin-green-light: #f0f3ef;
-      --darwin-ochre-base: #8B0000;
-      --darwin-ochre-dark: #5C0000;
+      --teal-deep:   #0e1f24;   /* near-black teal — page base */
+      --teal-base:   #1b373f;   /* brand dark teal — sections */
+      --teal-elev:   #213f47;   /* elevated surfaces / cards */
+      --teal-line:   #2e525b;   /* hairline borders */
+      --green:       #426331;   /* primary brand green */
+      --green-soft:  #5a8045;   /* brighter green for text on dark */
+      --olive:       #879753;   /* olive */
+      --olive-light: #bcbe76;   /* light olive — primary accent on dark */
+      --cream:       #fcf5e3;   /* cream — primary text */
+      --cream-dim:   rgba(252,245,227,0.66);
+      --cream-faint: rgba(252,245,227,0.42);
     }
 
-    body { font-family: 'Inter', sans-serif; }
+    html, body { background-color: var(--teal-deep); }
+    body { font-family: 'Inter', sans-serif; color: var(--cream); -webkit-font-smoothing: antialiased; }
 
     /* Small screens read "too zoomed in" — nearly everything on the page (paddings,
        gaps, type) is sized in rem, so trimming the root size scales the whole layout
@@ -99,86 +116,36 @@
     /* ── Scroll reveal (kept from original; consumed by lang.js) ── */
     .animate-on-scroll{
       opacity:0; transform:translateY(30px);
-      transition:opacity .6s ease-out, transform .6s ease-out;
+      transition:opacity .7s cubic-bezier(0.22,1,0.36,1), transform .7s cubic-bezier(0.22,1,0.36,1);
     }
     .animate-on-scroll.is-visible{opacity:1; transform:translateY(0);}
 
     .animate-on-scroll.reveal-mission{
-      opacity:0;
-      transform:translateY(20px) scale(0.97);
-      filter:blur(6px);
-      transition:opacity 1.2s cubic-bezier(0.22,1,0.36,1),
-                 transform 1.2s cubic-bezier(0.22,1,0.36,1),
-                 filter 1s cubic-bezier(0.22,1,0.36,1);
+      opacity:0; transform:translateY(20px) scale(0.97); filter:blur(6px);
+      transition:opacity 1.2s cubic-bezier(0.22,1,0.36,1), transform 1.2s cubic-bezier(0.22,1,0.36,1), filter 1s cubic-bezier(0.22,1,0.36,1);
     }
-    .animate-on-scroll.reveal-mission.is-visible{
-      opacity:1;
-      transform:translateY(0) scale(1);
-      filter:blur(0);
-    }
+    .animate-on-scroll.reveal-mission.is-visible{opacity:1; transform:translateY(0) scale(1); filter:blur(0);}
 
-    /* Mission text sequential jump-in animation */
+    /* Mission text sequential jump-in (consumed by lang.js) */
     .mission-part{
-      display:inline-block;
-      opacity:0;
-      transform:translateY(50px) scale(0.3);
-      filter:blur(10px);
-      transition:opacity .7s cubic-bezier(0.34,1.56,0.64,1),
-                 transform .7s cubic-bezier(0.34,1.56,0.64,1),
-                 filter .5s ease-out;
+      display:inline-block; opacity:0; transform:translateY(50px) scale(0.3); filter:blur(10px);
+      transition:opacity .7s cubic-bezier(0.34,1.56,0.64,1), transform .7s cubic-bezier(0.34,1.56,0.64,1), filter .5s ease-out;
     }
-    .mission-part.pop-in{
-      opacity:1;
-      transform:translateY(0) scale(1);
-      filter:blur(0);
-    }
-    /* Hand-drawn SVG arrow */
-    .mission-arrow{
-      display:inline-block;
-      vertical-align:middle;
-      width:1.8em;
-      height:0.9em;
-      position:relative;
-      margin:0 0.1em;
-    }
-    .mission-arrow svg{
-      position:absolute;
-      top:0; left:0;
-      width:100%; height:100%;
-      overflow:visible;
-    }
+    .mission-part.pop-in{opacity:1; transform:translateY(0) scale(1); filter:blur(0);}
+    .mission-arrow{display:inline-block; vertical-align:middle; width:1.8em; height:0.9em; position:relative; margin:0 0.1em;}
+    .mission-arrow svg{position:absolute; top:0; left:0; width:100%; height:100%; overflow:visible;}
     .mission-arrow svg path{
-      fill:none;
-      stroke:var(--darwin-green-base);
-      stroke-width:2.5;
-      stroke-linecap:round;
-      stroke-linejoin:round;
-      stroke-dasharray:200;
-      stroke-dashoffset:200;
+      fill:none; stroke:var(--olive-light); stroke-width:2.5; stroke-linecap:round; stroke-linejoin:round;
+      stroke-dasharray:200; stroke-dashoffset:200;
     }
-    .mission-arrow.pop-in svg path{
-      animation:draw-stroke 0.8s cubic-bezier(0.25,0.1,0.25,1) forwards;
-    }
-    @keyframes draw-stroke{
-      0%{stroke-dashoffset:200;}
-      100%{stroke-dashoffset:0;}
-    }
+    .mission-arrow.pop-in svg path{animation:draw-stroke 0.8s cubic-bezier(0.25,0.1,0.25,1) forwards;}
+    @keyframes draw-stroke{0%{stroke-dashoffset:200;}100%{stroke-dashoffset:0;}}
 
-    /* Word-by-word reveal for subtitle */
     .mission-word{
-      display:inline-block;
-      opacity:0;
-      transform:translateY(14px);
-      filter:blur(6px);
-      transition:opacity .6s cubic-bezier(0.22,1,0.36,1),
-                 transform .6s cubic-bezier(0.22,1,0.36,1),
-                 filter .5s ease-out;
+      display:inline-block; opacity:0; transform:translateY(14px); filter:blur(6px);
+      transition:opacity .6s cubic-bezier(0.22,1,0.36,1), transform .6s cubic-bezier(0.22,1,0.36,1), filter .5s ease-out;
     }
-    .mission-word.pop-in{
-      opacity:1;
-      transform:translateY(0);
-      filter:blur(0);
-    }
+    .mission-word.pop-in{opacity:1; transform:translateY(0); filter:blur(0);}
 
     /* On short viewports (small laptop screens, browser zoom > 100%), section
        padding doesn't all fit after an anchor-scroll lands on the section above it
@@ -190,120 +157,98 @@
     }
 
     /* Language switcher */
-    .lang-switcher button.active{color:var(--darwin-green-base); font-weight:700;}
+    .lang-switcher button{ color: var(--cream-faint); transition: color .2s; }
+    .lang-switcher button.active{ color: var(--olive-light); font-weight:700; }
+
+    /* Header */
+    /* Dark header; a cream wedge on the inner row (behind the logo) gives it contrast */
+    #header {
+      background-color: rgba(14,31,36,0.72);
+      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent; transition: background-color .3s ease, border-color .3s ease;
+    }
+    #header.scrolled { background-color: rgba(14,31,36,0.92); border-bottom-color: var(--teal-line); }
+    .header-row { background: linear-gradient(90deg, #d7d3b9 0, #d7d3b9 190px, transparent 380px); }
+    .nav-link { color: var(--cream-dim); font-weight: 500; transition: color .25s; position: relative; }
+    .nav-link:hover { color: var(--cream); }
+    .nav-link::after { content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:var(--olive-light); transition:width .3s ease; }
+    .nav-link:hover::after { width:100%; }
+    .btn-accent {
+      background-color: var(--green); color: var(--cream); border:1px solid transparent;
+      transition: background-color .25s, transform .25s, box-shadow .25s;
+    }
+    .btn-accent:hover { background-color: var(--green-soft); transform: translateY(-1px); box-shadow: 0 8px 24px rgba(90,128,69,0.3); }
+    .btn-ghost {
+      border:1px solid var(--teal-line); color: var(--cream);
+      transition: border-color .25s, background-color .25s, transform .25s;
+    }
+    .btn-ghost:hover { border-color: var(--olive-light); background-color: rgba(188,190,118,0.08); transform: translateY(-1px); }
 
     /* Logos */
-    .partner-logo-container{display:flex; flex-direction:column; align-items:center; gap:.75rem; text-align:center;}
-    .partner-logo{filter:grayscale(100%); opacity:.7; transition:all .3s ease; object-fit:contain;}
-    .partner-logo:hover{filter:grayscale(0%); opacity:1;}
+    .partner-logo{ filter:grayscale(100%); opacity:.75; transition:all .3s ease; object-fit:contain; }
+    .partner-logo:hover{ filter:grayscale(0%); opacity:1; }
 
-    /* Hero Slideshow with Ken Burns Effect — 5 images, 40s cycle, 8s per slide — hero_1/2/3/habitat/ndvi */
-    #hero-slideshow {
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
-      z-index: -1;
-      background-color: #1a1a1a;
-    }
-
+    /* ── Hero Slideshow with Ken Burns Effect ── */
+    #hero-slideshow { position: absolute; inset: 0; overflow: hidden; z-index: -1; background-color: var(--teal-deep); }
     .hero-slide {
-      position: absolute;
-      inset: 0;
-      background-size: cover;
-      background-position: center;
-      opacity: 0;
-      filter: brightness(0.7) blur(4px);
-      animation: kenBurnsCrossfade 40s infinite;
+      position: absolute; inset: 0; background-size: cover; background-position: center;
+      opacity: 0; filter: brightness(0.55) blur(3px); animation: kenBurnsCrossfade 40s infinite;
     }
+    .hero-slide:nth-child(1){ background-image:url('./assets/hero/hero_1.webp'); animation-delay:0s; opacity:1; }
+    .hero-slide:nth-child(2){ background-image:url('./assets/hero/hero_2.webp'); animation-delay:8s; animation-name:kenBurnsCrossfade2; }
+    .hero-slide:nth-child(3){ background-image:url('./assets/hero/hero_3.webp'); animation-delay:16s; animation-name:kenBurnsCrossfade3; }
+    .hero-slide:nth-child(4){ background-image:url('./assets/hero/habitat.webp'); animation-delay:24s; animation-name:kenBurnsCrossfade4; }
+    .hero-slide:nth-child(5){ background-image:url('./assets/hero/ndvi.webp'); animation-delay:32s; animation-name:kenBurnsCrossfade5; }
 
-    .hero-slide:nth-child(1) {
-      background-image: url('./assets/hero/hero_1.webp');
-      animation-delay: 0s;
-      opacity: 1; /* Show first slide immediately while loading */
-    }
+    @keyframes kenBurnsCrossfade  {0%{opacity:1;transform:scale(1.3) translate(-10%,-6%);}1%{opacity:1;}17%{opacity:1;}20%{opacity:0;transform:scale(1.3) translate(10%,6%);}100%{opacity:0;transform:scale(1.3) translate(-10%,-6%);}}
+    @keyframes kenBurnsCrossfade2 {0%{opacity:0;transform:scale(1.3) translate(12%,0%);}1%{opacity:1;}17%{opacity:1;}20%{opacity:0;transform:scale(1.3) translate(-12%,0%);}100%{opacity:0;transform:scale(1.3) translate(12%,0%);}}
+    @keyframes kenBurnsCrossfade3 {0%{opacity:0;transform:scale(1.3) translate(0%,10%);}1%{opacity:1;}17%{opacity:1;}20%{opacity:0;transform:scale(1.3) translate(0%,-10%);}100%{opacity:0;transform:scale(1.3) translate(0%,10%);}}
+    @keyframes kenBurnsCrossfade4 {0%{opacity:0;transform:scale(1.3) translate(8%,-8%);}1%{opacity:1;}17%{opacity:1;}20%{opacity:0;transform:scale(1.3) translate(-8%,8%);}100%{opacity:0;transform:scale(1.3) translate(8%,-8%);}}
+    @keyframes kenBurnsCrossfade5 {0%{opacity:0;transform:scale(1.3) translate(-12%,4%);}1%{opacity:1;}17%{opacity:1;}20%{opacity:0;transform:scale(1.3) translate(12%,-4%);}100%{opacity:0;transform:scale(1.3) translate(-12%,4%);}}
 
-    .hero-slide:nth-child(2) {
-      background-image: url('./assets/hero/hero_2.webp');
-      animation-delay: 8s;
-      animation-name: kenBurnsCrossfade2;
-    }
-
-    .hero-slide:nth-child(3) {
-      background-image: url('./assets/hero/hero_3.webp');
-      animation-delay: 16s;
-      animation-name: kenBurnsCrossfade3;
-    }
-
-    .hero-slide:nth-child(4) {
-      background-image: url('./assets/hero/habitat.webp');
-      animation-delay: 24s;
-      animation-name: kenBurnsCrossfade4;
-    }
-
-    .hero-slide:nth-child(5) {
-      background-image: url('./assets/hero/ndvi.webp');
-      animation-delay: 32s;
-      animation-name: kenBurnsCrossfade5;
-    }
-
-    /* 5 images, 20% each — scale 1.3 ensures no dark edges with 10% travel */
-    @keyframes kenBurnsCrossfade {
-      0%   { opacity: 1; transform: scale(1.3) translate(-10%, -6%); }
-      1%   { opacity: 1; }
-      17%  { opacity: 1; }
-      20%  { opacity: 0; transform: scale(1.3) translate(10%, 6%); }
-      100% { opacity: 0; transform: scale(1.3) translate(-10%, -6%); }
-    }
-
-    @keyframes kenBurnsCrossfade2 {
-      0%   { opacity: 0; transform: scale(1.3) translate(12%, 0%); }
-      1%   { opacity: 1; }
-      17%  { opacity: 1; }
-      20%  { opacity: 0; transform: scale(1.3) translate(-12%, 0%); }
-      100% { opacity: 0; transform: scale(1.3) translate(12%, 0%); }
-    }
-
-    @keyframes kenBurnsCrossfade3 {
-      0%   { opacity: 0; transform: scale(1.3) translate(0%, 10%); }
-      1%   { opacity: 1; }
-      17%  { opacity: 1; }
-      20%  { opacity: 0; transform: scale(1.3) translate(0%, -10%); }
-      100% { opacity: 0; transform: scale(1.3) translate(0%, 10%); }
-    }
-
-    @keyframes kenBurnsCrossfade4 {
-      0%   { opacity: 0; transform: scale(1.3) translate(8%, -8%); }
-      1%   { opacity: 1; }
-      17%  { opacity: 1; }
-      20%  { opacity: 0; transform: scale(1.3) translate(-8%, 8%); }
-      100% { opacity: 0; transform: scale(1.3) translate(8%, -8%); }
-    }
-
-    @keyframes kenBurnsCrossfade5 {
-      0%   { opacity: 0; transform: scale(1.3) translate(-12%, 4%); }
-      1%   { opacity: 1; }
-      17%  { opacity: 1; }
-      20%  { opacity: 0; transform: scale(1.3) translate(12%, -4%); }
-      100% { opacity: 0; transform: scale(1.3) translate(-12%, 4%); }
-    }
-
-    /* Dark overlay for text readability */
+    /* Hero overlay — teal-tinted gradient for brand cohesion + readability */
+    /* Darwin-branded veil: teal/green wash over the hero imagery so text stays readable */
     #hero-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.6) 0%,
-        rgba(0, 0, 0, 0.45) 50%,
-        rgba(0, 0, 0, 0.6) 100%
-      );
+      position: absolute; inset: 0; pointer-events: none;
+      background:
+        linear-gradient(to bottom, rgba(27,55,63,0.42) 0%, rgba(27,55,63,0.30) 40%, rgba(14,31,36,0.82) 100%),
+        linear-gradient(120deg, rgba(66,99,49,0.22) 0%, rgba(27,55,63,0) 55%);
     }
 
-    /* Hero text readability */
-    #home .text-center h1,
-    #home .text-center p {
-      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7), 0 1px 3px rgba(0, 0, 0, 0.5);
+    /* ── Hero brush reveal: VHR RGB (base) → AlphaEarth output (under cursor) ── */
+    #hero-reveal { position: absolute; inset: 0; overflow: hidden; z-index: 0; background: var(--teal-deep); }
+    .hr-layer { position: absolute; inset: 0; background-size: cover; background-position: center; }
+    /* Images shown muted (not full color) — the branded veil above does the rest */
+    #hr-base { filter: saturate(0.9) brightness(1.18); }
+    /* Organic liquid reveal: top image masked by an SVG blob that glides to the
+       cursor with a viscous cubic-bezier transition (no fade — crisp blob edge). */
+    #hr-reveal {
+      --blob: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'%3E%3Cpath fill='white' d='M101,20 C128,17 152,31 165,54 C177,75 176,101 170,123 C163,147 149,168 124,177 C100,186 71,183 49,169 C29,156 15,135 15,110 C15,84 25,58 46,41 C62,28 79,23 101,20 Z'/%3E%3C/svg%3E");
+      -webkit-mask-image: var(--blob); mask-image: var(--blob);
+      -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+      -webkit-mask-size: var(--brush,0px); mask-size: var(--brush,0px);
+      -webkit-mask-position: calc(var(--mx,50%) - var(--brush,0px)/2) calc(var(--my,50%) - var(--brush,0px)/2);
+              mask-position: calc(var(--mx,50%) - var(--brush,0px)/2) calc(var(--my,50%) - var(--brush,0px)/2);
+      transition: none;
+      filter: saturate(0.9) brightness(0.95);
+      will-change: -webkit-mask-position, mask-position, -webkit-mask-size, mask-size;
     }
+    #hr-ring { display: none; }
+
+    /* WebGL liquid-distortion canvas — shown only when the shader initializes */
+    #hero-gl { position: absolute; inset: 0; width: 100%; height: 100%; display: block; opacity: 0; transition: opacity .5s ease; }
+    #hero-reveal.gl-active #hero-gl { opacity: 1; }
+    #hero-reveal.gl-active #hr-base,
+    #hero-reveal.gl-active #hr-reveal,
+    #hero-reveal.gl-active #hr-ring { opacity: 0 !important; }
+
+    /* Touch / no-hover: gently crossfade RGB and AlphaEarth instead of a cursor brush */
+    @media (hover: none) {
+      #hr-reveal { -webkit-mask: none !important; mask: none !important; animation: heroCrossfade 6s ease-in-out infinite alternate; }
+      #hr-ring, #hero-hint { display: none; }
+    }
+    @keyframes heroCrossfade { 0% { opacity: 0; } 100% { opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) { #hr-reveal { animation: none; opacity: .9; } }
 
     /* Scroll indicator */
     .scroll-indicator{
@@ -584,142 +529,50 @@
       background:linear-gradient(135deg, #0B1A0F 0%, #1A3A1F 30%, #3D6131 55%, #A5AA6B 80%, #FDF6E4 100%);
       opacity:0; pointer-events:none; transition:opacity 0.75s cubic-bezier(0.4,0,0.2,1);
     }
-    .animate-marquee:hover {
-      animation-play-state: paused;
-    }
-    @keyframes marqueeScroll {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
+    #maps-overlay.active{ opacity:1; pointer-events:all; }
 
-    .service-card {
-      cursor: pointer;
-      background-color: #1B373F;
-      box-shadow: 0 10px 15px -3px rgba(0,0,0,.1), 0 4px 6px -4px rgba(0,0,0,.1);
-      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    /* ── Soil SaveR transition overlay ── */
+    #soil-overlay{
+      position:fixed; inset:0; z-index:9999;
+      background:linear-gradient(135deg, #1F1007 0%, #5C3317 30%, #8B5E3C 55%, #F0DEB8 80%, #FBF3E0 100%);
+      opacity:0; pointer-events:none; transition:opacity 0.75s cubic-bezier(0.4,0,0.2,1);
     }
-    .service-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 40px rgba(57, 89, 53, 0.25);
-    }
-
-    /* Make in-page anchors stop below fixed header */
-    #about, #sectors, #values, #team, #partners, #contact,
-    #projects-hero, #projects-list { scroll-margin-top: 4rem; }
-
-    #mission-canvas {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    /* ── Darwin Maps transition overlay ─────────────────── */
-    #maps-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: linear-gradient(135deg,
-        #0B1A0F 0%,
-        #1A3A1F 30%,
-        #3D6131 55%,
-        #A5AA6B 80%,
-        #FDF6E4 100%
-      );
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.75s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    #maps-overlay.active {
-      opacity: 1;
-      pointer-events: all;
-    }
-
-    /* ── Soil SaveR transition overlay ──────────────────── */
-    #soil-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 9999;
-      background: linear-gradient(135deg,
-        #1F1007 0%,
-        #5C3317 30%,
-        #8B5E3C 55%,
-        #F0DEB8 80%,
-        #FBF3E0 100%
-      );
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.75s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    #soil-overlay.active {
-      opacity: 1;
-      pointer-events: all;
-    }
-
-    /* Soil SaveR card banner */
-    .soil-banner {
-      background:
-        repeating-linear-gradient(
-          0deg,
-          transparent 0px, transparent 14px,
-          rgba(0,0,0,0.12) 14px, rgba(0,0,0,0.12) 16px
-        ),
-        linear-gradient(150deg,
-          #0d0501 0%,
-          #2e1509 20%,
-          #5C3317 45%,
-          #8B5E3C 65%,
-          #C4862D 82%,
-          #E8D5A3 100%
-        );
-      min-height: 12rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .soil-banner::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 80% 50%, rgba(196,134,45,0.25) 0%, transparent 60%);
-    }
+    #soil-overlay.active{ opacity:1; pointer-events:all; }
   </style>
-  <script src="./analytics.js"></script>
 </head>
-<body class="bg-slate-50 text-slate-800">
+<body>
 
   <!-- Header -->
-  <header id="header" class="bg-white/90 backdrop-blur-md fixed top-0 left-0 right-0 z-50 shadow-md transition-all duration-300">
-    <div class="container mx-auto px-6 py-3 flex justify-between items-center">
+  <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+    <div class="header-row w-full px-5 md:px-8 py-3 flex justify-between items-center">
       <a href="#home" class="flex-shrink-0">
-        <img src="./assets/brand/logo_darwin.png" alt="Logo de Darwin Geospatial" class="h-10 md:h-12 w-auto">
+        <img src="./assets/brand/logo_darwin.png" alt="Logo de Darwin Geospatial" class="h-10 md:h-[52px] w-auto">
       </a>
 
       <nav class="hidden lg:flex space-x-8 items-center">
         <a href="#about" class="nav-link text-[15px]" data-lang="es">Nosotros</a>
         <a href="#about" class="nav-link text-[15px] hidden" data-lang="en">About</a>
 
-        <a href="#services" class="text-slate-600 hover:text-primary transition" data-lang="es">Servicios</a>
-        <a href="#services" class="text-slate-600 hover:text-primary transition hidden" data-lang="en">Services</a>
+        <a href="#solutions" class="nav-link text-[15px]" data-lang="es">Soluciones</a>
+        <a href="#solutions" class="nav-link text-[15px] hidden" data-lang="en">Solutions</a>
 
-        <a href="#projects-hero" class="text-slate-600 hover:text-primary transition" data-lang="es">Proyectos</a>
-        <a href="#projects-hero" class="text-slate-600 hover:text-primary transition hidden" data-lang="en">Projects</a>
+        <a href="#projects-hero" class="nav-link text-[15px]" data-lang="es">Proyectos</a>
+        <a href="#projects-hero" class="nav-link text-[15px] hidden" data-lang="en">Projects</a>
 
-        <a href="#sectors" class="text-slate-600 hover:text-primary transition" data-lang="es">Sectores</a>
-        <a href="#sectors" class="text-slate-600 hover:text-primary transition hidden" data-lang="en">Sectors</a>
+        <a href="#team" class="nav-link text-[15px]" data-lang="es">Equipo</a>
+        <a href="#team" class="nav-link text-[15px] hidden" data-lang="en">Team</a>
 
-        <a href="#team" class="text-slate-600 hover:text-primary transition" data-lang="es">Equipo</a>
-        <a href="#team" class="text-slate-600 hover:text-primary transition hidden" data-lang="en">Team</a>
+        <a href="./blog/" class="nav-link text-[15px]" data-lang="es">Blog</a>
+        <a href="./blog/" class="nav-link text-[15px] hidden" data-lang="en">Blog</a>
 
         <a href="#contact" class="btn-accent px-5 py-2 rounded-full font-semibold text-sm" data-lang="es">Agenda una llamada</a>
         <a href="#contact" class="btn-accent px-5 py-2 rounded-full font-semibold text-sm hidden" data-lang="en">Book a call</a>
       </nav>
 
       <div class="flex items-center">
-        <div class="lang-switcher text-sm text-slate-500 ml-4">
+        <div class="lang-switcher font-mono text-sm ml-4">
           <button id="lang-es" class="active">ES</button>
-          <span>/</span>
+          <span class="text-cream-faint">/</span>
           <button id="lang-en">EN</button>
         </div>
         <button id="mobile-menu-button" class="lg:hidden focus:outline-none ml-4">
@@ -748,15 +601,14 @@
   </header>
 
   <!-- Home Hero -->
-  <section id="home" class="h-screen relative flex items-center justify-center text-white">
-    <!-- Ken Burns Slideshow Background -->
-    <div id="hero-slideshow">
-      <div class="hero-slide"></div>
-      <div class="hero-slide"></div>
-      <div class="hero-slide"></div>
-      <div class="hero-slide"></div>
-      <div class="hero-slide"></div>
+  <section id="home" class="min-h-screen relative flex items-center text-cream overflow-hidden">
+    <!-- Brush reveal: VHR RGB (base) → AlphaEarth output revealed under the cursor -->
+    <div id="hero-reveal">
+      <div id="hr-base" class="hr-layer" style="background-image:url('./assets/hero/alps_rgb.jpg');"></div>
+      <div id="hr-reveal" class="hr-layer" style="background-image:url('./assets/hero/alps_alphaearth.jpg');"></div>
+      <canvas id="hero-gl" aria-hidden="true"></canvas>
       <div id="hero-overlay"></div>
+      <div id="hr-ring" aria-hidden="true"></div>
     </div>
 
     <!-- Hero Content — centered composition (matches agforest + valere) -->
@@ -784,6 +636,11 @@
       </div>
     </div>
 
+    <a href="#trust" class="scroll-indicator no-underline">
+      <span data-lang="es">Descubre más</span>
+      <span class="hidden" data-lang="en">Discover more</span>
+      <svg fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-6-6m6 6l6-6"/></svg>
+    </a>
   </section>
 
   <main>
@@ -800,7 +657,7 @@
             <img src="./assets/partners/universidad_politecnica.jpg" alt="UPM" class="h-11 partner-logo rounded">
             <img src="./assets/partners/csic.png" alt="CSIC" class="h-11 partner-logo">
             <img src="./assets/partners/google_partner.png" alt="Google Partner" class="h-11 partner-logo">
-            <img src="./assets/partners/upwork.png" alt="Upwork" class="h-7 partner-logo">
+            <!-- <img src="./assets/partners/upwork.png" alt="Upwork" class="h-7 partner-logo"> -->
             <img src="./assets/partners/kompass.jpg" alt="Kompass" class="h-9 partner-logo rounded">
             <img src="./assets/partners/quercy.png" alt="Quercy" class="h-11 partner-logo">
             <img src="./assets/partners/universidad_avila.jpg" alt="Universidad de Ávila" class="h-11 partner-logo rounded">
@@ -813,7 +670,7 @@
             <img src="./assets/partners/universidad_politecnica.jpg" alt="UPM" class="h-11 partner-logo rounded">
             <img src="./assets/partners/csic.png" alt="CSIC" class="h-11 partner-logo">
             <img src="./assets/partners/google_partner.png" alt="Google Partner" class="h-11 partner-logo">
-            <img src="./assets/partners/upwork.png" alt="Upwork" class="h-7 partner-logo">
+            <!-- <img src="./assets/partners/upwork.png" alt="Upwork" class="h-7 partner-logo"> -->
             <img src="./assets/partners/kompass.jpg" alt="Kompass" class="h-9 partner-logo rounded">
             <img src="./assets/partners/quercy.png" alt="Quercy" class="h-11 partner-logo">
             <img src="./assets/partners/universidad_avila.jpg" alt="Universidad de Ávila" class="h-11 partner-logo rounded">
@@ -1151,132 +1008,77 @@
                 </div>
               </div>
             </div>
-          </a>
 
-          <!-- AI Intelligence -->
-          <a href="./services.html" class="service-card group flex flex-col rounded-xl overflow-hidden shadow-2xl text-white ring-1 ring-white/10 animate-on-scroll no-underline" style="grid-row: span 2; display: grid; grid-template-rows: subgrid; transition-delay: 100ms;">
-            <div class="relative aspect-[3/2] overflow-hidden">
-              <img src="./assets/services/intelligence_new.png" alt="AI Systems" class="w-full h-full object-cover object-center"/>
-            </div>
-            <div class="p-5 flex flex-col">
-              <h3 class="text-xl font-bold mb-2" data-lang="es">Sistemas IA</h3>
-              <h3 class="text-xl font-bold mb-2 hidden" data-lang="en">AI Systems</h3>
-              <ul class="text-white/70 text-sm space-y-1 mb-3">
-                <li data-lang="es">IA Geoespacial</li>
-                <li class="hidden" data-lang="en">Geospatial AI</li>
-                <li data-lang="es">Modelos ML</li>
-                <li class="hidden" data-lang="en">ML Models</li>
-                <li data-lang="es">IA Ambiental</li>
-                <li class="hidden" data-lang="en">Environmental AI</li>
-              </ul>
-              <div class="flex items-center gap-2 mt-auto text-white/50 group-hover:text-white text-sm font-medium transition-colors duration-300">
-                <span data-lang="es">Ver más</span>
-                <span class="hidden" data-lang="en">Learn more</span>
-                <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                </svg>
-              </div>
-            </div>
-          </a>
-
-          <!-- Analytics -->
-          <a href="./services.html" class="service-card group flex flex-col rounded-xl overflow-hidden shadow-2xl text-white ring-1 ring-white/10 animate-on-scroll no-underline" style="grid-row: span 2; display: grid; grid-template-rows: subgrid; transition-delay: 200ms;">
-            <div class="relative aspect-[3/2] overflow-hidden">
-              <img src="./assets/services/analytics.jpeg" alt="Analytics" class="w-full h-full object-cover object-center"/>
-            </div>
-            <div class="p-5 flex flex-col">
-              <h3 class="text-xl font-bold mb-2" data-lang="es">Analítica</h3>
-              <h3 class="text-xl font-bold mb-2 hidden" data-lang="en">Analytics</h3>
-              <ul class="text-white/70 text-sm space-y-1 mb-3">
-                <li data-lang="es">Conectividad Ecológica</li>
-                <li class="hidden" data-lang="en">Ecological Connectivity</li>
-                <li data-lang="es">Análisis de Grafos</li>
-                <li class="hidden" data-lang="en">Graph Analysis</li>
-                <li data-lang="es">Indicadores Ambientales</li>
-                <li class="hidden" data-lang="en">Environmental Indicators</li>
-              </ul>
-              <div class="flex items-center gap-2 mt-auto text-white/50 group-hover:text-white text-sm font-medium transition-colors duration-300">
-                <span data-lang="es">Ver más</span>
-                <span class="hidden" data-lang="en">Learn more</span>
-                <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                </svg>
-              </div>
-            </div>
-          </a>
-
-          <!-- Software Engineering -->
-          <a href="./services.html" class="service-card group flex flex-col rounded-xl overflow-hidden shadow-2xl text-white ring-1 ring-white/10 animate-on-scroll no-underline" style="grid-row: span 2; display: grid; grid-template-rows: subgrid; transition-delay: 300ms;">
-            <div class="relative aspect-[3/2] overflow-hidden">
-              <img src="./assets/services/software_engineering.jpeg" alt="Software Engineering" class="w-full h-full object-cover object-center"/>
-            </div>
-            <div class="p-5 flex flex-col">
-              <h3 class="text-xl font-bold mb-2" data-lang="es">Ingeniería de Software</h3>
-              <h3 class="text-xl font-bold mb-2 hidden" data-lang="en">Software Engineering</h3>
-              <ul class="text-white/70 text-sm space-y-1 mb-3">
-                <li data-lang="es">Visores Personalizados</li>
-                <li class="hidden" data-lang="en">Custom Visors</li>
-                <li data-lang="es">Dashboards</li>
-                <li class="hidden" data-lang="en">Dashboards</li>
-                <li data-lang="es">Herramientas de Exportación</li>
-                <li class="hidden" data-lang="en">Export Tools</li>
-              </ul>
-              <div class="flex items-center gap-2 mt-auto text-white/50 group-hover:text-white text-sm font-medium transition-colors duration-300">
-                <span data-lang="es">Ver más</span>
-                <span class="hidden" data-lang="en">Learn more</span>
-                <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                </svg>
-              </div>
-            </div>
-          </a>
-
-        </div>
-
-        <!-- Trusted By — scrolling partner logos -->
-        <div class="mt-16 lg:mt-20 mb-4 text-center animate-on-scroll">
-          <p class="text-sm font-semibold text-slate-400 uppercase tracking-widest mb-5" data-lang="es">Confían en nosotros</p>
-          <p class="text-sm font-semibold text-slate-400 uppercase tracking-widest mb-5 hidden" data-lang="en">Trusted by</p>
-          <div class="overflow-hidden" style="mask-image:linear-gradient(to right,transparent,black 10%,black 90%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,black 10%,black 90%,transparent);">
-            <div class="flex items-center gap-12 w-max animate-marquee">
-              <img src="./assets/partners/seo_bird_life.jpg" alt="SEO Birdlife" class="h-12 partner-logo">
-              <img src="./assets/partners/orygen_earth_logo.jpg" alt="Orygen" class="h-12 partner-logo">
-              <img src="./assets/partners/universidad_politecnica.jpg" alt="UPM" class="h-12 partner-logo">
-              <img src="./assets/partners/csic.png" alt="CSIC" class="h-12 partner-logo">
-              <img src="./assets/partners/google_partner.png" alt="Google Partner" class="h-12 partner-logo">
-              <!-- <img src="./assets/partners/upwork.png" alt="Upwork" class="h-8 partner-logo"> -->
-              <img src="./assets/partners/kompass.jpg" alt="Kompass" class="h-10 partner-logo">
-              <img src="./assets/partners/quercy.png" alt="Quercy" class="h-12 partner-logo">
-              <img src="./assets/partners/universidad_avila.jpg" alt="Universidad de Ávila" class="h-12 partner-logo">
-              <img src="./assets/partners/fundacion_monte_mediterraneo.png" alt="Fundación Monte Mediterráneo" class="h-12 partner-logo">
-              <img src="./assets/partners/urjc.png" alt="URJC" class="h-12 partner-logo">
-              <img src="./assets/partners/johns_hopkins.webp" alt="Johns Hopkins University" class="h-12 partner-logo">
-              <!-- Duplicate for seamless loop -->
-              <img src="./assets/partners/seo_bird_life.jpg" alt="SEO Birdlife" class="h-12 partner-logo">
-              <img src="./assets/partners/orygen_earth_logo.jpg" alt="Orygen" class="h-12 partner-logo">
-              <img src="./assets/partners/universidad_politecnica.jpg" alt="UPM" class="h-12 partner-logo">
-              <img src="./assets/partners/csic.png" alt="CSIC" class="h-12 partner-logo">
-              <img src="./assets/partners/google_partner.png" alt="Google Partner" class="h-12 partner-logo">
-              <!-- <img src="./assets/partners/upwork.png" alt="Upwork" class="h-8 partner-logo"> -->
-              <img src="./assets/partners/kompass.jpg" alt="Kompass" class="h-10 partner-logo">
-              <img src="./assets/partners/quercy.png" alt="Quercy" class="h-12 partner-logo">
-              <img src="./assets/partners/universidad_avila.jpg" alt="Universidad de Ávila" class="h-12 partner-logo">
-              <img src="./assets/partners/fundacion_monte_mediterraneo.png" alt="Fundación Monte Mediterráneo" class="h-12 partner-logo">
-              <img src="./assets/partners/urjc.png" alt="URJC" class="h-12 partner-logo">
-              <img src="./assets/partners/johns_hopkins.webp" alt="Johns Hopkins University" class="h-12 partner-logo">
-            </div>
           </div>
         </div>
       </div>
-      <!-- Arrow to Projects — pinned to bottom -->
-      <div class="text-center pt-8 pb-10">
-        <a href="#projects-hero" class="inline-flex flex-col items-center gap-2 text-primary no-underline hover:no-underline group">
-          <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300" data-lang="es">Nuestros Proyectos</span>
-          <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300 hidden" data-lang="en">Our Projects</span>
-          <svg class="w-7 h-7 animate-bounce-slow opacity-80 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-6-6m6 6l6-6"/>
-          </svg>
-        </a>
+
+      <!-- Data sources grid — HIDDEN for now; remove the "hidden" class below to re-enable -->
+      <div class="hidden container mx-auto px-6 pt-16 lg:pt-0 pb-24 lg:pb-32">
+        <div class="max-w-3xl mb-12 animate-on-scroll">
+          <p class="eyebrow mb-4" data-lang="es">Las fuentes que combinamos</p>
+          <p class="eyebrow mb-4 hidden" data-lang="en">The sources we fuse</p>
+          <h3 class="font-bold text-cream leading-tight" style="font-size:clamp(1.5rem,3vw,2.1rem);" data-lang="es">Seis tipos de datos, un solo modelo del territorio</h3>
+          <h3 class="font-bold text-cream leading-tight hidden" style="font-size:clamp(1.5rem,3vw,2.1rem);" data-lang="en">Six data types, one model of the land</h3>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
+
+          <!-- Open missions -->
+          <div class="pillar-card group p-7 lg:p-8 animate-on-scroll">
+            <svg class="pillar-icon w-8 h-8 mb-5" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path stroke-linecap="round" d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.2 5.2l2.1 2.1M16.7 16.7l2.1 2.1M18.8 5.2l-2.1 2.1M7.3 16.7l-2.1 2.1"/></svg>
+            <h3 class="text-lg font-bold text-cream mb-2" data-lang="es">Misiones abiertas</h3>
+            <h3 class="text-lg font-bold text-cream mb-2 hidden" data-lang="en">Open missions</h3>
+            <p class="text-cream-dim text-base leading-relaxed" data-lang="es">Sentinel, Landsat y MODIS: series temporales globales, gratuitas y continuas para monitorear el cambio.</p>
+            <p class="text-cream-dim text-base leading-relaxed hidden" data-lang="en">Sentinel, Landsat and MODIS: global, free, continuous time series to monitor change.</p>
+          </div>
+
+          <!-- VHR -->
+          <div class="pillar-card group p-7 lg:p-8 animate-on-scroll" style="transition-delay:80ms;">
+            <svg class="pillar-icon w-8 h-8 mb-5" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 3h7v7H3zM14 3h7v7h-7zM14 14h7v7h-7zM3 14h7v7H3z"/></svg>
+            <h3 class="text-lg font-bold text-cream mb-2" data-lang="es">Imágenes VHR</h3>
+            <h3 class="text-lg font-bold text-cream mb-2 hidden" data-lang="en">VHR imagery</h3>
+            <p class="text-cream-dim text-base leading-relaxed" data-lang="es">Muy alta resolución para detectar detalles a escala de parcela, árbol o infraestructura.</p>
+            <p class="text-cream-dim text-base leading-relaxed hidden" data-lang="en">Very high resolution to detect detail at the scale of a field, a tree or a structure.</p>
+          </div>
+
+          <!-- Spectral indices -->
+          <div class="pillar-card group p-7 lg:p-8 animate-on-scroll" style="transition-delay:160ms;">
+            <svg class="pillar-icon w-8 h-8 mb-5" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 17l4-6 3 4 4-8 4 6 3-3"/><path stroke-linecap="round" d="M3 21h18"/></svg>
+            <h3 class="text-lg font-bold text-cream mb-2" data-lang="es">Índices espectrales</h3>
+            <h3 class="text-lg font-bold text-cream mb-2 hidden" data-lang="en">Spectral indices</h3>
+            <p class="text-cream-dim text-base leading-relaxed" data-lang="es">NDVI, NDWI y bandas multiespectrales para medir vegetación, agua y salud del ecosistema.</p>
+            <p class="text-cream-dim text-base leading-relaxed hidden" data-lang="en">NDVI, NDWI and multispectral bands to measure vegetation, water and ecosystem health.</p>
+          </div>
+
+          <!-- Radar SAR -->
+          <div class="pillar-card group p-7 lg:p-8 animate-on-scroll">
+            <svg class="pillar-icon w-8 h-8 mb-5" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 20a16 16 0 0116-16M4 20a10 10 0 0110-10M4 20a4 4 0 014-4"/><circle cx="5" cy="19" r="1.4"/></svg>
+            <h3 class="text-lg font-bold text-cream mb-2" data-lang="es">Radar SAR / InSAR</h3>
+            <h3 class="text-lg font-bold text-cream mb-2 hidden" data-lang="en">SAR / InSAR radar</h3>
+            <p class="text-cream-dim text-base leading-relaxed" data-lang="es">Datos que atraviesan nubes y oscuridad: humedad del suelo, deformación del terreno y estructura.</p>
+            <p class="text-cream-dim text-base leading-relaxed hidden" data-lang="en">Data that sees through clouds and darkness: soil moisture, ground deformation and structure.</p>
+          </div>
+
+          <!-- LiDAR / elevation -->
+          <div class="pillar-card group p-7 lg:p-8 animate-on-scroll" style="transition-delay:80ms;">
+            <svg class="pillar-icon w-8 h-8 mb-5" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 18l6-12 5 8 3-4 4 8z"/></svg>
+            <h3 class="text-lg font-bold text-cream mb-2" data-lang="es">LiDAR y elevación</h3>
+            <h3 class="text-lg font-bold text-cream mb-2 hidden" data-lang="en">LiDAR &amp; elevation</h3>
+            <p class="text-cream-dim text-base leading-relaxed" data-lang="es">Modelos 3D del terreno y la vegetación: altura del dosel, pendientes y volúmenes.</p>
+            <p class="text-cream-dim text-base leading-relaxed hidden" data-lang="en">3D models of terrain and vegetation: canopy height, slopes and volumes.</p>
+          </div>
+
+          <!-- Climate / LST -->
+          <div class="pillar-card group p-7 lg:p-8 animate-on-scroll" style="transition-delay:160ms;">
+            <svg class="pillar-icon w-8 h-8 mb-5" fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14 14.76V5a2 2 0 10-4 0v9.76a4 4 0 104 0z"/></svg>
+            <h3 class="text-lg font-bold text-cream mb-2" data-lang="es">Clima y temperatura</h3>
+            <h3 class="text-lg font-bold text-cream mb-2 hidden" data-lang="en">Climate &amp; temperature</h3>
+            <p class="text-cream-dim text-base leading-relaxed" data-lang="es">Temperatura superficial (LST), precipitación y variables climáticas para contextualizar el territorio.</p>
+            <p class="text-cream-dim text-base leading-relaxed hidden" data-lang="en">Land surface temperature (LST), precipitation and climate variables to put the land in context.</p>
+          </div>
+
+        </div>
       </div>
 
       <!-- Scroll cue to Projects -->
@@ -1289,13 +1091,10 @@
       </div>
     </section>
 
-    <!-- Projects -->
-    <section id="projects-hero" class="relative text-white">
-      <!-- Background -->
-      <div class="absolute inset-0 bg-cover bg-center"
-          style="background-image:url('https://images.pexels.com/photos/1054218/pexels-photo-1054218.jpeg?cs=srgb&dl=pexels-stywo-1054218.jpg&fm=jpg');">
-      </div>
-      <div class="absolute inset-0 bg-black/60"></div>
+    <!-- Projects — pinned horizontal-scroll gallery, tagged by pillar -->
+    <section id="projects-hero" class="relative text-cream section-rule">
+      <div class="absolute inset-0 bg-cover bg-center" style="background-image:url('https://images.pexels.com/photos/1054218/pexels-photo-1054218.jpeg?cs=srgb&dl=pexels-stywo-1054218.jpg&fm=jpg');"></div>
+      <div class="absolute inset-0" style="background:linear-gradient(to bottom, rgba(14,31,36,0.94) 0%, rgba(14,31,36,0.88) 50%, rgba(14,31,36,0.97) 100%);"></div>
 
       <div id="projects-track" class="relative">
         <div class="h-pin py-20 lg:py-0">
@@ -1435,170 +1234,6 @@
             </a>
           </div>
         </div>
-
-        <!-- Cards on top of background -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 justify-center">
-          <!-- Habitat Hub Visor -->
-          <article class="animate-on-scroll lg:col-span-4 flex flex-col lg:flex-row rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10 cursor-pointer"
-            style="background:rgba(0,0,0,0.5); backdrop-filter:blur(12px);"
-            onclick="window.open('https://openpas-habitat.web.app','_blank')">
-            <div class="lg:w-2/5 flex-shrink-0" style="background-image:url('./projects/habitat_hub/assets/banner.png'); background-size:cover; background-position:center; min-height:12rem; background-color:#2b2240;"></div>
-            <div class="p-6 lg:p-8 flex flex-col flex-grow">
-              <h2 class="mb-3" style="font-family:'Inter',sans-serif; font-size:clamp(1.6rem,2.6vw,2.3rem); font-weight:700; text-transform:uppercase; letter-spacing:0.04em; line-height:1.05; color:#B7A6E3;" data-lang="es">Habitat Hub Visor</h2>
-              <h2 class="mb-3 hidden" style="font-family:'Inter',sans-serif; font-size:clamp(1.6rem,2.6vw,2.3rem); font-weight:700; text-transform:uppercase; letter-spacing:0.04em; line-height:1.05; color:#B7A6E3;" data-lang="en">Habitat Hub Visor</h2>
-              <p class="flex-grow text-sm leading-relaxed" style="color:rgba(255,255,255,0.65);" data-lang="es">Visor interactivo para el monitoreo de hábitats y pastos en áreas protegidas. Integra índices de vegetación, clasificación de hábitats, suelo, clima y detección de cambios para analizar el territorio capa a capa.</p>
-              <p class="flex-grow text-sm leading-relaxed hidden" style="color:rgba(255,255,255,0.65);" data-lang="en">Interactive viewer for habitat and pasture monitoring across protected areas. Combines vegetation indices, habitat classification, soil, climate and change detection to analyze the landscape layer by layer.</p>
-              <div class="mt-5">
-                <a href="https://openpas-habitat.web.app" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-bold text-sm group" style="color:#B7A6E3;" data-lang="es">Abrir plataforma <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span></a>
-                <a href="https://openpas-habitat.web.app" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-bold text-sm group hidden" style="color:#B7A6E3;" data-lang="en">Open platform <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span></a>
-              </div>
-            </div>
-          </article>
-
-          <!-- ── Darwin Maps ──────────────────────────────── -->
-          <article id="darwin-maps-card"
-            class="animate-on-scroll lg:col-span-4 flex flex-col lg:flex-row rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10 cursor-pointer"
-            style="background:rgba(0,0,0,0.5); backdrop-filter:blur(12px);"
-            onclick="triggerMapsTransition()">
-
-            <!-- Banner: map screenshot -->
-            <div class="lg:w-2/5 flex-shrink-0" style="background-image:url('./projects/darwin_maps/assets/background_darwin_maps.png'); background-size:cover; background-position:center bottom; min-height:12rem; position:relative; overflow:hidden;">
-            </div>
-
-            <!-- Content -->
-            <div class="p-6 lg:p-8 flex flex-col flex-grow">
-              <h2 class="mb-3" style="font-family:'Inter',sans-serif; font-size:clamp(1.6rem,2.6vw,2.3rem); font-weight:700; text-transform:uppercase; letter-spacing:0.04em; line-height:1.05; color:#A5AA6B;">
-                Darwin Maps
-              </h2>
-
-              <p class="flex-grow text-sm leading-relaxed" style="color:rgba(255,255,255,0.65);" data-lang="es">
-                Visor geoespacial interactivo con inteligencia artificial para el análisis del territorio. Capas ambientales, análisis por provincias y un asistente Geo AI que interpreta el paisaje por ti.
-              </p>
-              <p class="flex-grow text-sm leading-relaxed hidden" style="color:rgba(255,255,255,0.65);" data-lang="en">
-                Interactive geospatial viewer with artificial intelligence for land analysis. Environmental layers, province-level analysis and a Geo AI assistant that interprets the landscape for you.
-              </p>
-
-              <div class="mt-5 flex items-center gap-3">
-                <button class="inline-flex items-center gap-1 font-bold text-sm group" style="color:#A5AA6B; background:none; border:none; cursor:pointer; padding:0;" data-lang="es">
-                  Explorar Mapa
-                  <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
-                </button>
-                <button class="inline-flex items-center gap-1 font-bold text-sm group hidden" style="color:#A5AA6B; background:none; border:none; cursor:pointer; padding:0;" data-lang="en">
-                  Explore Map
-                  <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <!-- ── Soil SaveR ───────────────────────────────── -->
-          <article id="soil-saver-card"
-            class="animate-on-scroll lg:col-span-4 flex flex-col lg:flex-row rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10 cursor-pointer"
-            style="background:rgba(0,0,0,0.5); backdrop-filter:blur(12px);"
-            onclick="triggerSoilTransition()">
-
-            <!-- Banner: soil photo -->
-            <div class="lg:w-2/5 flex-shrink-0" style="background-image:url('./projects/soil_saver/assets/pexels-dimengliu-3064079.jpg'); background-size:cover; background-position:center; min-height:12rem; position:relative; overflow:hidden;">
-            </div>
-
-            <!-- Content -->
-            <div class="p-6 lg:p-8 flex flex-col flex-grow">
-              <h2 class="mb-3" style="font-family:'Inter',sans-serif; font-size:clamp(1.6rem,2.6vw,2.3rem); font-weight:700; text-transform:uppercase; letter-spacing:0.04em; line-height:1.05; color:#F0DEB8;">
-                Soil SaveR
-              </h2>
-
-              <p class="flex-grow text-sm leading-relaxed" style="color:rgba(255,255,255,0.65);" data-lang="es">
-                Plataforma geoespacial para monitorear el carbono orgánico del suelo y rastrear 70 años de degradación edáfica a escala de parcela. Explora el antes y el después de la Tierra a través de una experiencia visual de scrollytelling única.
-              </p>
-              <p class="flex-grow text-sm leading-relaxed hidden" style="color:rgba(255,255,255,0.65);" data-lang="en">
-                Geospatial platform to monitor soil organic carbon and track 70 years of soil degradation at field scale. Explore the Earth's before and after through a unique scrollytelling visual experience.
-              </p>
-
-              <div class="mt-5 flex items-center gap-3">
-                <button class="inline-flex items-center gap-1 font-bold text-sm group" style="color:#F0DEB8; background:none; border:none; cursor:pointer; padding:0;" data-lang="es">
-                  Explorar Proyecto
-                  <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
-                </button>
-                <button class="inline-flex items-center gap-1 font-bold text-sm group hidden" style="color:#F0DEB8; background:none; border:none; cursor:pointer; padding:0;" data-lang="en">
-                  Explore Project
-                  <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
-                </button>
-              </div>
-            </div>
-          </article>
-
-          <!-- Darwin Oceans -->
-          <article class="animate-on-scroll lg:col-span-4 flex flex-col lg:flex-row rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10 cursor-pointer"
-            style="background:rgba(0,0,0,0.5); backdrop-filter:blur(12px);"
-            onclick="window.open('https://darwin-oceans-visor.web.app','_blank')">
-            <div class="lg:w-2/5 flex-shrink-0" style="background-image:url('./projects/darwin_oceans/assets/banner.png'); background-size:cover; background-position:center; min-height:12rem; background-color:#0a2a4a;"></div>
-            <div class="p-6 lg:p-8 flex flex-col flex-grow">
-              <h2 class="mb-3" style="font-family:'Inter',sans-serif; font-size:clamp(1.6rem,2.6vw,2.3rem); font-weight:700; text-transform:uppercase; letter-spacing:0.04em; line-height:1.05; color:#7EC8E3;" data-lang="es">Darwin Oceans</h2>
-              <h2 class="mb-3 hidden" style="font-family:'Inter',sans-serif; font-size:clamp(1.6rem,2.6vw,2.3rem); font-weight:700; text-transform:uppercase; letter-spacing:0.04em; line-height:1.05; color:#7EC8E3;" data-lang="en">Darwin Oceans</h2>
-              <p class="flex-grow text-sm leading-relaxed" style="color:rgba(255,255,255,0.65);" data-lang="es">Plataforma interactiva para la visualización de datos oceánicos: temperatura superficial del mar, clorofila, corrientes y más capas ambientales marinas.</p>
-              <p class="flex-grow text-sm leading-relaxed hidden" style="color:rgba(255,255,255,0.65);" data-lang="en">Interactive platform for ocean data visualization: sea surface temperature, chlorophyll, currents and more marine environmental layers.</p>
-              <div class="mt-5">
-                <a href="https://darwin-oceans-visor.web.app" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-bold text-sm group" style="color:#7EC8E3;" data-lang="es">Abrir plataforma <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span></a>
-                <a href="https://darwin-oceans-visor.web.app" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-bold text-sm group hidden" style="color:#7EC8E3;" data-lang="en">Open platform <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span></a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Urban Nature Solutions -->
-          <article class="animate-on-scroll lg:col-span-4 flex flex-col lg:flex-row rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10 cursor-pointer"
-            style="background:rgba(0,0,0,0.5); backdrop-filter:blur(12px);"
-            onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-            <div class="lg:w-2/5 flex-shrink-0" style="background-image:url('./projects/urban_nature/assets/banner.png'); background-size:cover; background-position:center; min-height:12rem; background-color:#1e3a52;"></div>
-            <div class="p-6 lg:p-8 flex flex-col flex-grow">
-              <h2 class="mb-3" style="font-family:'Inter',sans-serif; font-size:clamp(1.6rem,2.6vw,2.3rem); font-weight:700; text-transform:uppercase; letter-spacing:0.04em; line-height:1.05; color:#E2A36B;" data-lang="es">Urban Nature Solutions</h2>
-              <h2 class="mb-3 hidden" style="font-family:'Inter',sans-serif; font-size:clamp(1.6rem,2.6vw,2.3rem); font-weight:700; text-transform:uppercase; letter-spacing:0.04em; line-height:1.05; color:#E2A36B;" data-lang="en">Urban Nature Solutions</h2>
-              <p class="flex-grow text-sm leading-relaxed" style="color:rgba(255,255,255,0.65);" data-lang="es">Soluciones basadas en la naturaleza para ciudades más resilientes: simulación CFD de riesgo de viento, mitigación de islas de calor, infraestructura verde, conectividad ecológica y bienestar urbano.</p>
-              <p class="flex-grow text-sm leading-relaxed hidden" style="color:rgba(255,255,255,0.65);" data-lang="en">Nature-based solutions for more resilient cities: CFD wind-risk simulation, urban heat island mitigation, green infrastructure, ecological connectivity and city wellbeing.</p>
-              <div class="mt-5">
-                <a href="#contact" class="inline-flex items-center gap-1 font-bold text-sm group" style="color:#E2A36B;" data-lang="es">Hablemos <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span></a>
-                <a href="#contact" class="inline-flex items-center gap-1 font-bold text-sm group hidden" style="color:#E2A36B;" data-lang="en">Let's talk <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span></a>
-              </div>
-            </div>
-          </article>
-
-          <!-- End World Hunger Ohio -->
-          <article class="animate-on-scroll lg:col-span-4 md:col-span-2 flex flex-col lg:flex-row rounded-xl overflow-hidden shadow-2xl ring-1 ring-white/10 cursor-pointer"
-            style="background:rgba(0,0,0,0.5); backdrop-filter:blur(12px);"
-            onclick="window.open('https://endworldhungerohio.com/','_blank')">
-            <div class="lg:w-2/5 flex-shrink-0" style="background-image:url('https://endworldhungerohio.com/assets/images/garden_winter.png'); background-size:cover; background-position:center; min-height:12rem;"></div>
-            <div class="p-6 lg:p-8 flex flex-col flex-grow">
-              <div class="flex items-center gap-3 mb-3 flex-wrap">
-                <h2 style="font-family:'Inter',sans-serif; font-size:clamp(1.6rem,2.6vw,2.3rem); font-weight:700; text-transform:uppercase; letter-spacing:0.04em; line-height:1.05; color:#A5AA6B;" data-lang="es">End World Hunger Ohio</h2>
-                <h2 style="font-family:'Inter',sans-serif; font-size:clamp(1.6rem,2.6vw,2.3rem); font-weight:700; text-transform:uppercase; letter-spacing:0.04em; line-height:1.05; color:#A5AA6B;" class="hidden" data-lang="en">End World Hunger Ohio</h2>
-              </div>
-              <p class="flex-grow text-sm leading-relaxed" style="color:rgba(255,255,255,0.65);" data-lang="es">Somos partners de la iniciativa End World Hunger Ohio, un jardín comunitario en Franklin Park, Columbus, que impulsa la soberanía alimentaria a través de la agricultura regenerativa.</p>
-              <p class="flex-grow text-sm leading-relaxed hidden" style="color:rgba(255,255,255,0.65);" data-lang="en">We are partners with the End World Hunger Ohio initiative, a community garden in Franklin Park, Columbus, driving food sovereignty through regenerative agriculture.</p>
-              <div class="mt-5">
-                <a href="https://endworldhungerohio.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-bold text-sm group" style="color:#A5AA6B;" data-lang="es">Visitar Web <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span></a>
-                <a href="https://endworldhungerohio.com/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-bold text-sm group hidden" style="color:#A5AA6B;" data-lang="en">Visit Website <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span></a>
-              </div>
-            </div>
-          </article>
-
-        </div>
-        <!-- Mid-funnel CTA -->
-        <div class="text-center mt-12 mb-8 animate-on-scroll">
-          <p class="text-white/80 text-lg mb-4" data-lang="es">¿Listo para transformar tus datos?</p>
-          <p class="text-white/80 text-lg mb-4 hidden" data-lang="en">Ready to transform your data?</p>
-          <a href="#contact" class="inline-block bg-white text-primary font-bold px-8 py-3 rounded-full text-lg hover:bg-slate-100 transition-all duration-300 shadow-lg" data-lang="es">Agenda una Consulta</a>
-          <a href="#contact" class="inline-block bg-white text-primary font-bold px-8 py-3 rounded-full text-lg hover:bg-slate-100 transition-all duration-300 shadow-lg hidden" data-lang="en">Book a Consultation</a>
-        </div>
-
-      </div>
-      <!-- Arrow to Sectors — pinned to bottom -->
-      <div class="text-center pb-8 mt-8">
-        <a href="#values" class="inline-flex flex-col items-center gap-2 text-white no-underline hover:no-underline group">
-          <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300" data-lang="es">Nuestros Valores</span>
-          <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300 hidden" data-lang="en">Our Values</span>
-          <svg class="w-7 h-7 animate-bounce-slow opacity-80 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-6-6m6 6l6-6"/>
-          </svg>
-        </a>
       </div>
 
       <!-- Scroll cue to Values — non-pin fallback (mobile/short viewport/reduced motion),
@@ -1620,40 +1255,27 @@
           <h2 class="font-bold text-cream leading-tight hidden" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="en">Solutions for people and the planet</h2>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-8">
-          <div class="text-center p-6 rounded-lg shadow-lg animate-on-scroll" style="background-color: rgba(70, 99, 58, 0.1);">
-            <svg class="w-10 h-10 mx-auto mb-4 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/>
-              <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
-            </svg>
-            <h3 class="text-xl font-bold text-slate-900 mb-3" data-lang="es">La Naturaleza Primero</h3>
-            <h3 class="text-xl font-bold text-slate-900 mb-3 hidden" data-lang="en">Nature First</h3>
-            <p class="text-slate-600" data-lang="es">Solo apoyamos proyectos que tienen un impacto positivo y directo en la naturaleza. Creemos que los datos son la piedra angular de una gestión eficaz, y los datos espaciales proporcionan la dimensión más poderosa.</p>
-            <p class="text-slate-600 hidden" data-lang="en">We only support projects that have a direct positive impact on nature. We believe that data is the cornerstone of effective management, and spatial data provides the most powerful dimension.</p>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="value-card p-8 animate-on-scroll">
+            <svg class="w-10 h-10 mb-5 text-olive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+            <h3 class="text-xl font-bold text-cream mb-3" data-lang="es">La naturaleza primero</h3>
+            <h3 class="text-xl font-bold text-cream mb-3 hidden" data-lang="en">Nature first</h3>
+            <p class="text-cream-dim text-base leading-relaxed" data-lang="es">Solo apoyamos proyectos que tienen un impacto positivo y directo en la naturaleza. Creemos que los datos son la piedra angular de una gestión eficaz, y los datos espaciales proporcionan la dimensión más poderosa.</p>
+            <p class="text-cream-dim text-base leading-relaxed hidden" data-lang="en">We only support projects that have a direct positive impact on nature. We believe that data is the cornerstone of effective management, and spatial data provides the most powerful dimension.</p>
           </div>
-          <div class="text-center p-6 rounded-lg shadow-lg animate-on-scroll" style="background-color: rgba(70, 99, 58, 0.1); transition-delay:150ms;">
-            <svg class="w-10 h-10 mx-auto mb-4 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="6.5" cy="17" r="2"/>
-              <circle cx="17" cy="17" r="3"/>
-              <path d="M8.5 17h5.5"/>
-              <path d="M3 15v-3h3l2-4h5l2 4h2"/>
-              <path d="M8 8V6"/>
-              <path d="M5 12h3"/>
-            </svg>
-            <h3 class="text-xl font-bold text-slate-900 mb-3" data-lang="es">Sinergias entre Sectores</h3>
-            <h3 class="text-xl font-bold text-slate-900 mb-3 hidden" data-lang="en">Synergies with Sectors</h3>
-            <p class="text-slate-600" data-lang="es">El mayor impacto proviene de la colaboración. Crear sinergias entre sectores, desde el turismo hasta la silvicultura, nos permite diseñar las mejores soluciones para las personas y el planeta.</p>
-            <p class="text-slate-600 hidden" data-lang="en">The greatest impact comes from collaboration. Creating synergies across sectors, from tourism to forestry, allows us to design the best solutions for people and the planet.</p>
+          <div class="value-card p-8 animate-on-scroll" style="transition-delay:120ms;">
+            <svg class="w-10 h-10 mb-5 text-olive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6.5" cy="17" r="2"/><circle cx="17" cy="17" r="3"/><path d="M8.5 17h5.5"/><path d="M3 15v-3h3l2-4h5l2 4h2"/><path d="M8 8V6"/><path d="M5 12h3"/></svg>
+            <h3 class="text-xl font-bold text-cream mb-3" data-lang="es">Sinergias entre sectores</h3>
+            <h3 class="text-xl font-bold text-cream mb-3 hidden" data-lang="en">Synergies across sectors</h3>
+            <p class="text-cream-dim text-base leading-relaxed" data-lang="es">El mayor impacto proviene de la colaboración. Crear sinergias entre sectores, desde el turismo hasta la silvicultura, nos permite diseñar las mejores soluciones para las personas y el planeta.</p>
+            <p class="text-cream-dim text-base leading-relaxed hidden" data-lang="en">The greatest impact comes from collaboration. Creating synergies across sectors, from tourism to forestry, allows us to design the best solutions for people and the planet.</p>
           </div>
-          <div class="text-center p-6 rounded-lg shadow-lg animate-on-scroll" style="background-color: rgba(70, 99, 58, 0.1); transition-delay:300ms;">
-            <svg class="w-10 h-10 mx-auto mb-4 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              <path d="m9 12 2 2 4-4"/>
-            </svg>
-            <h3 class="text-xl font-bold text-slate-900 mb-3" data-lang="es">IA Responsable</h3>
-            <h3 class="text-xl font-bold text-slate-900 mb-3 hidden" data-lang="en">Responsible AI</h3>
-            <p class="text-slate-600" data-lang="es">Desarrollamos y entrenamos nuestros propios modelos de IA para garantizar que comprendan verdaderamente los sistemas naturales con los que trabajamos.</p>
-            <p class="text-slate-600 hidden" data-lang="en">We develop and train our own AI models to ensure they truly understand the natural systems we work with.</p>
+          <div class="value-card p-8 animate-on-scroll" style="transition-delay:240ms;">
+            <svg class="w-10 h-10 mb-5 text-olive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+            <h3 class="text-xl font-bold text-cream mb-3" data-lang="es">IA responsable</h3>
+            <h3 class="text-xl font-bold text-cream mb-3 hidden" data-lang="en">Responsible AI</h3>
+            <p class="text-cream-dim text-base leading-relaxed" data-lang="es">Desarrollamos y entrenamos nuestros propios modelos de IA para garantizar que comprendan verdaderamente los sistemas naturales con los que trabajamos.</p>
+            <p class="text-cream-dim text-base leading-relaxed hidden" data-lang="en">We develop and train our own AI models to ensure they truly understand the natural systems we work with.</p>
           </div>
         </div>
 
@@ -1666,20 +1288,10 @@
           </a>
         </div>
       </div>
-      <!-- Arrow to Team — pinned to bottom -->
-      <div class="text-center pb-8 mt-8">
-        <a href="#team" class="inline-flex flex-col items-center gap-2 text-slate-700 no-underline hover:no-underline group">
-          <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300" data-lang="es">Nuestro Equipo</span>
-          <span class="text-sm font-medium tracking-widest uppercase opacity-70 group-hover:opacity-100 transition-opacity duration-300 hidden" data-lang="en">Our Team</span>
-          <svg class="w-7 h-7 animate-bounce-slow opacity-80 group-hover:opacity-100 transition-opacity duration-300" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-6-6m6 6l6-6"/>
-          </svg>
-        </a>
-      </div>
     </section>
 
     <!-- Team -->
-    <section id="team" class="bg-white py-20 lg:py-32 overflow-hidden">
+    <section id="team" class="section-light section-rule py-20 lg:py-24 overflow-hidden">
       <div class="container mx-auto px-6">
         <div class="max-w-3xl mx-auto text-center mb-14 animate-on-scroll">
           <h2 class="font-bold text-cream leading-tight" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="es">Expertos en naturaleza y tecnología</h2>
@@ -1688,43 +1300,36 @@
 
         <!-- Founders / Managing Partners -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 max-w-5xl mx-auto">
-
           <!-- Gabriel Díaz Ireland -->
-          <div class="bg-primary-light rounded-lg shadow-lg overflow-hidden animate-on-scroll flex flex-col">
+          <div class="team-card overflow-hidden animate-on-scroll flex flex-col">
             <div class="p-6 sm:p-7 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5">
-              <img src="./assets/team/gabriel.jpg" alt="Foto de Gabriel Díaz Ireland" class="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover object-center shrink-0 mx-auto sm:mx-0 ring-2 ring-primary/20">
+              <img src="./assets/team/gabriel.jpg" alt="Foto de Gabriel Díaz Ireland" class="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover object-center shrink-0 mx-auto sm:mx-0 ring-2" style="--tw-ring-color:rgba(188,190,118,0.3);">
               <div class="text-center sm:text-left min-w-0">
-                <h3 class="text-lg sm:text-xl font-bold text-slate-900 leading-tight">Gabriel Díaz Ireland</h3>
-                <p class="text-accent font-medium text-sm mt-1" data-lang="es">CEO & Head of AI</p>
-                <p class="text-accent font-medium text-sm mt-1 hidden" data-lang="en">CEO & Head of AI</p>
+                <h3 class="text-lg sm:text-xl font-bold text-cream leading-tight">Gabriel Díaz Ireland</h3>
+                <p class="text-olive font-medium text-sm mt-1">CEO &amp; Head of AI</p>
                 <div class="flex items-center gap-2 mt-2 justify-center sm:justify-start">
                   <a href="https://www.linkedin.com/in/g25d34i/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="inline-block">
                     <img src="./assets/brand/linkedin_logo.png" alt="" aria-hidden="true" class="w-5 h-auto">
                   </a>
-                  <a href="./projects/team/gabriel-diaz-ireland-research-engineering-portfolio.html" aria-label="Research portfolio" class="inline-block opacity-40 hover:opacity-100 transition-opacity">
-                    <svg class="w-4 h-4 text-slate-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                  <a href="./projects/team/gabriel-diaz-ireland-research-engineering-portfolio.html" aria-label="Research portfolio" class="inline-block opacity-50 hover:opacity-100 transition-opacity">
+                    <svg class="w-4 h-4 text-cream-dim" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
                   </a>
                 </div>
               </div>
             </div>
-            <div class="px-6 sm:px-7 pb-5">
-              <p class="text-slate-600 text-sm leading-relaxed" data-lang="es">
-                Fundador y líder técnico de Darwin Geospatial. Líder en datos e IA con experiencia internacional en Silicon Valley en la industria de finanzas de cadena de suministro y recursos naturales.
-              </p>
-              <p class="text-slate-600 text-sm leading-relaxed hidden" data-lang="en">
-                Founder and technical leader of Darwin Geospatial. Data and AI leader with international experience working at Silicon Valley in the supply chain finance and natural resources industry.
-              </p>
+            <div class="px-6 sm:px-7 pb-6">
+              <p class="text-cream-dim text-base leading-relaxed" data-lang="es">Fundador y líder técnico de Darwin Geospatial. Líder en datos e IA con experiencia internacional en Silicon Valley en la industria de finanzas de cadena de suministro y recursos naturales.</p>
+              <p class="text-cream-dim text-base leading-relaxed hidden" data-lang="en">Founder and technical leader of Darwin Geospatial. Data and AI leader with international experience working at Silicon Valley in the supply chain finance and natural resources industry.</p>
             </div>
           </div>
 
           <!-- Mario García Peces -->
-          <div class="bg-primary-light rounded-lg shadow-lg overflow-hidden animate-on-scroll flex flex-col" style="transition-delay:100ms;">
+          <div class="team-card overflow-hidden animate-on-scroll flex flex-col" style="transition-delay:100ms;">
             <div class="p-6 sm:p-7 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5">
-              <img src="./assets/team/mario.jpg" alt="Foto de Mario García Peces" class="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover object-center shrink-0 mx-auto sm:mx-0 ring-2 ring-primary/20">
+              <img src="./assets/team/mario.jpg" alt="Foto de Mario García Peces" class="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover object-center shrink-0 mx-auto sm:mx-0 ring-2" style="--tw-ring-color:rgba(188,190,118,0.3);">
               <div class="text-center sm:text-left min-w-0">
-                <h3 class="text-lg sm:text-xl font-bold text-slate-900 leading-tight">Mario García Peces</h3>
-                <p class="text-accent font-medium text-sm mt-1" data-lang="es">CEO Europe & Head of Geospatial</p>
-                <p class="text-accent font-medium text-sm mt-1 hidden" data-lang="en">CEO Europe & Head of Geospatial</p>
+                <h3 class="text-lg sm:text-xl font-bold text-cream leading-tight">Mario García Peces</h3>
+                <p class="text-olive font-medium text-sm mt-1">CEO Europe &amp; Head of Geospatial</p>
                 <div class="flex items-center gap-2 mt-2 justify-center sm:justify-start">
                   <a href="https://www.linkedin.com/in/mario-garc%C3%ADa-peces-4563a7209/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="inline-block">
                     <img src="./assets/brand/linkedin_logo.png" alt="" aria-hidden="true" class="w-5 h-auto">
@@ -1732,62 +1337,48 @@
                 </div>
               </div>
             </div>
-            <div class="px-6 sm:px-7 pb-5">
-              <p class="text-slate-600 text-sm leading-relaxed" data-lang="es">
-                Ingeniero Forestal y Analista Geoespacial con experiencia internacional en gestión ambiental y modelización espacial. Ha trabajado con el OAPN y en investigaciones sobre prácticas agrícolas sostenibles.
-              </p>
-              <p class="text-slate-600 text-sm leading-relaxed hidden" data-lang="en">
-                Forest Engineer and Geospatial Analyst with international experience in environmental management and spatial modeling. Has worked with OAPN and on sustainable agricultural research.
-              </p>
+            <div class="px-6 sm:px-7 pb-6">
+              <p class="text-cream-dim text-base leading-relaxed" data-lang="es">Ingeniero Forestal y Analista Geoespacial con experiencia internacional en gestión ambiental y modelización espacial. Ha trabajado con el OAPN y en investigaciones sobre prácticas agrícolas sostenibles.</p>
+              <p class="text-cream-dim text-base leading-relaxed hidden" data-lang="en">Forest Engineer and Geospatial Analyst with international experience in environmental management and spatial modeling. Has worked with OAPN and on sustainable agricultural research.</p>
             </div>
           </div>
-
         </div>
 
         <!-- Core team -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto mt-6">
           <!-- Nicholas Cosgrove -->
-          <div class="bg-primary-light rounded-lg shadow-lg overflow-hidden animate-on-scroll p-5 flex flex-col">
+          <div class="team-card animate-on-scroll p-5 flex flex-col">
             <div class="flex items-center gap-3">
               <img src="./assets/team/nick.webp" alt="Photo of Nicholas Cosgrove" class="w-14 h-14 rounded-full object-cover object-center shrink-0">
               <div class="min-w-0">
-                <h3 class="text-sm font-bold text-slate-900 leading-tight">Nicholas Cosgrove</h3>
-                <p class="text-accent font-medium text-xs mt-0.5" data-lang="es">Asesor - GTM</p>
-                <p class="text-accent font-medium text-xs mt-0.5 hidden" data-lang="en">Advisor - GTM</p>
+                <h3 class="text-sm font-bold text-cream leading-tight">Nicholas Cosgrove</h3>
+                <p class="text-olive font-medium text-xs mt-0.5" data-lang="es">Asesor - GTM</p>
+                <p class="text-olive font-medium text-xs mt-0.5 hidden" data-lang="en">Advisor - GTM</p>
                 <a href="https://www.linkedin.com/in/nicholas-cosgrove-794927a4/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="inline-block mt-1">
                   <img src="./assets/brand/linkedin_logo.png" alt="" aria-hidden="true" class="w-5 h-auto">
                 </a>
               </div>
             </div>
-            <p class="text-slate-600 text-xs sm:text-sm mt-3 leading-relaxed" data-lang="es">
-              Líder tecnológico y asesor enfocado en construir herramientas que ayudan a las personas y protegen el planeta. Aporta experiencia en IA centrada en el humano, tecnología geoespacial y trabajo ambiental comunitario.
-            </p>
-            <p class="text-slate-600 text-xs sm:text-sm mt-3 leading-relaxed hidden" data-lang="en">
-              Technology leader and advisor focused on building tools that help people and heal the earth. Brings experience across human-centered AI, geospatial technology, and community-driven environmental work.
-            </p>
+            <p class="text-cream-dim text-xs sm:text-sm mt-3 leading-relaxed" data-lang="es">Líder tecnológico y asesor enfocado en construir herramientas que ayudan a las personas y protegen el planeta. Aporta experiencia en IA centrada en el humano, tecnología geoespacial y trabajo ambiental comunitario.</p>
+            <p class="text-cream-dim text-xs sm:text-sm mt-3 leading-relaxed hidden" data-lang="en">Technology leader and advisor focused on building tools that help people and heal the earth. Brings experience across human-centered AI, geospatial technology, and community-driven environmental work.</p>
           </div>
 
           <!-- Joan Medina -->
-          <div class="bg-primary-light rounded-lg shadow-lg overflow-hidden animate-on-scroll p-5 flex flex-col" style="transition-delay:100ms;">
+          <div class="team-card animate-on-scroll p-5 flex flex-col" style="transition-delay:100ms;">
             <div class="flex items-center gap-3">
               <div class="w-14 h-14 rounded-full overflow-hidden shrink-0">
                 <img src="./assets/team/joanmedina.webp" alt="Foto de Joan Medina" class="w-full h-full object-cover" style="object-position: center 60%; transform: scale(1.6);">
               </div>
               <div class="min-w-0">
-                <h3 class="text-sm font-bold text-slate-900 leading-tight">Joan Medina</h3>
-                <p class="text-accent font-medium text-xs mt-0.5" data-lang="es">AI & Software</p>
-                <p class="text-accent font-medium text-xs mt-0.5 hidden" data-lang="en">AI & Software</p>
+                <h3 class="text-sm font-bold text-cream leading-tight">Joan Medina</h3>
+                <p class="text-olive font-medium text-xs mt-0.5">AI &amp; Software</p>
                 <a href="https://www.linkedin.com/in/joanmedinagim%C3%A9nez/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="inline-block mt-1">
                   <img src="./assets/brand/linkedin_logo.png" alt="" aria-hidden="true" class="w-5 h-auto">
                 </a>
               </div>
             </div>
-            <p class="text-slate-600 text-xs sm:text-sm mt-3 leading-relaxed" data-lang="es">
-              Ingeniero Informático con Máster en Inteligencia Artificial. Especializado en aprendizaje automático y análisis de datos a escala, desarrollando modelos predictivos y sistemas de procesamiento inteligente.
-            </p>
-            <p class="text-slate-600 text-xs sm:text-sm mt-3 leading-relaxed hidden" data-lang="en">
-              Computer Engineer with a Master's in Artificial Intelligence. Specialized in machine learning and data analysis at scale, developing predictive models and intelligent processing systems.
-            </p>
+            <p class="text-cream-dim text-xs sm:text-sm mt-3 leading-relaxed" data-lang="es">Ingeniero Informático con Máster en Inteligencia Artificial. Especializado en aprendizaje automático y análisis de datos a escala, desarrollando modelos predictivos y sistemas de procesamiento inteligente.</p>
+            <p class="text-cream-dim text-xs sm:text-sm mt-3 leading-relaxed hidden" data-lang="en">Computer Engineer with a Master's in Artificial Intelligence. Specialized in machine learning and data analysis at scale, developing predictive models and intelligent processing systems.</p>
           </div>
 
           <!-- Mario Parra -->
@@ -1795,71 +1386,55 @@
             <div class="flex items-center gap-3">
               <img src="./assets/team/mario_parra.jpg" alt="Foto de Mario Parra" class="w-14 h-14 rounded-full object-cover object-center shrink-0">
               <div class="min-w-0">
-                <h3 class="text-sm font-bold text-slate-900 leading-tight">Mario Parra</h3>
-                <p class="text-accent font-medium text-xs mt-0.5" data-lang="es">Forward Deployed Engineer</p>
-                <p class="text-accent font-medium text-xs mt-0.5 hidden" data-lang="en">Forward Deployed Engineer</p>
+                <h3 class="text-sm font-bold text-cream leading-tight">Mario Parra</h3>
+                <p class="text-olive font-medium text-xs mt-0.5">Forward Deployed Engineer</p>
               </div>
             </div>
-            <p class="text-slate-600 text-xs sm:text-sm mt-3 leading-relaxed" data-lang="es">
-              Ingeniero Informático y estudiante de Máster en Inteligencia Artificial. Especializado en el desarrollo de software y modelos de Deep Learning, implementando soluciones automatizadas y arquitecturas escalables para entornos críticos.
-            </p>
-            <p class="text-slate-600 text-xs sm:text-sm mt-3 leading-relaxed hidden" data-lang="en">
-              Computer Engineer and Master's student in Artificial Intelligence. Specialized in software development and Deep Learning models, implementing automated solutions and scalable architectures for critical environments.
-            </p>
+            <p class="text-cream-dim text-xs sm:text-sm mt-3 leading-relaxed" data-lang="es">Ingeniero Informático y estudiante de Máster en Inteligencia Artificial. Especializado en el desarrollo de software y modelos de Deep Learning, implementando soluciones automatizadas y arquitecturas escalables para entornos críticos.</p>
+            <p class="text-cream-dim text-xs sm:text-sm mt-3 leading-relaxed hidden" data-lang="en">Computer Engineer and Master's student in Artificial Intelligence. Specialized in software development and Deep Learning models, implementing automated solutions and scalable architectures for critical environments.</p>
           </div>
-
         </div>
 
         <!-- Research Collaborators -->
-        <div class="text-center mt-16 mb-8 animate-on-scroll">
-          <span class="text-primary font-bold text-xl" data-lang="es">Colaboradores de Investigación</span>
-          <span class="text-primary font-bold text-xl hidden" data-lang="en">Research Collaborators</span>
+        <div class="mt-16 mb-7 text-center animate-on-scroll">
+          <p class="eyebrow" data-lang="es">Colaboradores de investigación</p>
+          <p class="eyebrow hidden" data-lang="en">Research collaborators</p>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
-
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
           <!-- Víctor Manuel Tenorio Gómez -->
-          <div class="bg-primary-light rounded-lg shadow-lg overflow-hidden animate-on-scroll p-5 flex flex-col">
+          <div class="team-card animate-on-scroll p-5 flex flex-col">
             <div class="flex items-center gap-3">
               <img src="./assets/team/victor_tenorio.webp" alt="Foto de Víctor Manuel Tenorio Gómez" class="w-14 h-14 rounded-full object-cover object-center shrink-0">
               <div class="min-w-0">
-                <h3 class="text-sm font-bold text-slate-900 leading-tight">Dr. Víctor M. Tenorio Gómez, PhD</h3>
-                <p class="text-accent font-medium text-xs mt-0.5" data-lang="es">Investigador - IA y Procesamiento de Señales</p>
-                <p class="text-accent font-medium text-xs mt-0.5 hidden" data-lang="en">Researcher - AI & Signal Processing</p>
-                <a href="mailto:victor.tenorio@urjc.es" aria-label="Email" class="inline-block mt-1 text-slate-500 hover:text-primary transition-colors">
+                <h3 class="text-sm font-bold text-cream leading-tight">Dr. Víctor M. Tenorio Gómez, PhD</h3>
+                <p class="text-olive font-medium text-xs mt-0.5" data-lang="es">Investigador - IA y Procesamiento de Señales</p>
+                <p class="text-olive font-medium text-xs mt-0.5 hidden" data-lang="en">Researcher - AI &amp; Signal Processing</p>
+                <a href="mailto:victor.tenorio@urjc.es" aria-label="Email" class="inline-block mt-1 text-cream-dim hover:text-olive transition-colors">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                 </a>
               </div>
             </div>
-            <p class="text-slate-600 text-xs sm:text-sm mt-3 leading-relaxed" data-lang="es">
-              Doctor por la Universidad Rey Juan Carlos (URJC) en Tecnologías de la Información y las Comunicaciones. Su investigación se centra en el procesamiento de señales sobre grafos, redes neuronales en grafos y aprendizaje automático.
-            </p>
-            <p class="text-slate-600 text-xs sm:text-sm mt-3 leading-relaxed hidden" data-lang="en">
-              PhD in Information Technology and Communications from Universidad Rey Juan Carlos (URJC). His research focuses on graph signal processing, graph neural networks, and machine learning.
-            </p>
+            <p class="text-cream-dim text-xs sm:text-sm mt-3 leading-relaxed" data-lang="es">Doctor por la Universidad Rey Juan Carlos (URJC) en Tecnologías de la Información y las Comunicaciones. Su investigación se centra en el procesamiento de señales sobre grafos, redes neuronales en grafos y aprendizaje automático.</p>
+            <p class="text-cream-dim text-xs sm:text-sm mt-3 leading-relaxed hidden" data-lang="en">PhD in Information Technology and Communications from Universidad Rey Juan Carlos (URJC). His research focuses on graph signal processing, graph neural networks, and machine learning.</p>
           </div>
 
           <!-- Sandupal Dutta -->
-          <div class="bg-primary-light rounded-lg shadow-lg overflow-hidden animate-on-scroll p-5 flex flex-col" style="transition-delay:100ms;">
+          <div class="team-card animate-on-scroll p-5 flex flex-col" style="transition-delay:100ms;">
             <div class="flex items-center gap-3">
               <img src="./assets/team/sandupal_dutta.webp" alt="Foto de Sandupal Dutta" class="w-14 h-14 rounded-full object-cover object-center shrink-0">
               <div class="min-w-0">
-                <h3 class="text-sm font-bold text-slate-900 leading-tight">Sandupal Dutta</h3>
-                <p class="text-accent font-medium text-xs mt-0.5" data-lang="es">Doctorando — Oceanografía Física y Teledetección</p>
-                <p class="text-accent font-medium text-xs mt-0.5 hidden" data-lang="en">PhD Student — Physical Oceanography & Remote Sensing</p>
-                <a href="https://eps.jhu.edu/directory/sandupal-dutta/" target="_blank" rel="noopener" aria-label="JHU profile" class="inline-block mt-1 text-slate-500 hover:text-primary transition-colors">
+                <h3 class="text-sm font-bold text-cream leading-tight">Sandupal Dutta</h3>
+                <p class="text-olive font-medium text-xs mt-0.5" data-lang="es">Doctorando en Oceanografía Física y Teledetección</p>
+                <p class="text-olive font-medium text-xs mt-0.5 hidden" data-lang="en">PhD Student in Physical Oceanography &amp; Remote Sensing</p>
+                <a href="https://eps.jhu.edu/directory/sandupal-dutta/" target="_blank" rel="noopener" aria-label="JHU profile" class="inline-block mt-1 text-cream-dim hover:text-olive transition-colors">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 015.656 5.656l-3 3a4 4 0 01-5.656-5.656M10.172 13.828a4 4 0 01-5.656-5.656l3-3a4 4 0 015.656 5.656"/></svg>
                 </a>
               </div>
             </div>
-            <p class="text-slate-600 text-xs sm:text-sm mt-3 leading-relaxed" data-lang="es">
-              Doctorando en Ciencias Terrestres y Planetarias en la Universidad Johns Hopkins. Investiga oceanografía física, teledetección y aprendizaje automático. Colabora con Darwin en el reto NASA Space to Soil.
-            </p>
-            <p class="text-slate-600 text-xs sm:text-sm mt-3 leading-relaxed hidden" data-lang="en">
-              PhD student in Earth and Planetary Sciences at Johns Hopkins University. Researches physical oceanography, remote sensing, and machine learning. Collaborates with Darwin on the NASA Space to Soil challenge.
-            </p>
+            <p class="text-cream-dim text-xs sm:text-sm mt-3 leading-relaxed" data-lang="es">Doctorando en Ciencias Terrestres y Planetarias en la Universidad Johns Hopkins. Investiga oceanografía física, teledetección y aprendizaje automático. Colabora con Darwin en el reto NASA Space to Soil.</p>
+            <p class="text-cream-dim text-xs sm:text-sm mt-3 leading-relaxed hidden" data-lang="en">PhD student in Earth and Planetary Sciences at Johns Hopkins University. Researches physical oceanography, remote sensing, and machine learning. Collaborates with Darwin on the NASA Space to Soil challenge.</p>
           </div>
-
         </div>
 
         <!-- Scroll cue to Contact -->
@@ -1874,7 +1449,7 @@
     </section>
 
     <!-- Contact -->
-    <section id="contact" class="bg-primary text-white py-20 lg:py-32">
+    <section id="contact" class="bg-teal-base section-rule py-20 lg:py-24 overflow-hidden">
       <div class="container mx-auto px-6">
         <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start max-w-6xl mx-auto">
           <div class="animate-on-scroll">
@@ -1928,44 +1503,6 @@
             </div>
           </form>
         </div>
-
-        <form action="https://formspree.io/f/xrblldjk" method="POST" class="max-w-xl mx-auto animate-on-scroll" style="transition-delay:150ms;">
-          <div class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-8">
-            <div class="sm:col-span-2">
-              <label for="full-name" class="sr-only">Full Name</label>
-              <input type="text" name="full-name" id="full-name" autocomplete="name"
-                     class="bg-white/90 text-black placeholder-slate-500 block w-full shadow-sm py-3 px-4 focus:ring-black focus:border-black border-transparent rounded-md"
-                     data-lang-es-placeholder="Nombre completo" data-lang-en-placeholder="Full name">
-            </div>
-            <div>
-              <label for="email" class="sr-only">Email</label>
-              <input id="email" name="email" type="email" autocomplete="email" required
-                     class="bg-white/90 text-black placeholder-slate-500 block w-full shadow-sm py-3 px-4 focus:ring-black focus:border-black border-transparent rounded-md"
-                     data-lang-es-placeholder="Correo electrónico" data-lang-en-placeholder="Email address">
-            </div>
-            <div>
-              <label for="phone" class="sr-only">Phone</label>
-              <input type="text" name="phone" id="phone" autocomplete="tel"
-                     class="bg-white/90 text-black placeholder-slate-500 block w-full shadow-sm py-3 px-4 focus:ring-black focus:border-black border-transparent rounded-md"
-                     data-lang-es-placeholder="Número de teléfono" data-lang-en-placeholder="Phone number">
-            </div>
-            <div class="sm:col-span-2">
-              <label for="message" class="sr-only">Message</label>
-              <textarea id="message" name="message" rows="4" required
-                        class="bg-white/90 text-black placeholder-slate-500 block w-full shadow-sm py-3 px-4 focus:ring-black focus:border-black border-transparent rounded-md"
-                        data-lang-es-placeholder="Escriba su mensaje..."
-                        data-lang-en-placeholder="Write your message..."></textarea>
-            </div>
-            <div class="sm:col-span-2">
-              <input type="hidden" name="_captcha" value="false">
-              <button type="submit"
-                      class="w-full inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-primary bg-white hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary focus:ring-white">
-                <span data-lang="es">Enviar Mensaje</span>
-                <span data-lang="en" class="hidden">Send Message</span>
-              </button>
-            </div>
-          </div>
-        </form>
       </div>
     </section>
   </main>
@@ -2034,10 +1571,8 @@
     </div>
   </footer>
 
-  <!-- Darwin Maps transition overlay -->
+  <!-- Transition overlays -->
   <div id="maps-overlay" aria-hidden="true"></div>
-
-  <!-- Soil SaveR transition overlay -->
   <div id="soil-overlay" aria-hidden="true"></div>
 
   <!-- Single source of truth for language + interactions -->
@@ -2422,21 +1957,16 @@
 
     // Darwin Maps page transition
     function triggerMapsTransition() {
-      const overlay = document.getElementById('maps-overlay');
+      var overlay = document.getElementById('maps-overlay');
       overlay.classList.add('active');
-      setTimeout(() => {
-        window.location.href = 'https://darwinmaps.web.app/';
-      }, 780);
+      setTimeout(function(){ window.location.href = 'https://darwinmaps.web.app/'; }, 780);
     }
 
-    // ── Soil SaveR page transition ────────────────────────
+    // Soil SaveR page transition
     function triggerSoilTransition() {
-      const overlay = document.getElementById('soil-overlay');
+      var overlay = document.getElementById('soil-overlay');
       overlay.classList.add('active');
-      // Navigate after the opacity transition completes
-      setTimeout(() => {
-        window.location.href = './projects/soil_saver/index.html';
-      }, 780);
+      setTimeout(function(){ window.location.href = './projects/soil_saver/index.html'; }, 780);
     }
   </script>
 </body>
