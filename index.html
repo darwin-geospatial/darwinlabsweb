@@ -420,43 +420,40 @@
     .section-light .btn-ghost { border-color: rgba(27,55,63,0.22); color: var(--teal-base); }
     .section-light .btn-ghost:hover { border-color: var(--green); background: rgba(66,99,49,0.06); }
 
-    /* ── AI "what the AI sees" panel — a static full reveal (not a scroll-scrub), so
-       this section always fits in one screen like every other section. Touch devices
-       additionally get a swipe-to-compare gesture (self-contained, no extra scroll). ── */
+    /* ── AI "what the AI sees" panel — a static, self-contained panel (not a
+       scroll-scrub), so this section always fits in one screen like every other
+       section. Drag/swipe left-right on the image to compare RGB vs segmentation —
+       works with mouse, touch and pen alike, via Pointer Events. ── */
     #ai-scrolly { position: relative; }
     .scrolly-pin { display: flex; flex-direction: column; align-items: center; padding: 1.5rem 0 0.5rem; }
-    .scrolly-visual { position: relative; width: 100%; aspect-ratio: 16 / 10; max-height: 32vh; border-radius: 1rem; overflow: hidden; border: 1px solid var(--teal-line); box-shadow: 0 30px 70px rgba(0,0,0,0.45); margin-bottom: 1.5rem; }
+    .scrolly-visual {
+      position: relative; width: 100%; aspect-ratio: 16 / 10; max-height: 32vh; border-radius: 1rem;
+      overflow: hidden; border: 1px solid var(--teal-line); box-shadow: 0 30px 70px rgba(0,0,0,0.45);
+      margin-bottom: 1.5rem; touch-action: pan-y; cursor: ew-resize;
+      -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
+    }
     .scrolly-visual img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
     #ai-base { filter: saturate(0.9) brightness(0.92); }
-    #ai-reveal { clip-path: inset(0 0 0 0); }
-    .scrolly-scan { display: none; }
-    .scrolly-hint { display: none; }
+    #ai-reveal { clip-path: inset(0 100% 0 0); }
+    .scrolly-scan { display: block; opacity: 1; }
+    .scrolly-hint { display: flex; }
     .scrolly-step { opacity: 1; display: flex; gap: 1.1rem; align-items: flex-start; }
     .step-big-num { flex-shrink: 0; font-family: 'Space Mono', monospace; font-weight: 700; font-size: 2.25rem; line-height: 1; color: var(--olive-light); }
     .scrolly-step .step-num { color: var(--olive-light); }
-
-    /* Touch devices: swipe the image left/right to compare RGB vs segmentation —
-       a self-contained gesture, no extra scroll distance needed. */
-    @media (max-width: 1023px) and (pointer: coarse) {
-      #ai-reveal { clip-path: inset(0 100% 0 0) !important; }
-      .scrolly-visual { touch-action: pan-y; cursor: ew-resize; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; }
-      .scrolly-scan { display: block; opacity: 1; }
-      .scrolly-hint { display: flex; }
-      .scrolly-handle {
-        position: absolute; top: 50%; left: 50%; width: 2.75rem; height: 2.75rem;
-        border-radius: 9999px; background: var(--olive-light); color: var(--teal-deep);
-        transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center;
-        box-shadow: 0 6px 18px rgba(0,0,0,0.4); pointer-events: none;
-      }
-      .scrolly-hint {
-        position: absolute; left: 50%; bottom: 0.9rem; transform: translateX(-50%);
-        align-items: center; gap: 0.4rem; padding: 0.4rem 0.8rem;
-        border-radius: 9999px; background: rgba(27,55,63,0.75); color: var(--cream);
-        font-family: 'Space Mono', monospace; font-size: 0.68rem; letter-spacing: 0.04em;
-        opacity: 1; transition: opacity .4s ease; pointer-events: none; white-space: nowrap;
-      }
-      .scrolly-hint.is-hidden { opacity: 0; }
+    .scrolly-handle {
+      position: absolute; top: 50%; left: 50%; width: 2.75rem; height: 2.75rem;
+      border-radius: 9999px; background: var(--olive-light); color: var(--teal-deep);
+      transform: translate(-50%, -50%); display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.4); pointer-events: none;
     }
+    .scrolly-hint {
+      position: absolute; left: 50%; bottom: 0.9rem; transform: translateX(-50%);
+      align-items: center; gap: 0.4rem; padding: 0.4rem 0.8rem;
+      border-radius: 9999px; background: rgba(27,55,63,0.75); color: var(--cream);
+      font-family: 'Space Mono', monospace; font-size: 0.68rem; letter-spacing: 0.04em;
+      opacity: 1; transition: opacity .4s ease; pointer-events: none; white-space: nowrap;
+    }
+    .scrolly-hint.is-hidden { opacity: 0; }
 
     /* ── Pinned horizontal-scroll projects gallery ── */
     #projects-track { position: relative; }
@@ -1822,25 +1819,17 @@
       stats.forEach(function(el){ obs.observe(el); });
     })();
 
-    // AI panel is a static full reveal now (see CSS) — no scroll-scrub JS needed.
-
-    // AI scrollytelling on touch mobile — swipe the image left/right to reveal the
-    // segmentation instead of scroll-scrubbing (mirrors the .scrolly-visual media query above)
+    // AI panel — drag/swipe the image left-right to compare RGB vs segmentation.
+    // Pointer Events unify mouse, touch and pen, so this works on desktop and mobile alike.
     (function(){
       var visual = document.querySelector('#ai-scrolly .scrolly-visual');
       if (!visual) return;
       var reveal = document.getElementById('ai-reveal');
       var scan = visual.querySelector('.scrolly-scan');
       var hints = visual.querySelectorAll('.scrolly-hint');
-      function isTouchMobile(){
-        return window.innerWidth < 1024 && window.matchMedia('(pointer: coarse)').matches;
-      }
       function setWipe(p){
         p = Math.min(Math.max(p, 0), 1);
-        // !important: the touch-mobile CSS above pins clip-path with !important (so the
-        // image starts hidden before JS runs) — an unprivileged inline style can't beat
-        // that, so this write needs !important too or the drag would never visibly move.
-        if (reveal) reveal.style.setProperty('clip-path', 'inset(0 ' + ((1 - p) * 100).toFixed(2) + '% 0 0)', 'important');
+        if (reveal) reveal.style.clipPath = 'inset(0 ' + ((1 - p) * 100).toFixed(2) + '% 0 0)';
         if (scan) scan.style.left = (p * 100).toFixed(2) + '%';
       }
       function posFromEvent(e){
@@ -1849,7 +1838,6 @@
       }
       var dragging = false;
       visual.addEventListener('pointerdown', function(e){
-        if (!isTouchMobile()) return;
         dragging = true;
         try { visual.setPointerCapture(e.pointerId); } catch (err) {}
         hints.forEach(function(h){ h.classList.add('is-hidden'); });
@@ -1862,7 +1850,7 @@
       function endDrag(){ dragging = false; }
       visual.addEventListener('pointerup', endDrag);
       visual.addEventListener('pointercancel', endDrag);
-      if (isTouchMobile()) setWipe(0);
+      setWipe(0);
     })();
 
     // Pinned horizontal-scroll projects gallery (desktop) + progress bar
