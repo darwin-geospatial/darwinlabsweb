@@ -183,6 +183,11 @@
       transition: border-color .25s, background-color .25s, transform .25s;
     }
     .btn-ghost:hover { border-color: var(--olive-light); background-color: rgba(188,190,118,0.08); transform: translateY(-1px); }
+    .btn-cream {
+      background-color: var(--cream); color: var(--teal-base); border:1px solid transparent;
+      transition: background-color .25s, transform .25s, box-shadow .25s;
+    }
+    .btn-cream:hover { background-color: #ffffff; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,0,0,0.28); }
 
     /* Logos */
     .partner-logo{ filter:grayscale(100%); opacity:.75; transition:all .3s ease; object-fit:contain; }
@@ -624,8 +629,8 @@
         <div class="flex flex-wrap items-center justify-center gap-4">
           <a href="#contact" class="btn-accent px-7 py-3.5 rounded-full font-semibold text-sm tracking-wide" data-lang="es">Agenda una llamada</a>
           <a href="#contact" class="btn-accent px-7 py-3.5 rounded-full font-semibold text-sm tracking-wide hidden" data-lang="en">Book a call</a>
-          <a href="#solutions" class="btn-ghost px-7 py-3.5 rounded-full font-semibold text-sm tracking-wide" data-lang="es">Ver soluciones</a>
-          <a href="#solutions" class="btn-ghost px-7 py-3.5 rounded-full font-semibold text-sm tracking-wide hidden" data-lang="en">Explore solutions</a>
+          <a href="#solutions" class="btn-cream px-7 py-3.5 rounded-full font-semibold text-sm tracking-wide" data-lang="es">Ver soluciones</a>
+          <a href="#solutions" class="btn-cream px-7 py-3.5 rounded-full font-semibold text-sm tracking-wide hidden" data-lang="en">Explore solutions</a>
         </div>
 
       </div>
