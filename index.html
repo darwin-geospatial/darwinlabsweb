@@ -371,6 +371,8 @@
     }
     .stat-bubble .stat-num{ font-size:clamp(1.3rem,2.5vw,1.85rem); }
     .stat-bubble p{ max-width:8rem; line-height:1.35; font-size:.62rem; }
+    .stat-flags{ display:flex; flex-wrap:wrap; justify-content:center; gap:.28rem; margin-top:.5rem; max-width:8rem; }
+    .stat-flags img{ width:clamp(.9rem,1.4vw,1.15rem); height:auto; border-radius:2px; box-shadow:0 1px 3px rgba(0,0,0,0.45); }
 
     .stat-award-group{
       display:flex; flex-direction:column; align-items:center; justify-content:center;
@@ -730,6 +732,14 @@
             <div class="stat-num font-display text-olive leading-none mb-1" data-target="7" data-suffix="+">0+</div>
             <p class="font-mono text-cream-dim uppercase tracking-wider" data-lang="es">Países</p>
             <p class="font-mono text-cream-dim uppercase tracking-wider hidden" data-lang="en">Countries</p>
+            <div class="stat-flags">
+              <img src="./assets/flags/es.svg" alt="España">
+              <img src="./assets/flags/us.svg" alt="USA">
+              <img src="./assets/flags/au.svg" alt="Australia">
+              <img src="./assets/flags/at.svg" alt="Austria">
+              <img src="./assets/flags/pt.svg" alt="Portugal">
+              <img src="./assets/flags/fr.svg" alt="France">
+            </div>
           </div>
           <div class="stat-award-group" style="--bubble-delay:1s;">
             <div class="stat-award-pair">
