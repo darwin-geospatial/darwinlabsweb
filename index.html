@@ -91,6 +91,8 @@
     /* Scroll cue — bottom-of-section link nudging you to the next one, echoing
        the eyebrow tag it points to (mirrors the arrow pattern on darwingeospatial.com) */
     .scroll-cue { text-align: center; }
+    /* Next-section label: one shared look across every section cue (Inter, olive, 1.1rem) */
+    .scroll-cue .eyebrow { font-size: 1.1rem; }
     .scroll-cue a { display: inline-flex; flex-direction: column; align-items: center; gap: 0.6rem; text-decoration: none; opacity: 0.72; transition: opacity .3s ease; }
     .scroll-cue a:hover { opacity: 1; }
     .scroll-cue svg { width: 1.6rem; height: 1.6rem; animation: scrollCueBounce 2.1s ease-in-out infinite; }
@@ -259,8 +261,8 @@
     .scroll-indicator{
       position:absolute; bottom:2rem; left:50%; transform:translateX(-50%); z-index:10;
       display:flex; flex-direction:column; align-items:center; gap:.5rem;
-      color:var(--cream-dim); font-size:.7rem; text-transform:uppercase; letter-spacing:.25em;
-      font-family:'Space Mono', monospace; animation:scrollBounce 2s ease-in-out infinite;
+      color:var(--olive-light); font-size:1.1rem; font-weight:600; text-transform:uppercase; letter-spacing:.2em;
+      font-family:'Inter', sans-serif; animation:scrollBounce 2s ease-in-out infinite;
     }
     .scroll-indicator svg{ width:1.4rem; height:1.4rem; }
     @keyframes scrollBounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(8px);}}
@@ -649,8 +651,9 @@
 
   <main>
 
-    <!-- Trust bar — moved up, right under hero (valere puts proof early) -->
-    <section id="trust" class="section-light py-12 lg:py-16">
+    <!-- Trusted-by ribbon + Mission share ONE full screen as a single unit -->
+    <div class="flex flex-col" style="min-height:100vh; min-height:100dvh;">
+    <section id="trust" class="section-light py-8 lg:py-10">
       <div class="container mx-auto px-6 text-center">
         <p class="eyebrow mb-8" data-lang="es">Confían en nosotros</p>
         <p class="eyebrow mb-8 hidden" data-lang="en">Trusted by</p>
@@ -687,15 +690,19 @@
     </section>
 
     <!-- About / Mission -->
-    <section id="about" class="bg-teal-base section-rule pt-14 lg:pt-20 pb-16 lg:pb-20 overflow-hidden relative flex flex-col justify-center" style="min-height:100vh; min-height:100dvh;">
+    <section id="about" class="bg-teal-base section-rule pt-10 lg:pt-12 pb-10 lg:pb-12 overflow-hidden relative flex flex-col flex-1">
       <canvas id="mission-canvas" aria-hidden="true"></canvas>
-      <div class="container mx-auto px-6 relative" style="z-index:1;">
-        <div class="max-w-3xl lg:max-w-5xl mx-auto text-center">
-          <p class="font-bold text-cream mb-4 animate-on-scroll" style="font-size:clamp(1.4rem,2.4vw,2rem); line-height:1.2;" data-lang="es">Nuestra misión</p>
-          <p class="font-bold text-cream mb-4 animate-on-scroll hidden" style="font-size:clamp(1.4rem,2.4vw,2rem); line-height:1.2;" data-lang="en">Our mission</p>
+      <div class="container mx-auto px-6 relative flex-1 flex flex-col justify-between text-center" style="z-index:1;">
+        <!-- Top: eyebrow label — pinned to upper boundary -->
+        <div class="max-w-5xl mx-auto">
+          <p class="font-bold text-cream animate-on-scroll" style="font-size:clamp(1.4rem,2.4vw,2rem); line-height:1.2;" data-lang="es">Nuestra misión</p>
+          <p class="font-bold text-cream animate-on-scroll hidden" style="font-size:clamp(1.4rem,2.4vw,2rem); line-height:1.2;" data-lang="en">Our mission</p>
+        </div>
 
-          <h2 class="font-bold text-cream mission-headline mb-8 animate-on-scroll lg:whitespace-nowrap" style="font-size:clamp(1.4rem,2.4vw,2rem); line-height:1.2;" data-lang="es"><span class="mission-part" data-delay="0">Entender la naturaleza</span> <span class="mission-part mission-arrow" data-delay="600"><svg viewBox="0 0 36 16"><path d="M2,9 C8,8 18,7 26,8"/><path d="M22,3 C25,5 28,8 26,8 C28,8 25,11 22,13"/></svg></span> <span class="mission-word" data-delay="1200">para</span> <span class="mission-word" data-delay="1500">gestionarla</span> <span class="mission-word" data-delay="1800">mejor.</span></h2>
-          <h2 class="font-bold text-cream mission-headline mb-8 animate-on-scroll hidden lg:whitespace-nowrap" style="font-size:clamp(1.4rem,2.4vw,2rem); line-height:1.2;" data-lang="en"><span class="mission-part" data-delay="0">Understand nature</span> <span class="mission-part mission-arrow" data-delay="600"><svg viewBox="0 0 36 16"><path d="M2,9 C8,8 18,7 26,8"/><path d="M22,3 C25,5 28,8 26,8 C28,8 25,11 22,13"/></svg></span> <span class="mission-word" data-delay="1200">to</span> <span class="mission-word" data-delay="1500">manage</span> <span class="mission-word" data-delay="1800">it better.</span></h2>
+        <!-- Center: headline + description -->
+        <div class="max-w-3xl lg:max-w-5xl mx-auto">
+          <h2 class="font-bold mission-headline mb-8 animate-on-scroll lg:whitespace-nowrap" style="font-size:clamp(1.4rem,2.4vw,2rem); line-height:1.2; color:var(--olive-light); font-weight:800;" data-lang="es"><span class="mission-part" data-delay="0">Entender la naturaleza</span> <span class="mission-part mission-arrow" data-delay="600"><svg viewBox="0 0 36 16"><path d="M2,9 C8,8 18,7 26,8"/><path d="M22,3 C25,5 28,8 26,8 C28,8 25,11 22,13"/></svg></span> <span class="mission-word" data-delay="1200">para</span> <span class="mission-word" data-delay="1500">gestionarla</span> <span class="mission-word" data-delay="1800">mejor.</span></h2>
+          <h2 class="font-bold mission-headline mb-8 animate-on-scroll hidden lg:whitespace-nowrap" style="font-size:clamp(1.4rem,2.4vw,2rem); line-height:1.2; color:var(--olive-light); font-weight:800;" data-lang="en"><span class="mission-part" data-delay="0">Understand nature</span> <span class="mission-part mission-arrow" data-delay="600"><svg viewBox="0 0 36 16"><path d="M2,9 C8,8 18,7 26,8"/><path d="M22,3 C25,5 28,8 26,8 C28,8 25,11 22,13"/></svg></span> <span class="mission-word" data-delay="1200">to</span> <span class="mission-word" data-delay="1500">manage</span> <span class="mission-word" data-delay="1800">it better.</span></h2>
 
           <p class="text-base md:text-lg text-cream-dim leading-relaxed animate-on-scroll max-w-3xl mx-auto" data-lang="es">
             Usamos datos geoespaciales e inteligencia artificial para transformar cómo se estudian, monitorean y gestionan los sistemas naturales. Lo que no se mide, no se gestiona. Y lo que no se ve desde el espacio, hoy ya se puede entender.
@@ -705,16 +712,17 @@
           </p>
         </div>
 
-        <!-- Scroll cue to Impact stats -->
-        <div class="scroll-cue mt-14 lg:mt-16">
+        <!-- Bottom: scroll cue to Impact — pinned to lower boundary -->
+        <div class="scroll-cue">
           <a href="#impact">
-            <span class="font-bold text-cream" style="font-size:clamp(1.4rem,2.4vw,2rem); line-height:1.2;" data-lang="es">Nuestro impacto</span>
-            <span class="font-bold text-cream hidden" style="font-size:clamp(1.4rem,2.4vw,2rem); line-height:1.2;" data-lang="en">Our impact</span>
+            <span class="eyebrow" data-lang="es">Nuestro impacto</span>
+            <span class="eyebrow hidden" data-lang="en">Our impact</span>
             <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-6-6m6 6l6-6"/></svg>
           </a>
         </div>
       </div>
     </section>
+    </div>
 
     <!-- Impact stats — split from Mission so each lands cleanly on its own screen -->
     <section id="impact" class="bg-teal-base section-rule pt-14 lg:pt-20 pb-16 lg:pb-20 overflow-hidden relative flex flex-col justify-center" style="min-height:100vh; min-height:100dvh;">
@@ -1992,6 +2000,21 @@
       overlay.classList.add('active');
       setTimeout(function(){ window.location.href = './projects/soil_saver/index.html'; }, 780);
     }
+  </script>
+  <script>
+  window.addEventListener('load',function(){setTimeout(function(){
+    var trust=document.getElementById('trust');
+    var about=document.getElementById('about');
+    var wrap=trust.parentElement;
+    var cue=about.querySelector('.scroll-cue');
+    var cr=cue.getBoundingClientRect();
+    document.title='MEAS vh='+window.innerHeight
+      +' wrapH='+Math.round(wrap.getBoundingClientRect().height)
+      +' trustH='+Math.round(trust.getBoundingClientRect().height)
+      +' aboutH='+Math.round(about.getBoundingClientRect().height)
+      +' cueTop='+Math.round(cr.top)+' cueBottom='+Math.round(cr.bottom)
+      +' cueVisible='+(cr.bottom<=window.innerHeight && cr.top>=0);
+  },1800)});
   </script>
 </body>
 </html>
