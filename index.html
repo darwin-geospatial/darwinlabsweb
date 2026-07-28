@@ -508,12 +508,14 @@
        releases). Off in non-pin mode, where the fallback cue below the gallery is used. */
     .pin-cue { display: none; }
     .mode-pin .h-pin .pin-cue {
-      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+      display: flex; flex-direction: column; align-items: center; gap: 0.6rem;
       position: absolute; left: 0; right: 0; bottom: 1rem;
       text-decoration: none; opacity: 0.72; transition: opacity .3s ease;
     }
     .mode-pin .h-pin .pin-cue:hover { opacity: 1; }
-    .mode-pin .h-pin .pin-cue svg { width: 1.4rem; height: 1.4rem; animation: scrollCueBounce 2.1s ease-in-out infinite; }
+    /* Match the shared scroll-cue standard: 1.1rem label + 1.6rem arrow */
+    .mode-pin .h-pin .pin-cue .eyebrow { font-size: 1.1rem; }
+    .mode-pin .h-pin .pin-cue svg { width: 1.6rem; height: 1.6rem; animation: scrollCueBounce 2.1s ease-in-out infinite; }
     #projects-track.mode-pin ~ .no-pin-cue { display: none; }
 
     .h-progress { height: 2px; background: rgba(252,245,227,0.15); border-radius: 999px; overflow: hidden; }
@@ -653,10 +655,10 @@
 
     <!-- Trusted-by ribbon + Mission share ONE full screen as a single unit -->
     <div class="flex flex-col" style="min-height:100vh; min-height:100dvh;">
-    <section id="trust" class="section-light py-8 lg:py-10">
+    <section id="trust" class="section-light py-5 lg:py-6">
       <div class="container mx-auto px-6 text-center">
-        <p class="eyebrow mb-8" data-lang="es">Confían en nosotros</p>
-        <p class="eyebrow mb-8 hidden" data-lang="en">Trusted by</p>
+        <p class="eyebrow mb-5" data-lang="es">Confían en nosotros</p>
+        <p class="eyebrow mb-5 hidden" data-lang="en">Trusted by</p>
         <div class="overflow-hidden" style="mask-image:linear-gradient(to right,transparent,black 10%,black 90%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,black 10%,black 90%,transparent);">
           <div class="flex items-center gap-12 w-max animate-marquee">
             <img src="./assets/partners/seo_bird_life.jpg" alt="SEO Birdlife" class="h-11 partner-logo rounded">
@@ -690,10 +692,10 @@
     </section>
 
     <!-- About / Mission -->
-    <section id="about" class="bg-teal-base section-rule pt-10 lg:pt-12 pb-10 lg:pb-12 overflow-hidden relative flex flex-col flex-1">
+    <section id="about" class="bg-teal-base section-rule py-8 lg:py-10 overflow-hidden relative flex flex-col flex-1">
       <canvas id="mission-canvas" aria-hidden="true"></canvas>
-      <div class="container mx-auto px-6 relative flex-1 flex flex-col justify-between text-center" style="z-index:1;">
-        <!-- Top: eyebrow label — pinned to upper boundary -->
+      <div class="container mx-auto px-6 relative flex-1 flex flex-col justify-center gap-10 lg:gap-14 text-center" style="z-index:1;">
+        <!-- Top: eyebrow label -->
         <div class="max-w-5xl mx-auto">
           <p class="font-bold text-cream animate-on-scroll" style="font-size:clamp(1.4rem,2.4vw,2rem); line-height:1.2;" data-lang="es">Nuestra misión</p>
           <p class="font-bold text-cream animate-on-scroll hidden" style="font-size:clamp(1.4rem,2.4vw,2rem); line-height:1.2;" data-lang="en">Our mission</p>
