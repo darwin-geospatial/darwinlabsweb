@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
 (function initMissionAnimation() {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  var section = document.getElementById('about');
+  var section = document.getElementById('mission');
   var canvas = document.getElementById('mission-canvas');
   if (!section || !canvas) return;
 
