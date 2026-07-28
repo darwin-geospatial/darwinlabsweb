@@ -113,7 +113,7 @@
     /* Offset in-page anchor targets so the fixed header doesn't cover their top content.
        --header-h is measured from the real header and kept in sync by JS (header height
        changes between mobile/desktop), so no gap/overlap survives a layout change. */
-    #trust, #about, #impact, #solutions, #personas, #capabilities, #projects-hero, #values, #team, #contact { scroll-margin-top: var(--header-h, 90px); }
+    #trust, #about, #solutions, #personas, #capabilities, #projects-hero, #team, #contact { scroll-margin-top: var(--header-h, 90px); }
 
     /* ── Scroll reveal (kept from original; consumed by lang.js) ── */
     .animate-on-scroll{
@@ -153,27 +153,24 @@
        padding doesn't all fit after an anchor-scroll lands on the section above it
        — shrink the vertical rhythm so each section settles within view. */
     @media (max-height: 720px){
-      #mission, #impact{ padding-top:2.5rem; padding-bottom:2.5rem; }
+      #mission{ padding-top:2.5rem; padding-bottom:2.5rem; }
       #mission .mission-headline{ margin-bottom:1.25rem; }
-      #impact .grid.grid-cols-2 > div{ padding:1.1rem; }
     }
 
     /* Language switcher */
-    .lang-switcher button{ color: var(--cream-faint); transition: color .2s; }
-    .lang-switcher button.active{ color: var(--olive-light); font-weight:700; }
+    .lang-switcher button{ color: rgba(27,55,63,0.5); transition: color .2s; }
+    .lang-switcher button.active{ color: var(--green); font-weight:700; }
 
     /* Header */
-    /* Dark header; a cream wedge on the inner row (behind the logo) gives it contrast */
+    /* Solid cream header — one colour throughout (no dark-on-scroll transition) */
     #header {
-      background-color: rgba(14,31,36,0.72);
-      backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
-      border-bottom: 1px solid transparent; transition: background-color .3s ease, border-color .3s ease;
+      background-color: var(--cream);
+      border-bottom: 1px solid rgba(27,55,63,0.12);
     }
-    #header.scrolled { background-color: rgba(14,31,36,0.92); border-bottom-color: var(--teal-line); }
-    .header-row { background: linear-gradient(90deg, #d7d3b9 0, #d7d3b9 190px, transparent 380px); }
-    .nav-link { color: var(--cream-dim); font-weight: 500; transition: color .25s; position: relative; }
-    .nav-link:hover { color: var(--cream); }
-    .nav-link::after { content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:var(--olive-light); transition:width .3s ease; }
+    .header-row { background: transparent; }
+    .nav-link { color: var(--green); font-weight: 500; transition: color .25s; position: relative; }
+    .nav-link:hover { color: var(--teal-base); }
+    .nav-link::after { content:""; position:absolute; left:0; bottom:-6px; height:2px; width:0; background:var(--green); transition:width .3s ease; }
     .nav-link:hover::after { width:100%; }
     .btn-accent {
       background-color: var(--green); color: var(--cream); border:1px solid transparent;
@@ -192,8 +189,19 @@
     .btn-cream:hover { background-color: #ffffff; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,0,0,0.28); }
 
     /* Logos */
-    .partner-logo{ filter:grayscale(100%); opacity:.75; transition:all .3s ease; object-fit:contain; }
-    .partner-logo:hover{ filter:grayscale(0%); opacity:1; }
+    .partner-logo{ opacity:.92; transition:all .3s ease; object-fit:contain; }
+    .partner-logo:hover{ opacity:1; }
+    /* Award logos in the partner ribbon (cream bg) */
+    .ribbon-award{ opacity:.9; object-fit:contain; transition:all .3s ease; }
+    .ribbon-award:hover{ opacity:1; }
+    .ribbon-award.is-light{ filter:brightness(0); }       /* white/cream assets can only read as dark on cream */
+    /* NASA award — meatball + Space to Soil Challenge label */
+    .ribbon-nasa{ display:inline-flex; align-items:center; gap:.6rem; }
+    .ribbon-nasa img{ height:4rem; width:auto; }
+    .ribbon-nasa > span{ font-family:'Inter', sans-serif; font-weight:600; font-size:.78rem; line-height:1.15; color:var(--teal-base); text-align:left; max-width:6.5rem; }
+    /* Awards get a faint "(award)" note under the logo to set them apart from partners */
+    .award-wrap{ display:inline-flex; flex-direction:column; align-items:center; gap:.25rem; }
+    .award-tag{ font-family:'Space Mono', monospace; font-size:.5rem; letter-spacing:.08em; text-transform:lowercase; color:rgba(27,55,63,0.3); line-height:1; }
 
     /* ── Hero Slideshow with Ken Burns Effect ── */
     #hero-slideshow { position: absolute; inset: 0; overflow: hidden; z-index: -1; background-color: var(--teal-deep); }
@@ -300,6 +308,8 @@
     .folder-card:hover{ transform:translateY(-6px); }
     .fc-body{ position:relative; height:11rem; overflow:hidden; border:1px solid var(--teal-line); background:var(--teal-elev);
       border-radius:1.3rem; transition:box-shadow .4s; }
+    /* Taller cards on desktop so the 2-col grid isn't wide-and-thin (mobile stays 11rem) */
+    @media (min-width:1024px){ .fc-body{ height:clamp(14rem,25vh,19rem); } }
     .folder-card:hover .fc-body{ box-shadow:0 26px 54px rgba(0,0,0,0.45); }
     .fc-img{ position:absolute; inset:0; background-size:cover; background-position:center; transition:transform .6s ease; }
     .folder-card:hover .fc-img{ transform:scale(1.06); }
@@ -441,7 +451,7 @@
       margin-bottom: 1.5rem; touch-action: pan-y; cursor: ew-resize;
       -webkit-user-select: none; user-select: none; -webkit-touch-callout: none;
     }
-    .scrolly-visual img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .scrolly-visual img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; -webkit-user-drag: none; user-drag: none; -webkit-user-select: none; user-select: none; pointer-events: none; }
     #ai-base { filter: saturate(0.9) brightness(0.92); }
     #ai-reveal { clip-path: inset(0 100% 0 0); }
     .scrolly-scan { display: block; opacity: 1; }
@@ -480,13 +490,7 @@
     }
     .h-panel-img { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform .8s cubic-bezier(0.22,1,0.36,1), filter .6s ease; }
     .h-panel:hover .h-panel-img { transform: scale(1.06); }
-    /* AI-vision hover: recolor the image into a false-color index map (what the AI sees) */
-    .h-panel-img.ai::after {
-      content:""; position:absolute; inset:0; opacity:0; transition: opacity .6s ease; mix-blend-mode: color;
-      background: linear-gradient(135deg, #d7191c 0%, #fdae61 30%, #ffffbf 50%, #a6d96a 70%, #1a9641 100%);
-    }
     .h-panel:hover .h-panel-img.ai { filter: contrast(1.12) saturate(1.4); }
-    .h-panel:hover .h-panel-img.ai::after { opacity: 0.58; }
     .h-panel-grad { position:absolute; inset:0; background: linear-gradient(to top, rgba(14,31,36,0.96) 0%, rgba(14,31,36,0.55) 42%, rgba(14,31,36,0.12) 100%); }
     .h-panel-scan { position:absolute; top:0; bottom:0; left:-35%; width:35%; opacity:0; background: linear-gradient(90deg, transparent, rgba(188,190,118,0.22), transparent); transition: opacity .4s; pointer-events:none; }
     .h-panel:hover .h-panel-scan { opacity:1; animation: scanSweep 1.8s ease-in-out infinite; }
@@ -580,11 +584,11 @@
       <div class="flex items-center">
         <div class="lang-switcher font-mono text-sm ml-4">
           <button id="lang-es" class="active">ES</button>
-          <span class="text-cream-faint">/</span>
+          <span style="color:rgba(27,55,63,0.4)">/</span>
           <button id="lang-en">EN</button>
         </div>
         <button id="mobile-menu-button" class="lg:hidden focus:outline-none ml-4">
-          <svg class="w-6 h-6 text-cream" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-6 h-6" style="color:var(--green)" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/>
           </svg>
         </button>
@@ -658,35 +662,41 @@
     <div id="about" class="flex flex-col" style="min-height:100vh; min-height:100dvh;">
     <section id="trust" class="section-light py-5 lg:py-6">
       <div class="container mx-auto px-6 text-center">
-        <p class="eyebrow mb-5" data-lang="es">Confían en nosotros</p>
-        <p class="eyebrow mb-5 hidden" data-lang="en">Trusted by</p>
+        <p class="eyebrow mb-5" data-lang="es">Nuestros socios y premios</p>
+        <p class="eyebrow mb-5 hidden" data-lang="en">Our partners &amp; awards</p>
         <div class="overflow-hidden" style="mask-image:linear-gradient(to right,transparent,black 10%,black 90%,transparent);-webkit-mask-image:linear-gradient(to right,transparent,black 10%,black 90%,transparent);">
           <div class="flex items-center gap-12 w-max animate-marquee">
-            <img src="./assets/partners/seo_bird_life.jpg" alt="SEO Birdlife" class="h-11 partner-logo rounded">
-            <img src="./assets/partners/orygen_earth_logo.jpg" alt="Orygen" class="h-11 partner-logo rounded">
-            <img src="./assets/partners/universidad_politecnica.jpg" alt="UPM" class="h-11 partner-logo rounded">
-            <img src="./assets/partners/csic.png" alt="CSIC" class="h-11 partner-logo">
+            <!-- Copy 1 — order: warm-up logos first, then the strongest -->
+            <img src="./assets/partners/transparent/seo_bird_life.png" alt="SEO Birdlife" class="h-11 partner-logo rounded">
+            <img src="./assets/partners/transparent/orygen_earth_logo.png" alt="Orygen" class="h-11 partner-logo rounded">
+            <img src="./assets/partners/transparent/quercy.png" alt="Quercy" class="h-11 partner-logo">
+            <!-- Strongest -->
+            <span class="award-wrap"><span class="ribbon-nasa"><img src="./assets/partners/nasa_meatball.png" alt="NASA Space to Soil Challenge"><span>Space to Soil Challenge</span></span><span class="award-tag">(award)</span></span>
             <img src="./assets/partners/google_partner.png" alt="Google Partner" class="h-11 partner-logo">
-            <!-- <img src="./assets/partners/upwork.png" alt="Upwork" class="h-7 partner-logo"> -->
-            <img src="./assets/partners/kompass.jpg" alt="Kompass" class="h-9 partner-logo rounded">
-            <img src="./assets/partners/quercy.png" alt="Quercy" class="h-11 partner-logo">
-            <img src="./assets/partners/universidad_avila.jpg" alt="Universidad de Ávila" class="h-11 partner-logo rounded">
-            <img src="./assets/partners/fundacion_monte_mediterraneo.png" alt="Fundación Monte Mediterráneo" class="h-11 partner-logo">
-            <img src="./assets/partners/urjc.png" alt="URJC" class="h-11 partner-logo">
-            <img src="./assets/partners/johns_hopkins.webp" alt="Johns Hopkins University" class="h-11 partner-logo">
+            <img src="./assets/partners/johns_hopkins.webp" alt="Johns Hopkins University" class="h-14 partner-logo">
+            <img src="./assets/partners/csic.png" alt="CSIC" class="h-11 partner-logo">
+            <img src="./assets/partners/transparent/universidad_politecnica.png" alt="UPM" class="h-11 partner-logo rounded">
+            <img src="./assets/partners/transparent/urjc.png" alt="URJC" class="h-11 partner-logo">
+            <img src="./assets/partners/transparent/universidad_avila.png" alt="Universidad de Ávila" class="h-11 partner-logo rounded">
+            <img src="./assets/partners/transparent/fundacion_monte_mediterraneo.png" alt="Fundación Monte Mediterráneo" class="h-11 partner-logo">
+            <img src="./assets/partners/transparent/kompass.png" alt="Kompass" class="h-9 partner-logo rounded">
+            <span class="award-wrap"><img src="./assets/partners/cassini_hackathon_white.png" alt="CASSINI Hackathon" class="h-8 ribbon-award is-light"><span class="award-tag">(award)</span></span>
+            <span class="award-wrap"><img src="./assets/partners/fundacion_tatiana.svg" alt="Fundación Tatiana" class="w-56 ribbon-award is-light"><span class="award-tag">(award)</span></span>
             <!-- Duplicate for seamless loop -->
-            <img src="./assets/partners/seo_bird_life.jpg" alt="SEO Birdlife" class="h-11 partner-logo rounded">
-            <img src="./assets/partners/orygen_earth_logo.jpg" alt="Orygen" class="h-11 partner-logo rounded">
-            <img src="./assets/partners/universidad_politecnica.jpg" alt="UPM" class="h-11 partner-logo rounded">
-            <img src="./assets/partners/csic.png" alt="CSIC" class="h-11 partner-logo">
+            <img src="./assets/partners/transparent/seo_bird_life.png" alt="SEO Birdlife" class="h-11 partner-logo rounded">
+            <img src="./assets/partners/transparent/orygen_earth_logo.png" alt="Orygen" class="h-11 partner-logo rounded">
+            <img src="./assets/partners/transparent/quercy.png" alt="Quercy" class="h-11 partner-logo">
+            <span class="award-wrap"><span class="ribbon-nasa"><img src="./assets/partners/nasa_meatball.png" alt="NASA Space to Soil Challenge"><span>Space to Soil Challenge</span></span><span class="award-tag">(award)</span></span>
             <img src="./assets/partners/google_partner.png" alt="Google Partner" class="h-11 partner-logo">
-            <!-- <img src="./assets/partners/upwork.png" alt="Upwork" class="h-7 partner-logo"> -->
-            <img src="./assets/partners/kompass.jpg" alt="Kompass" class="h-9 partner-logo rounded">
-            <img src="./assets/partners/quercy.png" alt="Quercy" class="h-11 partner-logo">
-            <img src="./assets/partners/universidad_avila.jpg" alt="Universidad de Ávila" class="h-11 partner-logo rounded">
-            <img src="./assets/partners/fundacion_monte_mediterraneo.png" alt="Fundación Monte Mediterráneo" class="h-11 partner-logo">
-            <img src="./assets/partners/urjc.png" alt="URJC" class="h-11 partner-logo">
-            <img src="./assets/partners/johns_hopkins.webp" alt="Johns Hopkins University" class="h-11 partner-logo">
+            <img src="./assets/partners/johns_hopkins.webp" alt="Johns Hopkins University" class="h-14 partner-logo">
+            <img src="./assets/partners/csic.png" alt="CSIC" class="h-11 partner-logo">
+            <img src="./assets/partners/transparent/universidad_politecnica.png" alt="UPM" class="h-11 partner-logo rounded">
+            <img src="./assets/partners/transparent/urjc.png" alt="URJC" class="h-11 partner-logo">
+            <img src="./assets/partners/transparent/universidad_avila.png" alt="Universidad de Ávila" class="h-11 partner-logo rounded">
+            <img src="./assets/partners/transparent/fundacion_monte_mediterraneo.png" alt="Fundación Monte Mediterráneo" class="h-11 partner-logo">
+            <img src="./assets/partners/transparent/kompass.png" alt="Kompass" class="h-9 partner-logo rounded">
+            <span class="award-wrap"><img src="./assets/partners/cassini_hackathon_white.png" alt="CASSINI Hackathon" class="h-8 ribbon-award is-light"><span class="award-tag">(award)</span></span>
+            <span class="award-wrap"><img src="./assets/partners/fundacion_tatiana.svg" alt="Fundación Tatiana" class="w-56 ribbon-award is-light"><span class="award-tag">(award)</span></span>
           </div>
         </div>
       </div>
@@ -715,64 +725,8 @@
           </p>
         </div>
 
-        <!-- Bottom: scroll cue to Impact — pinned to lower boundary -->
+        <!-- Bottom: scroll cue to Solutions — pinned to lower boundary -->
         <div class="scroll-cue">
-          <a href="#impact">
-            <span class="eyebrow" data-lang="es">Nuestro impacto</span>
-            <span class="eyebrow hidden" data-lang="en">Our impact</span>
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-6-6m6 6l6-6"/></svg>
-          </a>
-        </div>
-      </div>
-    </section>
-    </div>
-
-    <!-- Impact stats — split from Mission so each lands cleanly on its own screen -->
-    <section id="impact" class="bg-teal-base section-rule pt-14 lg:pt-20 pb-16 lg:pb-20 overflow-hidden relative flex flex-col justify-center" style="min-height:100vh; min-height:100dvh;">
-      <div class="container mx-auto px-6 relative" style="z-index:1;">
-        <!-- Stats band — real, owner-confirmed / measured figures -->
-        <p class="text-center font-bold text-cream mb-8 animate-on-scroll" style="font-size:clamp(1.4rem,2.4vw,2rem); line-height:1.2;" data-lang="es">Expertos en territorio.</p>
-        <p class="text-center font-bold text-cream mb-8 animate-on-scroll hidden" style="font-size:clamp(1.4rem,2.4vw,2rem); line-height:1.2;" data-lang="en">Experts in the field.</p>
-        <div class="stats-bubbles animate-on-scroll">
-          <div class="stat-bubble" style="--bubble-accent:var(--olive-light); --bubble-delay:0s;">
-            <div class="stat-num font-display text-olive leading-none mb-1" data-target="2400000" data-prefix="+">+0</div>
-            <p class="font-mono text-cream-dim uppercase tracking-wider" data-lang="es">Hectáreas analizadas</p>
-            <p class="font-mono text-cream-dim uppercase tracking-wider hidden" data-lang="en">Hectares analysed</p>
-          </div>
-          <div class="stat-bubble" style="--bubble-accent:var(--green-soft); --bubble-delay:.5s;">
-            <div class="stat-num font-display text-olive leading-none mb-1" data-target="7" data-suffix="+">0+</div>
-            <p class="font-mono text-cream-dim uppercase tracking-wider" data-lang="es">Países</p>
-            <p class="font-mono text-cream-dim uppercase tracking-wider hidden" data-lang="en">Countries</p>
-            <div class="stat-flags">
-              <img src="./assets/flags/es.svg" alt="España">
-              <img src="./assets/flags/us.svg" alt="USA">
-              <img src="./assets/flags/au.svg" alt="Australia">
-              <img src="./assets/flags/at.svg" alt="Austria">
-              <img src="./assets/flags/pt.svg" alt="Portugal">
-              <img src="./assets/flags/fr.svg" alt="France">
-            </div>
-          </div>
-          <div class="stat-award-group" style="--bubble-delay:1s;">
-            <div class="stat-award-pair">
-              <span class="award-nasa">
-                <img src="./assets/partners/nasa_meatball.png" alt="NASA">
-                <span>Space to Soil<br>Challenge</span>
-              </span>
-              <img class="award-cassini" src="./assets/partners/cassini_hackathon_white.png" alt="Cassini Hackathon">
-            </div>
-            <img class="award-tatiana" src="./assets/partners/fundacion_tatiana.svg" alt="Fundación Tatiana">
-            <p class="font-mono text-xs text-cream-dim uppercase tracking-wider mt-3" data-lang="es">Premios</p>
-            <p class="font-mono text-xs text-cream-dim uppercase tracking-wider mt-3 hidden" data-lang="en">Awards</p>
-          </div>
-          <div class="stat-bubble" style="--bubble-accent:var(--olive-light); --bubble-delay:1.5s;">
-            <div class="stat-num font-display text-olive leading-none mb-1" data-target="12" data-prefix="+">+0</div>
-            <p class="font-mono text-cream-dim uppercase tracking-wider" data-lang="es">Proyectos entregados</p>
-            <p class="font-mono text-cream-dim uppercase tracking-wider hidden" data-lang="en">Projects delivered</p>
-          </div>
-        </div>
-
-        <!-- Scroll cue to Solutions -->
-        <div class="scroll-cue mt-14 lg:mt-16">
           <a href="#solutions">
             <span class="eyebrow" data-lang="es">Qué hacemos</span>
             <span class="eyebrow hidden" data-lang="en">What we do</span>
@@ -781,13 +735,14 @@
         </div>
       </div>
     </section>
+    </div>
 
     <!-- Solutions — the 4 pillars (replaces Services) -->
     <section id="solutions" class="section-light section-rule py-8 lg:py-10 overflow-hidden flex flex-col justify-center" style="min-height:100vh; min-height:100dvh;">
       <div class="container mx-auto px-6">
         <div class="max-w-3xl mb-6 lg:mb-8 animate-on-scroll">
-          <h2 class="font-bold text-cream leading-tight" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="es">Cuatro formas de poner los datos al servicio del planeta</h2>
-          <h2 class="font-bold text-cream leading-tight hidden" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="en">Four ways we put data to work for the planet</h2>
+          <h2 class="font-bold text-cream leading-tight lg:whitespace-nowrap" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="es">Cuatro formas de poner los datos a trabajar</h2>
+          <h2 class="font-bold text-cream leading-tight hidden lg:whitespace-nowrap" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="en">Four ways we put data to work</h2>
         </div>
 
         <div class="grid md:grid-cols-2 gap-6 lg:gap-7">
@@ -911,8 +866,8 @@
         <div class="max-w-3xl mb-8 animate-on-scroll">
           <p class="eyebrow mb-5" data-lang="es">Para quién trabajamos</p>
           <p class="eyebrow mb-5 hidden" data-lang="en">Who we work for</p>
-          <h2 class="font-bold text-cream leading-tight" style="font-size:clamp(1.55rem,3.3vw,2.5rem);" data-lang="es">Una herramienta que entiende el valor de tu organización</h2>
-          <h2 class="font-bold text-cream leading-tight hidden" style="font-size:clamp(1.55rem,3.3vw,2.5rem);" data-lang="en">A tool that understands your organization's value</h2>
+          <h2 class="font-bold text-cream leading-tight lg:whitespace-nowrap" style="font-size:clamp(1.55rem,3.3vw,2.5rem);" data-lang="es">Entendemos el valor de tu organización</h2>
+          <h2 class="font-bold text-cream leading-tight hidden lg:whitespace-nowrap" style="font-size:clamp(1.55rem,3.3vw,2.5rem);" data-lang="en">We understand your organizations value</h2>
         </div>
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -959,8 +914,8 @@
       <!-- Intro -->
       <div class="container mx-auto px-6 pt-8 lg:pt-10">
         <div class="max-w-3xl animate-on-scroll">
-          <h2 class="font-bold text-cream leading-tight mb-3" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="es">Más que imágenes satelitales</h2>
-          <h2 class="font-bold text-cream leading-tight mb-3 hidden" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="en">More than satellite imagery</h2>
+          <h2 class="font-bold text-cream leading-tight mb-3 lg:whitespace-nowrap" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="es">Más que imágenes satelitales</h2>
+          <h2 class="font-bold text-cream leading-tight mb-3 hidden lg:whitespace-nowrap" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="en">More than satellite imagery</h2>
           <p class="text-cream-dim leading-relaxed" data-lang="es">El valor no está en la imagen, sino en lo que la IA entiende de ella. Entrenamos <strong class="text-olive font-semibold">nuestros propios modelos</strong> para leer cada píxel, y agentes Geo AI que te lo explican en lenguaje natural.</p>
           <p class="text-cream-dim leading-relaxed hidden" data-lang="en">The value isn't the image; it's what the AI understands from it. We train <strong class="text-olive font-semibold">our own models</strong> to read every pixel, plus Geo AI agents that explain it back to you in plain language.</p>
         </div>
@@ -973,8 +928,8 @@
 
             <!-- Pinned visual: clip-path wipe from aerial RGB to per-tree crown segmentation -->
             <div class="scrolly-visual">
-              <img id="ai-base" src="./assets/hero/forest_rgb.jpg?v=3" alt="Imagen aérea de árboles dispersos (RGB)">
-              <img id="ai-reveal" src="./assets/hero/forest_seg.jpg?v=3" alt="Copas de árboles segmentadas por nuestros modelos">
+              <img id="ai-base" src="./assets/hero/forest_rgb.jpg?v=3" alt="Imagen aérea de árboles dispersos (RGB)" draggable="false">
+              <img id="ai-reveal" src="./assets/hero/forest_seg.jpg?v=3" alt="Copas de árboles segmentadas por nuestros modelos" draggable="false">
               <div class="scrolly-scan">
                 <span class="scrolly-handle">
                   <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 7l-5 5 5 5M16 7l5 5-5 5"/></svg>
@@ -1129,8 +1084,8 @@
           <div class="container mx-auto px-6 mb-8 lg:mb-12">
             <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 animate-on-scroll">
               <div class="max-w-2xl">
-                <h2 class="font-bold text-cream leading-tight" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="es">Soluciones reales, desplegadas en el territorio</h2>
-                <h2 class="font-bold text-cream leading-tight hidden" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="en">Real solutions, deployed on the ground</h2>
+                <h2 class="font-bold text-cream leading-tight lg:whitespace-nowrap" style="font-size:clamp(1.4rem,2.6vw,1.6rem);" data-lang="es">Soluciones reales desplegadas en el territorio</h2>
+                <h2 class="font-bold text-cream leading-tight lg:whitespace-nowrap hidden" style="font-size:clamp(1.4rem,2.6vw,1.6rem);" data-lang="en">Real solutions deployed on the ground.</h2>
               </div>
               <div class="lg:w-64 shrink-0">
                 <div class="h-progress"><span id="projects-progress"></span></div>
@@ -1222,22 +1177,6 @@
                 </div>
               </article>
 
-              <!-- End World Hunger Ohio -->
-              <article class="h-panel group" onclick="window.open('https://endworldhungerohio.com/','_blank')">
-                <div class="h-panel-img ai" style="background-image:url('https://endworldhungerohio.com/assets/images/garden_winter.png');"></div>
-                <div class="h-panel-grad"></div>
-                <div class="h-panel-scan"></div>
-                <div class="relative h-full flex flex-col justify-end p-7 lg:p-8">
-                  <span class="chip self-start mb-3" data-lang="es">Sostenibilidad (ESG)</span>
-                  <span class="chip self-start mb-3 hidden" data-lang="en">Sustainability (ESG)</span>
-                  <h3 class="font-display text-3xl lg:text-4xl uppercase tracking-wide text-cream mb-2">End World Hunger Ohio</h3>
-                  <p class="text-sm leading-relaxed text-cream-dim mb-4 max-w-md" data-lang="es">Partners de End World Hunger Ohio, un jardín comunitario en Columbus que impulsa la soberanía alimentaria a través de la agricultura regenerativa.</p>
-                  <p class="text-sm leading-relaxed text-cream-dim mb-4 max-w-md hidden" data-lang="en">Partners of End World Hunger Ohio, a community garden in Columbus driving food sovereignty through regenerative agriculture.</p>
-                  <span class="inline-flex items-center gap-1 font-semibold text-sm text-olive" data-lang="es">Visitar web <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span></span>
-                  <span class="inline-flex items-center gap-1 font-semibold text-sm text-olive hidden" data-lang="en">Visit website <span class="inline-block transition-transform duration-200 group-hover:translate-x-1">→</span></span>
-                </div>
-              </article>
-
               <!-- Closing CTA panel -->
               <div class="h-panel flex items-center justify-center text-center" style="border-style:dashed; border-color:rgba(188,190,118,0.4); background:radial-gradient(ellipse at center, rgba(33,63,71,0.9), var(--teal-deep));">
                 <div class="px-8">
@@ -1252,68 +1191,25 @@
 
             </div>
 
-            <!-- Scroll cue to Values — lives inside the pinned view (not after it) so it's
+            <!-- Scroll cue to Team — lives inside the pinned view (not after it) so it's
                  always visible while pinned, instead of appearing alone once the pin releases -->
-            <a href="#values" class="pin-cue">
-              <span class="eyebrow" data-lang="es">Por qué lo hacemos</span>
-              <span class="eyebrow hidden" data-lang="en">Why we do it</span>
+            <a href="#team" class="pin-cue">
+              <span class="eyebrow" data-lang="es">Quiénes somos</span>
+              <span class="eyebrow hidden" data-lang="en">Who we are</span>
               <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-6-6m6 6l6-6"/></svg>
             </a>
           </div>
         </div>
       </div>
 
-      <!-- Scroll cue to Values — non-pin fallback (mobile/short viewport/reduced motion),
+      <!-- Scroll cue to Team — non-pin fallback (mobile/short viewport/reduced motion),
            where content flows normally and this sits right after the CTA panel -->
       <div class="scroll-cue no-pin-cue container mx-auto px-6 py-12 lg:py-16">
-        <a href="#values">
-          <span class="eyebrow" data-lang="es">Por qué lo hacemos</span>
-          <span class="eyebrow hidden" data-lang="en">Why we do it</span>
+        <a href="#team">
+          <span class="eyebrow" data-lang="es">Quiénes somos</span>
+          <span class="eyebrow hidden" data-lang="en">Who we are</span>
           <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-6-6m6 6l6-6"/></svg>
         </a>
-      </div>
-    </section>
-
-    <!-- Values -->
-    <section id="values" class="section-light section-rule py-10 lg:py-14 overflow-hidden flex flex-col justify-center" style="min-height:100vh; min-height:100dvh;">
-      <div class="container mx-auto px-6">
-        <div class="max-w-3xl mb-8 animate-on-scroll">
-          <h2 class="font-bold text-cream leading-tight" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="es">Soluciones para las personas y el planeta</h2>
-          <h2 class="font-bold text-cream leading-tight hidden" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="en">Solutions for people and the planet</h2>
-        </div>
-
-        <div class="grid md:grid-cols-3 gap-6">
-          <div class="value-card p-8 animate-on-scroll">
-            <svg class="w-10 h-10 mb-5 text-olive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
-            <h3 class="text-xl font-bold text-cream mb-3" data-lang="es">La naturaleza primero</h3>
-            <h3 class="text-xl font-bold text-cream mb-3 hidden" data-lang="en">Nature first</h3>
-            <p class="text-cream-dim text-base leading-relaxed" data-lang="es">Solo apoyamos proyectos que tienen un impacto positivo y directo en la naturaleza. Creemos que los datos son la piedra angular de una gestión eficaz, y los datos espaciales proporcionan la dimensión más poderosa.</p>
-            <p class="text-cream-dim text-base leading-relaxed hidden" data-lang="en">We only support projects that have a direct positive impact on nature. We believe that data is the cornerstone of effective management, and spatial data provides the most powerful dimension.</p>
-          </div>
-          <div class="value-card p-8 animate-on-scroll" style="transition-delay:120ms;">
-            <svg class="w-10 h-10 mb-5 text-olive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="6.5" cy="17" r="2"/><circle cx="17" cy="17" r="3"/><path d="M8.5 17h5.5"/><path d="M3 15v-3h3l2-4h5l2 4h2"/><path d="M8 8V6"/><path d="M5 12h3"/></svg>
-            <h3 class="text-xl font-bold text-cream mb-3" data-lang="es">Sinergias entre sectores</h3>
-            <h3 class="text-xl font-bold text-cream mb-3 hidden" data-lang="en">Synergies across sectors</h3>
-            <p class="text-cream-dim text-base leading-relaxed" data-lang="es">El mayor impacto proviene de la colaboración. Crear sinergias entre sectores, desde el turismo hasta la silvicultura, nos permite diseñar las mejores soluciones para las personas y el planeta.</p>
-            <p class="text-cream-dim text-base leading-relaxed hidden" data-lang="en">The greatest impact comes from collaboration. Creating synergies across sectors, from tourism to forestry, allows us to design the best solutions for people and the planet.</p>
-          </div>
-          <div class="value-card p-8 animate-on-scroll" style="transition-delay:240ms;">
-            <svg class="w-10 h-10 mb-5 text-olive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-            <h3 class="text-xl font-bold text-cream mb-3" data-lang="es">IA responsable</h3>
-            <h3 class="text-xl font-bold text-cream mb-3 hidden" data-lang="en">Responsible AI</h3>
-            <p class="text-cream-dim text-base leading-relaxed" data-lang="es">Desarrollamos y entrenamos nuestros propios modelos de IA para garantizar que comprendan verdaderamente los sistemas naturales con los que trabajamos.</p>
-            <p class="text-cream-dim text-base leading-relaxed hidden" data-lang="en">We develop and train our own AI models to ensure they truly understand the natural systems we work with.</p>
-          </div>
-        </div>
-
-        <!-- Scroll cue to Team -->
-        <div class="scroll-cue mt-8 lg:mt-10">
-          <a href="#team">
-            <span class="eyebrow" data-lang="es">Quiénes somos</span>
-            <span class="eyebrow hidden" data-lang="en">Who we are</span>
-            <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m0 0l-6-6m6 6l6-6"/></svg>
-          </a>
-        </div>
       </div>
     </section>
 
@@ -1321,8 +1217,8 @@
     <section id="team" class="section-light section-rule py-20 lg:py-24 overflow-hidden">
       <div class="container mx-auto px-6">
         <div class="max-w-3xl mx-auto text-center mb-14 animate-on-scroll">
-          <h2 class="font-bold text-cream leading-tight" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="es">Expertos en naturaleza y tecnología</h2>
-          <h2 class="font-bold text-cream leading-tight hidden" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="en">Experts in nature and technology</h2>
+          <h2 class="font-bold text-cream leading-tight lg:whitespace-nowrap" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="es">Expertos en naturaleza y tecnología</h2>
+          <h2 class="font-bold text-cream leading-tight hidden lg:whitespace-nowrap" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="en">Experts in nature and technology</h2>
         </div>
 
         <!-- Founders / Managing Partners -->
@@ -1356,7 +1252,7 @@
               <img src="./assets/team/mario.jpg" alt="Foto de Mario García Peces" class="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover object-center shrink-0 mx-auto sm:mx-0 ring-2" style="--tw-ring-color:rgba(188,190,118,0.3);">
               <div class="text-center sm:text-left min-w-0">
                 <h3 class="text-lg sm:text-xl font-bold text-cream leading-tight">Mario García Peces</h3>
-                <p class="text-olive font-medium text-sm mt-1">CEO Europe &amp; Head of Geospatial</p>
+                <p class="text-olive font-medium text-sm mt-1">COO</p>
                 <div class="flex items-center gap-2 mt-2 justify-center sm:justify-start">
                   <a href="https://www.linkedin.com/in/mario-garc%C3%ADa-peces-4563a7209/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="inline-block">
                     <img src="./assets/brand/linkedin_logo.png" alt="" aria-hidden="true" class="w-5 h-auto">
@@ -1379,8 +1275,8 @@
               <img src="./assets/team/nick.webp" alt="Photo of Nicholas Cosgrove" class="w-14 h-14 rounded-full object-cover object-center shrink-0">
               <div class="min-w-0">
                 <h3 class="text-sm font-bold text-cream leading-tight">Nicholas Cosgrove</h3>
-                <p class="text-olive font-medium text-xs mt-0.5" data-lang="es">Asesor GTM</p>
-                <p class="text-olive font-medium text-xs mt-0.5 hidden" data-lang="en">GTM Advisor</p>
+                <p class="text-olive font-medium text-xs mt-0.5" data-lang="es">Líder GTM</p>
+                <p class="text-olive font-medium text-xs mt-0.5 hidden" data-lang="en">GTM Lead</p>
                 <a href="https://www.linkedin.com/in/nicholas-cosgrove-794927a4/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn profile" class="inline-block mt-1">
                   <img src="./assets/brand/linkedin_logo.png" alt="" aria-hidden="true" class="w-5 h-auto">
                 </a>
@@ -1497,8 +1393,8 @@
       <div class="container mx-auto px-6">
         <div class="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start max-w-6xl mx-auto">
           <div class="animate-on-scroll">
-            <h2 class="font-bold text-cream leading-tight mb-6" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="es">Hablemos de tu próximo proyecto</h2>
-            <h2 class="font-bold text-cream leading-tight mb-6 hidden" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="en">Let's talk about your next project</h2>
+            <h2 class="font-bold text-cream leading-tight mb-6 lg:whitespace-nowrap" style="font-size:clamp(1.4rem,2.4vw,1.8rem);" data-lang="es">Hablemos de tu próximo proyecto</h2>
+            <h2 class="font-bold text-cream leading-tight mb-6 hidden lg:whitespace-nowrap" style="font-size:clamp(1.4rem,2.4vw,1.8rem);" data-lang="en">Let's talk about your next project</h2>
             <p class="text-cream-dim leading-relaxed mb-6" data-lang="es">Completa el formulario o escríbenos directamente. Te respondemos en menos de 48 horas.</p>
             <p class="text-cream-dim leading-relaxed mb-6 hidden" data-lang="en">Fill out the form or reach us directly. We reply within 48 hours.</p>
             <a href="mailto:contact@darwingeospatial.com" class="inline-flex items-center gap-2 text-olive font-semibold hover:underline">
@@ -1885,11 +1781,13 @@
       }
       var dragging = false;
       visual.addEventListener('pointerdown', function(e){
+        e.preventDefault();
         dragging = true;
         try { visual.setPointerCapture(e.pointerId); } catch (err) {}
         hints.forEach(function(h){ h.classList.add('is-hidden'); });
         setWipe(posFromEvent(e));
       });
+      visual.addEventListener('dragstart', function(e){ e.preventDefault(); });
       visual.addEventListener('pointermove', function(e){
         if (!dragging) return;
         setWipe(posFromEvent(e));
