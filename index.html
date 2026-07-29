@@ -151,6 +151,13 @@
     }
     .mission-word.pop-in{opacity:1; transform:translateY(0); filter:blur(0);}
 
+    /* Tagline emphasis — clean inline, no band */
+    .mission-mark{
+      background:none;
+      color:var(--olive-light);
+      font-weight:700;
+    }
+
     /* On short viewports (small laptop screens, browser zoom > 100%), section
        padding doesn't all fit after an anchor-scroll lands on the section above it
        — shrink the vertical rhythm so each section settles within view. */
@@ -716,17 +723,15 @@
 
         <!-- Center: headline + description -->
         <div class="max-w-3xl lg:max-w-5xl mx-auto">
-          <h2 class="font-bold mission-headline mb-8 animate-on-scroll lg:whitespace-nowrap" style="font-size:clamp(1.4rem,2.4vw,1.8rem); line-height:1.2; color:var(--olive-light); font-weight:800;" data-lang="es"><span class="mission-part" data-delay="0">Entender la naturaleza</span> <span class="mission-part mission-arrow" data-delay="600"><svg viewBox="0 0 96 20"><path d="M2,10.5 C26,8.6 62,8.6 90,10"/><path d="M84,5 C88,7.5 93,10 90,10 C93,10 88,12.5 84,15"/></svg></span> <span class="mission-word" data-delay="2100">Y</span> <span class="mission-word" data-delay="2350">proteger nuestros</span> <span class="mission-word" data-delay="2600">activos naturales</span></h2>
-          <h2 class="font-bold mission-headline mb-8 animate-on-scroll hidden lg:whitespace-nowrap" style="font-size:clamp(1.4rem,2.4vw,1.8rem); line-height:1.2; color:var(--olive-light); font-weight:800;" data-lang="en"><span class="mission-part" data-delay="0">Understand nature</span> <span class="mission-part mission-arrow" data-delay="600"><svg viewBox="0 0 96 20"><path d="M2,10.5 C26,8.6 62,8.6 90,10"/><path d="M84,5 C88,7.5 93,10 90,10 C93,10 88,12.5 84,15"/></svg></span> <span class="mission-word" data-delay="2100">And</span> <span class="mission-word" data-delay="2350">protect our</span> <span class="mission-word" data-delay="2600">natural assets</span></h2>
+          <h2 class="font-bold mission-headline mb-8 animate-on-scroll lg:whitespace-nowrap" style="font-size:clamp(1.4rem,2.4vw,1.8rem); line-height:1.2; color:var(--olive-light); font-weight:800;" data-lang="es"><span class="mission-part" data-delay="0">Entender la naturaleza</span> <span class="mission-part mission-arrow" data-delay="600"><svg viewBox="0 0 96 20"><path d="M2,10.5 C26,8.6 62,8.6 90,10"/><path d="M84,5 C88,7.5 93,10 90,10 C93,10 88,12.5 84,15"/></svg></span> <span class="mission-word" data-delay="2100">Para</span> <span class="mission-word" data-delay="2350">proteger</span> <span class="mission-word" data-delay="2600">nuestra Tierra</span></h2>
+          <h2 class="font-bold mission-headline mb-8 animate-on-scroll hidden lg:whitespace-nowrap" style="font-size:clamp(1.4rem,2.4vw,1.8rem); line-height:1.2; color:var(--olive-light); font-weight:800;" data-lang="en"><span class="mission-part" data-delay="0">Understand nature</span> <span class="mission-part mission-arrow" data-delay="600"><svg viewBox="0 0 96 20"><path d="M2,10.5 C26,8.6 62,8.6 90,10"/><path d="M84,5 C88,7.5 93,10 90,10 C93,10 88,12.5 84,15"/></svg></span> <span class="mission-word" data-delay="2100">To</span> <span class="mission-word" data-delay="2350">protect</span> <span class="mission-word" data-delay="2600">our Earth</span></h2>
 
           <p class="text-base md:text-lg text-cream-dim leading-relaxed animate-on-scroll max-w-3xl mx-auto" data-lang="es">
-            Usamos datos geoespaciales e inteligencia artificial para transformar cómo se estudian, monitorean y gestionan los sistemas naturales.
+            Usamos datos geoespaciales e inteligencia artificial para transformar cómo se estudian, monitorean y gestionan los sistemas naturales. <mark class="mission-mark">IA espacial, evolucionada para la naturaleza.</mark>
           </p>
           <p class="text-base md:text-lg text-cream-dim leading-relaxed animate-on-scroll hidden max-w-3xl mx-auto" data-lang="en">
-            We use geospatial data and artificial intelligence to transform how natural systems are studied, monitored and managed.
+            We use geospatial data and artificial intelligence to transform how natural systems are studied, monitored and managed. <mark class="mission-mark">Space AI, evolved for nature.</mark>
           </p>
-          <p class="mission-tagline animate-on-scroll mt-6 text-olive font-bold" style="font-size:clamp(1.15rem,2vw,1.6rem); letter-spacing:.01em;" data-lang="es">IA espacial, evolucionada para la naturaleza</p>
-          <p class="mission-tagline animate-on-scroll mt-6 text-olive font-bold hidden" style="font-size:clamp(1.15rem,2vw,1.6rem); letter-spacing:.01em;" data-lang="en">Space AI, evolved for nature</p>
         </div>
 
         <!-- Bottom: scroll cue to Solutions — pinned to lower boundary -->
