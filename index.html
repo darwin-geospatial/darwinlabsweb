@@ -211,6 +211,9 @@
     /* Awards get a faint "award" note overlaid on the lower edge of the logo to set them apart from partners */
     .award-wrap{ position:relative; display:inline-flex; align-items:center; justify-content:center; }
     .award-tag{ position:absolute; left:50%; bottom:0; transform:translateX(-50%); font-family:'Inter', sans-serif; font-weight:600; font-size:.5rem; letter-spacing:.2em; text-transform:uppercase; color:rgba(27,55,63,0.4); line-height:1; white-space:nowrap; pointer-events:none; }
+    /* Wide logos (e.g. Fundación Tatiana) read better with the tag stacked below rather than overlaid */
+    .award-wrap.is-stack{ flex-direction:column; gap:.4rem; }
+    .award-wrap.is-stack .award-tag{ position:static; transform:none; }
 
     /* ── Hero Slideshow with Ken Burns Effect ── */
     #hero-slideshow { position: absolute; inset: 0; overflow: hidden; z-index: -1; background-color: var(--teal-deep); }
@@ -689,8 +692,7 @@
             <img src="./assets/partners/transparent/universidad_avila.png" alt="Universidad de Ávila" class="h-11 partner-logo rounded">
             <img src="./assets/partners/transparent/fundacion_monte_mediterraneo.png" alt="Fundación Monte Mediterráneo" class="h-11 partner-logo">
             <img src="./assets/partners/transparent/kompass.png" alt="Kompass" class="h-9 partner-logo rounded">
-            <span class="award-wrap"><img src="./assets/partners/cassini_hackathon_white.png" alt="CASSINI Hackathon" class="h-8 ribbon-award is-light"><span class="award-tag">award</span></span>
-            <span class="award-wrap"><img src="./assets/partners/fundacion_tatiana.svg" alt="Fundación Tatiana" class="w-56 ribbon-award is-light"><span class="award-tag">award</span></span>
+            <span class="award-wrap is-stack"><img src="./assets/partners/fundacion_tatiana.svg" alt="Fundación Tatiana" class="w-56 ribbon-award is-light"><span class="award-tag">award</span></span>
             <!-- Duplicate for seamless loop -->
             <img src="./assets/partners/transparent/seo_bird_life.png" alt="SEO Birdlife" class="h-11 partner-logo rounded">
             <img src="./assets/partners/transparent/orygen_earth_logo.png" alt="Orygen" class="h-11 partner-logo rounded">
@@ -704,8 +706,7 @@
             <img src="./assets/partners/transparent/universidad_avila.png" alt="Universidad de Ávila" class="h-11 partner-logo rounded">
             <img src="./assets/partners/transparent/fundacion_monte_mediterraneo.png" alt="Fundación Monte Mediterráneo" class="h-11 partner-logo">
             <img src="./assets/partners/transparent/kompass.png" alt="Kompass" class="h-9 partner-logo rounded">
-            <span class="award-wrap"><img src="./assets/partners/cassini_hackathon_white.png" alt="CASSINI Hackathon" class="h-8 ribbon-award is-light"><span class="award-tag">award</span></span>
-            <span class="award-wrap"><img src="./assets/partners/fundacion_tatiana.svg" alt="Fundación Tatiana" class="w-56 ribbon-award is-light"><span class="award-tag">award</span></span>
+            <span class="award-wrap is-stack"><img src="./assets/partners/fundacion_tatiana.svg" alt="Fundación Tatiana" class="w-56 ribbon-award is-light"><span class="award-tag">award</span></span>
           </div>
         </div>
       </div>
