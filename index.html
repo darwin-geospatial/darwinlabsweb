@@ -46,8 +46,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
-  <link rel="preload" href="./assets/hero/alps_rgb.webp" as="image"/>
-  <link rel="preload" href="./assets/hero/alps_alphaearth.webp" as="image"/>
+  <!-- Only the RGB base is critical (it's what shows first). The AlphaEarth layer
+       is a hover-only reveal, so it loads lazily and doesn't compete for bandwidth. -->
+  <link rel="preload" href="./assets/hero/alps_rgb.webp" as="image" fetchpriority="high"/>
 
   <style>
     /* ── Brand palette — official Darwin colors (dark premium system) ── */
@@ -246,6 +247,9 @@
     /* ── Hero brush reveal: VHR RGB (base) → AlphaEarth output (under cursor) ── */
     #hero-reveal { position: absolute; inset: 0; overflow: hidden; z-index: 0; background: var(--teal-deep); }
     .hr-layer { position: absolute; inset: 0; background-size: cover; background-position: center; }
+    /* Instant blur-up placeholder: shows immediately, scaled up so the blurred
+       edges bleed off-screen. Stays underneath the full image once it loads. */
+    #hr-lqip { filter: blur(24px) saturate(0.9) brightness(1.18); transform: scale(1.15); }
     /* Images shown muted (not full color) — the branded veil above does the rest */
     /* Base layer stays hidden (teal backdrop shows) until the image is fully
        decoded, then eases up as one clean piece — no tile-by-tile paint-in. */
@@ -633,6 +637,9 @@
   <section id="home" class="min-h-screen relative flex items-center text-cream overflow-hidden">
     <!-- Brush reveal: VHR RGB (base) → AlphaEarth output revealed under the cursor -->
     <div id="hero-reveal">
+      <!-- Instant blurred placeholder (inlined ~200B) — shows immediately, then the
+           full RGB image fades in over it. No blank teal wait, no tile paint-in. -->
+      <div id="hr-lqip" class="hr-layer" style="background-image:url('data:image/webp;base64,UklGRsIAAABXRUJQVlA4ILYAAABwBQCdASowAB8APsFcp0+npKMiJWgA8BgJZwC5IAr/txmTQ7G7bA9L916u7VbRVtRXcX+AAPzuquwiNV/1tRtsjN6/dFMtHcyxJrqM+w1BffjnfZYXNbuyqvwbVRq1DwTtx5c2N9aTMiCw+gFKQNnOf1eleawXwZDe/SthIER5d9EafZMEMVJsJcZ8esFK27tQpOYmPe+XuN0Wq+VelES0p8Nois4FLUvBQd4RtXc86hmPdAAAAA==');"></div>
       <div id="hr-base" class="hr-layer" style="background-image:url('./assets/hero/alps_rgb.webp');"></div>
       <div id="hr-reveal" class="hr-layer" style="background-image:url('./assets/hero/alps_alphaearth.webp');"></div>
       <canvas id="hero-gl" aria-hidden="true"></canvas>
@@ -1576,15 +1583,15 @@
     (function(){
       var wrap = document.getElementById('hero-reveal');
       if (!wrap) return;
-      var srcs = ['./assets/hero/alps_rgb.webp', './assets/hero/alps_alphaearth.webp'];
       function ready(){ wrap.classList.add('ready'); }
-      Promise.all(srcs.map(function(src){
-        var im = new Image(); im.src = src;
-        return (im.decode ? im.decode() : Promise.resolve()).catch(function(){});
-      })).then(ready);
+      // Reveal as soon as the RGB base (the only layer shown at rest) is decoded.
+      var base = new Image(); base.src = './assets/hero/alps_rgb.webp';
+      (base.decode ? base.decode() : Promise.resolve()).catch(function(){}).then(ready);
+      // The AlphaEarth hover layer loads lazily — it never blocks the first paint.
+      var ae = new Image(); ae.src = './assets/hero/alps_alphaearth.webp';
       // Safety net: never leave the hero hidden if decode() stalls.
       window.addEventListener('load', ready);
-      setTimeout(ready, 3000);
+      setTimeout(ready, 2500);
     })();
 
     (function(){
