@@ -247,9 +247,6 @@
     /* ── Hero brush reveal: VHR RGB (base) → AlphaEarth output (under cursor) ── */
     #hero-reveal { position: absolute; inset: 0; overflow: hidden; z-index: 0; background: var(--teal-deep); }
     .hr-layer { position: absolute; inset: 0; background-size: cover; background-position: center; }
-    /* Instant blur-up placeholder: shows immediately, scaled up so the blurred
-       edges bleed off-screen. Stays underneath the full image once it loads. */
-    #hr-lqip { filter: blur(24px) saturate(0.9) brightness(1.18); transform: scale(1.15); }
     /* Images shown muted (not full color) — the branded veil above does the rest */
     /* Base layer stays hidden (teal backdrop shows) until the image is fully
        decoded, then eases up as one clean piece — no tile-by-tile paint-in. */
@@ -637,9 +634,6 @@
   <section id="home" class="min-h-screen relative flex items-center text-cream overflow-hidden">
     <!-- Brush reveal: VHR RGB (base) → AlphaEarth output revealed under the cursor -->
     <div id="hero-reveal">
-      <!-- Instant blurred placeholder (inlined ~200B) — shows immediately, then the
-           full RGB image fades in over it. No blank teal wait, no tile paint-in. -->
-      <div id="hr-lqip" class="hr-layer" style="background-image:url('data:image/webp;base64,UklGRsIAAABXRUJQVlA4ILYAAABwBQCdASowAB8APsFcp0+npKMiJWgA8BgJZwC5IAr/txmTQ7G7bA9L916u7VbRVtRXcX+AAPzuquwiNV/1tRtsjN6/dFMtHcyxJrqM+w1BffjnfZYXNbuyqvwbVRq1DwTtx5c2N9aTMiCw+gFKQNnOf1eleawXwZDe/SthIER5d9EafZMEMVJsJcZ8esFK27tQpOYmPe+XuN0Wq+VelES0p8Nois4FLUvBQd4RtXc86hmPdAAAAA==');"></div>
       <div id="hr-base" class="hr-layer" style="background-image:url('./assets/hero/alps_rgb.webp');"></div>
       <div id="hr-reveal" class="hr-layer" style="background-image:url('./assets/hero/alps_alphaearth.webp');"></div>
       <canvas id="hero-gl" aria-hidden="true"></canvas>
