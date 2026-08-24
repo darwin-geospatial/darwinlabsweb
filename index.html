@@ -158,7 +158,21 @@
       background:none;
       color:var(--olive-light);
       font-weight:700;
+      position:relative;
+      display:inline-block;
     }
+    /* Hand-drawn curved underline — draws with the same stroke + timing as the mission arrow */
+    .mission-underline{
+      position:absolute; left:-0.05em; right:-0.05em; bottom:-0.28em;
+      width:calc(100% + 0.1em); height:0.5em;
+      overflow:visible; pointer-events:none;
+    }
+    .mission-underline path{
+      fill:none; stroke:var(--olive-light); stroke-width:2.5;
+      stroke-linecap:round; vector-effect:non-scaling-stroke;
+      stroke-dasharray:100; stroke-dashoffset:100;
+    }
+    .mission-underline.pop-in path{animation:draw-stroke 1.25s cubic-bezier(0.3,0.05,0.3,1) forwards;}
 
     /* On short viewports (small laptop screens, browser zoom > 100%), section
        padding doesn't all fit after an anchor-scroll lands on the section above it
@@ -734,10 +748,10 @@
           <h2 class="font-bold mission-headline mb-8 animate-on-scroll hidden lg:whitespace-nowrap" style="font-size:clamp(1.4rem,2.4vw,1.8rem); line-height:1.2; color:var(--olive-light); font-weight:800;" data-lang="en"><span class="mission-part" data-delay="0">Understand nature</span> <span class="mission-part mission-arrow" data-delay="600"><svg viewBox="0 0 96 20"><path d="M2,10.5 C26,8.6 62,8.6 90,10"/><path d="M84,5 C88,7.5 93,10 90,10 C93,10 88,12.5 84,15"/></svg></span> <span class="mission-word" data-delay="2100">To</span> <span class="mission-word" data-delay="2350">protect</span> <span class="mission-word" data-delay="2600">our Earth</span></h2>
 
           <p class="text-base md:text-lg text-cream-dim leading-relaxed animate-on-scroll max-w-3xl mx-auto" data-lang="es">
-            Usamos datos geoespaciales e inteligencia artificial para transformar cómo se estudian, monitorean y gestionan los sistemas naturales. <mark class="mission-mark">IA espacial, evolucionada para la naturaleza.</mark>
+            Usamos datos geoespaciales e inteligencia artificial para transformar cómo se estudian, monitorean y gestionan los sistemas naturales. <mark class="mission-mark">IA espacial, evolucionada para la naturaleza.<svg class="mission-underline" data-delay="600" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path pathLength="100" d="M3,7 C55,11 145,11 197,5"/></svg></mark>
           </p>
           <p class="text-base md:text-lg text-cream-dim leading-relaxed animate-on-scroll hidden max-w-3xl mx-auto" data-lang="en">
-            We use geospatial data and artificial intelligence to transform how natural systems are studied, monitored and managed. <mark class="mission-mark">Space AI evolved for nature.</mark>
+            We use geospatial data and artificial intelligence to transform how natural systems are studied, monitored and managed. <mark class="mission-mark">Space AI evolved for nature.<svg class="mission-underline" data-delay="600" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path pathLength="100" d="M3,7 C55,11 145,11 197,5"/></svg></mark>
           </p>
         </div>
 
@@ -1100,8 +1114,8 @@
           <div class="container mx-auto px-6 mb-8 lg:mb-12">
             <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 animate-on-scroll">
               <div class="max-w-2xl">
-                <h2 class="font-bold text-cream leading-tight lg:whitespace-nowrap" style="font-size:clamp(1.4rem,2.6vw,1.6rem);" data-lang="es">Soluciones reales desplegadas en el territorio</h2>
-                <h2 class="font-bold text-cream leading-tight lg:whitespace-nowrap hidden" style="font-size:clamp(1.4rem,2.6vw,1.6rem);" data-lang="en">Real solutions deployed on the ground.</h2>
+                <h2 class="font-bold text-cream leading-tight lg:whitespace-nowrap" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="es">Soluciones reales desplegadas en el territorio</h2>
+                <h2 class="font-bold text-cream leading-tight lg:whitespace-nowrap hidden" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="en">Real solutions deployed on the ground.</h2>
               </div>
               <div class="lg:w-64 shrink-0">
                 <div class="h-progress"><span id="projects-progress"></span></div>

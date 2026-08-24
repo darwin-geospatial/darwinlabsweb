@@ -95,6 +95,12 @@ document.addEventListener('DOMContentLoaded', () => {
               const delay = parseInt(word.dataset.delay, 10) || 0;
               setTimeout(() => word.classList.add('pop-in'), delay);
             });
+            // Hand-drawn tagline underline — draws in sync with the mission arrow
+            const underlines = entry.target.querySelectorAll('.mission-underline');
+            underlines.forEach(u => {
+              const delay = parseInt(u.dataset.delay, 10) || 0;
+              setTimeout(() => u.classList.add('pop-in'), delay);
+            });
             obs.unobserve(entry.target);
           }
         });
