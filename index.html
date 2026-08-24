@@ -153,26 +153,16 @@
     }
     .mission-word.pop-in{opacity:1; transform:translateY(0); filter:blur(0);}
 
-    /* Tagline emphasis — clean inline, no band */
+    /* Tagline emphasis — clean inline with a plain straight underline */
     .mission-mark{
       background:none;
       color:var(--olive-light);
       font-weight:700;
-      position:relative;
-      display:inline-block;
+      text-decoration:underline;
+      text-decoration-color:var(--olive-light);
+      text-decoration-thickness:2px;
+      text-underline-offset:5px;
     }
-    /* Hand-drawn curved underline — draws with the same stroke + timing as the mission arrow */
-    .mission-underline{
-      position:absolute; left:-0.05em; right:-0.05em; bottom:-0.28em;
-      width:calc(100% + 0.1em); height:0.5em;
-      overflow:visible; pointer-events:none;
-    }
-    .mission-underline path{
-      fill:none; stroke:var(--olive-light); stroke-width:2.5;
-      stroke-linecap:round; vector-effect:non-scaling-stroke;
-      stroke-dasharray:100; stroke-dashoffset:100;
-    }
-    .mission-underline.pop-in path{animation:draw-stroke 1.25s cubic-bezier(0.3,0.05,0.3,1) forwards;}
 
     /* On short viewports (small laptop screens, browser zoom > 100%), section
        padding doesn't all fit after an anchor-scroll lands on the section above it
@@ -736,22 +726,17 @@
     <section id="mission" class="bg-teal-base section-rule py-8 lg:py-10 overflow-hidden relative flex flex-col flex-1">
       <canvas id="mission-canvas" aria-hidden="true"></canvas>
       <div class="container mx-auto px-6 relative flex-1 flex flex-col justify-center gap-10 lg:gap-14 text-center" style="z-index:1;">
-        <!-- Top: eyebrow label -->
-        <div class="max-w-5xl mx-auto">
-          <p class="font-bold text-cream animate-on-scroll" style="font-size:clamp(1.4rem,2.4vw,2rem); line-height:1.2;" data-lang="es">Nuestra misión</p>
-          <p class="font-bold text-cream animate-on-scroll hidden" style="font-size:clamp(1.4rem,2.4vw,2rem); line-height:1.2;" data-lang="en">Our mission</p>
-        </div>
 
         <!-- Center: headline + description -->
         <div class="max-w-3xl lg:max-w-5xl mx-auto">
-          <h2 class="font-bold mission-headline mb-8 animate-on-scroll lg:whitespace-nowrap" style="font-size:clamp(1.4rem,2.4vw,1.8rem); line-height:1.2; color:var(--olive-light); font-weight:800;" data-lang="es"><span class="mission-part" data-delay="0">Entender la naturaleza</span> <span class="mission-part mission-arrow" data-delay="600"><svg viewBox="0 0 96 20"><path d="M2,10.5 C26,8.6 62,8.6 90,10"/><path d="M84,5 C88,7.5 93,10 90,10 C93,10 88,12.5 84,15"/></svg></span> <span class="mission-word" data-delay="2100">Para</span> <span class="mission-word" data-delay="2350">proteger</span> <span class="mission-word" data-delay="2600">nuestra Tierra</span></h2>
-          <h2 class="font-bold mission-headline mb-8 animate-on-scroll hidden lg:whitespace-nowrap" style="font-size:clamp(1.4rem,2.4vw,1.8rem); line-height:1.2; color:var(--olive-light); font-weight:800;" data-lang="en"><span class="mission-part" data-delay="0">Understand nature</span> <span class="mission-part mission-arrow" data-delay="600"><svg viewBox="0 0 96 20"><path d="M2,10.5 C26,8.6 62,8.6 90,10"/><path d="M84,5 C88,7.5 93,10 90,10 C93,10 88,12.5 84,15"/></svg></span> <span class="mission-word" data-delay="2100">To</span> <span class="mission-word" data-delay="2350">protect</span> <span class="mission-word" data-delay="2600">our Earth</span></h2>
+          <h2 class="font-bold mission-headline mb-8 animate-on-scroll lg:whitespace-nowrap" style="font-size:clamp(1.4rem,2.4vw,1.8rem); line-height:1.2; color:var(--olive-light); font-weight:800;" data-lang="es"><span class="mission-part" data-delay="0">Entendemos la naturaleza</span> <span class="mission-part mission-arrow" data-delay="600"><svg viewBox="0 0 96 20"><path d="M2,10.5 C26,8.6 62,8.6 90,10"/><path d="M84,5 C88,7.5 93,10 90,10 C93,10 88,12.5 84,15"/></svg></span> <span class="mission-word" data-delay="2100">Para</span> <span class="mission-word" data-delay="2350">proteger</span> <span class="mission-word" data-delay="2600">nuestra Tierra</span></h2>
+          <h2 class="font-bold mission-headline mb-8 animate-on-scroll hidden lg:whitespace-nowrap" style="font-size:clamp(1.4rem,2.4vw,1.8rem); line-height:1.2; color:var(--olive-light); font-weight:800;" data-lang="en"><span class="mission-part" data-delay="0">We understand nature</span> <span class="mission-part mission-arrow" data-delay="600"><svg viewBox="0 0 96 20"><path d="M2,10.5 C26,8.6 62,8.6 90,10"/><path d="M84,5 C88,7.5 93,10 90,10 C93,10 88,12.5 84,15"/></svg></span> <span class="mission-word" data-delay="2100">To</span> <span class="mission-word" data-delay="2350">protect</span> <span class="mission-word" data-delay="2600">our Earth</span></h2>
 
           <p class="text-base md:text-lg text-cream-dim leading-relaxed animate-on-scroll max-w-3xl mx-auto" data-lang="es">
-            Usamos datos geoespaciales e inteligencia artificial para transformar cómo se estudian, monitorean y gestionan los sistemas naturales. <mark class="mission-mark">IA espacial, evolucionada para la naturaleza.<svg class="mission-underline" data-delay="600" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path pathLength="100" d="M3,7 C55,11 145,11 197,5"/></svg></mark>
+            Usamos datos geoespaciales e inteligencia artificial para transformar cómo se estudian, monitorean y gestionan los sistemas naturales. <mark class="mission-mark">Datos espaciales evolucionados para la inteligencia de la naturaleza.</mark>
           </p>
           <p class="text-base md:text-lg text-cream-dim leading-relaxed animate-on-scroll hidden max-w-3xl mx-auto" data-lang="en">
-            We use geospatial data and artificial intelligence to transform how natural systems are studied, monitored and managed. <mark class="mission-mark">Space AI evolved for nature.<svg class="mission-underline" data-delay="600" viewBox="0 0 200 12" preserveAspectRatio="none" aria-hidden="true"><path pathLength="100" d="M3,7 C55,11 145,11 197,5"/></svg></mark>
+            We use geospatial data and artificial intelligence to transform how natural systems are studied, monitored and managed. <mark class="mission-mark">Spatial data evolved for nature intelligence.</mark>
           </p>
         </div>
 
@@ -771,8 +756,8 @@
     <section id="solutions" class="section-light section-rule py-8 lg:py-10 overflow-hidden flex flex-col justify-center" style="min-height:100vh; min-height:100dvh;">
       <div class="container mx-auto px-6">
         <div class="max-w-3xl mb-6 lg:mb-8 animate-on-scroll">
-          <h2 class="font-bold text-cream leading-tight lg:whitespace-nowrap" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="es">Cuatro formas de poner los datos a trabajar</h2>
-          <h2 class="font-bold text-cream leading-tight hidden lg:whitespace-nowrap" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="en">Four ways we put data to work</h2>
+          <h2 class="font-bold leading-tight lg:whitespace-nowrap" style="font-size:clamp(1.7rem,3.8vw,2.9rem); color:var(--green-soft);" data-lang="es">Cuatro formas de poner los datos a trabajar</h2>
+          <h2 class="font-bold leading-tight hidden lg:whitespace-nowrap" style="font-size:clamp(1.7rem,3.8vw,2.9rem); color:var(--green-soft);" data-lang="en">Four ways we put data to work</h2>
         </div>
 
         <div class="grid md:grid-cols-2 gap-6 lg:gap-7">
@@ -1266,8 +1251,8 @@
     <section id="team" class="section-light section-rule py-20 lg:py-24 overflow-hidden">
       <div class="container mx-auto px-6">
         <div class="max-w-3xl mx-auto text-center mb-14 animate-on-scroll">
-          <h2 class="font-bold text-cream leading-tight lg:whitespace-nowrap" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="es">Expertos en naturaleza y tecnología</h2>
-          <h2 class="font-bold text-cream leading-tight hidden lg:whitespace-nowrap" style="font-size:clamp(1.7rem,3.8vw,2.9rem);" data-lang="en">Experts in nature and technology</h2>
+          <h2 class="font-bold leading-tight lg:whitespace-nowrap" style="font-size:clamp(1.7rem,3.8vw,2.9rem); color:var(--green-soft);" data-lang="es">Expertos en naturaleza y tecnología</h2>
+          <h2 class="font-bold leading-tight hidden lg:whitespace-nowrap" style="font-size:clamp(1.7rem,3.8vw,2.9rem); color:var(--green-soft);" data-lang="en">Experts in nature and technology</h2>
         </div>
 
         <!-- Founders / Managing Partners -->
