@@ -1952,20 +1952,5 @@
       setTimeout(function(){ window.location.href = './projects/soil_saver/index.html'; }, 780);
     }
   </script>
-  <script>
-  window.addEventListener('load',function(){setTimeout(function(){
-    var trust=document.getElementById('trust');
-    var about=document.getElementById('mission');
-    var wrap=trust.parentElement;
-    var cue=about.querySelector('.scroll-cue');
-    var cr=cue.getBoundingClientRect();
-    document.title='MEAS vh='+window.innerHeight
-      +' wrapH='+Math.round(wrap.getBoundingClientRect().height)
-      +' trustH='+Math.round(trust.getBoundingClientRect().height)
-      +' aboutH='+Math.round(about.getBoundingClientRect().height)
-      +' cueTop='+Math.round(cr.top)+' cueBottom='+Math.round(cr.bottom)
-      +' cueVisible='+(cr.bottom<=window.innerHeight && cr.top>=0);
-  },1800)});
-  </script>
 </body>
 </html>
