@@ -1,0 +1,13 @@
+# Darwin Geospatial
+
+> Darwin Geospatial builds geospatial, Earth observation, software, and applied AI solutions — turning satellite, environmental, and sensor data into practical tools for analysis and decision-making. The Darwin Agent Center is a read-only, vendor-neutral HTTP API exposing company information, project portfolio, and integration capabilities to any compatible AI system or application.
+
+## API
+
+- [Company profile](https://admin-darwin-agent-center-721070867001.europe-west1.run.app/api/v1/company): Public company overview.
+- [Project portfolio](https://admin-darwin-agent-center-721070867001.europe-west1.run.app/api/v1/portfolio): Public catalog of Darwin's projects, with area/application/market classification.
+- [Onboarding guide](https://admin-darwin-agent-center-721070867001.europe-west1.run.app/api/v1/onboarding): Public new-hire onboarding content.
+
+## Notes
+
+- Every endpoint above is read-only.
