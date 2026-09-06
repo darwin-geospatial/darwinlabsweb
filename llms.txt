@@ -8,6 +8,10 @@
 - [Project portfolio](https://admin-darwin-agent-center-721070867001.europe-west1.run.app/api/v1/portfolio): Public catalog of Darwin's projects, with area/application/market classification.
 - [Onboarding guide](https://admin-darwin-agent-center-721070867001.europe-west1.run.app/api/v1/onboarding): Public new-hire onboarding content.
 
+## Machine-readable spec
+
+- [OpenAPI spec](https://darwingeospatial.com/openapi.json): full request/response schemas for the endpoints above.
+
 ## Notes
 
 - Every endpoint above is read-only.

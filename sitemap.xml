@@ -48,4 +48,8 @@
     <loc>https://darwingeospatial.com/llms.txt</loc>
     <priority>0.1</priority>
   </url>
+  <url>
+    <loc>https://darwingeospatial.com/openapi.json</loc>
+    <priority>0.1</priority>
+  </url>
 </urlset>

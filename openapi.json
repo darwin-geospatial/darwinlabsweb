@@ -1,0 +1,175 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Darwin Agent Center API",
+    "description": "Read-only, vendor-neutral HTTP API exposing Darwin Geospatial's company information, project portfolio, and onboarding content to any compatible AI system or application. See https://darwingeospatial.com/llms.txt for a human/LLM-readable overview of Darwin Geospatial.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "Darwin Geospatial",
+      "url": "https://darwingeospatial.com"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://admin-darwin-agent-center-721070867001.europe-west1.run.app",
+      "description": "Darwin Agent Center (production)"
+    }
+  ],
+  "tags": [
+    { "name": "company", "description": "Public company overview." },
+    { "name": "portfolio", "description": "Public catalog of Darwin's projects." },
+    { "name": "onboarding", "description": "Public new-hire onboarding content." }
+  ],
+  "paths": {
+    "/api/v1/company": {
+      "get": {
+        "operationId": "getCompanyProfile",
+        "summary": "Company profile",
+        "description": "Public overview of Darwin Geospatial: name, description, and brand assets.",
+        "tags": ["company"],
+        "responses": {
+          "200": {
+            "description": "Company profile.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/CompanyResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/portfolio": {
+      "get": {
+        "operationId": "getProjectPortfolio",
+        "summary": "Project portfolio",
+        "description": "Public catalog of Darwin's projects, classified by area, application, and market, plus the controlled vocabularies used for that classification.",
+        "tags": ["portfolio"],
+        "responses": {
+          "200": {
+            "description": "Project portfolio.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/PortfolioResponse" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/onboarding": {
+      "get": {
+        "operationId": "getOnboardingGuide",
+        "summary": "Onboarding guide",
+        "description": "Public new-hire onboarding content: company focus, first-day setup checklist, working principles, and how to use the Darwin Agent Center.",
+        "tags": ["onboarding"],
+        "responses": {
+          "200": {
+            "description": "Onboarding guide.",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/OnboardingResponse" }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CompanyResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "name": { "type": "string", "example": "Darwin Geospatial" },
+              "description": { "type": "string" },
+              "logo": { "type": "string", "format": "uri" },
+              "logo_wordmark": { "type": "string", "format": "uri" }
+            }
+          }
+        }
+      },
+      "PortfolioResponse": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "areas": {
+                "type": "array",
+                "description": "Controlled vocabulary of technical areas used to classify projects.",
+                "items": { "type": "string" }
+              },
+              "applications": {
+                "type": "array",
+                "description": "Controlled vocabulary of application types used to classify projects.",
+                "items": { "type": "string" }
+              },
+              "markets": {
+                "type": "array",
+                "description": "Controlled vocabulary of target markets used to classify projects.",
+                "items": { "type": "string" }
+              },
+              "projects": {
+                "type": "array",
+                "items": { "$ref": "#/components/schemas/Project" }
+              }
+            }
+          }
+        }
+      },
+      "Project": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "tier": { "type": "string", "example": "showcase" },
+          "tagline": { "type": "string" },
+          "area": { "type": "array", "items": { "type": "string" } },
+          "application": { "type": "array", "items": { "type": "string" } },
+          "market": { "type": "array", "items": { "type": "string" } },
+          "keywords": { "type": "array", "items": { "type": "string" } },
+          "what": { "type": "string" },
+          "results": { "type": "array", "items": { "type": "string" } },
+          "stack": { "type": "array", "items": { "type": "string" } },
+          "hero_image": { "type": "string" },
+          "media": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "type": { "type": "string", "example": "video" },
+                "title": { "type": "string" },
+                "src": { "type": "string" }
+              }
+            }
+          },
+          "link": { "type": "string" }
+        }
+      },
+      "OnboardingResponse": {
+        "type": "object",
+        "description": "Structured new-hire onboarding guide. Nested sections cover the welcome message, purpose, company focus, first-day setup checklist, working principles, Darwin Agent Center usage, and completion criteria.",
+        "properties": {
+          "data": {
+            "type": "object",
+            "properties": {
+              "title": { "type": "string" },
+              "welcome": { "type": "object", "additionalProperties": true },
+              "about": { "type": "object", "additionalProperties": true },
+              "company": { "type": "object", "additionalProperties": true },
+              "first_day": { "type": "object", "additionalProperties": true },
+              "how_we_work": { "type": "object", "additionalProperties": true },
+              "agent_center": { "type": "object", "additionalProperties": true },
+              "completion": { "type": "object", "additionalProperties": true }
+            },
+            "additionalProperties": true
+          }
+        }
+      }
+    }
+  }
+}
