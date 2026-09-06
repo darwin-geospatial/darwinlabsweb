@@ -1,4 +1,26 @@
 User-agent: *
 Allow: /
 
+# AI assistants — explicitly allowed (in addition to the wildcard rule above)
+# so it's unambiguous that Darwin Geospatial welcomes AI crawlers.
+# See /llms.txt and /openapi.json for machine-readable company/API info.
+
+# ChatGPT (OpenAI)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Claude (Anthropic)
+User-agent: ClaudeBot
+Allow: /
+
+# Gemini (Google)
+User-agent: Google-Extended
+Allow: /
+
 Sitemap: https://darwingeospatial.com/sitemap.xml
